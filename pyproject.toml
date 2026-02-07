@@ -3,7 +3,7 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "traduco"
+name = "linguaedit"
 version = "0.2.0"
 description = "A GTK4 translation file editor for PO, TS, and JSON files"
 readme = "README.md"
@@ -32,10 +32,10 @@ ai = ["openai>=1.0", "anthropic>=0.18"]
 dev = ["pytest", "ruff"]
 
 [project.scripts]
-traduco = "traduco.app:main"
+linguaedit = "linguaedit.app:main"
 
 [project.gui-scripts]
-traduco-gui = "traduco.app:main"
+linguaedit-gui = "linguaedit.app:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

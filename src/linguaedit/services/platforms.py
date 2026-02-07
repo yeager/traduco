@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Optional
 from gettext import gettext as _
 
-from traduco.services.keystore import store_secret, get_secret, delete_secret
+from linguaedit.services.keystore import store_secret, get_secret, delete_secret
 
 # ── Configuration persistence ─────────────────────────────────────────
 #
@@ -19,7 +19,7 @@ from traduco.services.keystore import store_secret, get_secret, delete_secret
 # Secrets (API tokens/keys) go in the system keychain via keystore.py.
 #
 
-_CONFIG_PATH = Path.home() / ".config" / "traduco" / "platforms.json"
+_CONFIG_PATH = Path.home() / ".config" / "linguaedit" / "platforms.json"
 
 # Map of (platform, field) that are secret and must use keychain
 _SECRET_FIELDS = {

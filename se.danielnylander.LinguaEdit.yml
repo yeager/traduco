@@ -1,8 +1,8 @@
-app-id: se.danielnylander.Traduco
+app-id: se.danielnylander.LinguaEdit
 runtime: org.gnome.Platform
 runtime-version: '46'
 sdk: org.gnome.Sdk
-command: traduco
+command: linguaedit
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -19,7 +19,7 @@ modules:
       - type: pypi
         name: polib
 
-  - name: traduco
+  - name: linguaedit
     buildsystem: simple
     build-commands:
       - pip3 install --no-index --prefix=/app .

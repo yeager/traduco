@@ -1,4 +1,4 @@
-# Traduco
+# LinguaEdit
 
 A GTK4 translation file editor for **PO**, **TS**, and **JSON** i18n files.
 
@@ -77,7 +77,7 @@ pip install -e ".[ai]"
 
 ### Pre-built packages
 
-- **macOS** — download `Traduco-0.2.0-macOS.zip` from [Releases](https://github.com/yeager/traduco/releases)
+- **macOS** — download `LinguaEdit-0.2.0-macOS.zip` from [Releases](https://github.com/yeager/linguaedit/releases)
 - **Linux (.deb)** — available from [Yeager's APT repo](https://yeager.github.io/debian-repo/)
 - **Windows** — build from source or use GitHub Actions artifacts
 
@@ -85,17 +85,17 @@ pip install -e ".[ai]"
 
 ```bash
 # Launch GUI
-traduco
+linguaedit
 
 # Open a file directly
-traduco path/to/file.po
+linguaedit path/to/file.po
 ```
 
 ## Project Structure
 
 ```
-traduco/
-├── src/traduco/
+linguaedit/
+├── src/linguaedit/
 │   ├── app.py              # Application entry point
 │   ├── ui/
 │   │   ├── window.py       # Main GTK4 window
@@ -114,7 +114,7 @@ traduco/
 │       ├── keystore.py     # Secure API key storage
 │       ├── tm.py           # Translation memory
 │       └── updater.py      # In-app update checker
-├── po/                     # Translations for Traduco itself
+├── po/                     # Translations for LinguaEdit itself
 ├── docs/                   # Documentation
 └── pyproject.toml
 ```

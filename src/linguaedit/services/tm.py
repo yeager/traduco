@@ -8,7 +8,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Optional
 
-TM_DIR = Path.home() / ".config" / "traduco"
+TM_DIR = Path.home() / ".config" / "linguaedit"
 TM_FILE = TM_DIR / "tm.json"
 
 

@@ -1,8 +1,8 @@
-# Traduco User Guide
+# LinguaEdit User Guide
 
 ## Opening Files
 
-Traduco supports three translation file formats:
+LinguaEdit supports three translation file formats:
 
 - **PO/POT** — GNU gettext format, the most common in open source
 - **TS** — Qt Linguist XML format
@@ -11,7 +11,7 @@ Traduco supports three translation file formats:
 Click the **Open** button or pass a file path as argument:
 
 ```bash
-traduco translations/sv.po
+linguaedit translations/sv.po
 ```
 
 ## Editing Translations
@@ -24,7 +24,7 @@ traduco translations/sv.po
 
 ## Pre-Translation
 
-Traduco supports four translation engines:
+LinguaEdit supports four translation engines:
 
 | Engine    | Cost | API Key Required |
 |-----------|------|-----------------|
@@ -80,13 +80,13 @@ Menu → **GitHub PR** enables you to:
 
 1. Enter your GitHub personal access token
 2. Specify the repo (owner/repo)
-3. Traduco fetches the latest POT file
+3. LinguaEdit fetches the latest POT file
 4. Creates a branch with your translation
 5. Opens a pull request
 
 ## Platform Integration
 
-Traduco can interact with:
+LinguaEdit can interact with:
 
 - **Transifex** — list resources, download/upload translations
 - **Weblate** — list translations, download/upload files

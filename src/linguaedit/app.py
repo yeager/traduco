@@ -1,4 +1,4 @@
-"""Traduco GTK4 application entry point."""
+"""LinguaEdit GTK4 application entry point."""
 
 from __future__ import annotations
 
@@ -8,11 +8,11 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gio
 
-from traduco import APP_ID
-from traduco.ui.window import TraducoWindow
+from linguaedit import APP_ID
+from linguaedit.ui.window import LinguaEditWindow
 
 
-class TraducoApp(Adw.Application):
+class LinguaEditApp(Adw.Application):
     """Main application class."""
 
     def __init__(self):
@@ -21,18 +21,18 @@ class TraducoApp(Adw.Application):
         self.connect("open", self._on_open)
 
     def _on_activate(self, app):
-        win = TraducoWindow(app)
+        win = LinguaEditWindow(app)
         win.present()
 
     def _on_open(self, app, files, n_files, hint):
-        win = TraducoWindow(app)
+        win = LinguaEditWindow(app)
         if files:
             win._load_file(files[0].get_path())
         win.present()
 
 
 def main():
-    app = TraducoApp()
+    app = LinguaEditApp()
     app.run(sys.argv)
 
 

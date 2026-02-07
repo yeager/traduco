@@ -11,13 +11,13 @@ from gi.repository import Gtk, Adw, GLib
 import threading
 from gettext import gettext as _
 
-from traduco.services.platforms import (
+from linguaedit.services.platforms import (
     load_platform_config, save_platform_config,
     TransifexConfig, WeblateConfig, CrowdinConfig,
     transifex_test_connection, weblate_test_connection, crowdin_test_connection,
     PlatformError,
 )
-from traduco.services.keystore import backend_name, is_secure_backend
+from linguaedit.services.keystore import backend_name, is_secure_backend
 
 
 class PlatformSettingsDialog(Adw.PreferencesWindow):

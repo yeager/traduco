@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Traduco will be documented in this file.
+All notable changes to LinguaEdit will be documented in this file.
 
 ## [0.2.0] — 2026-02-07
 
@@ -23,8 +23,8 @@ All notable changes to Traduco will be documented in this file.
 
 ### Changed
 
-- **Renamed from LexiLoom to Traduco** — new application ID
-  `se.danielnylander.Traduco`, updated all references
+- **Renamed from LexiLoom to LinguaEdit** — new application ID
+  `se.danielnylander.LinguaEdit`, updated all references
 
 ### Fixed
 

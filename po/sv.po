@@ -1,11 +1,11 @@
-# Swedish translation for Traduco
+# Swedish translation for LinguaEdit
 # Copyright (C) 2026 Daniel Nylander
-# This file is distributed under the same license as the Traduco package.
+# This file is distributed under the same license as the LinguaEdit package.
 # Daniel Nylander <po@danielnylander.se>, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Traduco 0.1.0\n"
+"Project-Id-Version: LinguaEdit 0.1.0\n"
 "Report-Msgid-Bugs-To: po@danielnylander.se\n"
 "POT-Creation-Date: 2026-02-07 17:43+0100\n"
 "PO-Revision-Date: 2025-02-07 16:00+0100\n"
@@ -16,376 +16,376 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/traduco/services/keystore.py:84
+#: src/linguaedit/services/keystore.py:84
 msgid "Encrypted file (fallback)"
 msgstr ""
 
-#: src/traduco/services/platforms.py:93
+#: src/linguaedit/services/platforms.py:93
 msgid "Authentication failed. Check your API token."
 msgstr ""
 
-#: src/traduco/services/platforms.py:95
+#: src/linguaedit/services/platforms.py:95
 msgid "Access denied. Check permissions for your token."
 msgstr ""
 
-#: src/traduco/services/platforms.py:111
+#: src/linguaedit/services/platforms.py:111
 #, python-brace-format
 msgid "Request timed out after {n} attempts"
 msgstr ""
 
-#: src/traduco/services/platforms.py:117
+#: src/linguaedit/services/platforms.py:117
 #, python-brace-format
 msgid "Connection failed: {error}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:119
+#: src/linguaedit/services/platforms.py:119
 #, python-brace-format
 msgid "Request failed after {n} retries"
 msgstr ""
 
-#: src/traduco/services/platforms.py:147 src/traduco/services/platforms.py:168
-#: src/traduco/services/platforms.py:185 src/traduco/services/platforms.py:196
-#: src/traduco/services/platforms.py:205
+#: src/linguaedit/services/platforms.py:147 src/linguaedit/services/platforms.py:168
+#: src/linguaedit/services/platforms.py:185 src/linguaedit/services/platforms.py:196
+#: src/linguaedit/services/platforms.py:205
 #, python-brace-format
 msgid "Transifex: {code} {text}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:225
+#: src/linguaedit/services/platforms.py:225
 #, python-brace-format
 msgid "Transifex download failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:243
+#: src/linguaedit/services/platforms.py:243
 msgid "Transifex: could not determine download URL"
 msgstr ""
 
-#: src/traduco/services/platforms.py:258
+#: src/linguaedit/services/platforms.py:258
 msgid "Transifex download failed on server"
 msgstr ""
 
-#: src/traduco/services/platforms.py:266
+#: src/linguaedit/services/platforms.py:266
 #, python-brace-format
 msgid "Transifex download timed out after {sec}s"
 msgstr ""
 
-#: src/traduco/services/platforms.py:287
+#: src/linguaedit/services/platforms.py:287
 #, python-brace-format
 msgid "Transifex upload failed: {code} {text}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:311
+#: src/linguaedit/services/platforms.py:311
 #, python-brace-format
 msgid "Transifex translation upload failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:336 src/traduco/services/platforms.py:355
-#: src/traduco/services/platforms.py:364 src/traduco/services/platforms.py:373
+#: src/linguaedit/services/platforms.py:336 src/linguaedit/services/platforms.py:355
+#: src/linguaedit/services/platforms.py:364 src/linguaedit/services/platforms.py:373
 #, python-brace-format
 msgid "Weblate: {code} {text}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:382
+#: src/linguaedit/services/platforms.py:382
 #, python-brace-format
 msgid "Weblate download failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:397
+#: src/linguaedit/services/platforms.py:397
 #, python-brace-format
 msgid "Weblate upload failed: {code} {text}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:425 src/traduco/services/platforms.py:450
-#: src/traduco/services/platforms.py:459 src/traduco/services/platforms.py:468
+#: src/linguaedit/services/platforms.py:425 src/linguaedit/services/platforms.py:450
+#: src/linguaedit/services/platforms.py:459 src/linguaedit/services/platforms.py:468
 #, python-brace-format
 msgid "Crowdin: {code} {text}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:480 src/traduco/services/platforms.py:522
+#: src/linguaedit/services/platforms.py:480 src/linguaedit/services/platforms.py:522
 #, python-brace-format
 msgid "Crowdin storage upload failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:504
+#: src/linguaedit/services/platforms.py:504
 #, python-brace-format
 msgid "Crowdin: file '{name}' not found for update"
 msgstr ""
 
-#: src/traduco/services/platforms.py:510
+#: src/linguaedit/services/platforms.py:510
 #, python-brace-format
 msgid "Crowdin file update failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:530
+#: src/linguaedit/services/platforms.py:530
 #, python-brace-format
 msgid "Crowdin translation upload failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:539
+#: src/linguaedit/services/platforms.py:539
 #, python-brace-format
 msgid "Crowdin build trigger failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:551
+#: src/linguaedit/services/platforms.py:551
 #, python-brace-format
 msgid "Crowdin build status failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:557
+#: src/linguaedit/services/platforms.py:557
 msgid "Crowdin build failed"
 msgstr ""
 
-#: src/traduco/services/platforms.py:560
+#: src/linguaedit/services/platforms.py:560
 #, python-brace-format
 msgid "Crowdin build timed out after {sec}s"
 msgstr ""
 
-#: src/traduco/services/platforms.py:568
+#: src/linguaedit/services/platforms.py:568
 #, python-brace-format
 msgid "Crowdin download failed: {code}"
 msgstr ""
 
-#: src/traduco/services/platforms.py:576
+#: src/linguaedit/services/platforms.py:576
 #, python-brace-format
 msgid "Crowdin file download failed: {code}"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:28
+#: src/linguaedit/ui/platform_dialog.py:28
 msgid "Platform Settings"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:48
+#: src/linguaedit/ui/platform_dialog.py:48
 #, python-brace-format
 msgid "🔒 Tokens stored in {backend}"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:51
+#: src/linguaedit/ui/platform_dialog.py:51
 msgid ""
 "⚠️ No system keychain — tokens stored with basic obfuscation. Install "
 "'secretstorage' for proper security."
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:61
+#: src/linguaedit/ui/platform_dialog.py:61
 msgid "Transifex"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:63
+#: src/linguaedit/ui/platform_dialog.py:63
 msgid "Transifex API"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:63
+#: src/linguaedit/ui/platform_dialog.py:63
 msgid "Configure your Transifex connection"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:68 src/traduco/ui/platform_dialog.py:241
+#: src/linguaedit/ui/platform_dialog.py:68 src/linguaedit/ui/platform_dialog.py:241
 msgid "API Token"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:73
+#: src/linguaedit/ui/platform_dialog.py:73
 msgid "Organization"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:78 src/traduco/ui/platform_dialog.py:165
+#: src/linguaedit/ui/platform_dialog.py:78 src/linguaedit/ui/platform_dialog.py:165
 msgid "Project"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:83 src/traduco/ui/platform_dialog.py:251
+#: src/linguaedit/ui/platform_dialog.py:83 src/linguaedit/ui/platform_dialog.py:251
 msgid "Base URL"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:96 src/traduco/ui/platform_dialog.py:182
-#: src/traduco/ui/platform_dialog.py:263
+#: src/linguaedit/ui/platform_dialog.py:96 src/linguaedit/ui/platform_dialog.py:182
+#: src/linguaedit/ui/platform_dialog.py:263
 msgid "Test Connection"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:100 src/traduco/ui/platform_dialog.py:186
-#: src/traduco/ui/platform_dialog.py:267
+#: src/linguaedit/ui/platform_dialog.py:100 src/linguaedit/ui/platform_dialog.py:186
+#: src/linguaedit/ui/platform_dialog.py:267
 msgid "Save"
 msgstr "Spara"
 
-#: src/traduco/ui/platform_dialog.py:120 src/traduco/ui/platform_dialog.py:206
-#: src/traduco/ui/platform_dialog.py:291
+#: src/linguaedit/ui/platform_dialog.py:120 src/linguaedit/ui/platform_dialog.py:206
+#: src/linguaedit/ui/platform_dialog.py:291
 msgid "Testing…"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:126 src/traduco/ui/platform_dialog.py:212
-#: src/traduco/ui/platform_dialog.py:297
+#: src/linguaedit/ui/platform_dialog.py:126 src/linguaedit/ui/platform_dialog.py:212
+#: src/linguaedit/ui/platform_dialog.py:297
 #, python-brace-format
 msgid "✓ Connected: {name}"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:128 src/traduco/ui/platform_dialog.py:214
-#: src/traduco/ui/platform_dialog.py:299
+#: src/linguaedit/ui/platform_dialog.py:128 src/linguaedit/ui/platform_dialog.py:214
+#: src/linguaedit/ui/platform_dialog.py:299
 #, python-brace-format
 msgid "✗ {error}"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:143 src/traduco/ui/platform_dialog.py:229
-#: src/traduco/ui/platform_dialog.py:317
+#: src/linguaedit/ui/platform_dialog.py:143 src/linguaedit/ui/platform_dialog.py:229
+#: src/linguaedit/ui/platform_dialog.py:317
 #, fuzzy
 msgid "✓ Saved"
 msgstr "Sparat!"
 
-#: src/traduco/ui/platform_dialog.py:148
+#: src/linguaedit/ui/platform_dialog.py:148
 msgid "Weblate"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:150
+#: src/linguaedit/ui/platform_dialog.py:150
 msgid "Weblate API"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:150
+#: src/linguaedit/ui/platform_dialog.py:150
 msgid "Configure your Weblate connection"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:155
+#: src/linguaedit/ui/platform_dialog.py:155
 msgid "API URL"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:160
+#: src/linguaedit/ui/platform_dialog.py:160
 msgid "API Key"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:170
+#: src/linguaedit/ui/platform_dialog.py:170
 msgid "Component"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:234
+#: src/linguaedit/ui/platform_dialog.py:234
 msgid "Crowdin"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:236
+#: src/linguaedit/ui/platform_dialog.py:236
 msgid "Crowdin API"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:236
+#: src/linguaedit/ui/platform_dialog.py:236
 msgid "Configure your Crowdin connection"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:246
+#: src/linguaedit/ui/platform_dialog.py:246
 msgid "Project ID"
 msgstr ""
 
-#: src/traduco/ui/platform_dialog.py:284
+#: src/linguaedit/ui/platform_dialog.py:284
 msgid "✗ Project ID must be a number"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:44
+#: src/linguaedit/ui/sync_dialog.py:44
 #, python-brace-format
 msgid "{mode} — {platform}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:45
+#: src/linguaedit/ui/sync_dialog.py:45
 msgid "Pull"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:45
+#: src/linguaedit/ui/sync_dialog.py:45
 msgid "Push"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:84
+#: src/linguaedit/ui/sync_dialog.py:84
 msgid "Loading resources…"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:88
+#: src/linguaedit/ui/sync_dialog.py:88
 msgid "Resources"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:98
+#: src/linguaedit/ui/sync_dialog.py:98
 msgid "Language:"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:99
+#: src/linguaedit/ui/sync_dialog.py:99
 msgid "e.g. sv, de, fr"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:106
+#: src/linguaedit/ui/sync_dialog.py:106
 #, fuzzy
 msgid "Pull Translation"
 msgstr "Översättning (msgstr)"
 
-#: src/traduco/ui/sync_dialog.py:110
+#: src/linguaedit/ui/sync_dialog.py:110
 #, fuzzy
 msgid "Push Translation"
 msgstr "Översättning (msgstr)"
 
-#: src/traduco/ui/sync_dialog.py:145 src/traduco/ui/sync_dialog.py:148
+#: src/linguaedit/ui/sync_dialog.py:145 src/linguaedit/ui/sync_dialog.py:148
 #, python-brace-format
 msgid "✗ Error: {error}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:155
+#: src/linguaedit/ui/sync_dialog.py:155
 msgid "Transifex not configured. Open Platform Settings first."
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:164
+#: src/linguaedit/ui/sync_dialog.py:164
 msgid "Weblate not configured. Open Platform Settings first."
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:168
+#: src/linguaedit/ui/sync_dialog.py:168
 #, python-brace-format
 msgid "{lang} — {translated}/{total}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:177
+#: src/linguaedit/ui/sync_dialog.py:177
 msgid "Crowdin not configured. Open Platform Settings first."
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:181
+#: src/linguaedit/ui/sync_dialog.py:181
 msgid "Unknown"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:190
+#: src/linguaedit/ui/sync_dialog.py:190
 msgid "No resources found"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:203
+#: src/linguaedit/ui/sync_dialog.py:203
 #, python-brace-format
 msgid "{count} resources found"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:211 src/traduco/ui/sync_dialog.py:281
+#: src/linguaedit/ui/sync_dialog.py:211 src/linguaedit/ui/sync_dialog.py:281
 msgid "Select a resource first"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:216 src/traduco/ui/sync_dialog.py:286
+#: src/linguaedit/ui/sync_dialog.py:216 src/linguaedit/ui/sync_dialog.py:286
 msgid "Enter a language code"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:222
+#: src/linguaedit/ui/sync_dialog.py:222
 msgid "Downloading…"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:258 src/traduco/ui/sync_dialog.py:321
+#: src/linguaedit/ui/sync_dialog.py:258 src/linguaedit/ui/sync_dialog.py:321
 msgid "Unknown platform"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:264
+#: src/linguaedit/ui/sync_dialog.py:264
 #, python-brace-format
 msgid ""
 "✓ Downloaded at {time}\n"
 "Saved to: {path}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:271
+#: src/linguaedit/ui/sync_dialog.py:271
 #, python-brace-format
 msgid "✗ Pull failed: {error}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:277
+#: src/linguaedit/ui/sync_dialog.py:277
 #, fuzzy
 msgid "No file loaded to push"
 msgstr "Ingen fil laddad"
 
-#: src/traduco/ui/sync_dialog.py:292
+#: src/linguaedit/ui/sync_dialog.py:292
 msgid "Uploading…"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:326
+#: src/linguaedit/ui/sync_dialog.py:326
 #, python-brace-format
 msgid "✓ Uploaded at {time}"
 msgstr ""
 
-#: src/traduco/ui/sync_dialog.py:331
+#: src/linguaedit/ui/sync_dialog.py:331
 #, python-brace-format
 msgid "✗ Push failed: {error}"
 msgstr ""
@@ -408,8 +408,8 @@ msgstr ""
 #~ msgid "Check for updates"
 #~ msgstr "Sök efter uppdateringar"
 
-#~ msgid "About Traduco"
-#~ msgstr "Om Traduco"
+#~ msgid "About LinguaEdit"
+#~ msgstr "Om LinguaEdit"
 
 #~ msgid "Source (msgid)"
 #~ msgstr "Källa (msgid)"

@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 from gettext import gettext as _
 
-from traduco.services.platforms import (
+from linguaedit.services.platforms import (
     load_platform_config,
     TransifexConfig, WeblateConfig, CrowdinConfig,
     transifex_list_resources, transifex_list_languages, transifex_download,
@@ -227,7 +227,7 @@ class SyncDialog(Adw.Window):
                 # Save to temp file
                 suffix = ".po"
                 tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix,
-                                                   prefix=f"traduco_{self._platform}_")
+                                                   prefix=f"linguaedit_{self._platform}_")
                 tmp.write(content)
                 tmp.close()
                 path = tmp.name

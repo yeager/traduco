@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Optional
 from gettext import gettext as _
 
-_SERVICE_PREFIX = "traduco"
+_SERVICE_PREFIX = "linguaedit"
 
 
 # ── Backend detection ─────────────────────────────────────────────────
@@ -167,7 +167,7 @@ def _linux_delete(label: str) -> None:
 
 # ── Fallback: obfuscated file (NOT truly secure) ─────────────────────
 
-_FALLBACK_PATH = Path.home() / ".config" / "traduco" / ".secrets.json"
+_FALLBACK_PATH = Path.home() / ".config" / "linguaedit" / ".secrets.json"
 _FALLBACK_WARNED = False
 
 
@@ -186,7 +186,7 @@ def _fallback_warn() -> None:
 
 def _fallback_key() -> bytes:
     """Derive a machine-specific obfuscation key (NOT real encryption)."""
-    machine_id = platform.node() + os.getenv("USER", "traduco")
+    machine_id = platform.node() + os.getenv("USER", "linguaedit")
     return hashlib.sha256(machine_id.encode()).digest()
 
 

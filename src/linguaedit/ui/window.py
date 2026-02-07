@@ -13,20 +13,20 @@ from difflib import SequenceMatcher, unified_diff
 from pathlib import Path
 from typing import Optional
 
-from traduco import APP_ID, __version__
-from traduco.parsers.po_parser import parse_po, save_po, POFileData, TranslationEntry
-from traduco.parsers.ts_parser import parse_ts, save_ts, TSFileData
-from traduco.parsers.json_parser import parse_json, save_json, JSONFileData
-from traduco.services.linter import lint_entries, LintResult, LintIssue
-from traduco.services.spellcheck import check_text, available_languages
-from traduco.services.translator import translate, ENGINES, TranslationError
-from traduco.services.tm import lookup_tm, add_to_tm, feed_file_to_tm
-from traduco.ui.platform_dialog import PlatformSettingsDialog
-from traduco.ui.sync_dialog import SyncDialog
+from linguaedit import APP_ID, __version__
+from linguaedit.parsers.po_parser import parse_po, save_po, POFileData, TranslationEntry
+from linguaedit.parsers.ts_parser import parse_ts, save_ts, TSFileData
+from linguaedit.parsers.json_parser import parse_json, save_json, JSONFileData
+from linguaedit.services.linter import lint_entries, LintResult, LintIssue
+from linguaedit.services.spellcheck import check_text, available_languages
+from linguaedit.services.translator import translate, ENGINES, TranslationError
+from linguaedit.services.tm import lookup_tm, add_to_tm, feed_file_to_tm
+from linguaedit.ui.platform_dialog import PlatformSettingsDialog
+from linguaedit.ui.sync_dialog import SyncDialog
 
 # ── Recent files helper ──────────────────────────────────────────────
 
-_RECENT_FILE = Path.home() / ".config" / "traduco" / "recent.json"
+_RECENT_FILE = Path.home() / ".config" / "linguaedit" / "recent.json"
 
 
 def _load_recent() -> list[str]:
@@ -68,11 +68,11 @@ def _lint_single(msgid: str, msgstr: str, flags: list[str]) -> list[LintIssue]:
 
 # ── Window ────────────────────────────────────────────────────────────
 
-class TraducoWindow(Adw.ApplicationWindow):
+class LinguaEditWindow(Adw.ApplicationWindow):
     """Main editor window."""
 
     def __init__(self, app: Adw.Application):
-        super().__init__(application=app, title="Traduco", default_width=1100, default_height=700)
+        super().__init__(application=app, title="LinguaEdit", default_width=1100, default_height=700)
 
         self._file_data = None  # POFileData | TSFileData | JSONFileData
         self._file_type = None  # "po", "ts", "json"
@@ -209,7 +209,7 @@ class TraducoWindow(Adw.ApplicationWindow):
         section3 = Gio.Menu()
         section3.append("Check for updates", "win.check_updates")
         section3.append("Donate ♥", "win.donate")
-        section3.append("About Traduco", "win.about")
+        section3.append("About LinguaEdit", "win.about")
         menu.append_section(None, section3)
 
         menu_btn.set_menu_model(menu)
@@ -783,7 +783,7 @@ class TraducoWindow(Adw.ApplicationWindow):
             self._show_toast(f"Error loading file: {e}")
             return
 
-        self.set_title(f"Traduco — {p.name}")
+        self.set_title(f"LinguaEdit — {p.name}")
         _add_recent(str(p))
         self._populate_list()
         self._update_stats()
@@ -1416,7 +1416,7 @@ class TraducoWindow(Adw.ApplicationWindow):
     # ── Updates ───────────────────────────────────────────────────
 
     def _on_check_updates(self, action, param):
-        from traduco.services.updater import check_for_updates
+        from linguaedit.services.updater import check_for_updates
         update = check_for_updates()
         if update:
             self._show_dialog("Update Available",
@@ -1429,7 +1429,7 @@ class TraducoWindow(Adw.ApplicationWindow):
     def _on_donate(self, action, param):
         self._show_dialog(
             "Donate ♥",
-            "Traduco is free software.\n\n"
+            "LinguaEdit is free software.\n\n"
             "If you find it useful, consider supporting development:\n\n"
             "• GitHub Sponsors: github.com/sponsors/danielnylander\n"
             "• Ko-fi: ko-fi.com/danielnylander\n"
@@ -1440,13 +1440,13 @@ class TraducoWindow(Adw.ApplicationWindow):
 
     def _on_about(self, action, param):
         about = Adw.AboutWindow(
-            application_name="Traduco",
+            application_name="LinguaEdit",
             application_icon="accessories-text-editor",
             version=__version__,
             developer_name="Daniel Nylander",
             license_type=Gtk.License.GPL_3_0,
-            website="https://github.com/yeager/traduco",
-            issue_url="https://github.com/yeager/traduco/issues",
+            website="https://github.com/yeager/linguaedit",
+            issue_url="https://github.com/yeager/linguaedit/issues",
             developers=["Daniel Nylander <po@danielnylander.se>"],
             copyright="© 2025 Daniel Nylander",
             comments="A translation file editor for PO, TS, and JSON files.",

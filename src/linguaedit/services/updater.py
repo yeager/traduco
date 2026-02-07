@@ -8,10 +8,10 @@ import sys
 import requests
 from typing import Optional
 
-from traduco import __version__
+from linguaedit import __version__
 
 
-GITHUB_RELEASES_URL = "https://api.github.com/repos/yeager/traduco/releases/latest"
+GITHUB_RELEASES_URL = "https://api.github.com/repos/yeager/linguaedit/releases/latest"
 
 
 def check_for_updates() -> Optional[dict]:
