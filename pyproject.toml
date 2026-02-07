@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "traduco"
-version = "0.1.0"
+version = "0.2.0"
 description = "A GTK4 translation file editor for PO, TS, and JSON files"
 readme = "README.md"
 license = "GPL-3.0-or-later"

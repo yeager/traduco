@@ -21,6 +21,8 @@ from traduco.services.linter import lint_entries, LintResult, LintIssue
 from traduco.services.spellcheck import check_text, available_languages
 from traduco.services.translator import translate, ENGINES, TranslationError
 from traduco.services.tm import lookup_tm, add_to_tm, feed_file_to_tm
+from traduco.ui.platform_dialog import PlatformSettingsDialog
+from traduco.ui.sync_dialog import SyncDialog
 
 # ── Recent files helper ──────────────────────────────────────────────
 
@@ -160,6 +162,11 @@ class TraducoWindow(Adw.ApplicationWindow):
 
         # ── Right side of header (pack_end, reverse visual order) ──
 
+        # Platform sync button
+        platform_btn = Gtk.Button(icon_name="network-server-symbolic", tooltip_text="Platform sync")
+        platform_btn.connect("clicked", lambda b: self.activate_action("win.platform_settings"))
+        self._header.pack_end(platform_btn)
+
         # Menu button (rightmost — packed first in pack_end)
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", tooltip_text="Menu")
         menu = Gio.Menu()
@@ -176,6 +183,24 @@ class TraducoWindow(Adw.ApplicationWindow):
             recent_section.append(name, f"win.open_recent_{i}")
         if recent_section.get_n_items() > 0:
             menu.append_section("Recent Files", recent_section)
+
+        # Platform integration section
+        platform_section = Gio.Menu()
+        platform_section.append("Platforms…", "win.platform_settings")
+
+        pull_submenu = Gio.Menu()
+        pull_submenu.append("Transifex", "win.pull_transifex")
+        pull_submenu.append("Weblate", "win.pull_weblate")
+        pull_submenu.append("Crowdin", "win.pull_crowdin")
+        platform_section.append_submenu("Pull from…", pull_submenu)
+
+        push_submenu = Gio.Menu()
+        push_submenu.append("Transifex", "win.push_transifex")
+        push_submenu.append("Weblate", "win.push_weblate")
+        push_submenu.append("Crowdin", "win.push_crowdin")
+        platform_section.append_submenu("Push to…", push_submenu)
+
+        menu.append_section("Platforms", platform_section)
 
         section2 = Gio.Menu()
         section2.append("GitHub PR…", "win.github_pr")
@@ -689,6 +714,13 @@ class TraducoWindow(Adw.ApplicationWindow):
             ("check_updates", self._on_check_updates),
             ("donate", self._on_donate),
             ("about", self._on_about),
+            ("platform_settings", self._on_platform_settings),
+            ("pull_transifex", lambda a, p: self._on_sync("transifex", "pull")),
+            ("pull_weblate", lambda a, p: self._on_sync("weblate", "pull")),
+            ("pull_crowdin", lambda a, p: self._on_sync("crowdin", "pull")),
+            ("push_transifex", lambda a, p: self._on_sync("transifex", "push")),
+            ("push_weblate", lambda a, p: self._on_sync("weblate", "push")),
+            ("push_crowdin", lambda a, p: self._on_sync("crowdin", "push")),
         ]:
             action = Gio.SimpleAction.new(name, None)
             action.connect("activate", cb)
@@ -1421,6 +1453,27 @@ class TraducoWindow(Adw.ApplicationWindow):
             transient_for=self,
         )
         about.present()
+
+    # ── Platform integration ─────────────────────────────────────
+
+    def _on_platform_settings(self, action, param):
+        dialog = PlatformSettingsDialog(self)
+        dialog.present()
+
+    def _on_sync(self, platform: str, mode: str):
+        file_content = None
+        file_name = ""
+        if mode == "push" and self._file_data:
+            self._save_current_entry()
+            path = self._file_data.path
+            try:
+                file_content = Path(path).read_bytes()
+                file_name = Path(path).name
+            except Exception:
+                pass
+        dialog = SyncDialog(self, platform, mode, file_content, file_name)
+        dialog.set_on_file_downloaded(self._load_file)
+        dialog.present()
 
     # ── Helpers ───────────────────────────────────────────────────
 
