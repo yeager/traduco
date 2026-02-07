@@ -1,21 +1,26 @@
 # LinguaEdit
 
-A GTK4 translation file editor for **PO**, **TS**, and **JSON** i18n files.
+A GTK4 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, **Android XML**, **ARB**, **PHP**, and **YAML** i18n files.
 
 ![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
-![Version](https://img.shields.io/badge/version-0.2.0-orange)
+![Version](https://img.shields.io/badge/version-0.3.0-orange)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
 <!-- ![Screenshot](docs/screenshot.png) -->
 
 ## Features
 
-- **Multi-format editing** — PO/POT (gettext), Qt TS (XML), JSON (flat & nested)
+- **Multi-format editing** — PO/POT (gettext), Qt TS (XML), JSON (flat & nested), XLIFF 1.2/2.0, Android XML (strings.xml), Flutter ARB, PHP arrays, YAML
+- **Tabbed editing** — open multiple files in tabs simultaneously
 - **Inline linting & quality score** — format specifier checks, whitespace, length ratio, punctuation
+- **QA profiles** — configurable quality assurance rule sets (formal, casual, strict)
 - **Pre-translation** — Lingva, MyMemory (free); OpenAI, Anthropic (paid)
 - **Translation memory** — fuzzy lookup from previously translated entries
+- **Glossary manager** — maintain project glossaries with term enforcement
 - **Spell checking** — via PyEnchant with configurable language
+- **Translation reports** — generate HTML/CSV summary reports with statistics
+- **Git integration** — view file status, diffs, and staged changes
 - **Column sorting** — click headers to sort by source, translation, or status
 - **Toolbar icons** — symbolic icons for all actions
 - **Diff viewer** — side-by-side comparison of changes
@@ -77,7 +82,7 @@ pip install -e ".[ai]"
 
 ### Pre-built packages
 
-- **macOS** — download `LinguaEdit-0.2.0-macOS.zip` from [Releases](https://github.com/yeager/linguaedit/releases)
+- **macOS** — download `LinguaEdit-0.3.0-macOS.zip` from [Releases](https://github.com/yeager/linguaedit/releases)
 - **Linux (.deb)** — available from [Yeager's APT repo](https://yeager.github.io/debian-repo/)
 - **Windows** — build from source or use GitHub Actions artifacts
 
@@ -102,9 +107,14 @@ linguaedit/
 │   │   ├── platform_dialog.py
 │   │   └── sync_dialog.py
 │   ├── parsers/
-│   │   ├── po_parser.py    # PO/POT parser (polib)
+│   │   ├── po_parser.py    # PO/POT parser
 │   │   ├── ts_parser.py    # Qt TS parser (XML)
-│   │   └── json_parser.py  # JSON i18n parser
+│   │   ├── json_parser.py  # JSON i18n parser
+│   │   ├── xliff_parser.py # XLIFF 1.2/2.0 parser
+│   │   ├── android_parser.py # Android strings.xml parser
+│   │   ├── arb_parser.py   # Flutter ARB parser
+│   │   ├── php_parser.py   # PHP array parser
+│   │   └── yaml_parser.py  # YAML i18n parser
 │   └── services/
 │       ├── linter.py       # Translation linting & quality score
 │       ├── translator.py   # Pre-translation engines
@@ -113,7 +123,11 @@ linguaedit/
 │       ├── platforms.py    # Transifex, Weblate, Crowdin
 │       ├── keystore.py     # Secure API key storage
 │       ├── tm.py           # Translation memory
-│       └── updater.py      # In-app update checker
+│       ├── updater.py      # In-app update checker
+│       ├── glossary.py     # Glossary manager
+│       ├── qa_profiles.py  # QA profile engine
+│       ├── report.py       # Translation reports
+│       └── git_integration.py # Git status & diff
 ├── po/                     # Translations for LinguaEdit itself
 ├── docs/                   # Documentation
 └── pyproject.toml

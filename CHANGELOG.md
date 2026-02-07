@@ -2,6 +2,34 @@
 
 All notable changes to LinguaEdit will be documented in this file.
 
+## [0.3.0] — 2026-02-07
+
+### Added
+
+- **5 new file format parsers** — XLIFF 1.2/2.0, Android XML (strings.xml),
+  Flutter ARB, PHP arrays, and YAML
+- **Tabbed editing** — open multiple files in tabs simultaneously
+- **Glossary manager** — maintain project glossaries with term enforcement
+- **QA profiles** — configurable quality assurance rule sets (formal, casual, strict)
+- **Translation reports** — generate HTML/CSV summary reports with statistics
+- **Git integration** — view file status, diffs, and staged changes from the editor
+- **Persistent comments** — translator comments stored per-file across sessions
+- **Export to multiple formats** — save translations to any supported format
+- **Improved column sorting** — stable sort with secondary key support
+- **Enhanced toolbar** — new icons for glossary, QA, report, and git actions
+
+### Changed
+
+- Bumped version to 0.3.0
+- Updated parser registry to support all 8 file formats
+- Modernized file-open dialog with format auto-detection
+
+### Fixed
+
+- Stable sort order when toggling column headers
+- Proper encoding handling for PHP and YAML files
+- XLIFF namespace handling for both v1.2 and v2.0
+
 ## [0.2.0] — 2026-02-07
 
 ### Added
