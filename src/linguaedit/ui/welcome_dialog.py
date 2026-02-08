@@ -19,7 +19,7 @@ class WelcomeDialog(QDialog):
 
     def __init__(self, on_finish=None, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Welcome to LinguaEdit")
+        self.setWindowTitle(self.tr("Welcome to LinguaEdit"))
         self.resize(620, 520)
         self.setModal(True)
         self._settings = Settings.get()
@@ -38,12 +38,12 @@ class WelcomeDialog(QDialog):
         # Navigation buttons
         nav = QHBoxLayout()
         nav.addStretch()
-        self._back_btn = QPushButton("Back")
+        self._back_btn = QPushButton(self.tr("Back"))
         self._back_btn.clicked.connect(self._on_back)
         self._back_btn.setEnabled(False)
         nav.addWidget(self._back_btn)
 
-        self._next_btn = QPushButton("Next")
+        self._next_btn = QPushButton(self.tr("Next"))
         self._next_btn.setDefault(True)
         self._next_btn.clicked.connect(self._on_next)
         nav.addWidget(self._next_btn)
@@ -66,7 +66,7 @@ class WelcomeDialog(QDialog):
         layout = QVBoxLayout(page)
         layout.setAlignment(Qt.AlignCenter)
 
-        title = QLabel("Welcome to LinguaEdit")
+        title = QLabel(self.tr("Welcome to LinguaEdit"))
         title.setStyleSheet("font-size: 24px; font-weight: bold;")
         title.setAlignment(Qt.AlignCenter)
         layout.addWidget(title)
@@ -94,15 +94,15 @@ class WelcomeDialog(QDialog):
         page = QWidget()
         layout = QVBoxLayout(page)
 
-        group = QGroupBox("Personal Information")
+        group = QGroupBox(self.tr("Personal Information"))
         form = QFormLayout(group)
         form.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
 
         self._name_edit = QLineEdit(self._settings["translator_name"])
-        form.addRow("Name:", self._name_edit)
+        form.addRow(self.tr("Name:"), self._name_edit)
 
         self._email_edit = QLineEdit(self._settings["translator_email"])
-        form.addRow("Email:", self._email_edit)
+        form.addRow(self.tr("Email:"), self._email_edit)
 
         self._lang_combo = QComboBox()
         for code, label in SUPPORTED_LANGUAGES:
@@ -112,10 +112,10 @@ class WelcomeDialog(QDialog):
             if code == current_lang:
                 self._lang_combo.setCurrentIndex(i)
                 break
-        form.addRow("Language / Locale:", self._lang_combo)
+        form.addRow(self.tr("Language / Locale:"), self._lang_combo)
 
         self._team_edit = QLineEdit(self._settings["team"])
-        form.addRow("Team (optional):", self._team_edit)
+        form.addRow(self.tr("Team (optional):"), self._team_edit)
 
         layout.addWidget(group)
         layout.addStretch()
@@ -127,7 +127,7 @@ class WelcomeDialog(QDialog):
         page = QWidget()
         layout = QVBoxLayout(page)
 
-        group = QGroupBox("Translation Settings")
+        group = QGroupBox(self.tr("Translation Settings"))
         form = QFormLayout(group)
         form.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
 
@@ -140,19 +140,19 @@ class WelcomeDialog(QDialog):
             if k == current_engine:
                 self._engine_combo.setCurrentIndex(i)
                 break
-        form.addRow("Default engine:", self._engine_combo)
+        form.addRow(self.tr("Default engine:"), self._engine_combo)
 
         self._source_lang_edit = QLineEdit(self._settings["source_language"])
-        form.addRow("Source language:", self._source_lang_edit)
+        form.addRow(self.tr("Source language:"), self._source_lang_edit)
 
         self._target_lang_edit = QLineEdit(self._settings["target_language"])
-        form.addRow("Target language:", self._target_lang_edit)
+        form.addRow(self.tr("Target language:"), self._target_lang_edit)
 
         self._formality_combo = QComboBox()
         self._formality_combo.addItems(["Default", "Formal", "Informal"])
         formality_map = {"default": 0, "formal": 1, "informal": 2}
         self._formality_combo.setCurrentIndex(formality_map.get(self._settings["formality"], 0))
-        form.addRow("Formality level:", self._formality_combo)
+        form.addRow(self.tr("Formality level:"), self._formality_combo)
 
         layout.addWidget(group)
         layout.addStretch()
@@ -164,19 +164,19 @@ class WelcomeDialog(QDialog):
         page = QWidget()
         layout = QVBoxLayout(page)
 
-        group = QGroupBox("Appearance")
+        group = QGroupBox(self.tr("Appearance"))
         form = QFormLayout(group)
 
         self._theme_combo = QComboBox()
         self._theme_combo.addItems(["System default", "Light", "Dark"])
         scheme_map = {"default": 0, "light": 1, "dark": 2}
         self._theme_combo.setCurrentIndex(scheme_map.get(self._settings["color_scheme"], 0))
-        form.addRow("Theme:", self._theme_combo)
+        form.addRow(self.tr("Theme:"), self._theme_combo)
 
         self._font_spin = QSpinBox()
         self._font_spin.setRange(8, 32)
         self._font_spin.setValue(self._settings["editor_font_size"])
-        form.addRow("Editor font size:", self._font_spin)
+        form.addRow(self.tr("Editor font size:"), self._font_spin)
 
         layout.addWidget(group)
         layout.addStretch()
@@ -189,7 +189,7 @@ class WelcomeDialog(QDialog):
         layout = QVBoxLayout(page)
         layout.setAlignment(Qt.AlignCenter)
 
-        title = QLabel("You're all set!")
+        title = QLabel(self.tr("You're all set!"))
         title.setStyleSheet("font-size: 24px; font-weight: bold;")
         title.setAlignment(Qt.AlignCenter)
         layout.addWidget(title)
@@ -205,10 +205,10 @@ class WelcomeDialog(QDialog):
     def _on_page_changed(self, index):
         self._back_btn.setEnabled(index > 0)
         if index == 4:
-            self._next_btn.setText("Start translating!")
+            self._next_btn.setText(self.tr("Start translating!"))
             self._update_summary()
         else:
-            self._next_btn.setText("Next")
+            self._next_btn.setText(self.tr("Next"))
 
     def _on_back(self):
         idx = self._stack.currentIndex()

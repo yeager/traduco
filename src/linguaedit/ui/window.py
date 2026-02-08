@@ -390,7 +390,7 @@ class LinguaEditWindow(QMainWindow):
         self._tree.setAlternatingRowColors(True)
         self._tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self._tree.setUniformRowHeights(True)
-        self._tree.setHeaderLabels(["#", "Source text", "Translation", ""])
+        self._tree.setHeaderLabels(["#", self.tr("Source text"), self.tr("Translation"), ""])
         self._tree.setSortingEnabled(True)
         header = self._tree.header()
         header.setStretchLastSection(False)
@@ -810,6 +810,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _populate_list(self):
         self._tree.blockSignals(True)
+        self._tree.setSortingEnabled(False)
         self._tree.clear()
 
         entries = self._get_entries()
@@ -854,6 +855,7 @@ class LinguaEditWindow(QMainWindow):
 
             self._tree.addTopLevelItem(item)
 
+        self._tree.setSortingEnabled(True)
         self._tree.blockSignals(False)
         self._apply_filter()
         self._update_nav_counter()
@@ -928,7 +930,7 @@ class LinguaEditWindow(QMainWindow):
         msgid, msgstr, is_fuzzy = entries[idx]
 
         self._source_view.setPlainText(msgid)
-        self._source_header.setText(f"<b>Source text</b>  <span style='color:gray'>({len(msgid.split())} words)</span>")
+        self._source_header.setText(f"<b>{self.tr('Source text')}</b>  <span style='color:gray'>({len(msgid.split())} {self.tr('words')})</span>")
 
         self._trans_block = True
         self._trans_view.setPlainText(msgstr)
@@ -1806,8 +1808,8 @@ class LinguaEditWindow(QMainWindow):
         pct = int(frac * 100)
 
         self._stats_label.setText(
-            f"{d.total_count} strings — {d.translated_count} translated, "
-            f"{fuzzy} fuzzy, {d.untranslated_count} untranslated"
+            self.tr("%d strings — %d translated, %d fuzzy, %d untranslated")
+            % (d.total_count, d.translated_count, fuzzy, d.untranslated_count)
         )
         self._progress_bar.setRange(0, 100)
         self._progress_bar.setValue(pct)

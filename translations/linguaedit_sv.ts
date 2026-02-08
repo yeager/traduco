@@ -1,6 +1,45 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TS version="2.1" language="sv_SE">
     <context>
+        <name>Linter</name>
+        <message>
+            <source>Untranslated</source>
+            <translation>Oöversatt</translation>
+        </message>
+        <message>
+            <source>Fuzzy</source>
+            <translation>Fuzzy</translation>
+        </message>
+        <message>
+            <source>Leading whitespace mismatch</source>
+            <translation>Inledande blanksteg stämmer inte</translation>
+        </message>
+        <message>
+            <source>Trailing whitespace mismatch</source>
+            <translation>Avslutande blanksteg stämmer inte</translation>
+        </message>
+        <message>
+            <source>Newline count mismatch (%s vs %s)</source>
+            <translation>Antal radbrytningar stämmer inte (%s mot %s)</translation>
+        </message>
+        <message>
+            <source>Format specifier mismatch: %s vs %s</source>
+            <translation>Formatspecifikation stämmer inte: %s mot %s</translation>
+        </message>
+        <message>
+            <source>Python format mismatch: %s vs %s</source>
+            <translation>Python-format stämmer inte: %s mot %s</translation>
+        </message>
+        <message>
+            <source>Ending '%s' missing in translation</source>
+            <translation>Avslutande '%s' saknas i översättningen</translation>
+        </message>
+        <message>
+            <source>Suspicious length ratio: %sx</source>
+            <translation>Misstänkt längdförhållande: %sx</translation>
+        </message>
+    </context>
+    <context>
         <name>PlatformSettingsDialog</name>
         <message>
             <source>Platform Settings</source>
@@ -312,6 +351,54 @@ Sparad i: %2</translation>
         <message>
             <source>Appearance</source>
             <translation>Utseende</translation>
+        </message>
+        <message>
+            <source>Name:</source>
+            <translation>Namn:</translation>
+        </message>
+        <message>
+            <source>Email:</source>
+            <translation>E-post:</translation>
+        </message>
+        <message>
+            <source>Language / Locale:</source>
+            <translation>Språk / Locale:</translation>
+        </message>
+        <message>
+            <source>Team:</source>
+            <translation>Team:</translation>
+        </message>
+        <message>
+            <source>Default engine:</source>
+            <translation>Standardmotor:</translation>
+        </message>
+        <message>
+            <source>Source language:</source>
+            <translation>Källspråk:</translation>
+        </message>
+        <message>
+            <source>Target language:</source>
+            <translation>Målspråk:</translation>
+        </message>
+        <message>
+            <source>Auto-compile on save</source>
+            <translation>Kompilera automatiskt vid sparning</translation>
+        </message>
+        <message>
+            <source>Automatically compile .mo/.qm after saving</source>
+            <translation>Kompilera .mo/.qm automatiskt efter sparning</translation>
+        </message>
+        <message>
+            <source>Formality level:</source>
+            <translation>Formalitetsnivå:</translation>
+        </message>
+        <message>
+            <source>Theme:</source>
+            <translation>Tema:</translation>
+        </message>
+        <message>
+            <source>Editor font size:</source>
+            <translation>Textstorlek i editorn:</translation>
         </message>
     </context>
     <context>
@@ -1159,6 +1246,36 @@ Sparad i: %2</translation>
         <message>
             <source>💬 Comment</source>
             <translation>💬 Kommentar</translation>
+        </message>
+        <message>
+            <source>Source text</source>
+            <translation>Källtext</translation>
+        </message>
+        <message>
+            <source>words</source>
+            <translation>ord</translation>
+        </message>
+        <message>
+            <source>%d strings — %d translated, %d fuzzy, %d untranslated</source>
+            <translation>%d strängar — %d översatta, %d fuzzy, %d oöversatta</translation>
+        </message>
+        <message>
+            <source>Source text</source>
+            <comment>column header</comment>
+            <translation>Källtext</translation>
+        </message>
+        <message>
+            <source>Translation</source>
+            <comment>column header</comment>
+            <translation>Översättning</translation>
+        </message>
+        <message>
+            <source>GitHub Repository</source>
+            <translation>GitHub-arkiv</translation>
+        </message>
+        <message>
+            <source>Report a Bug</source>
+            <translation>Rapportera ett fel</translation>
         </message>
     </context>
 </TS>

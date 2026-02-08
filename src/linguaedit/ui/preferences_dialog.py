@@ -18,7 +18,7 @@ class PreferencesDialog(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Preferences")
+        self.setWindowTitle(self.tr("Preferences"))
         self.setModal(True)
         self.resize(500, 450)
         self._parent_win = parent
@@ -29,9 +29,9 @@ class PreferencesDialog(QDialog):
         layout = QVBoxLayout(self)
 
         tabs = QTabWidget()
-        tabs.addTab(self._build_personal_tab(), "Personal")
-        tabs.addTab(self._build_translation_tab(), "Translation")
-        tabs.addTab(self._build_appearance_tab(), "Appearance")
+        tabs.addTab(self._build_personal_tab(), self.tr("Personal"))
+        tabs.addTab(self._build_translation_tab(), self.tr("Translation"))
+        tabs.addTab(self._build_appearance_tab(), self.tr("Appearance"))
         layout.addWidget(tabs)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
@@ -45,10 +45,10 @@ class PreferencesDialog(QDialog):
         form.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
 
         self._name_edit = QLineEdit(self._settings["translator_name"])
-        form.addRow("Name:", self._name_edit)
+        form.addRow(self.tr("Name:"), self._name_edit)
 
         self._email_edit = QLineEdit(self._settings["translator_email"])
-        form.addRow("Email:", self._email_edit)
+        form.addRow(self.tr("Email:"), self._email_edit)
 
         self._lang_combo = QComboBox()
         for code, label in SUPPORTED_LANGUAGES:
@@ -58,10 +58,10 @@ class PreferencesDialog(QDialog):
             if code == current_lang:
                 self._lang_combo.setCurrentIndex(i)
                 break
-        form.addRow("Language / Locale:", self._lang_combo)
+        form.addRow(self.tr("Language / Locale:"), self._lang_combo)
 
         self._team_edit = QLineEdit(self._settings["team"])
-        form.addRow("Team:", self._team_edit)
+        form.addRow(self.tr("Team:"), self._team_edit)
 
         return page
 
@@ -79,24 +79,24 @@ class PreferencesDialog(QDialog):
             if k == current_engine:
                 self._engine_combo.setCurrentIndex(i)
                 break
-        form.addRow("Default engine:", self._engine_combo)
+        form.addRow(self.tr("Default engine:"), self._engine_combo)
 
         self._source_edit = QLineEdit(self._settings["source_language"])
-        form.addRow("Source language:", self._source_edit)
+        form.addRow(self.tr("Source language:"), self._source_edit)
 
         self._target_edit = QLineEdit(self._settings["target_language"])
-        form.addRow("Target language:", self._target_edit)
+        form.addRow(self.tr("Target language:"), self._target_edit)
 
-        self._auto_compile_check = QCheckBox("Auto-compile on save")
+        self._auto_compile_check = QCheckBox(self.tr("Auto-compile on save"))
         self._auto_compile_check.setChecked(self._settings.get_value("auto_compile_on_save", False))
-        self._auto_compile_check.setToolTip("Automatically compile .mo/.qm after saving")
+        self._auto_compile_check.setToolTip(self.tr("Automatically compile .mo/.qm after saving"))
         form.addRow("", self._auto_compile_check)
 
         self._formality_combo = QComboBox()
         self._formality_combo.addItems(["Default", "Formal", "Informal"])
         formality_map = {"default": 0, "formal": 1, "informal": 2}
         self._formality_combo.setCurrentIndex(formality_map.get(self._settings["formality"], 0))
-        form.addRow("Formality level:", self._formality_combo)
+        form.addRow(self.tr("Formality level:"), self._formality_combo)
 
         return page
 
@@ -108,12 +108,12 @@ class PreferencesDialog(QDialog):
         self._theme_combo.addItems(["System default", "Light", "Dark"])
         scheme_map = {"default": 0, "light": 1, "dark": 2}
         self._theme_combo.setCurrentIndex(scheme_map.get(self._settings["color_scheme"], 0))
-        form.addRow("Theme:", self._theme_combo)
+        form.addRow(self.tr("Theme:"), self._theme_combo)
 
         self._font_spin = QSpinBox()
         self._font_spin.setRange(8, 32)
         self._font_spin.setValue(self._settings["editor_font_size"])
-        form.addRow("Editor font size:", self._font_spin)
+        form.addRow(self.tr("Editor font size:"), self._font_spin)
 
         return page
 
