@@ -214,6 +214,101 @@ class _SortableItem(QTreeWidgetItem):
         return self.text(col).lower() < other.text(col).lower()
 
 
+# ── Validation Dialog ─────────────────────────────────────────────────
+
+class ValidationDialog(QDialog):
+    """Rich validation results dialog with filtering and navigation."""
+
+    def __init__(self, parent, result, lint_cache):
+        super().__init__(parent)
+        self.setWindowTitle(self.tr("Validation Results"))
+        self.setMinimumSize(700, 500)
+        self._parent_window = parent
+
+        layout = QVBoxLayout(self)
+
+        # Score header
+        self._score_label = QLabel(self.tr("Quality score: %s%%") % result.score)
+        self._score_label.setStyleSheet("font-size: 18px; font-weight: bold;")
+        layout.addWidget(self._score_label)
+
+        self._stats_label = QLabel(self.tr("Errors: %d | Warnings: %d") % (result.error_count, result.warning_count))
+        layout.addWidget(self._stats_label)
+
+        # Filter checkboxes
+        filter_row = QHBoxLayout()
+        self._show_errors = QCheckBox(self.tr("Errors"))
+        self._show_errors.setChecked(True)
+        self._show_errors.toggled.connect(self._apply_filter)
+        self._show_warnings = QCheckBox(self.tr("Warnings"))
+        self._show_warnings.setChecked(True)
+        self._show_warnings.toggled.connect(self._apply_filter)
+        filter_row.addWidget(self._show_errors)
+        filter_row.addWidget(self._show_warnings)
+        filter_row.addStretch()
+        layout.addLayout(filter_row)
+
+        # Issue list
+        self._tree = QTreeWidget()
+        self._tree.setHeaderLabels([self.tr("#"), self.tr("Severity"), self.tr("Message"), self.tr("Source text")])
+        self._tree.setRootIsDecorated(False)
+        self._tree.itemDoubleClicked.connect(self._on_item_clicked)
+        self._issues = result.issues
+        self._populate()
+        layout.addWidget(self._tree, 1)
+
+        # Buttons
+        btn_row = QHBoxLayout()
+        update_btn = QPushButton(self.tr("Re-validate"))
+        update_btn.clicked.connect(self._on_revalidate)
+        btn_row.addWidget(update_btn)
+        btn_row.addStretch()
+        close_btn = QPushButton(self.tr("Close"))
+        close_btn.clicked.connect(self.close)
+        btn_row.addWidget(close_btn)
+        layout.addLayout(btn_row)
+
+    def _populate(self):
+        self._tree.clear()
+        for issue in self._issues:
+            show_errors = self._show_errors.isChecked()
+            show_warnings = self._show_warnings.isChecked()
+            if issue.severity == "error" and not show_errors:
+                continue
+            if issue.severity == "warning" and not show_warnings:
+                continue
+            src = issue.msgid[:60].replace("\n", " ")
+            item = QTreeWidgetItem([str(issue.entry_index + 1), issue.severity, issue.message, src])
+            item.setData(0, Qt.UserRole, issue.entry_index)
+            self._tree.addTopLevelItem(item)
+        self._tree.resizeColumnToContents(0)
+        self._tree.resizeColumnToContents(1)
+
+    def _apply_filter(self):
+        self._populate()
+
+    def _on_item_clicked(self, item, column):
+        idx = item.data(0, Qt.UserRole)
+        self._parent_window._navigate_to_entry(idx)
+
+    def _on_revalidate(self):
+        self._parent_window._save_current_entry()
+        entries = self._parent_window._get_entries()
+        lint_input = []
+        for i, (msgid, msgstr, is_fuzzy) in enumerate(entries):
+            flags = ["fuzzy"] if is_fuzzy else []
+            lint_input.append({"index": i, "msgid": msgid, "msgstr": msgstr, "flags": flags})
+        result = lint_entries(lint_input)
+        self._parent_window._lint_cache.clear()
+        for issue in result.issues:
+            self._parent_window._lint_cache.setdefault(issue.entry_index, []).append(issue)
+        self._parent_window._populate_list()
+        self._issues = result.issues
+        self._populate()
+        self._score_label.setText(self.tr("Quality score: %s%%") % result.score)
+        self._stats_label.setText(self.tr("Errors: %d | Warnings: %d") % (result.error_count, result.warning_count))
+
+
 # ── Window ────────────────────────────────────────────────────────────
 
 class LinguaEditWindow(QMainWindow):
@@ -825,13 +920,6 @@ class LinguaEditWindow(QMainWindow):
 
         style = self.style()
 
-        # File operations
-        open_act = tb.addAction(style.standardIcon(style.StandardPixmap.SP_DirOpenIcon), self.tr("Open"), self._on_open)
-        open_act.setShortcut(QKeySequence.Open)
-        save_act = tb.addAction(style.standardIcon(style.StandardPixmap.SP_DialogSaveButton), self.tr("Save"), self._on_save)
-        save_act.setShortcut(QKeySequence.Save)
-        tb.addSeparator()
-
         # Undo / Redo
         tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowBack), self.tr("Undo"), self._do_undo)
         tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowForward), self.tr("Redo"), self._do_redo)
@@ -849,9 +937,6 @@ class LinguaEditWindow(QMainWindow):
         tb.addAction(style.standardIcon(style.StandardPixmap.SP_FileIcon), self.tr("Copy Source"), self._copy_source_to_target)
         tb.addSeparator()
 
-        # Pre-translate
-        tb.addAction(style.standardIcon(style.StandardPixmap.SP_BrowserReload), self.tr("Pre-translate"), self._on_pretranslate_all)
-
         # Translation engine
         self._engine_dropdown = QComboBox()
         engine_keys = list(ENGINES.keys())
@@ -863,14 +948,6 @@ class LinguaEditWindow(QMainWindow):
             pass
         self._engine_dropdown.setMinimumWidth(120)
         tb.addWidget(self._engine_dropdown)
-        tb.addSeparator()
-
-        # Validate
-        tb.addAction(style.standardIcon(style.StandardPixmap.SP_DialogApplyButton), self.tr("Validate"), self._on_lint)
-        tb.addSeparator()
-
-        # Compile
-        tb.addAction(style.standardIcon(style.StandardPixmap.SP_MediaPlay), self.tr("Compile"), self._on_compile)
 
     # ── Keyboard shortcuts ────────────────────────────────────────
 
@@ -1000,6 +1077,15 @@ class LinguaEditWindow(QMainWindow):
             row += direction
 
         self._show_toast(self.tr("No more untranslated strings"))
+
+    def _navigate_to_entry(self, orig_idx):
+        """Navigate to a specific entry by its original index."""
+        for i in range(self._tree.topLevelItemCount()):
+            item = self._tree.topLevelItem(i)
+            if item.data(0, Qt.UserRole) == orig_idx:
+                self._tree.setCurrentItem(item)
+                self._tree.scrollToItem(item)
+                break
 
     # ══════════════════════════════════════════════════════════════
     #  ENTRY DISPLAY / EDITING
@@ -1147,7 +1233,7 @@ class LinguaEditWindow(QMainWindow):
             return
         self._trans_view.setVisible(False)
         self._plural_notebook.setVisible(True)
-        src_label = QLabel(f"Plural: {entry.msgid_plural}")
+        src_label = QLabel(self.tr("Plural: %s") % entry.msgid_plural)
         src_label.setWordWrap(True)
         self._plural_notebook.addTab(src_label, "msgid_plural")
         n_forms = max(2, max(entry.msgstr_plural.keys(), default=1) + 1)
@@ -1203,6 +1289,13 @@ class LinguaEditWindow(QMainWindow):
         if self._trans_block:
             return
         self._push_undo_snapshot()
+        # Auto-clear fuzzy flag when user edits a fuzzy entry
+        if self._current_index >= 0 and self._file_data and self._fuzzy_check.isChecked():
+            self._fuzzy_check.setChecked(False)  # triggers _on_fuzzy_toggled
+            # Update the current tree row immediately
+            current_item = self._tree.currentItem()
+            if current_item is not None:
+                self._lint_and_update_row(current_item, self._current_index)
         self._lint_timer.start()
 
     # ── Inline linting ────────────────────────────────────────────
@@ -2122,14 +2215,8 @@ class LinguaEditWindow(QMainWindow):
 
         self._populate_list()
 
-        msg = (self.tr("Quality score: %s%%") % f"{result.score}" + "\n"
-               + self.tr("Errors: %d | Warnings: %d") % (result.error_count, result.warning_count) + "\n\n")
-        for issue in result.issues[:20]:
-            src = issue.msgid[:40].replace("\n", " ")
-            msg += f"[{issue.severity}] #{issue.entry_index}: {issue.message} — \"{src}\"\n"
-        if len(result.issues) > 20:
-            msg += f"\n… and {len(result.issues) - 20} more issues"
-        self._show_dialog(self.tr("Validation Results"), msg)
+        dialog = ValidationDialog(self, result, self._lint_cache)
+        dialog.exec()
 
     # ── Consistency check ─────────────────────────────────────────
 
