@@ -3,13 +3,13 @@
 
 from __future__ import annotations
 
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GLib
-
 import threading
-from gettext import gettext as _
+
+from PySide6.QtWidgets import (
+    QDialog, QVBoxLayout, QHBoxLayout, QTabWidget, QWidget,
+    QFormLayout, QLineEdit, QPushButton, QLabel, QGroupBox,
+)
+from PySide6.QtCore import Qt, Signal, QObject, QCoreApplication
 
 from linguaedit.services.platforms import (
     load_platform_config, save_platform_config,
@@ -20,298 +20,300 @@ from linguaedit.services.platforms import (
 from linguaedit.services.keystore import backend_name, is_secure_backend
 
 
-class PlatformSettingsDialog(Adw.PreferencesWindow):
+class _SignalHelper(QObject):
+    """Helper to emit signals from worker threads."""
+    status_update = Signal(QLabel, str)
+    enable_button = Signal(QPushButton, bool)
+
+
+class PlatformSettingsDialog(QDialog):
     """Settings dialog for translation platform integrations."""
 
-    def __init__(self, parent: Gtk.Window):
-        super().__init__(
-            title=_("Platform Settings"),
-            transient_for=parent,
-            modal=True,
-            default_width=600,
-            default_height=500,
-        )
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(self.tr("Platform Settings"))
+        self.setModal(True)
+        self.resize(600, 500)
 
         self._config = load_platform_config()
-        self._entries: dict[str, dict[str, Adw.EntryRow]] = {}
+        self._entries: dict[str, dict[str, QLineEdit]] = {}
+        self._signals = _SignalHelper()
+        self._signals.status_update.connect(lambda lbl, txt: lbl.setText(txt))
+        self._signals.enable_button.connect(lambda btn, val: btn.setEnabled(val))
 
-        self._build_security_banner()
-        self._build_transifex_page()
-        self._build_weblate_page()
-        self._build_crowdin_page()
+        self._build_ui()
 
-    def _build_security_banner(self):
-        """Show which keychain backend is active."""
+    def _build_ui(self):
+        layout = QVBoxLayout(self)
+
+        # Security banner
         name = backend_name()
         secure = is_secure_backend()
         if secure:
-            banner = Adw.Banner(title=_("🔒 Tokens stored in {backend}").format(backend=name))
+            banner = QLabel(self.tr("🔒 Tokens stored in %1").replace("%1", name))
         else:
-            banner = Adw.Banner(
-                title=_("⚠️ No system keychain — tokens stored with basic obfuscation. Install 'secretstorage' for proper security."),
-                button_label="",
+            banner = QLabel(
+                self.tr("⚠️ No system keychain — tokens stored with basic obfuscation. "
+                         "Install 'secretstorage' for proper security.")
             )
-            banner.set_revealed(True)
-        # Banners need to be shown via set_revealed
-        banner.set_revealed(True)
+        banner.setWordWrap(True)
+        layout.addWidget(banner)
+
+        tabs = QTabWidget()
+        tabs.addTab(self._build_transifex_tab(), self.tr("Transifex"))
+        tabs.addTab(self._build_weblate_tab(), self.tr("Weblate"))
+        tabs.addTab(self._build_crowdin_tab(), self.tr("Crowdin"))
+        layout.addWidget(tabs)
 
     # ── Transifex ─────────────────────────────────────────────────
 
-    def _build_transifex_page(self):
-        page = Adw.PreferencesPage(title=_("Transifex"), icon_name="network-server-symbolic")
+    def _build_transifex_tab(self) -> QWidget:
+        page = QWidget()
+        layout = QVBoxLayout(page)
 
-        group = Adw.PreferencesGroup(title=_("Transifex API"), description=_("Configure your Transifex connection"))
+        group = QGroupBox(self.tr("Transifex API"))
+        form = QFormLayout(group)
 
         cfg = self._config.get("transifex", {})
         fields = {}
 
-        token_row = Adw.PasswordEntryRow(title=_("API Token"))
-        token_row.set_text(cfg.get("api_token", ""))
-        fields["api_token"] = token_row
-        group.add(token_row)
+        token_edit = QLineEdit(cfg.get("api_token", ""))
+        token_edit.setEchoMode(QLineEdit.Password)
+        fields["api_token"] = token_edit
+        form.addRow(self.tr("API Token:"), token_edit)
 
-        org_row = Adw.EntryRow(title=_("Organization"))
-        org_row.set_text(cfg.get("organization", ""))
-        fields["organization"] = org_row
-        group.add(org_row)
+        org_edit = QLineEdit(cfg.get("organization", ""))
+        fields["organization"] = org_edit
+        form.addRow(self.tr("Organization:"), org_edit)
 
-        project_row = Adw.EntryRow(title=_("Project"))
-        project_row.set_text(cfg.get("project", ""))
-        fields["project"] = project_row
-        group.add(project_row)
+        project_edit = QLineEdit(cfg.get("project", ""))
+        fields["project"] = project_edit
+        form.addRow(self.tr("Project:"), project_edit)
 
-        url_row = Adw.EntryRow(title=_("Base URL"))
-        url_row.set_text(cfg.get("base_url", "https://rest.api.transifex.com"))
-        fields["base_url"] = url_row
-        group.add(url_row)
+        url_edit = QLineEdit(cfg.get("base_url", "https://rest.api.transifex.com"))
+        fields["base_url"] = url_edit
+        form.addRow(self.tr("Base URL:"), url_edit)
 
         self._entries["transifex"] = fields
+        layout.addWidget(group)
 
-        # Test + Save buttons
-        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8,
-                          margin_top=12, halign=Gtk.Align.END)
-        self._tx_status = Gtk.Label(label="", hexpand=True, xalign=0.0)
-        btn_box.append(self._tx_status)
+        # Buttons
+        btn_row = QHBoxLayout()
+        self._tx_status = QLabel("")
+        btn_row.addWidget(self._tx_status, 1)
 
-        test_btn = Gtk.Button(label=_("Test Connection"))
-        test_btn.connect("clicked", self._on_test_transifex)
-        btn_box.append(test_btn)
+        test_btn = QPushButton(self.tr("Test Connection"))
+        test_btn.clicked.connect(lambda: self._on_test_transifex(test_btn))
+        btn_row.addWidget(test_btn)
 
-        save_btn = Gtk.Button(label=_("Save"))
-        save_btn.add_css_class("suggested-action")
-        save_btn.connect("clicked", self._on_save_transifex)
-        btn_box.append(save_btn)
+        save_btn = QPushButton(self.tr("Save"))
+        save_btn.clicked.connect(self._on_save_transifex)
+        btn_row.addWidget(save_btn)
 
-        row = Adw.ActionRow()
-        row.set_child(btn_box)
-        group.add(row)
-
-        page.add(group)
-        self.add(page)
+        layout.addLayout(btn_row)
+        layout.addStretch()
+        return page
 
     def _on_test_transifex(self, btn):
         fields = self._entries["transifex"]
         config = TransifexConfig(
-            api_token=fields["api_token"].get_text(),
-            organization=fields["organization"].get_text(),
-            project=fields["project"].get_text(),
-            base_url=fields["base_url"].get_text(),
+            api_token=fields["api_token"].text(),
+            organization=fields["organization"].text(),
+            project=fields["project"].text(),
+            base_url=fields["base_url"].text(),
         )
-        self._tx_status.set_label(_("Testing…"))
-        btn.set_sensitive(False)
+        self._tx_status.setText(self.tr("Testing…"))
+        btn.setEnabled(False)
 
         def do_test():
             try:
                 name = transifex_test_connection(config)
-                GLib.idle_add(self._tx_status.set_label, _("✓ Connected: {name}").format(name=name))
+                self._signals.status_update.emit(
+                    self._tx_status, self.tr("✓ Connected: %1").replace("%1", name))
             except PlatformError as e:
-                GLib.idle_add(self._tx_status.set_label, _("✗ {error}").format(error=str(e)))
+                self._signals.status_update.emit(
+                    self._tx_status, self.tr("✗ %1").replace("%1", str(e)))
             finally:
-                GLib.idle_add(btn.set_sensitive, True)
+                self._signals.enable_button.emit(btn, True)
 
         threading.Thread(target=do_test, daemon=True).start()
 
-    def _on_save_transifex(self, btn):
+    def _on_save_transifex(self):
         fields = self._entries["transifex"]
         self._config["transifex"] = {
-            "api_token": fields["api_token"].get_text(),
-            "organization": fields["organization"].get_text(),
-            "project": fields["project"].get_text(),
-            "base_url": fields["base_url"].get_text(),
+            "api_token": fields["api_token"].text(),
+            "organization": fields["organization"].text(),
+            "project": fields["project"].text(),
+            "base_url": fields["base_url"].text(),
         }
         save_platform_config(self._config)
-        self._tx_status.set_label(_("✓ Saved"))
+        self._tx_status.setText(self.tr("✓ Saved"))
 
     # ── Weblate ───────────────────────────────────────────────────
 
-    def _build_weblate_page(self):
-        page = Adw.PreferencesPage(title=_("Weblate"), icon_name="network-server-symbolic")
+    def _build_weblate_tab(self) -> QWidget:
+        page = QWidget()
+        layout = QVBoxLayout(page)
 
-        group = Adw.PreferencesGroup(title=_("Weblate API"), description=_("Configure your Weblate connection"))
+        group = QGroupBox(self.tr("Weblate API"))
+        form = QFormLayout(group)
 
         cfg = self._config.get("weblate", {})
         fields = {}
 
-        url_row = Adw.EntryRow(title=_("API URL"))
-        url_row.set_text(cfg.get("api_url", "https://hosted.weblate.org/api/"))
-        fields["api_url"] = url_row
-        group.add(url_row)
+        url_edit = QLineEdit(cfg.get("api_url", "https://hosted.weblate.org/api/"))
+        fields["api_url"] = url_edit
+        form.addRow(self.tr("API URL:"), url_edit)
 
-        key_row = Adw.PasswordEntryRow(title=_("API Key"))
-        key_row.set_text(cfg.get("api_key", ""))
-        fields["api_key"] = key_row
-        group.add(key_row)
+        key_edit = QLineEdit(cfg.get("api_key", ""))
+        key_edit.setEchoMode(QLineEdit.Password)
+        fields["api_key"] = key_edit
+        form.addRow(self.tr("API Key:"), key_edit)
 
-        project_row = Adw.EntryRow(title=_("Project"))
-        project_row.set_text(cfg.get("project", ""))
-        fields["project"] = project_row
-        group.add(project_row)
+        project_edit = QLineEdit(cfg.get("project", ""))
+        fields["project"] = project_edit
+        form.addRow(self.tr("Project:"), project_edit)
 
-        comp_row = Adw.EntryRow(title=_("Component"))
-        comp_row.set_text(cfg.get("component", ""))
-        fields["component"] = comp_row
-        group.add(comp_row)
+        comp_edit = QLineEdit(cfg.get("component", ""))
+        fields["component"] = comp_edit
+        form.addRow(self.tr("Component:"), comp_edit)
 
         self._entries["weblate"] = fields
+        layout.addWidget(group)
 
-        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8,
-                          margin_top=12, halign=Gtk.Align.END)
-        self._wb_status = Gtk.Label(label="", hexpand=True, xalign=0.0)
-        btn_box.append(self._wb_status)
+        btn_row = QHBoxLayout()
+        self._wb_status = QLabel("")
+        btn_row.addWidget(self._wb_status, 1)
 
-        test_btn = Gtk.Button(label=_("Test Connection"))
-        test_btn.connect("clicked", self._on_test_weblate)
-        btn_box.append(test_btn)
+        test_btn = QPushButton(self.tr("Test Connection"))
+        test_btn.clicked.connect(lambda: self._on_test_weblate(test_btn))
+        btn_row.addWidget(test_btn)
 
-        save_btn = Gtk.Button(label=_("Save"))
-        save_btn.add_css_class("suggested-action")
-        save_btn.connect("clicked", self._on_save_weblate)
-        btn_box.append(save_btn)
+        save_btn = QPushButton(self.tr("Save"))
+        save_btn.clicked.connect(self._on_save_weblate)
+        btn_row.addWidget(save_btn)
 
-        row = Adw.ActionRow()
-        row.set_child(btn_box)
-        group.add(row)
-
-        page.add(group)
-        self.add(page)
+        layout.addLayout(btn_row)
+        layout.addStretch()
+        return page
 
     def _on_test_weblate(self, btn):
         fields = self._entries["weblate"]
         config = WeblateConfig(
-            api_url=fields["api_url"].get_text(),
-            api_key=fields["api_key"].get_text(),
-            project=fields["project"].get_text(),
-            component=fields["component"].get_text(),
+            api_url=fields["api_url"].text(),
+            api_key=fields["api_key"].text(),
+            project=fields["project"].text(),
+            component=fields["component"].text(),
         )
-        self._wb_status.set_label(_("Testing…"))
-        btn.set_sensitive(False)
+        self._wb_status.setText(self.tr("Testing…"))
+        btn.setEnabled(False)
 
         def do_test():
             try:
                 name = weblate_test_connection(config)
-                GLib.idle_add(self._wb_status.set_label, _("✓ Connected: {name}").format(name=name))
+                self._signals.status_update.emit(
+                    self._wb_status, self.tr("✓ Connected: %1").replace("%1", name))
             except PlatformError as e:
-                GLib.idle_add(self._wb_status.set_label, _("✗ {error}").format(error=str(e)))
+                self._signals.status_update.emit(
+                    self._wb_status, self.tr("✗ %1").replace("%1", str(e)))
             finally:
-                GLib.idle_add(btn.set_sensitive, True)
+                self._signals.enable_button.emit(btn, True)
 
         threading.Thread(target=do_test, daemon=True).start()
 
-    def _on_save_weblate(self, btn):
+    def _on_save_weblate(self):
         fields = self._entries["weblate"]
         self._config["weblate"] = {
-            "api_url": fields["api_url"].get_text(),
-            "api_key": fields["api_key"].get_text(),
-            "project": fields["project"].get_text(),
-            "component": fields["component"].get_text(),
+            "api_url": fields["api_url"].text(),
+            "api_key": fields["api_key"].text(),
+            "project": fields["project"].text(),
+            "component": fields["component"].text(),
         }
         save_platform_config(self._config)
-        self._wb_status.set_label(_("✓ Saved"))
+        self._wb_status.setText(self.tr("✓ Saved"))
 
     # ── Crowdin ───────────────────────────────────────────────────
 
-    def _build_crowdin_page(self):
-        page = Adw.PreferencesPage(title=_("Crowdin"), icon_name="network-server-symbolic")
+    def _build_crowdin_tab(self) -> QWidget:
+        page = QWidget()
+        layout = QVBoxLayout(page)
 
-        group = Adw.PreferencesGroup(title=_("Crowdin API"), description=_("Configure your Crowdin connection"))
+        group = QGroupBox(self.tr("Crowdin API"))
+        form = QFormLayout(group)
 
         cfg = self._config.get("crowdin", {})
         fields = {}
 
-        token_row = Adw.PasswordEntryRow(title=_("API Token"))
-        token_row.set_text(cfg.get("api_token", ""))
-        fields["api_token"] = token_row
-        group.add(token_row)
+        token_edit = QLineEdit(cfg.get("api_token", ""))
+        token_edit.setEchoMode(QLineEdit.Password)
+        fields["api_token"] = token_edit
+        form.addRow(self.tr("API Token:"), token_edit)
 
-        pid_row = Adw.EntryRow(title=_("Project ID"))
-        pid_row.set_text(str(cfg.get("project_id", "")))
-        fields["project_id"] = pid_row
-        group.add(pid_row)
+        pid_edit = QLineEdit(str(cfg.get("project_id", "")))
+        fields["project_id"] = pid_edit
+        form.addRow(self.tr("Project ID:"), pid_edit)
 
-        url_row = Adw.EntryRow(title=_("Base URL"))
-        url_row.set_text(cfg.get("base_url", "https://api.crowdin.com/api/v2"))
-        fields["base_url"] = url_row
-        group.add(url_row)
+        url_edit = QLineEdit(cfg.get("base_url", "https://api.crowdin.com/api/v2"))
+        fields["base_url"] = url_edit
+        form.addRow(self.tr("Base URL:"), url_edit)
 
         self._entries["crowdin"] = fields
+        layout.addWidget(group)
 
-        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8,
-                          margin_top=12, halign=Gtk.Align.END)
-        self._cr_status = Gtk.Label(label="", hexpand=True, xalign=0.0)
-        btn_box.append(self._cr_status)
+        btn_row = QHBoxLayout()
+        self._cr_status = QLabel("")
+        btn_row.addWidget(self._cr_status, 1)
 
-        test_btn = Gtk.Button(label=_("Test Connection"))
-        test_btn.connect("clicked", self._on_test_crowdin)
-        btn_box.append(test_btn)
+        test_btn = QPushButton(self.tr("Test Connection"))
+        test_btn.clicked.connect(lambda: self._on_test_crowdin(test_btn))
+        btn_row.addWidget(test_btn)
 
-        save_btn = Gtk.Button(label=_("Save"))
-        save_btn.add_css_class("suggested-action")
-        save_btn.connect("clicked", self._on_save_crowdin)
-        btn_box.append(save_btn)
+        save_btn = QPushButton(self.tr("Save"))
+        save_btn.clicked.connect(self._on_save_crowdin)
+        btn_row.addWidget(save_btn)
 
-        row = Adw.ActionRow()
-        row.set_child(btn_box)
-        group.add(row)
-
-        page.add(group)
-        self.add(page)
+        layout.addLayout(btn_row)
+        layout.addStretch()
+        return page
 
     def _on_test_crowdin(self, btn):
         fields = self._entries["crowdin"]
         try:
-            pid = int(fields["project_id"].get_text())
+            pid = int(fields["project_id"].text())
         except ValueError:
-            self._cr_status.set_label(_("✗ Project ID must be a number"))
+            self._cr_status.setText(self.tr("✗ Project ID must be a number"))
             return
         config = CrowdinConfig(
-            api_token=fields["api_token"].get_text(),
+            api_token=fields["api_token"].text(),
             project_id=pid,
-            base_url=fields["base_url"].get_text(),
+            base_url=fields["base_url"].text(),
         )
-        self._cr_status.set_label(_("Testing…"))
-        btn.set_sensitive(False)
+        self._cr_status.setText(self.tr("Testing…"))
+        btn.setEnabled(False)
 
         def do_test():
             try:
                 name = crowdin_test_connection(config)
-                GLib.idle_add(self._cr_status.set_label, _("✓ Connected: {name}").format(name=name))
+                self._signals.status_update.emit(
+                    self._cr_status, self.tr("✓ Connected: %1").replace("%1", name))
             except PlatformError as e:
-                GLib.idle_add(self._cr_status.set_label, _("✗ {error}").format(error=str(e)))
+                self._signals.status_update.emit(
+                    self._cr_status, self.tr("✗ %1").replace("%1", str(e)))
             finally:
-                GLib.idle_add(btn.set_sensitive, True)
+                self._signals.enable_button.emit(btn, True)
 
         threading.Thread(target=do_test, daemon=True).start()
 
-    def _on_save_crowdin(self, btn):
+    def _on_save_crowdin(self):
         fields = self._entries["crowdin"]
         try:
-            pid = int(fields["project_id"].get_text())
+            pid = int(fields["project_id"].text())
         except ValueError:
             pid = 0
         self._config["crowdin"] = {
-            "api_token": fields["api_token"].get_text(),
+            "api_token": fields["api_token"].text(),
             "project_id": pid,
-            "base_url": fields["base_url"].get_text(),
+            "base_url": fields["base_url"].text(),
         }
         save_platform_config(self._config)
-        self._cr_status.set_label(_("✓ Saved"))
+        self._cr_status.setText(self.tr("✓ Saved"))

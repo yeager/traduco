@@ -9,7 +9,7 @@ import requests
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Optional
-from gettext import gettext as _
+def _(s): return s  # no-op; UI handles translation
 
 from linguaedit.services.keystore import store_secret, get_secret, delete_secret
 

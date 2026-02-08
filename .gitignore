@@ -7,4 +7,5 @@ build/
 dist/
 build/
 *.spec
-!Traduco-windows.spec
+!LinguaEdit.spec
+!LinguaEdit-windows.spec

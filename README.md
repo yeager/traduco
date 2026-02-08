@@ -1,10 +1,10 @@
 # LinguaEdit
 
-A GTK4 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, **Android XML**, **ARB**, **PHP**, and **YAML** i18n files.
+A Qt6/PySide6 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, **Android XML**, **ARB**, **PHP**, and **YAML** i18n files.
 
 ![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
-![Version](https://img.shields.io/badge/version-0.3.0-orange)
+![Version](https://img.shields.io/badge/version-0.4.0-orange)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
 <!-- ![Screenshot](docs/screenshot.png) -->
@@ -22,7 +22,6 @@ A GTK4 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, **Androi
 - **Translation reports** — generate HTML/CSV summary reports with statistics
 - **Git integration** — view file status, diffs, and staged changes
 - **Column sorting** — click headers to sort by source, translation, or status
-- **Toolbar icons** — symbolic icons for all actions
 - **Diff viewer** — side-by-side comparison of changes
 - **Search & filter** — filter entries by text, status, or lint issues
 - **Batch translation** — pre-translate all untranslated entries at once
@@ -50,25 +49,27 @@ Automatic update checking on macOS and Windows.
 ## Requirements
 
 - Python 3.10+
-- GTK4 and libadwaita
-- PyGObject
+- PySide6 (Qt 6)
 
 ### macOS
 
 ```bash
-brew install gtk4 libadwaita pygobject3 enchant
+brew install enchant
+pip install PySide6
 ```
 
 ### Linux (Ubuntu/Debian)
 
 ```bash
-sudo apt install libgtk-4-dev libadwaita-1-dev python3-gi gir1.2-adw-1 libenchant-2-dev
+sudo apt install libenchant-2-dev
+pip install PySide6
 ```
 
 ### Linux (Fedora)
 
 ```bash
-sudo dnf install gtk4-devel libadwaita-devel python3-gobject enchant2-devel
+sudo dnf install enchant2-devel
+pip install PySide6
 ```
 
 ## Installation
@@ -82,7 +83,7 @@ pip install -e ".[ai]"
 
 ### Pre-built packages
 
-- **macOS** — download `LinguaEdit-0.3.0-macOS.zip` from [Releases](https://github.com/yeager/linguaedit/releases)
+- **macOS** — download `LinguaEdit-0.4.0-macOS.zip` from [Releases](https://github.com/yeager/linguaedit/releases)
 - **Linux (.deb)** — available from [Yeager's APT repo](https://yeager.github.io/debian-repo/)
 - **Windows** — build from source or use GitHub Actions artifacts
 
@@ -101,9 +102,11 @@ linguaedit path/to/file.po
 ```
 linguaedit/
 ├── src/linguaedit/
-│   ├── app.py              # Application entry point
+│   ├── app.py              # Application entry point (PySide6)
 │   ├── ui/
-│   │   ├── window.py       # Main GTK4 window
+│   │   ├── window.py       # Main Qt window
+│   │   ├── welcome_dialog.py
+│   │   ├── preferences_dialog.py
 │   │   ├── platform_dialog.py
 │   │   └── sync_dialog.py
 │   ├── parsers/
@@ -128,7 +131,7 @@ linguaedit/
 │       ├── qa_profiles.py  # QA profile engine
 │       ├── report.py       # Translation reports
 │       └── git_integration.py # Git status & diff
-├── po/                     # Translations for LinguaEdit itself
+├── translations/           # Qt .ts/.qm translation files
 ├── docs/                   # Documentation
 └── pyproject.toml
 ```

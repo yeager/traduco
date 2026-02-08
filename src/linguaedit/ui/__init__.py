@@ -1,1 +1,1 @@
-"""GTK4 UI components."""
+"""PySide6 UI components."""

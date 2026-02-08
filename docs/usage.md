@@ -2,7 +2,7 @@
 
 ## Opening Files
 
-LinguaEdit supports three translation file formats:
+LinguaEdit supports multiple translation file formats:
 
 - **PO/POT** — GNU gettext format, the most common in open source
 - **TS** — Qt Linguist XML format

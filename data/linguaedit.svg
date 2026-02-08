@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ABFC0"/>
+      <stop offset="100%" stop-color="#1A8A8B"/>
+    </linearGradient>
+    <linearGradient id="pen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5923A"/>
+      <stop offset="100%" stop-color="#E07020"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background (GNOME HIG style) -->
+  <rect x="4" y="4" width="120" height="120" rx="28" ry="28" fill="url(#bg)"/>
+
+  <!-- Inner shadow/highlight -->
+  <rect x="4" y="4" width="120" height="120" rx="28" ry="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+  <!-- Speech bubble (left, representing source language) -->
+  <path d="M 22 34 Q 22 28, 28 28 L 62 28 Q 68 28, 68 34 L 68 56 Q 68 62, 62 62 L 38 62 L 30 72 L 32 62 L 28 62 Q 22 62, 22 56 Z"
+        fill="rgba(255,255,255,0.92)" stroke="none"/>
+
+  <!-- Text lines in left bubble (source text) -->
+  <rect x="28" y="35" width="28" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.7"/>
+  <rect x="28" y="42" width="22" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.5"/>
+  <rect x="28" y="49" width="32" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.7"/>
+  <rect x="28" y="56" width="16" height="3" rx="1.5" fill="#1A8A8B" opacity="0.4"/>
+
+  <!-- Speech bubble (right, representing target language) -->
+  <path d="M 58 50 Q 58 44, 64 44 L 100 44 Q 106 44, 106 50 L 106 74 Q 106 80, 100 80 L 82 80 L 90 90 L 78 80 L 64 80 Q 58 80, 58 74 Z"
+        fill="rgba(255,255,255,0.70)" stroke="none"/>
+
+  <!-- Text lines in right bubble (translated text) -->
+  <rect x="64" y="51" width="30" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.6"/>
+  <rect x="64" y="58" width="24" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.4"/>
+  <rect x="64" y="65" width="34" height="3.5" rx="1.75" fill="#1A8A8B" opacity="0.6"/>
+  <rect x="64" y="72" width="18" height="3" rx="1.5" fill="#1A8A8B" opacity="0.35"/>
+
+  <!-- Pen / edit tool (diagonal, bottom-right area) -->
+  <g transform="translate(78, 68) rotate(45)">
+    <!-- Pen body -->
+    <rect x="-4" y="0" width="8" height="32" rx="2" fill="url(#pen)"/>
+    <!-- Pen tip -->
+    <polygon points="0,35 -4,32 4,32" fill="#E07020"/>
+    <!-- Pen top band -->
+    <rect x="-4" y="2" width="8" height="4" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <!-- Pen nib highlight -->
+    <polygon points="0,35 -2,33 2,33" fill="#FFD54F"/>
+  </g>
+
+  <!-- Small "A" and "あ" glyphs to hint at translation -->
+  <text x="38" y="47" font-family="sans-serif" font-size="9" font-weight="700" fill="#1A8A8B" text-anchor="middle" opacity="0.0">A</text>
+</svg>

@@ -12,7 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
-from gettext import gettext as _
+def _(s): return s  # no-op; UI handles translation
 
 _SERVICE_PREFIX = "linguaedit"
 

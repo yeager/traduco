@@ -17,12 +17,11 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: |
-          brew install gtk4 libadwaita pygobject3
-          pip install pyinstaller PyGObject polib requests
+          pip install pyinstaller PySide6 polib requests
       - name: Build .app
         run: |
-          pyinstaller --windowed --name LinguaEdit --icon=data/linguaedit.png \
-            --add-data "po/locale:locale" --hidden-import=linguaedit \
+          pyinstaller --windowed --name LinguaEdit --icon=data/linguaedit-512.png \
+            --add-data "translations:translations" --hidden-import=linguaedit \
             --exclude-module=enchant --paths=src src/linguaedit/app.py
           cd dist && zip -r ../LinguaEdit-${{ github.ref_name }}-macOS.zip LinguaEdit.app
       - uses: softprops/action-gh-release@v2
@@ -38,15 +37,8 @@ jobs:
           python-version: '3.12'
       - name: Install deps
         run: |
-          pip install pyinstaller polib requests
-          pip install PyGObject-stubs
-      - name: Install GTK4 (MSYS2)
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: UCRT64
-          install: mingw-w64-ucrt-x86_64-gtk4 mingw-w64-ucrt-x86_64-libadwaita mingw-w64-ucrt-x86_64-python-gobject
+          pip install pyinstaller PySide6 polib requests
       - name: Build .exe
-        shell: msys2 {0}
         run: |
           pyinstaller LinguaEdit-windows.spec
           cd dist && 7z a ../LinguaEdit-${{ github.ref_name }}-Windows.zip LinguaEdit/
@@ -64,8 +56,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev python3-gi gir1.2-adw-1
-          pip install pyinstaller polib requests PyGObject
+          sudo apt-get install -y libenchant-2-dev
+          pip install pyinstaller PySide6 polib requests
       - name: Build .deb
         run: |
           VERSION=${GITHUB_REF_NAME#v}
@@ -73,9 +65,9 @@ jobs:
           mkdir -p ${PKG}/DEBIAN
           mkdir -p ${PKG}/usr/lib/python3/dist-packages/linguaedit
           mkdir -p ${PKG}/usr/bin
-          mkdir -p ${PKG}/usr/share/locale/sv/LC_MESSAGES
+          mkdir -p ${PKG}/usr/share/linguaedit/translations
           cp -r src/linguaedit/* ${PKG}/usr/lib/python3/dist-packages/linguaedit/
-          cp po/locale/sv/LC_MESSAGES/linguaedit.mo ${PKG}/usr/share/locale/sv/LC_MESSAGES/
+          [ -d translations ] && cp translations/*.qm ${PKG}/usr/share/linguaedit/translations/ 2>/dev/null || true
           cat > ${PKG}/usr/bin/linguaedit << 'SCRIPT'
           #!/usr/bin/env python3
           from linguaedit.app import main
@@ -88,11 +80,12 @@ jobs:
           Section: devel
           Priority: optional
           Architecture: all
-          Depends: python3, python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1, python3-polib
+          Depends: python3, python3-pyside6, python3-polib
           Maintainer: Daniel Nylander <po@danielnylander.se>
-          Description: GTK4 translation file editor
-           A GTK4 translation file editor for PO, TS, and JSON i18n files
-           with linting, pre-translation, and platform integration.
+          Description: Qt6 translation file editor
+           A PySide6/Qt6 translation file editor for PO, TS, JSON, XLIFF,
+           Android XML, ARB, PHP, and YAML i18n files with linting,
+           pre-translation, and platform integration.
           EOF
           dpkg-deb --build ${PKG}
           mv ${PKG}.deb linguaedit_${VERSION}_all.deb

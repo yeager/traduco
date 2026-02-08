@@ -2,6 +2,25 @@
 
 All notable changes to LinguaEdit will be documented in this file.
 
+## [0.4.0] — 2026-02-08
+
+### Changed
+
+- **Migrated from GTK4/libadwaita to PySide6 (Qt6)** — full UI rewrite
+  - Cross-platform without system GTK dependencies
+  - PyInstaller-friendly (no PyGObject crashes on macOS)
+  - All dialogs, menus, toolbars, and status bar converted
+- **Translations migrated from gettext PO to Qt TS format** — Qt Linguist workflow
+- Replaced PyGObject dependency with PySide6>=6.5
+- Added "About Qt" to Help menu
+- Updated GitHub Actions workflow for PySide6 builds
+- Updated .deb packaging for PySide6 dependencies
+
+### Removed
+
+- GTK4/libadwaita/PyGObject dependencies
+- po/ directory (replaced by translations/*.ts/*.qm)
+
 ## [0.3.0] — 2026-02-07
 
 ### Added
@@ -51,8 +70,7 @@ All notable changes to LinguaEdit will be documented in this file.
 
 ### Changed
 
-- **Renamed from LexiLoom to LinguaEdit** — new application ID
-  `se.danielnylander.LinguaEdit`, updated all references
+- Assigned application ID `se.danielnylander.LinguaEdit`
 
 ### Fixed
 
