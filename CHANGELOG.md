@@ -1,4 +1,32 @@
 # Changelog
+## 0.8.0 (2026-02-08)
+
+### 🌐 11 Languages
+- Swedish, German, French, Spanish, Portuguese (Brazil), Japanese, Chinese (Simplified), Korean, Polish, Danish, Norwegian Bokmål
+
+### 📖 Documentation
+- Full documentation in `docs/` — accessible from Help → Documentation
+
+### 🎨 Theme Support
+- Light, Dark, and System themes via View → Theme
+
+### New Features
+- Compile .mo/.qm (Catalog → Compile translation, Ctrl+Shift+B)
+- Auto-compile on save (Settings → Translation)
+- Editable file header/metadata dialog (Catalog → File metadata…)
+- Column sorting (click any column header)
+- GitHub Repository and Report a Bug links in Help menu
+- Documentation link in Help menu
+
+### Improvements
+- All UI strings translatable (314+ strings)
+- macOS: correct app name in menu bar (was "Python")
+- Better row colors: theme-aware, subtle tints instead of harsh pink
+- Fuzzy → "Luddig" in Swedish translation
+- Lint messages translated
+- pyobjc-framework-Cocoa for macOS app name fix
+- Translations bundled inside Python package
+
 
 All notable changes to LinguaEdit will be documented in this file.
 

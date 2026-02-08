@@ -541,38 +541,38 @@ class LinguaEditWindow(QMainWindow):
 
         self._translator_note_label = QLabel()
         self._translator_note_label.setWordWrap(True)
-        self._translator_note_row = self._make_info_row("Notes", self._translator_note_label)
+        self._translator_note_row = self._make_info_row(self.tr("Notes"), self._translator_note_label)
         info_layout.addWidget(self._translator_note_row)
 
         self._extracted_comment_label = QLabel()
         self._extracted_comment_label.setWordWrap(True)
-        self._extracted_comment_row = self._make_info_row("Developer", self._extracted_comment_label)
+        self._extracted_comment_row = self._make_info_row(self.tr("Developer"), self._extracted_comment_label)
         info_layout.addWidget(self._extracted_comment_row)
 
         self._msgctxt_label = QLabel()
         self._msgctxt_label.setWordWrap(True)
-        self._msgctxt_row = self._make_info_row("Context", self._msgctxt_label)
+        self._msgctxt_row = self._make_info_row(self.tr("Context"), self._msgctxt_label)
         info_layout.addWidget(self._msgctxt_row)
 
         self._references_label = QLabel()
         self._references_label.setWordWrap(True)
-        self._references_row = self._make_info_row("References", self._references_label)
+        self._references_row = self._make_info_row(self.tr("References"), self._references_label)
         info_layout.addWidget(self._references_row)
 
         self._flags_label = QLabel()
         self._flags_label.setWordWrap(True)
-        self._flags_row = self._make_info_row("Flags", self._flags_label)
+        self._flags_row = self._make_info_row(self.tr("Flags"), self._flags_label)
         info_layout.addWidget(self._flags_row)
 
         self._previous_label = QLabel()
         self._previous_label.setWordWrap(True)
-        self._previous_row = self._make_info_row("Previous", self._previous_label)
+        self._previous_row = self._make_info_row(self.tr("Previous"), self._previous_label)
         info_layout.addWidget(self._previous_row)
 
         self._comments_label = QLabel()
         self._comments_label.setWordWrap(True)
         self._comments_label.setTextFormat(Qt.RichText)
-        self._comments_row = self._make_info_row("Comments", self._comments_label)
+        self._comments_row = self._make_info_row(self.tr("Comments"), self._comments_label)
         info_layout.addWidget(self._comments_row)
 
         info_layout.addStretch()
@@ -772,6 +772,7 @@ class LinguaEditWindow(QMainWindow):
         help_menu.addAction(self.tr("GitHub PR…"), self._on_github_pr)
         help_menu.addAction(self.tr("Check for updates"), self._on_check_updates)
         help_menu.addAction(self.tr("GitHub Repository"), lambda: QDesktopServices.openUrl(QUrl("https://github.com/yeager/linguaedit")))
+        help_menu.addAction(self.tr("Documentation"), lambda: QDesktopServices.openUrl(QUrl("https://github.com/yeager/linguaedit/tree/main/docs")))
         help_menu.addAction(self.tr("Report a Bug"), lambda: QDesktopServices.openUrl(QUrl("https://github.com/yeager/linguaedit/issues")))
         help_menu.addSeparator()
         help_menu.addAction(self.tr("Donate ♥"), self._on_donate)
@@ -782,7 +783,7 @@ class LinguaEditWindow(QMainWindow):
     # ── Toolbar ───────────────────────────────────────────────────
 
     def _build_toolbar(self):
-        tb = QToolBar("Main")
+        tb = QToolBar(self.tr("Main"))
         tb.setMovable(False)
         tb.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.addToolBar(tb)
@@ -1659,7 +1660,7 @@ class LinguaEditWindow(QMainWindow):
     # ══════════════════════════════════════════════════════════════
 
     def _on_open(self):
-        path, _ = QFileDialog.getOpenFileName(self, "Open Translation File", "", _FILE_FILTER)
+        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Translation File"), "", _FILE_FILTER)
         if path:
             self._load_file(path)
 
@@ -2000,8 +2001,8 @@ class LinguaEditWindow(QMainWindow):
 
         self._populate_list()
 
-        msg = (f"Quality score: {result.score}%\n"
-               f"Errors: {result.error_count} | Warnings: {result.warning_count}\n\n")
+        msg = (self.tr("Quality score: %s%%") % f"{result.score}" + "\n"
+               + self.tr("Errors: %d | Warnings: %d") % (result.error_count, result.warning_count) + "\n\n")
         for issue in result.issues[:20]:
             src = issue.msgid[:40].replace("\n", " ")
             msg += f"[{issue.severity}] #{issue.entry_index}: {issue.message} — \"{src}\"\n"
@@ -2035,14 +2036,14 @@ class LinguaEditWindow(QMainWindow):
         if inconsistencies:
             msg = f"Found {len(inconsistencies)} inconsistencies:\n\n" + "\n".join(inconsistencies[:20])
         else:
-            msg = "No inconsistencies found! ✓"
+            msg = self.tr("No inconsistencies found! ✓")
         self._show_dialog(self.tr("Consistency Check"), msg)
 
     # ── Glossary ──────────────────────────────────────────────────
 
     def _on_glossary(self):
         terms = get_terms()
-        terms_text = "\n".join(f"• {t.source} → {t.target}" for t in terms[:20]) or "No terms defined"
+        terms_text = "\n".join(f"• {t.source} → {t.target}" for t in terms[:20]) or self.tr("No terms defined")
         result = QMessageBox.question(
             self, self.tr("Glossary / Terminology"),
             f"{terms_text}\n\nAdd a new term or check file?",
@@ -2070,7 +2071,7 @@ class LinguaEditWindow(QMainWindow):
             for v in violations[:20]:
                 msg += f"#{v.entry_index}: {v.message}\n"
         else:
-            msg = "No glossary violations found! ✓"
+            msg = self.tr("No glossary violations found! ✓")
         self._show_dialog(self.tr("Glossary Check"), msg)
 
     # ── QA profiles ───────────────────────────────────────────────
@@ -2174,7 +2175,7 @@ class LinguaEditWindow(QMainWindow):
             return
         diff = get_diff(self._file_data.path)
         if not diff:
-            diff = "No changes"
+            diff = self.tr("No changes")
         self._show_dialog(self.tr("Git Diff"), diff[:3000])
 
     def _on_git_commit(self):
@@ -2537,7 +2538,7 @@ class LinguaEditWindow(QMainWindow):
     # ── Compare language / Split view ─────────────────────────────
 
     def _on_compare_lang(self):
-        path, _ = QFileDialog.getOpenFileName(self, "Open Reference File", "", _FILE_FILTER)
+        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Reference File"), "", _FILE_FILTER)
         if path:
             self._load_split_file(path)
 

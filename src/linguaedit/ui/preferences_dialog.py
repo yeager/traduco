@@ -93,7 +93,7 @@ class PreferencesDialog(QDialog):
         form.addRow("", self._auto_compile_check)
 
         self._formality_combo = QComboBox()
-        self._formality_combo.addItems(["Default", "Formal", "Informal"])
+        self._formality_combo.addItems([self.tr("Default"), self.tr("Formal"), self.tr("Informal")])
         formality_map = {"default": 0, "formal": 1, "informal": 2}
         self._formality_combo.setCurrentIndex(formality_map.get(self._settings["formality"], 0))
         form.addRow(self.tr("Formality level:"), self._formality_combo)
@@ -105,7 +105,7 @@ class PreferencesDialog(QDialog):
         form = QFormLayout(page)
 
         self._theme_combo = QComboBox()
-        self._theme_combo.addItems(["System default", "Light", "Dark"])
+        self._theme_combo.addItems([self.tr("System default"), self.tr("Light"), self.tr("Dark")])
         scheme_map = {"default": 0, "light": 1, "dark": 2}
         self._theme_combo.setCurrentIndex(scheme_map.get(self._settings["color_scheme"], 0))
         form.addRow(self.tr("Theme:"), self._theme_combo)

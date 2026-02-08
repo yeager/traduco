@@ -76,12 +76,12 @@ class WelcomeDialog(QDialog):
         version.setAlignment(Qt.AlignCenter)
         layout.addWidget(version)
 
-        desc = QLabel(
+        desc = QLabel(self.tr(
             "LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,\n"
             "Android XML, ARB, PHP, and YAML files.\n\n"
             "Features include AI-powered pre-translation, translation memory,\n"
             "quality assurance, spell checking, and platform integration."
-        )
+        ))
         desc.setAlignment(Qt.AlignCenter)
         desc.setWordWrap(True)
         layout.addWidget(desc)
@@ -149,7 +149,7 @@ class WelcomeDialog(QDialog):
         form.addRow(self.tr("Target language:"), self._target_lang_edit)
 
         self._formality_combo = QComboBox()
-        self._formality_combo.addItems(["Default", "Formal", "Informal"])
+        self._formality_combo.addItems([self.tr("Default"), self.tr("Formal"), self.tr("Informal")])
         formality_map = {"default": 0, "formal": 1, "informal": 2}
         self._formality_combo.setCurrentIndex(formality_map.get(self._settings["formality"], 0))
         form.addRow(self.tr("Formality level:"), self._formality_combo)
@@ -168,7 +168,7 @@ class WelcomeDialog(QDialog):
         form = QFormLayout(group)
 
         self._theme_combo = QComboBox()
-        self._theme_combo.addItems(["System default", "Light", "Dark"])
+        self._theme_combo.addItems([self.tr("System default"), self.tr("Light"), self.tr("Dark")])
         scheme_map = {"default": 0, "light": 1, "dark": 2}
         self._theme_combo.setCurrentIndex(scheme_map.get(self._settings["color_scheme"], 0))
         form.addRow(self.tr("Theme:"), self._theme_combo)
@@ -231,7 +231,7 @@ class WelcomeDialog(QDialog):
         lang_idx = self._lang_combo.currentIndex()
         lang_name = SUPPORTED_LANGUAGES[lang_idx][1] if lang_idx < len(SUPPORTED_LANGUAGES) else "English"
 
-        themes = ["System default", "Light", "Dark"]
+        themes = [self.tr("System default"), self.tr("Light"), self.tr("Dark")]
         theme = themes[self._theme_combo.currentIndex()]
 
         lines = [
