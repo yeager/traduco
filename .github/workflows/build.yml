@@ -63,53 +63,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Build .deb
-        run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          PKG=linguaedit-deb-build
-          mkdir -p ${PKG}/DEBIAN
-          mkdir -p ${PKG}/usr/lib/python3/dist-packages/linguaedit
-          mkdir -p ${PKG}/usr/bin
-          mkdir -p ${PKG}/usr/share/linguaedit/translations
-
-          # Copy source
-          cp -r src/linguaedit/* ${PKG}/usr/lib/python3/dist-packages/linguaedit/
-          [ -d translations ] && cp translations/*.qm ${PKG}/usr/share/linguaedit/translations/ 2>/dev/null || true
-
-          # Launcher script
-          cat > ${PKG}/usr/bin/linguaedit << 'SCRIPT'
-#!/usr/bin/env python3
-import sys, os
-sys.path.insert(0, '/usr/lib/python3/dist-packages')
-from linguaedit.app import main
-main()
-SCRIPT
-          chmod 755 ${PKG}/usr/bin/linguaedit
-
-          # Control file
-          cat > ${PKG}/DEBIAN/control << EOF
-Package: linguaedit
-Version: ${VERSION}
-Section: devel
-Priority: optional
-Architecture: all
-Depends: python3 (>= 3.10), python3-pip, python3-venv
-Maintainer: Daniel Nylander <po@danielnylander.se>
-Description: Qt6 translation file editor
- A PySide6/Qt6 translation file editor for PO, TS, JSON, XLIFF,
- Android XML, ARB, PHP, and YAML i18n files with linting,
- pre-translation, and platform integration.
-EOF
-
-          # postinst: install pip deps
-          cat > ${PKG}/DEBIAN/postinst << 'POSTINST'
-#!/bin/bash
-set -e
-pip install --break-system-packages --quiet PySide6 polib requests PyYAML 2>/dev/null || \
-  pip install --quiet PySide6 polib requests PyYAML
-POSTINST
-          chmod 755 ${PKG}/DEBIAN/postinst
-
-          dpkg-deb --build ${PKG} linguaedit_${VERSION}_all.deb
+        run: python3 .github/scripts/build_deb.py ${GITHUB_REF_NAME#v}
       - uses: actions/upload-artifact@v4
         with:
           name: linux-build
