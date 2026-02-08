@@ -222,7 +222,7 @@ class ValidationDialog(QDialog):
     def __init__(self, parent, result, lint_cache):
         super().__init__(parent)
         self.setWindowTitle(self.tr("Validation Results"))
-        self.setMinimumSize(700, 500)
+        self.setMinimumSize(900, 550)
         self._parent_window = parent
 
         layout = QVBoxLayout(self)
@@ -243,8 +243,12 @@ class ValidationDialog(QDialog):
         self._show_warnings = QCheckBox(self.tr("Warnings"))
         self._show_warnings.setChecked(True)
         self._show_warnings.toggled.connect(self._apply_filter)
+        self._show_info = QCheckBox(self.tr("Info"))
+        self._show_info.setChecked(True)
+        self._show_info.toggled.connect(self._apply_filter)
         filter_row.addWidget(self._show_errors)
         filter_row.addWidget(self._show_warnings)
+        filter_row.addWidget(self._show_info)
         filter_row.addStretch()
         layout.addLayout(filter_row)
 
@@ -271,20 +275,35 @@ class ValidationDialog(QDialog):
         layout.addLayout(btn_row)
 
     def _populate(self):
+        # Remember current selection
+        current = self._tree.currentItem()
+        selected_idx = current.data(0, Qt.UserRole) if current else None
+
         self._tree.clear()
+        restore_item = None
         for issue in self._issues:
-            show_errors = self._show_errors.isChecked()
-            show_warnings = self._show_warnings.isChecked()
-            if issue.severity == "error" and not show_errors:
+            if issue.severity == "error" and not self._show_errors.isChecked():
                 continue
-            if issue.severity == "warning" and not show_warnings:
+            if issue.severity == "warning" and not self._show_warnings.isChecked():
                 continue
-            src = issue.msgid[:60].replace("\n", " ")
+            if issue.severity == "info" and not self._show_info.isChecked():
+                continue
+            src = issue.msgid[:80].replace("\n", " ")
             item = _SortableItem([str(issue.entry_index + 1), issue.severity, issue.message, src])
             item.setData(0, Qt.UserRole, issue.entry_index)
             self._tree.addTopLevelItem(item)
+            if issue.entry_index == selected_idx:
+                restore_item = item
+
         self._tree.resizeColumnToContents(0)
         self._tree.resizeColumnToContents(1)
+        header = self._tree.header()
+        header.setStretchLastSection(True)
+        header.resizeSection(2, 250)
+
+        if restore_item:
+            self._tree.setCurrentItem(restore_item)
+            self._tree.scrollToItem(restore_item)
 
     def _apply_filter(self):
         self._populate()

@@ -55,7 +55,7 @@ def lint_entries(entries: list[dict]) -> LintResult:
 
         # Missing translation
         if not msgstr:
-            issues.append(LintIssue("warning", QCoreApplication.translate("Linter", "Untranslated"), idx, msgid))
+            issues.append(LintIssue("info", QCoreApplication.translate("Linter", "Untranslated"), idx, msgid))
             penalty += 1.0
             continue
 
@@ -63,6 +63,12 @@ def lint_entries(entries: list[dict]) -> LintResult:
         if "fuzzy" in flags:
             issues.append(LintIssue("info", QCoreApplication.translate("Linter", "Fuzzy"), idx, msgid))
             penalty += 0.5
+
+        # Case mismatch (first letter upper/lower)
+        if msgid[0].isalpha() and msgstr[0].isalpha():
+            if msgid[0].isupper() != msgstr[0].isupper():
+                issues.append(LintIssue("warning", QCoreApplication.translate("Linter", "Case mismatch: source starts with '%s', translation with '%s'") % (msgid[0], msgstr[0]), idx, msgid))
+                penalty += 0.3
 
         # Trailing/leading whitespace mismatch
         if msgid.startswith(" ") != msgstr.startswith(" "):
