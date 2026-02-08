@@ -59,8 +59,15 @@ class LinguaEditApp:
         settings = Settings.get()
         lang = settings["language"]
 
-        # Also try system locale
-        qt_locale = QLocale(lang) if lang != "en" else QLocale.system()
+        # If language is "en", also check system locale for a better match
+        if lang == "en":
+            sys_locale = QLocale.system().name()[:2]  # e.g. "sv"
+            translations_dir = _find_translations_dir()
+            sys_qm = translations_dir / f"linguaedit_{sys_locale}.qm"
+            if sys_qm.exists():
+                lang = sys_locale
+
+        qt_locale = QLocale(lang)
 
         # Load Qt's own translations (buttons, dialogs, etc.)
         qt_translations_path = QLibraryInfo.path(QLibraryInfo.TranslationsPath)
