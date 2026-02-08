@@ -312,14 +312,14 @@ class LinguaEditWindow(QMainWindow):
         filter_bar.setSpacing(4)
 
         self._filter_combo = QComboBox()
-        self._filter_combo.addItems(["All strings", "Untranslated", "Fuzzy / Needs work",
-                                      "Translated", "With warnings"])
+        self._filter_combo.addItems([self.tr("All strings"), self.tr("Untranslated"), self.tr("Fuzzy / Needs work"),
+                                      self.tr("Translated"), self.tr("With warnings")])
         self._filter_combo.setMinimumWidth(140)
         self._filter_combo.currentIndexChanged.connect(self._on_filter_combo_changed)
         filter_bar.addWidget(self._filter_combo)
 
         self._search_entry = QLineEdit()
-        self._search_entry.setPlaceholderText("Search source and translation text…")
+        self._search_entry.setPlaceholderText(self.tr("Search source and translation text…"))
         self._search_entry.setClearButtonEnabled(True)
         self._search_entry.textChanged.connect(self._on_search_changed)
         filter_bar.addWidget(self._search_entry, 1)
@@ -327,9 +327,9 @@ class LinguaEditWindow(QMainWindow):
         # Sort dropdown
         self._sort_combo = QComboBox()
         self._sort_combo.addItems([
-            "File order", "Source A → Z", "Source Z → A",
-            "Translation A → Z", "Translation Z → A",
-            "By status", "By length", "By reference",
+            self.tr("File order"), self.tr("Source A → Z"), self.tr("Source Z → A"),
+            self.tr("Translation A → Z"), self.tr("Translation Z → A"),
+            self.tr("By status"), self.tr("By length"), self.tr("By reference"),
         ])
         self._sort_combo.setMinimumWidth(120)
         self._sort_combo.currentIndexChanged.connect(self._on_sort_changed)
@@ -344,22 +344,22 @@ class LinguaEditWindow(QMainWindow):
         sr_layout.setSpacing(4)
 
         self._sr_search_entry = QLineEdit()
-        self._sr_search_entry.setPlaceholderText("Find in translations…")
+        self._sr_search_entry.setPlaceholderText(self.tr("Find in translations…"))
         self._sr_search_entry.textChanged.connect(self._on_sr_search_changed)
         sr_layout.addWidget(self._sr_search_entry, 1)
 
         self._sr_replace_entry = QLineEdit()
-        self._sr_replace_entry.setPlaceholderText("Replace with…")
+        self._sr_replace_entry.setPlaceholderText(self.tr("Replace with…"))
         sr_layout.addWidget(self._sr_replace_entry, 1)
 
-        self._sr_regex_check = QCheckBox("Regex")
+        self._sr_regex_check = QCheckBox(self.tr("Regex"))
         sr_layout.addWidget(self._sr_regex_check)
 
-        sr_replace_btn = QPushButton("Replace")
+        sr_replace_btn = QPushButton(self.tr("Replace"))
         sr_replace_btn.clicked.connect(self._on_sr_replace)
         sr_layout.addWidget(sr_replace_btn)
 
-        sr_replace_all_btn = QPushButton("Replace All")
+        sr_replace_all_btn = QPushButton(self.tr("Replace All"))
         sr_replace_all_btn.clicked.connect(self._on_sr_replace_all)
         sr_layout.addWidget(sr_replace_all_btn)
 
@@ -390,10 +390,10 @@ class LinguaEditWindow(QMainWindow):
         progress_row.setSpacing(8)
         self._progress_bar = QProgressBar()
         self._progress_bar.setTextVisible(True)
-        self._progress_bar.setFormat("%p% translated")
+        self._progress_bar.setFormat(self.tr("%p% translated"))
         self._progress_bar.setMaximumHeight(18)
         progress_row.addWidget(self._progress_bar, 1)
-        self._stats_label = QLabel("No file loaded")
+        self._stats_label = QLabel(self.tr("No file loaded"))
         progress_row.addWidget(self._stats_label)
         table_layout.addLayout(progress_row)
 
@@ -406,7 +406,7 @@ class LinguaEditWindow(QMainWindow):
         editor_layout.setSpacing(4)
 
         # Fuzzy diff (hidden by default)
-        self._diff_frame = QGroupBox("Fuzzy diff (previous → current)")
+        self._diff_frame = QGroupBox(self.tr("Fuzzy diff (previous → current)"))
         diff_inner = QVBoxLayout(self._diff_frame)
         self._diff_label = QLabel()
         self._diff_label.setWordWrap(True)
@@ -416,7 +416,7 @@ class LinguaEditWindow(QMainWindow):
         editor_layout.addWidget(self._diff_frame)
 
         # Source label + view
-        self._source_header = QLabel("<b>Source text:</b>")
+        self._source_header = QLabel(self.tr("<b>Source text:</b>"))
         editor_layout.addWidget(self._source_header)
         self._source_view = QTextEdit()
         self._source_view.setReadOnly(True)
@@ -426,7 +426,7 @@ class LinguaEditWindow(QMainWindow):
         editor_layout.addWidget(self._source_view)
 
         # Translation label + view
-        self._trans_header = QLabel("<b>Translation:</b>")
+        self._trans_header = QLabel(self.tr("<b>Translation:</b>"))
         editor_layout.addWidget(self._trans_header)
         self._trans_view = QTextEdit()
         self._trans_view.setFrameShape(QFrame.StyledPanel)
@@ -447,24 +447,24 @@ class LinguaEditWindow(QMainWindow):
         action_bar = QHBoxLayout()
         action_bar.setSpacing(4)
 
-        self._fuzzy_check = QCheckBox("Needs work")
-        self._fuzzy_check.setToolTip("Mark this string as fuzzy / needs review (Ctrl+U)")
+        self._fuzzy_check = QCheckBox(self.tr("Needs work"))
+        self._fuzzy_check.setToolTip(self.tr("Mark this string as fuzzy / needs review (Ctrl+U)"))
         self._fuzzy_check.toggled.connect(self._on_fuzzy_toggled)
         action_bar.addWidget(self._fuzzy_check)
 
         action_bar.addStretch()
 
-        copy_src_btn = QPushButton("Copy source")
-        copy_src_btn.setToolTip("Copy source text to translation (Ctrl+B)")
+        copy_src_btn = QPushButton(self.tr("Copy source"))
+        copy_src_btn.setToolTip(self.tr("Copy source text to translation (Ctrl+B)"))
         copy_src_btn.clicked.connect(self._copy_source_to_target)
         action_bar.addWidget(copy_src_btn)
 
-        clear_btn = QPushButton("Clear")
-        clear_btn.setToolTip("Clear translation")
+        clear_btn = QPushButton(self.tr("Clear"))
+        clear_btn.setToolTip(self.tr("Clear translation"))
         clear_btn.clicked.connect(lambda: self._trans_view.clear())
         action_bar.addWidget(clear_btn)
 
-        comment_btn = QPushButton("💬 Comment")
+        comment_btn = QPushButton(self.tr("💬 Comment"))
         comment_btn.clicked.connect(self._on_add_comment)
         action_bar.addWidget(comment_btn)
 
@@ -531,24 +531,24 @@ class LinguaEditWindow(QMainWindow):
         info_scroll = QScrollArea()
         info_scroll.setWidget(info_widget)
         info_scroll.setWidgetResizable(True)
-        self._side_panel.addTab(info_scroll, "String Info")
+        self._side_panel.addTab(info_scroll, self.tr("String Info"))
 
         # Translation Memory tab
         tm_widget = QWidget()
         tm_layout_outer = QVBoxLayout(tm_widget)
         tm_layout_outer.setContentsMargins(4, 4, 4, 4)
-        tm_label = QLabel("<b>Suggestions</b>")
+        tm_label = QLabel(self.tr("<b>Suggestions</b>"))
         tm_layout_outer.addWidget(tm_label)
         self._tm_layout = QVBoxLayout()
         tm_layout_outer.addLayout(self._tm_layout)
-        self._tm_no_match_label = QLabel("<i>No suggestions</i>")
+        self._tm_no_match_label = QLabel(self.tr("<i>No suggestions</i>"))
         self._tm_no_match_label.setStyleSheet("color: gray;")
         tm_layout_outer.addWidget(self._tm_no_match_label)
 
         # Concordance search
-        tm_layout_outer.addWidget(QLabel("<b>Concordance search</b>"))
+        tm_layout_outer.addWidget(QLabel(self.tr("<b>Concordance search</b>")))
         self._concordance_entry = QLineEdit()
-        self._concordance_entry.setPlaceholderText("Search TM…")
+        self._concordance_entry.setPlaceholderText(self.tr("Search TM…"))
         self._concordance_entry.setClearButtonEnabled(True)
         self._concordance_entry.textChanged.connect(self._on_concordance_search)
         tm_layout_outer.addWidget(self._concordance_entry)
@@ -559,7 +559,7 @@ class LinguaEditWindow(QMainWindow):
         tm_scroll = QScrollArea()
         tm_scroll.setWidget(tm_widget)
         tm_scroll.setWidgetResizable(True)
-        self._side_panel.addTab(tm_scroll, "TM / Suggestions")
+        self._side_panel.addTab(tm_scroll, self.tr("TM / Suggestions"))
 
         # Split / reference view tab
         split_widget = QWidget()
@@ -567,14 +567,14 @@ class LinguaEditWindow(QMainWindow):
         split_layout.setContentsMargins(4, 4, 4, 4)
         self._split_source_label = QLabel()
         self._split_source_label.setWordWrap(True)
-        split_layout.addWidget(QLabel("<b>Reference source:</b>"))
+        split_layout.addWidget(QLabel(self.tr("<b>Reference source:</b>")))
         split_layout.addWidget(self._split_source_label)
-        split_layout.addWidget(QLabel("<b>Reference translation:</b>"))
+        split_layout.addWidget(QLabel(self.tr("<b>Reference translation:</b>")))
         self._split_trans_label = QLabel()
         self._split_trans_label.setWordWrap(True)
         split_layout.addWidget(self._split_trans_label)
         split_layout.addStretch()
-        self._side_panel.addTab(split_widget, "Reference")
+        self._side_panel.addTab(split_widget, self.tr("Reference"))
 
         outer_splitter.addWidget(self._side_panel)
         outer_splitter.setSizes([850, 300])
@@ -590,7 +590,7 @@ class LinguaEditWindow(QMainWindow):
 
         # ── Status Bar (POedit-style) ──
         sb = self.statusBar()
-        self._sb_filename = QLabel("No file")
+        self._sb_filename = QLabel(self.tr("No file"))
         sb.addWidget(self._sb_filename)
         sb.addWidget(self._make_separator())
         self._sb_format = QLabel("")
@@ -599,16 +599,16 @@ class LinguaEditWindow(QMainWindow):
         self._sb_total = QLabel("")
         sb.addWidget(self._sb_total)
         sb.addWidget(self._make_separator())
-        self._sb_translated = QLabel("Translated: 0")
+        self._sb_translated = QLabel(self.tr("Translated: 0"))
         sb.addWidget(self._sb_translated)
         sb.addWidget(self._make_separator())
-        self._sb_fuzzy = QLabel("Fuzzy: 0")
+        self._sb_fuzzy = QLabel(self.tr("Fuzzy: 0"))
         sb.addWidget(self._sb_fuzzy)
         sb.addWidget(self._make_separator())
-        self._sb_untranslated = QLabel("Untranslated: 0")
+        self._sb_untranslated = QLabel(self.tr("Untranslated: 0"))
         sb.addWidget(self._sb_untranslated)
         sb.addPermanentWidget(QLabel(""))
-        self._sb_cursor = QLabel("Ln 1, Col 1")
+        self._sb_cursor = QLabel(self.tr("Ln 1, Col 1"))
         sb.addPermanentWidget(self._sb_cursor)
 
         self._trans_view.cursorPositionChanged.connect(self._on_cursor_position_changed)
@@ -897,7 +897,7 @@ class LinguaEditWindow(QMainWindow):
                         return
             row += direction
 
-        self._show_toast("No more untranslated strings")
+        self._show_toast(self.tr("No more untranslated strings"))
 
     # ══════════════════════════════════════════════════════════════
     #  ENTRY DISPLAY / EDITING
@@ -1195,7 +1195,7 @@ class LinguaEditWindow(QMainWindow):
         existing = ""
         if self._file_type == "po":
             existing = self._file_data.entries[self._current_index].tcomment or ""
-        text, ok = QInputDialog.getText(self, "Add Comment", "Enter translator note:", text=existing)
+        text, ok = QInputDialog.getText(self, self.tr("Add Comment"), self.tr("Enter translator note:"), text=existing)
         if ok and self._current_index >= 0:
             if self._file_type == "po":
                 self._file_data.entries[self._current_index].tcomment = text
@@ -1295,7 +1295,7 @@ class LinguaEditWindow(QMainWindow):
                 visible_count += 1
 
         if query:
-            self._show_toast(f"{visible_count} matches")
+            self._show_toast(self.tr("%d matches") % visible_count)
 
     def _update_nav_counter(self):
         entries = self._get_entries()
@@ -1391,7 +1391,7 @@ class LinguaEditWindow(QMainWindow):
         try:
             pattern = re.compile(text, re.IGNORECASE) if use_regex else None
         except re.error:
-            self._sr_match_label.setText("Invalid regex")
+            self._sr_match_label.setText(self.tr("Invalid regex"))
             return
         for i in range(self._tree.topLevelItemCount()):
             item = self._tree.topLevelItem(i)
@@ -1405,7 +1405,7 @@ class LinguaEditWindow(QMainWindow):
                 item.setHidden(not match)
                 if match:
                     count += 1
-        self._sr_match_label.setText(f"{count} matches")
+        self._sr_match_label.setText(self.tr("%d matches") % count)
 
     def _on_sr_replace(self):
         if self._current_index < 0 or not self._file_data:
@@ -1452,7 +1452,7 @@ class LinguaEditWindow(QMainWindow):
                 count += 1
         self._modified = True
         self._populate_list()
-        self._show_toast(f"Replaced in {count} entries")
+        self._show_toast(self.tr("Replaced in %d entries") % count)
 
     # ══════════════════════════════════════════════════════════════
     #  UNDO / REDO
@@ -1529,7 +1529,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _on_auto_propagate(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._save_current_entry()
         entries = self._get_entries()
@@ -1558,7 +1558,7 @@ class LinguaEditWindow(QMainWindow):
             self._modified = True
             self._populate_list()
             self._update_stats()
-        self._show_toast(f"Auto-propagated {count} entries")
+        self._show_toast(self.tr("Auto-propagated %d entries") % count)
 
     # ══════════════════════════════════════════════════════════════
     #  FILE OPERATIONS
@@ -1572,7 +1572,7 @@ class LinguaEditWindow(QMainWindow):
     def _load_file(self, path: str):
         p = Path(path)
         if not p.exists():
-            self._show_toast(f"File not found: {p}")
+            self._show_toast(self.tr("File not found: %s") % str(p))
             return
 
         if self._file_data and self._tab_widget.count() > 0:
@@ -1609,10 +1609,10 @@ class LinguaEditWindow(QMainWindow):
                 self._file_data = parse_yaml(p)
                 self._file_type = "yaml"
             else:
-                self._show_toast(f"Unsupported file type: {p.suffix}")
+                self._show_toast(self.tr("Unsupported file type: %s") % p.suffix)
                 return
         except Exception as e:
-            self._show_toast(f"Error loading file: {e}")
+            self._show_toast(self.tr("Error loading file: %s") % str(e))
             return
 
         self.setWindowTitle(f"LinguaEdit — {p.name}")
@@ -1673,7 +1673,7 @@ class LinguaEditWindow(QMainWindow):
                 if item.data(0, Qt.UserRole) == saved_idx:
                     self._tree.setCurrentItem(item)
                     break
-        self._show_toast("File reloaded (changed externally)")
+        self._show_toast(self.tr("File reloaded (changed externally)"))
 
     # ── Save ──────────────────────────────────────────────────────
 
@@ -1762,7 +1762,7 @@ class LinguaEditWindow(QMainWindow):
             elif self._file_type == "yaml":
                 save_yaml(self._file_data)
             self._modified = False
-            self._show_toast("Saved!")
+            self._show_toast(self.tr("Saved!"))
             self._update_stats()
             self._populate_list()
 
@@ -1770,7 +1770,7 @@ class LinguaEditWindow(QMainWindow):
             if self._app_settings.get_value("auto_compile_on_save", False):
                 self._on_compile()
         except Exception as e:
-            self._show_toast(f"Save error: {e}")
+            self._show_toast(self.tr("Save error: %s") % str(e))
         finally:
             if self._file_data:
                 self._setup_file_monitor(self._file_data.path)
@@ -1779,7 +1779,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _update_stats(self):
         if not self._file_data:
-            self._stats_label.setText("No file loaded")
+            self._stats_label.setText(self.tr("No file loaded"))
             self._progress_bar.setValue(0)
             return
         d = self._file_data
@@ -1794,10 +1794,10 @@ class LinguaEditWindow(QMainWindow):
         self._progress_bar.setRange(0, 100)
         self._progress_bar.setValue(pct)
 
-        self._sb_total.setText(f"{d.total_count} strings")
-        self._sb_translated.setText(f"Translated: {d.translated_count}")
-        self._sb_fuzzy.setText(f"Fuzzy: {fuzzy}")
-        self._sb_untranslated.setText(f"Untranslated: {d.untranslated_count}")
+        self._sb_total.setText(self.tr("%d strings") % d.total_count)
+        self._sb_translated.setText(self.tr("Translated: %d") % d.translated_count)
+        self._sb_fuzzy.setText(self.tr("Fuzzy: %d") % fuzzy)
+        self._sb_untranslated.setText(self.tr("Untranslated: %d") % d.untranslated_count)
 
     # ── Cursor position ──────────────────────────────────────────
 
@@ -1805,7 +1805,7 @@ class LinguaEditWindow(QMainWindow):
         cursor = self._trans_view.textCursor()
         line = cursor.blockNumber() + 1
         col = cursor.columnNumber() + 1
-        self._sb_cursor.setText(f"Ln {line}, Col {col}")
+        self._sb_cursor.setText(self.tr("Ln %d, Col %d") % (line, col))
 
     # ── Tab management ────────────────────────────────────────────
 
@@ -1890,7 +1890,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _on_lint(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._save_current_entry()
         entries = self._get_entries()
@@ -1913,13 +1913,13 @@ class LinguaEditWindow(QMainWindow):
             msg += f"[{issue.severity}] #{issue.entry_index}: {issue.message} — \"{src}\"\n"
         if len(result.issues) > 20:
             msg += f"\n… and {len(result.issues) - 20} more issues"
-        self._show_dialog("Validation Results", msg)
+        self._show_dialog(self.tr("Validation Results"), msg)
 
     # ── Consistency check ─────────────────────────────────────────
 
     def _on_consistency_check(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._save_current_entry()
         entries = self._get_entries()
@@ -1942,7 +1942,7 @@ class LinguaEditWindow(QMainWindow):
             msg = f"Found {len(inconsistencies)} inconsistencies:\n\n" + "\n".join(inconsistencies[:20])
         else:
             msg = "No inconsistencies found! ✓"
-        self._show_dialog("Consistency Check", msg)
+        self._show_dialog(self.tr("Consistency Check"), msg)
 
     # ── Glossary ──────────────────────────────────────────────────
 
@@ -1950,17 +1950,17 @@ class LinguaEditWindow(QMainWindow):
         terms = get_terms()
         terms_text = "\n".join(f"• {t.source} → {t.target}" for t in terms[:20]) or "No terms defined"
         result = QMessageBox.question(
-            self, "Glossary / Terminology",
+            self, self.tr("Glossary / Terminology"),
             f"{terms_text}\n\nAdd a new term or check file?",
             QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel
         )
         if result == QMessageBox.Yes:
-            src, ok1 = QInputDialog.getText(self, "Add Term", "Source term:")
+            src, ok1 = QInputDialog.getText(self, self.tr("Add Term"), self.tr("Source term:"))
             if ok1 and src:
-                tgt, ok2 = QInputDialog.getText(self, "Add Term", "Target term:")
+                tgt, ok2 = QInputDialog.getText(self, self.tr("Add Term"), self.tr("Target term:"))
                 if ok2 and tgt:
                     add_term(src, tgt)
-                    self._show_toast(f"Added: {src} → {tgt}")
+                    self._show_toast(self.tr("Added: %s → %s") % (src, tgt))
         elif result == QMessageBox.No:
             self._run_glossary_check()
 
@@ -1977,13 +1977,13 @@ class LinguaEditWindow(QMainWindow):
                 msg += f"#{v.entry_index}: {v.message}\n"
         else:
             msg = "No glossary violations found! ✓"
-        self._show_dialog("Glossary Check", msg)
+        self._show_dialog(self.tr("Glossary Check"), msg)
 
     # ── QA profiles ───────────────────────────────────────────────
 
     def _on_qa_profile(self, profile_name: str):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._save_current_entry()
         entries = self._get_entries()
@@ -1995,13 +1995,13 @@ class LinguaEditWindow(QMainWindow):
                 msg += f"[{v.severity}] #{v.entry_index}: {v.message}\n"
         else:
             msg = f"QA Profile '{profile_name}': No issues found! ✓"
-        self._show_dialog(f"QA Profile: {profile_name}", msg)
+        self._show_dialog(self.tr("QA Profile: %s") % profile_name, msg)
 
     # ── Export report ─────────────────────────────────────────────
 
     def _on_export_report(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._save_current_entry()
         entries = self._get_entries()
@@ -2024,13 +2024,13 @@ class LinguaEditWindow(QMainWindow):
             glossary_violations=[{"entry_index": v.entry_index, "message": v.message} for v in gloss_violations],
             output_path=report_path,
         )
-        self._show_toast(f"Report saved to {report_path}")
+        self._show_toast(self.tr("Report saved to %s") % str(report_path))
 
     # ── Statistics ────────────────────────────────────────────────
 
     def _on_statistics(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         d = self._file_data
         total = d.total_count
@@ -2051,17 +2051,17 @@ class LinguaEditWindow(QMainWindow):
             f"Target words:   {trans_words}\n\n"
             f"Progress: {'█' * int(pct / 5)}{'░' * (20 - int(pct / 5))} {pct}%\n"
         )
-        self._show_dialog("Statistics", msg)
+        self._show_dialog(self.tr("Statistics"), msg)
 
     # ── Git integration ───────────────────────────────────────────
 
     def _on_git_status(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         status = get_status(self._file_data.path)
         if not status.is_repo:
-            self._show_dialog("Git Status", "Not a git repository")
+            self._show_dialog(self.tr("Git Status"), self.tr("Not a git repository"))
             return
         msg = f"Branch: {status.branch}\n"
         if status.modified_files:
@@ -2072,41 +2072,41 @@ class LinguaEditWindow(QMainWindow):
             msg += f"\nUntracked:\n" + "\n".join(f"  {f}" for f in status.untracked_files)
         if not status.has_changes:
             msg += "\nWorking tree clean ✓"
-        self._show_dialog("Git Status", msg)
+        self._show_dialog(self.tr("Git Status"), msg)
 
     def _on_git_diff(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         diff = get_diff(self._file_data.path)
         if not diff:
             diff = "No changes"
-        self._show_dialog("Git Diff", diff[:3000])
+        self._show_dialog(self.tr("Git Diff"), diff[:3000])
 
     def _on_git_commit(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         msg, ok = QInputDialog.getText(
-            self, "Git Commit", "Commit message:",
+            self, self.tr("Git Commit"), self.tr("Commit message:"),
             text=f"Update translation: {Path(str(self._file_data.path)).name}"
         )
         if ok and msg:
             stage_file(self._file_data.path)
             success, output = commit(self._file_data.path, msg)
             if success:
-                self._show_toast("Committed!")
+                self._show_toast(self.tr("Committed!"))
             else:
-                self._show_toast(f"Commit failed: {output}")
+                self._show_toast(self.tr("Commit failed: %s") % output)
 
     def _on_git_branch(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         branches = get_branches(self._file_data.path)
         status = get_status(self._file_data.path)
         msg = f"Current: {status.branch}\n\nBranches:\n" + "\n".join(f"  {b}" for b in branches)
-        self._show_dialog("Git Branches", msg)
+        self._show_dialog(self.tr("Git Branches"), msg)
 
     # ── Pre-translate ─────────────────────────────────────────────
 
@@ -2125,7 +2125,7 @@ class LinguaEditWindow(QMainWindow):
             result = translate(msgid, engine=self._trans_engine,
                                source=self._trans_source, target=self._trans_target, **extra)
             self._trans_view.setPlainText(result)
-            self._info_label.setText(f"Translated via {self._trans_engine}")
+            self._info_label.setText(self.tr("Translated via %s") % self._trans_engine)
         except TranslationError as e:
             self._info_label.setText(str(e))
 
@@ -2141,17 +2141,17 @@ class LinguaEditWindow(QMainWindow):
 
     def _on_pretranslate_all(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         self._show_pretranslate_dialog()
 
     def _show_pretranslate_dialog(self):
         dialog = QDialog(self)
-        dialog.setWindowTitle("Pre-translate")
+        dialog.setWindowTitle(self.tr("Pre-translate"))
         dialog.resize(420, 500)
         layout = QVBoxLayout(dialog)
 
-        engine_group = QGroupBox("Translation Engine")
+        engine_group = QGroupBox(self.tr("Translation Engine"))
         engine_layout = QVBoxLayout(engine_group)
         engine_combo = QComboBox()
         engine_keys = list(ENGINES.keys())
@@ -2166,7 +2166,7 @@ class LinguaEditWindow(QMainWindow):
         engine_layout.addWidget(engine_combo)
         layout.addWidget(engine_group)
 
-        lang_group = QGroupBox("Languages")
+        lang_group = QGroupBox(self.tr("Languages"))
         lang_form = QFormLayout(lang_group)
         source_edit = QLineEdit(self._trans_source)
         lang_form.addRow(self.tr("Source language:"), source_edit)
@@ -2174,7 +2174,7 @@ class LinguaEditWindow(QMainWindow):
         lang_form.addRow(self.tr("Target language:"), target_edit)
         layout.addWidget(lang_group)
 
-        options_group = QGroupBox("Options")
+        options_group = QGroupBox(self.tr("Options"))
         opt_form = QFormLayout(options_group)
         formality_combo = QComboBox()
         formality_combo.addItems(["default", "less", "more", "prefer_less", "prefer_more"])
@@ -2185,7 +2185,7 @@ class LinguaEditWindow(QMainWindow):
         opt_form.addRow("Anthropic model:", anthropic_edit)
         layout.addWidget(options_group)
 
-        keys_btn = QPushButton("Manage API Keys…")
+        keys_btn = QPushButton(self.tr("Manage API Keys…"))
         keys_btn.clicked.connect(self._show_api_keys_dialog)
         layout.addWidget(keys_btn)
 
@@ -2225,13 +2225,13 @@ class LinguaEditWindow(QMainWindow):
         self._modified = True
         self._populate_list()
         self._update_stats()
-        self._show_toast(f"Pre-translated {count} entries via {self._trans_engine}")
+        self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
 
     def _show_api_keys_dialog(self):
         from linguaedit.services.keystore import store_secret, get_secret as ks_get, backend_name
 
         dialog = QDialog(self)
-        dialog.setWindowTitle("API Keys")
+        dialog.setWindowTitle(self.tr("API Keys"))
         dialog.resize(400, 450)
         layout = QVBoxLayout(dialog)
         layout.addWidget(QLabel(f"Backend: {backend_name()}"))
@@ -2283,41 +2283,41 @@ class LinguaEditWindow(QMainWindow):
                 store_secret("aws", "region", aws_region_edit.text().strip())
             if ms_region_edit.text().strip():
                 store_secret("microsoft_translator", "region", ms_region_edit.text().strip())
-            self._show_toast("API keys saved")
+            self._show_toast(self.tr("API keys saved"))
 
     # ── Feed TM ───────────────────────────────────────────────────
 
     def _on_feed_tm(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
         entries = self._get_entries()
         pairs = [(msgid, msgstr) for msgid, msgstr, _ in entries if msgid and msgstr]
         count = feed_file_to_tm(pairs)
-        self._show_toast(f"Added {count} entries to Translation Memory")
+        self._show_toast(self.tr("Added %d entries to Translation Memory") % count)
 
     # ── Spellcheck ────────────────────────────────────────────────
 
     def _run_spellcheck(self):
         text = self._trans_view.toPlainText()
         if not text:
-            self._info_label.setText("No text to check")
+            self._info_label.setText(self.tr("No text to check"))
             return
         issues = check_text(text, language=self._spell_lang)
         if not issues:
-            self._info_label.setText("✓ No spelling issues found")
+            self._info_label.setText(self.tr("✓ No spelling issues found"))
         else:
             msg = "\n".join(
                 f"'{i.word}' → {', '.join(i.suggestions[:3]) or '(no suggestions)'}"
                 for i in issues[:10]
             )
-            self._info_label.setText(f"Spelling issues:\n{msg}")
+            self._info_label.setText(self.tr("Spelling issues:\n%s") % msg)
 
     # ── Metadata ──────────────────────────────────────────────────
 
     def _on_show_metadata(self):
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
 
         dialog = QDialog(self)
@@ -2433,7 +2433,7 @@ class LinguaEditWindow(QMainWindow):
             elif self._file_type == "yaml":
                 self._file_data.root_key = root_edit.text()
                 self._modified = True
-            self._show_toast("Metadata updated")
+            self._show_toast(self.tr("Metadata updated"))
             dialog.accept()
 
         buttons.accepted.connect(on_save)
@@ -2477,10 +2477,10 @@ class LinguaEditWindow(QMainWindow):
             else:
                 return
         except Exception as e:
-            self._show_toast(f"Error loading reference: {e}")
+            self._show_toast(self.tr("Error loading reference: %s") % str(e))
             return
         self._side_panel.setCurrentIndex(2)  # Switch to Reference tab
-        self._show_toast(f"Loaded reference: {p.name}")
+        self._show_toast(self.tr("Loaded reference: %s") % p.name)
         if self._current_index >= 0:
             self._update_split_view(self._current_index)
 
@@ -2498,7 +2498,7 @@ class LinguaEditWindow(QMainWindow):
                 self._split_trans_label.setText(ref_msgstr[:300])
                 return
         self._split_source_label.setText(msgid[:300])
-        self._split_trans_label.setText("<i>(no match in reference)</i>")
+        self._split_trans_label.setText(self.tr("<i>(no match in reference)</i>"))
 
     def _get_split_entries(self) -> list[tuple[str, str, bool]]:
         if not self._split_file_data:
@@ -2521,7 +2521,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _on_github_pr(self):
         self._show_dialog(
-            "GitHub PR",
+            self.tr("GitHub PR"),
             "To push a PR, configure your GitHub token in Preferences → GitHub.\n\n"
             "This feature will:\n1. Ask for auth token\n2. Fetch POT from the repo\n"
             "3. Create a branch\n4. Push your translation\n5. Open a PR\n\n"
@@ -2534,10 +2534,10 @@ class LinguaEditWindow(QMainWindow):
         from linguaedit.services.updater import check_for_updates
         update = check_for_updates()
         if update:
-            self._show_dialog("Update Available",
+            self._show_dialog(self.tr("Update Available"),
                               f"Version {update['version']} is available!\n\n{update['url']}")
         else:
-            self._show_dialog("Up to date", f"You are running the latest version ({__version__}).")
+            self._show_dialog(self.tr("Up to date"), f"You are running the latest version ({__version__}).")
 
     # ── Donate ────────────────────────────────────────────────────
 
@@ -2603,7 +2603,7 @@ class LinguaEditWindow(QMainWindow):
     def _on_compile(self):
         """Compile the current translation file (.po → .mo, .ts → .qm)."""
         if not self._file_data:
-            self._show_toast("No file loaded")
+            self._show_toast(self.tr("No file loaded"))
             return
 
         path = Path(str(self._file_data.path))
@@ -2614,7 +2614,7 @@ class LinguaEditWindow(QMainWindow):
                 import polib
                 po = polib.pofile(str(path))
                 po.save_as_mofile(str(mo_path))
-                self._show_toast(f"Compiled: {mo_path}")
+                self._show_toast(self.tr("Compiled: %s") % str(mo_path))
             except ImportError:
                 # Fallback to msgfmt
                 if shutil.which("msgfmt"):
@@ -2623,19 +2623,19 @@ class LinguaEditWindow(QMainWindow):
                         capture_output=True, text=True
                     )
                     if result.returncode == 0:
-                        self._show_toast(f"Compiled: {mo_path}")
+                        self._show_toast(self.tr("Compiled: %s") % str(mo_path))
                     else:
-                        self._show_toast(f"msgfmt error: {result.stderr.strip()}")
+                        self._show_toast(self.tr("msgfmt error: %s") % result.stderr.strip())
                 else:
-                    self._show_toast("Cannot compile: install 'polib' or 'gettext' (msgfmt)")
+                    self._show_toast(self.tr("Cannot compile: install 'polib' or 'gettext' (msgfmt)"))
             except Exception as e:
-                self._show_toast(f"Compile error: {e}")
+                self._show_toast(self.tr("Compile error: %s") % str(e))
 
         elif self._file_type == "ts":
             qm_path = path.with_suffix(".qm")
             lrelease = shutil.which("pyside6-lrelease") or shutil.which("lrelease")
             if not lrelease:
-                self._show_toast("Cannot compile: pyside6-lrelease or lrelease not found")
+                self._show_toast(self.tr("Cannot compile: pyside6-lrelease or lrelease not found"))
                 return
             try:
                 result = subprocess.run(
@@ -2643,13 +2643,13 @@ class LinguaEditWindow(QMainWindow):
                     capture_output=True, text=True
                 )
                 if result.returncode == 0:
-                    self._show_toast(f"Compiled: {qm_path}")
+                    self._show_toast(self.tr("Compiled: %s") % str(qm_path))
                 else:
-                    self._show_toast(f"lrelease error: {result.stderr.strip()}")
+                    self._show_toast(self.tr("lrelease error: %s") % result.stderr.strip())
             except Exception as e:
-                self._show_toast(f"Compile error: {e}")
+                self._show_toast(self.tr("Compile error: %s") % str(e))
         else:
-            self._show_toast(f"Compile not supported for {self._file_type} files")
+            self._show_toast(self.tr("Compile not supported for %s files") % self._file_type)
 
     # ── Helpers ───────────────────────────────────────────────────
 
