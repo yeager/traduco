@@ -1,4 +1,21 @@
 # Changelog
+## 0.8.1 (2026-02-08)
+
+### New Features
+- HTML/PDF report generation (Catalog → Generate Report, Ctrl+Shift+R)
+- Validation dialog: sortable columns, non-modal (edit while validating)
+- Fuzzy auto-clear when editing translations
+- Source code references shown below translation
+
+### Improvements
+- Left sidebar with quick actions (Open, Save, Validate, Compile, Pre-translate, Search, Settings)
+- Sort by "Untranslated/errors first"
+- File associations on Windows (Inno Setup), macOS (CFBundleDocumentTypes), Linux (.desktop MimeType)
+- Windows installer (Inno Setup) with desktop icon and Start menu
+- Linter messages fully translatable (9 lint types in 11 languages)
+- 278 translated strings per language (3,058 total)
+- Complete i18n: preferences, welcome dialog, lint messages, validation dialog
+
 ## 0.8.0 (2026-02-08)
 
 ### 🌐 11 Languages

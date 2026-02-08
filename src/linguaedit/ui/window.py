@@ -851,6 +851,8 @@ class LinguaEditWindow(QMainWindow):
         catalog_menu.addAction(self.tr("Statistics…"), self._on_statistics)
         catalog_menu.addSeparator()
         catalog_menu.addAction(self.tr("Compile translation"), self._on_compile, QKeySequence("Ctrl+Shift+B"))
+        catalog_menu.addSeparator()
+        catalog_menu.addAction(self.tr("Generate Report…"), self._on_generate_report, QKeySequence("Ctrl+Shift+R"))
 
         qa_menu = catalog_menu.addMenu(self.tr("Quality"))
         qa_menu.addAction(self.tr("Consistency check"), self._on_consistency_check)
@@ -2333,6 +2335,160 @@ class LinguaEditWindow(QMainWindow):
             output_path=report_path,
         )
         self._show_toast(self.tr("Report saved to %s") % str(report_path))
+
+    # ── Generate Report (HTML/PDF) ───────────────────────────────
+
+    def _on_generate_report(self):
+        if not self._file_data:
+            self._show_toast(self.tr("No file loaded"))
+            return
+        self._save_current_entry()
+        path, _ = QFileDialog.getSaveFileName(
+            self, self.tr("Save Report"), "",
+            self.tr("HTML (*.html);;PDF (*.pdf)"))
+        if not path:
+            return
+        html = self._build_report_html()
+        if path.endswith('.pdf'):
+            from PySide6.QtGui import QTextDocument
+            from PySide6.QtPrintSupport import QPrinter
+            doc = QTextDocument()
+            doc.setHtml(html)
+            printer = QPrinter(QPrinter.HighResolution)
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            printer.setOutputFileName(path)
+            doc.print_(printer)
+        else:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(html)
+        self._show_toast(self.tr("Report saved"))
+
+    def _build_report_html(self) -> str:
+        """Build a dark-themed HTML report with quality score, stats, and lint issues."""
+        from datetime import datetime
+
+        d = self._file_data
+        entries = self._get_entries()
+        total = d.total_count
+        translated = d.translated_count
+        fuzzy = getattr(d, 'fuzzy_count', 0)
+        untranslated = d.untranslated_count
+        warnings_count = 0
+
+        # Lint
+        lint_input = [{"index": i, "msgid": msgid, "msgstr": msgstr,
+                       "flags": ["fuzzy"] if is_fuzzy else []}
+                      for i, (msgid, msgstr, is_fuzzy) in enumerate(entries)]
+        result = lint_entries(lint_input)
+        score = result.score
+        issues = sorted(result.issues, key=lambda x: {"error": 0, "warning": 1, "info": 2}.get(x.severity, 3))
+        warnings_count = len(issues)
+
+        # Category summary
+        category_counts: dict[str, int] = {}
+        for issue in issues:
+            key = issue.message.split(":")[0] if ":" in issue.message else issue.message
+            category_counts[key] = category_counts.get(key, 0) + 1
+
+        file_name = html_escape(Path(str(d.path)).name)
+        language = html_escape(getattr(d, 'language', '') or getattr(d, 'target_language', '') or self.tr("Unknown"))
+        date_str = datetime.now().strftime('%Y-%m-%d %H:%M')
+        pct = round(translated / total * 100, 1) if total else 100.0
+
+        # Score gauge color
+        if score >= 80:
+            gauge_color = "#4caf50"
+        elif score >= 50:
+            gauge_color = "#ff9800"
+        else:
+            gauge_color = "#f44336"
+
+        # Issues rows
+        issues_rows = ""
+        for issue in issues:
+            sev = issue.severity
+            sev_color = {"error": "#f44336", "warning": "#ff9800"}.get(sev, "#2196f3")
+            issues_rows += (
+                f'<tr><td style="color:{sev_color};font-weight:600">{html_escape(sev.upper())}</td>'
+                f'<td>#{issue.entry_index}</td>'
+                f'<td>{html_escape(issue.message)}</td>'
+                f'<td>{html_escape((issue.msgid or "")[:80])}</td></tr>\n'
+            )
+
+        # Category summary rows
+        cat_rows = ""
+        for cat, count in sorted(category_counts.items(), key=lambda x: -x[1]):
+            cat_rows += f'<tr><td>{html_escape(cat)}</td><td>{count}</td></tr>\n'
+
+        return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{self.tr("Translation Report")} — {file_name}</title>
+<style>
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  body {{ font-family: -apple-system, 'Segoe UI', sans-serif; background: #1e1e2e; color: #cdd6f4; padding: 2em; }}
+  .container {{ max-width: 960px; margin: 0 auto; }}
+  h1 {{ color: #89b4fa; margin-bottom: 0.3em; font-size: 1.8em; }}
+  h2 {{ color: #a6adc8; margin: 1.5em 0 0.5em; font-size: 1.2em; border-bottom: 1px solid #313244; padding-bottom: 0.3em; }}
+  .meta {{ color: #6c7086; margin-bottom: 1.5em; }}
+  .cards {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1em; margin: 1em 0; }}
+  .card {{ background: #313244; border-radius: 12px; padding: 1.2em; text-align: center; }}
+  .card .value {{ font-size: 2em; font-weight: 700; }}
+  .card .label {{ color: #6c7086; font-size: 0.85em; margin-top: 0.3em; }}
+  .gauge-wrap {{ text-align: center; margin: 1.5em 0; }}
+  .gauge {{ display: inline-block; width: 120px; height: 120px; border-radius: 50%; border: 8px solid #313244; position: relative; }}
+  .gauge-inner {{ position: absolute; inset: 8px; border-radius: 50%; background: #1e1e2e; display: flex; align-items: center; justify-content: center; }}
+  .gauge-score {{ font-size: 2.2em; font-weight: 700; color: {gauge_color}; }}
+  .progress {{ background: #313244; border-radius: 8px; height: 20px; margin: 0.5em 0 1em; overflow: hidden; display: flex; }}
+  .bar-ok {{ background: #4caf50; height: 100%; }}
+  .bar-fuzzy {{ background: #ff9800; height: 100%; }}
+  .bar-un {{ background: #f44336; height: 100%; }}
+  table {{ width: 100%; border-collapse: collapse; margin: 0.5em 0 1.5em; }}
+  th {{ background: #313244; color: #a6adc8; text-align: left; padding: 0.6em 0.8em; font-weight: 600; }}
+  td {{ padding: 0.5em 0.8em; border-bottom: 1px solid #313244; }}
+  tr:hover {{ background: #28283a; }}
+  footer {{ color: #45475a; font-size: 0.8em; margin-top: 3em; text-align: center; }}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📊 {self.tr("Translation Report")}</h1>
+<p class="meta">
+  <strong>{self.tr("File")}:</strong> {file_name} &nbsp;|&nbsp;
+  <strong>{self.tr("Language")}:</strong> {language} &nbsp;|&nbsp;
+  <strong>{self.tr("Date")}:</strong> {date_str}
+</p>
+
+<h2>{self.tr("Quality Score")}</h2>
+<div class="gauge-wrap">
+  <div class="gauge" style="border-color: {gauge_color}">
+    <div class="gauge-inner"><span class="gauge-score">{score:.0f}</span></div>
+  </div>
+</div>
+
+<h2>{self.tr("Statistics")}</h2>
+<div class="cards">
+  <div class="card"><div class="value">{total}</div><div class="label">{self.tr("Total")}</div></div>
+  <div class="card"><div class="value" style="color:#4caf50">{translated}</div><div class="label">{self.tr("Translated")}</div></div>
+  <div class="card"><div class="value" style="color:#f44336">{untranslated}</div><div class="label">{self.tr("Untranslated")}</div></div>
+  <div class="card"><div class="value" style="color:#ff9800">{fuzzy}</div><div class="label">{self.tr("Fuzzy")}</div></div>
+  <div class="card"><div class="value" style="color:#2196f3">{warnings_count}</div><div class="label">{self.tr("Warnings")}</div></div>
+</div>
+<div class="progress">
+  <div class="bar-ok" style="width:{pct}%"></div>
+  <div class="bar-fuzzy" style="width:{round(fuzzy / total * 100, 1) if total else 0}%"></div>
+  <div class="bar-un" style="width:{round(untranslated / total * 100, 1) if total else 0}%"></div>
+</div>
+
+{'<h2>' + self.tr("Issues") + " (" + str(len(issues)) + ')</h2><table><tr><th>' + self.tr("Severity") + '</th><th>' + self.tr("Entry") + '</th><th>' + self.tr("Message") + '</th><th>' + self.tr("Source") + '</th></tr>' + issues_rows + '</table>' if issues else '<p style="color:#a6e3a1">✓ ' + self.tr("No issues found") + '</p>'}
+
+{'<h2>' + self.tr("Summary by Category") + '</h2><table><tr><th>' + self.tr("Category") + '</th><th>' + self.tr("Count") + '</th></tr>' + cat_rows + '</table>' if cat_rows else ''}
+
+<footer>{self.tr("Generated by LinguaEdit")} {__version__}</footer>
+</div>
+</body>
+</html>"""
 
     # ── Statistics ────────────────────────────────────────────────
 
