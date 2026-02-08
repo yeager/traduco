@@ -10,6 +10,33 @@ from PySide6.QtCore import QCoreApplication
 from linguaedit.services.glossary import check_glossary
 
 
+# CLDR locale data for validation
+LOCALE_FORMATS = {
+    # Date formats (DD/MM vs MM/DD vs YYYY-MM-DD)
+    "en": {"date_format": "MM/DD/YYYY", "currency": "$", "decimal_separator": ".", "thousands_separator": ","},
+    "en-US": {"date_format": "MM/DD/YYYY", "currency": "$", "decimal_separator": ".", "thousands_separator": ","},
+    "en-GB": {"date_format": "DD/MM/YYYY", "currency": "£", "decimal_separator": ".", "thousands_separator": ","},
+    "sv": {"date_format": "YYYY-MM-DD", "currency": "kr", "decimal_separator": ",", "thousands_separator": " "},
+    "sv-SE": {"date_format": "YYYY-MM-DD", "currency": "kr", "decimal_separator": ",", "thousands_separator": " "},
+    "de": {"date_format": "DD.MM.YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": "."},
+    "de-DE": {"date_format": "DD.MM.YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": "."},
+    "fr": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": " "},
+    "fr-FR": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": " "},
+    "es": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": "."},
+    "es-ES": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": "."},
+    "it": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": "."},
+    "pt": {"date_format": "DD/MM/YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": " "},
+    "ru": {"date_format": "DD.MM.YYYY", "currency": "₽", "decimal_separator": ",", "thousands_separator": " "},
+    "ja": {"date_format": "YYYY/MM/DD", "currency": "¥", "decimal_separator": ".", "thousands_separator": ","},
+    "ko": {"date_format": "YYYY.MM.DD", "currency": "₩", "decimal_separator": ".", "thousands_separator": ","},
+    "zh": {"date_format": "YYYY/MM/DD", "currency": "¥", "decimal_separator": ".", "thousands_separator": ","},
+    "zh-CN": {"date_format": "YYYY/MM/DD", "currency": "¥", "decimal_separator": ".", "thousands_separator": ","},
+    "no": {"date_format": "DD.MM.YYYY", "currency": "kr", "decimal_separator": ",", "thousands_separator": " "},
+    "da": {"date_format": "DD.MM.YYYY", "currency": "kr", "decimal_separator": ",", "thousands_separator": "."},
+    "fi": {"date_format": "DD.MM.YYYY", "currency": "€", "decimal_separator": ",", "thousands_separator": " "},
+}
+
+
 
 @dataclass
 class LintIssue:
@@ -31,6 +58,93 @@ class LintResult:
     @property
     def warning_count(self) -> int:
         return sum(1 for i in self.issues if i.severity == "warning")
+
+
+def _get_locale_format(locale: str) -> dict:
+    """Hämta CLDR-format för en locale."""
+    # Försök fullständig locale först (sv-SE)
+    if locale in LOCALE_FORMATS:
+        return LOCALE_FORMATS[locale]
+    
+    # Försök bara språkkod (sv)
+    lang_code = locale.split('-')[0].split('_')[0]
+    if lang_code in LOCALE_FORMATS:
+        return LOCALE_FORMATS[lang_code]
+    
+    # Fallback till engelska
+    return LOCALE_FORMATS["en"]
+
+
+def _check_number_localization(source: str, target: str, target_locale: str) -> list[str]:
+    """Kontrollera att tal är korrekt lokaliserade."""
+    issues = []
+    
+    # Hitta tal i source (engelska format)
+    number_pattern = r'\b\d{1,3}(?:,\d{3})*(?:\.\d+)?\b'
+    source_numbers = re.findall(number_pattern, source)
+    
+    if not source_numbers:
+        return issues
+    
+    locale_format = _get_locale_format(target_locale)
+    expected_thousands = locale_format["thousands_separator"]
+    expected_decimal = locale_format["decimal_separator"]
+    
+    for num in source_numbers:
+        # Kontrollera om detta tal finns i target i fel format
+        if num in target and expected_thousands != ",":
+            # Tal från source finns direkt i target - kan vara fel lokalisering
+            issues.append(QCoreApplication.translate("Linter", 
+                f"Number '{num}' might need localization (expected thousands separator: '{expected_thousands}')"))
+    
+    return issues
+
+
+def _check_currency_localization(source: str, target: str, target_locale: str) -> list[str]:
+    """Kontrollera valutasymboler."""
+    issues = []
+    
+    locale_format = _get_locale_format(target_locale)
+    expected_currency = locale_format["currency"]
+    
+    # Vanliga valutasymboler
+    currency_symbols = ["$", "€", "£", "¥", "₹", "₽", "kr", "€", "CHF"]
+    
+    # Hitta valutasymboler i source
+    source_currencies = []
+    for symbol in currency_symbols:
+        if symbol in source:
+            source_currencies.append(symbol)
+    
+    if source_currencies:
+        # Kolla om samma symbol används i target
+        for symbol in source_currencies:
+            if symbol in target and symbol != expected_currency:
+                issues.append(QCoreApplication.translate("Linter", 
+                    f"Currency symbol '{symbol}' should be localized to '{expected_currency}' for {target_locale}"))
+    
+    return issues
+
+
+def _check_date_format(source: str, target: str, target_locale: str) -> list[str]:
+    """Kontrollera datumformat."""
+    issues = []
+    
+    locale_format = _get_locale_format(target_locale)
+    expected_format = locale_format["date_format"]
+    
+    # Hitta amerikanska datumformat (MM/DD/YYYY) i source
+    us_date_pattern = r'\b\d{1,2}/\d{1,2}/\d{4}\b'
+    us_dates = re.findall(us_date_pattern, source)
+    
+    if us_dates and target_locale not in ["en", "en-US"]:
+        # Kolla om samma format används i target
+        for date in us_dates:
+            if date in target:
+                issues.append(QCoreApplication.translate("Linter", 
+                    f"Date format '{date}' should be localized to {expected_format} format for {target_locale}"))
+    
+    return issues
 
 
 def lint_entries(entries: list[dict]) -> LintResult:
@@ -139,6 +253,27 @@ def lint_entries(entries: list[dict]) -> LintResult:
         if len(src_accelerators) != len(dst_accelerators):
             issues.append(LintIssue("warning", QCoreApplication.translate("Linter", "Accelerator key mismatch: source has %d, translation has %d") % (len(src_accelerators), len(dst_accelerators)), idx, msgid))
             penalty += 0.8
+
+        # CLDR validation (kräver target_locale i entry dict)
+        target_locale = e.get("target_locale", "sv")  # Default till svenska
+        
+        # Nummer-lokalisering
+        number_issues = _check_number_localization(msgid, msgstr, target_locale)
+        for issue_msg in number_issues:
+            issues.append(LintIssue("warning", issue_msg, idx, msgid))
+            penalty += 0.4
+        
+        # Valuta-lokalisering
+        currency_issues = _check_currency_localization(msgid, msgstr, target_locale)
+        for issue_msg in currency_issues:
+            issues.append(LintIssue("warning", issue_msg, idx, msgid))
+            penalty += 0.4
+        
+        # Datum-format
+        date_issues = _check_date_format(msgid, msgstr, target_locale)
+        for issue_msg in date_issues:
+            issues.append(LintIssue("warning", issue_msg, idx, msgid))
+            penalty += 0.4
 
     # Check for duplicate msgids with different translations (after individual entry checks)
     msgid_translations = {}

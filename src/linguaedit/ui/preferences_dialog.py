@@ -97,6 +97,24 @@ class PreferencesDialog(QDialog):
         formality_map = {"default": 0, "formal": 1, "informal": 2}
         self._formality_combo.setCurrentIndex(formality_map.get(self._settings["formality"], 0))
         form.addRow(self.tr("Formality level:"), self._formality_combo)
+        
+        # Feature 6: Inline editing
+        self._inline_editing_check = QCheckBox(self.tr("Enable inline editing"))
+        self._inline_editing_check.setChecked(self._settings.get_value("inline_editing_enabled", False))
+        self._inline_editing_check.setToolTip(self.tr("Double-click to edit translations directly in the list"))
+        form.addRow("", self._inline_editing_check)
+        
+        # Feature 7: Character counter
+        self._char_counter_check = QCheckBox(self.tr("Show character counter"))
+        self._char_counter_check.setChecked(self._settings.get_value("show_character_counter", True))
+        form.addRow("", self._char_counter_check)
+        
+        self._char_limit_spin = QSpinBox()
+        self._char_limit_spin.setMinimum(0)
+        self._char_limit_spin.setMaximum(10000)
+        self._char_limit_spin.setValue(self._settings.get_value("character_limit", 280))
+        self._char_limit_spin.setSuffix(self.tr(" characters"))
+        form.addRow(self.tr("Character limit:"), self._char_limit_spin)
 
         return page
 
@@ -147,6 +165,11 @@ class PreferencesDialog(QDialog):
         scheme_vals = ["default", "light", "dark"]
         s["color_scheme"] = scheme_vals[self._theme_combo.currentIndex()]
         s["editor_font_size"] = self._font_spin.value()
+        
+        # New settings
+        s["inline_editing_enabled"] = self._inline_editing_check.isChecked()
+        s["show_character_counter"] = self._char_counter_check.isChecked()
+        s["character_limit"] = self._char_limit_spin.value()
 
         s.save()
 

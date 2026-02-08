@@ -450,6 +450,11 @@ class LinguaEditWindow(QMainWindow):
         self._bookmarks_file = Path.home() / ".local" / "share" / "linguaedit" / "bookmarks.json"
         self._show_bookmarked_only = False
         
+        # Feature 11: Pinned Entries
+        self._pinned_entries: set[int] = set()
+        self._pinned_file = Path.home() / ".local" / "share" / "linguaedit" / "pinned.json"
+        self._show_pinned_first = True
+        
         # Feature 7: Taggar/Filter  
         self._tags: dict[int, list[str]] = {}  # index -> [tags]
         self._tags_file = Path.home() / ".local" / "share" / "linguaedit" / "tags.json"
@@ -1285,6 +1290,9 @@ class LinguaEditWindow(QMainWindow):
         self._tree.blockSignals(False)
         self._apply_filter()
         self._update_nav_counter()
+        
+        # Update minimap
+        self._update_minimap()
 
     @staticmethod
     def _color_row(item: QTreeWidgetItem, color: QColor):
@@ -1489,6 +1497,10 @@ class LinguaEditWindow(QMainWindow):
         self._display_comment_threads()
         self._update_split_view(idx)
         self._run_inline_lint()
+        
+        # Update minimap current index
+        if hasattr(self, '_minimap'):
+            self._minimap.set_current_index(idx)
 
         # Focus translation editor
         self._trans_view.setFocus()

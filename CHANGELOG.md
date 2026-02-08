@@ -5,6 +5,65 @@ All notable changes to LinguaEdit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0] - 2026-02-08
+
+### Added - Mega Features Update
+
+#### Plugin System and Extensibility
+- **Plugin System** - Extensible plugin architecture for custom linting, suggestions, and text transformations
+- **Plugin Manager Dialog** - GUI for enabling/disabling plugins, viewing plugin information, and loading plugins from `~/.local/share/linguaedit/plugins/`
+- **Plugin API** - Base classes for creating custom plugins with `lint_entry()`, `suggest()`, and `transform()` methods
+
+#### Translation Memory and Exchange
+- **TMX Import/Export** - Full TMX 1.4b support for importing/exporting translation memory data to/from industry-standard format
+- **Enhanced TM Integration** - Plugin-based TM suggestions and improved translation memory workflows
+
+#### Text Processing and Segmentation
+- **Text Segmentation** - Smart sentence-boundary detection for splitting long translation entries with language-specific abbreviation handling
+- **Entry Splitting/Merging** - Split complex entries at sentence boundaries or merge multiple entries (Edit → Split Entry/Merge Entries)
+
+#### Translation History and Undo
+- **Per-String History Tracking** - SQLite-based history system recording all changes with timestamps, user info, and diff visualization
+- **History Dialog** - View complete change history for any translation entry with rollback functionality
+- **File History View** - Overview of recent changes across entire translation files
+
+#### User Interface Enhancements  
+- **Inline Editing** - Double-click to edit translations directly in the entry list (configurable in preferences)
+- **Character Counter** - Live character/word count display with configurable limits and warning indicators
+- **Unicode Inspector** - Detailed Unicode character analysis with suspicious character detection and invisible character highlighting
+- **Fullscreen Mode** - Distraction-free translation environment (F11, Escape to exit)
+
+#### Productivity and Gamification
+- **Achievement System** - Comprehensive gamification with 15+ achievements tracking translation progress, streaks, and milestones
+- **Progress Tracking** - Daily activity tracking, translation streaks, and language/format statistics
+- **Burndown Charts** - Visual progress tracking over time integrated into Statistics dialog
+
+#### Git Integration
+- **Enhanced Git Workflow** - Streamlined commit dialog with automatic commit messages and push functionality
+- **Git Status Integration** - View repository status and changes directly from translation interface
+
+#### Automation and Macros
+- **Macro Recording System** - Record and replay complex editing sequences for repetitive translation tasks
+- **Macro Management** - Save, edit, and organize macros with keyboard shortcuts and JSON import/export
+- **Action Recording** - Capture text edits, navigation, search/replace, and status changes
+
+#### Audio and Accessibility
+- **Text-to-Speech Preview** - Play translation audio using system TTS (macOS `say`, Linux `espeak`, Windows PowerShell)
+- **Audio Controls** - Integrated TTS button with voice configuration in preferences
+
+### Enhanced
+- **Auto-compile on Save** - Automatically compile .mo/.qm files after saving (configurable in preferences)
+- **Enhanced Statistics** - Integration with achievement and history systems for richer analytics
+- **Improved Preferences** - New settings for inline editing, character counter, and TTS configuration
+- **Plugin Integration** - Enhanced linting system with plugin-based checks and suggestions
+- **Context Menu Enhancements** - Added translation history, TTS playback, and other new features to context menus
+
+### Technical Improvements
+- **Service Architecture** - New service-based architecture for plugins, history, achievements, TMX, segmentation, and macros
+- **SQLite Integration** - Robust database storage for translation history and user statistics
+- **Error Handling** - Improved error handling and user feedback throughout the application
+- **Performance** - Optimized background processing for history recording and achievement tracking
+
 ## [0.12.0] - 2026-02-08
 
 ### Added
