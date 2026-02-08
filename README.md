@@ -4,7 +4,7 @@ A Qt6/PySide6 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, *
 
 ![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
-![Version](https://img.shields.io/badge/version-0.4.0-orange)
+![Version](https://img.shields.io/badge/version-0.4.1-orange)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
 ![LinguaEdit main window](docs/screenshots/main-window.png)

@@ -406,10 +406,6 @@ Sparad i: %2</translation>
         <translation>Inställningar…</translation>
     </message>
     <message>
-        <source>&amp;Tools</source>
-        <translation>&amp;Verktyg</translation>
-    </message>
-    <message>
         <source>Lint file</source>
         <translation>Kontrollera fil</translation>
     </message>
@@ -640,6 +636,138 @@ Sparad i: %2</translation>
     <message>
         <source>Validate</source>
         <translation>Validera</translation>
+    </message>
+    <message>
+        <source>&amp;Catalog</source>
+        <translation>&amp;Katalog</translation>
+    </message>
+    <message>
+        <source>&amp;Go</source>
+        <translation>&amp;Gå</translation>
+    </message>
+    <message>
+        <source>&amp;Git</source>
+        <translation>&amp;Git</translation>
+    </message>
+    <message>
+        <source>Close Tab</source>
+        <translation>Stäng flik</translation>
+    </message>
+    <message>
+        <source>Validate (Lint)</source>
+        <translation>Validera (Lint)</translation>
+    </message>
+    <message>
+        <source>Pre-translate…</source>
+        <translation>Föröversätt…</translation>
+    </message>
+    <message>
+        <source>Copy source to translation</source>
+        <translation>Kopiera källa till översättning</translation>
+    </message>
+    <message>
+        <source>QA profile: Formal</source>
+        <translation>QA-profil: Formell</translation>
+    </message>
+    <message>
+        <source>QA profile: Informal</source>
+        <translation>QA-profil: Informell</translation>
+    </message>
+    <message>
+        <source>Previous entry</source>
+        <translation>Föregående post</translation>
+    </message>
+    <message>
+        <source>Next entry</source>
+        <translation>Nästa post</translation>
+    </message>
+    <message>
+        <source>Previous untranslated</source>
+        <translation>Föregående oöversatt</translation>
+    </message>
+    <message>
+        <source>Next untranslated</source>
+        <translation>Nästa oöversatt</translation>
+    </message>
+    <message>
+        <source>Done and next (Ctrl+Enter)</source>
+        <translation>Klar och nästa (Ctrl+Enter)</translation>
+    </message>
+    <message>
+        <source>Status…</source>
+        <translation>Status…</translation>
+    </message>
+    <message>
+        <source>Diff…</source>
+        <translation>Diff…</translation>
+    </message>
+    <message>
+        <source>Commit…</source>
+        <translation>Commit…</translation>
+    </message>
+    <message>
+        <source>Transifex</source>
+        <translation>Transifex</translation>
+    </message>
+    <message>
+        <source>Weblate</source>
+        <translation>Weblate</translation>
+    </message>
+    <message>
+        <source>Crowdin</source>
+        <translation>Crowdin</translation>
+    </message>
+    <message>
+        <source>File Header / Metadata</source>
+        <translation>Filhuvud / Metadata</translation>
+    </message>
+    <message>
+        <source>Edit file header metadata. Changes are applied when you click Save.</source>
+        <translation>Redigera filhuvudets metadata. Ändringar tillämpas när du klickar Spara.</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Nyckel</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Värde</translation>
+    </message>
+    <message>
+        <source>Add Field</source>
+        <translation>Lägg till fält</translation>
+    </message>
+    <message>
+        <source>Remove Selected</source>
+        <translation>Ta bort markerat</translation>
+    </message>
+    <message>
+        <source>Language:</source>
+        <translation>Språk:</translation>
+    </message>
+    <message>
+        <source>Source language:</source>
+        <translation>Källspråk:</translation>
+    </message>
+    <message>
+        <source>Target language:</source>
+        <translation>Målspråk:</translation>
+    </message>
+    <message>
+        <source>Version:</source>
+        <translation>Version:</translation>
+    </message>
+    <message>
+        <source>Locale:</source>
+        <translation>Locale:</translation>
+    </message>
+    <message>
+        <source>Root key:</source>
+        <translation>Rotnyckel:</translation>
+    </message>
+    <message>
+        <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att stödja utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 </TS>

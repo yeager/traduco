@@ -624,99 +624,99 @@ class LinguaEditWindow(QMainWindow):
         mb = self.menuBar()
 
         # File
-        file_menu = mb.addMenu("&File")
-        open_act = file_menu.addAction("&Open…")
+        file_menu = mb.addMenu(self.tr("&File"))
+        open_act = file_menu.addAction(self.tr("&Open…"))
         open_act.setShortcut(QKeySequence.Open)
         open_act.triggered.connect(self._on_open)
 
-        save_act = file_menu.addAction("&Save")
+        save_act = file_menu.addAction(self.tr("&Save"))
         save_act.setShortcut(QKeySequence.Save)
         save_act.triggered.connect(self._on_save)
 
         file_menu.addSeparator()
-        self._recent_menu = file_menu.addMenu("Recent Files")
+        self._recent_menu = file_menu.addMenu(self.tr("Recent Files"))
         self._rebuild_recent_menu()
 
         file_menu.addSeparator()
-        close_act = file_menu.addAction("Close Tab")
+        close_act = file_menu.addAction(self.tr("Close Tab"))
         close_act.setShortcut(QKeySequence("Ctrl+W"))
         close_act.triggered.connect(lambda: self._on_tab_close(self._tab_widget.currentIndex()))
 
         file_menu.addSeparator()
-        file_menu.addAction("Quit", QApplication.quit, QKeySequence.Quit)
+        file_menu.addAction(self.tr("Quit"), QApplication.quit, QKeySequence.Quit)
 
         # Edit
-        edit_menu = mb.addMenu("&Edit")
-        edit_menu.addAction("Undo", self._do_undo, QKeySequence.Undo)
-        edit_menu.addAction("Redo", self._do_redo, QKeySequence.Redo)
+        edit_menu = mb.addMenu(self.tr("&Edit"))
+        edit_menu.addAction(self.tr("Undo"), self._do_undo, QKeySequence.Undo)
+        edit_menu.addAction(self.tr("Redo"), self._do_redo, QKeySequence.Redo)
         edit_menu.addSeparator()
-        edit_menu.addAction("Find…", self._on_focus_search, QKeySequence.Find)
-        edit_menu.addAction("Find && Replace…", self._toggle_search_replace, QKeySequence("Ctrl+H"))
+        edit_menu.addAction(self.tr("Find…"), self._on_focus_search, QKeySequence.Find)
+        edit_menu.addAction(self.tr("Find && Replace…"), self._toggle_search_replace, QKeySequence("Ctrl+H"))
         edit_menu.addSeparator()
-        edit_menu.addAction("Copy source to translation", self._copy_source_to_target, QKeySequence("Ctrl+B"))
+        edit_menu.addAction(self.tr("Copy source to translation"), self._copy_source_to_target, QKeySequence("Ctrl+B"))
         edit_menu.addSeparator()
-        edit_menu.addAction("Preferences…", self._on_preferences, QKeySequence("Ctrl+,"))
+        edit_menu.addAction(self.tr("Preferences…"), self._on_preferences, QKeySequence("Ctrl+,"))
 
         # Catalog (POedit calls it this)
-        catalog_menu = mb.addMenu("&Catalog")
-        catalog_menu.addAction("Validate (Lint)", self._on_lint, QKeySequence("Ctrl+Shift+V"))
-        catalog_menu.addAction("Pre-translate…", self._on_pretranslate_all, QKeySequence("Ctrl+Shift+T"))
-        catalog_menu.addAction("Spell check current", self._run_spellcheck, QKeySequence("F7"))
-        catalog_menu.addAction("File metadata…", self._on_show_metadata)
-        catalog_menu.addAction("Feed file to TM", self._on_feed_tm)
+        catalog_menu = mb.addMenu(self.tr("&Catalog"))
+        catalog_menu.addAction(self.tr("Validate (Lint)"), self._on_lint, QKeySequence("Ctrl+Shift+V"))
+        catalog_menu.addAction(self.tr("Pre-translate…"), self._on_pretranslate_all, QKeySequence("Ctrl+Shift+T"))
+        catalog_menu.addAction(self.tr("Spell check current"), self._run_spellcheck, QKeySequence("F7"))
+        catalog_menu.addAction(self.tr("File metadata…"), self._on_show_metadata)
+        catalog_menu.addAction(self.tr("Feed file to TM"), self._on_feed_tm)
         catalog_menu.addSeparator()
-        catalog_menu.addAction("Statistics…", self._on_statistics)
+        catalog_menu.addAction(self.tr("Statistics…"), self._on_statistics)
 
-        qa_menu = catalog_menu.addMenu("Quality")
-        qa_menu.addAction("Consistency check", self._on_consistency_check)
-        qa_menu.addAction("Glossary…", self._on_glossary)
-        qa_menu.addAction("QA profile: Formal", lambda: self._on_qa_profile("formal"))
-        qa_menu.addAction("QA profile: Informal", lambda: self._on_qa_profile("informal"))
-        qa_menu.addAction("Export report…", self._on_export_report)
+        qa_menu = catalog_menu.addMenu(self.tr("Quality"))
+        qa_menu.addAction(self.tr("Consistency check"), self._on_consistency_check)
+        qa_menu.addAction(self.tr("Glossary…"), self._on_glossary)
+        qa_menu.addAction(self.tr("QA profile: Formal"), lambda: self._on_qa_profile("formal"))
+        qa_menu.addAction(self.tr("QA profile: Informal"), lambda: self._on_qa_profile("informal"))
+        qa_menu.addAction(self.tr("Export report…"), self._on_export_report)
 
         # Go
-        go_menu = mb.addMenu("&Go")
-        go_menu.addAction("Previous entry", lambda: self._navigate(-1), QKeySequence("Ctrl+Up"))
-        go_menu.addAction("Next entry", lambda: self._navigate(1), QKeySequence("Ctrl+Down"))
+        go_menu = mb.addMenu(self.tr("&Go"))
+        go_menu.addAction(self.tr("Previous entry"), lambda: self._navigate(-1), QKeySequence("Ctrl+Up"))
+        go_menu.addAction(self.tr("Next entry"), lambda: self._navigate(1), QKeySequence("Ctrl+Down"))
         go_menu.addSeparator()
-        go_menu.addAction("Previous untranslated", lambda: self._navigate_untranslated(-1), QKeySequence("Ctrl+Shift+Up"))
-        go_menu.addAction("Next untranslated", lambda: self._navigate_untranslated(1), QKeySequence("Ctrl+Shift+Down"))
+        go_menu.addAction(self.tr("Previous untranslated"), lambda: self._navigate_untranslated(-1), QKeySequence("Ctrl+Shift+Up"))
+        go_menu.addAction(self.tr("Next untranslated"), lambda: self._navigate_untranslated(1), QKeySequence("Ctrl+Shift+Down"))
         go_menu.addSeparator()
-        go_menu.addAction("Done and next (Ctrl+Enter)", lambda: (self._save_current_entry(), self._navigate(1)))
+        go_menu.addAction(self.tr("Done and next (Ctrl+Enter)"), lambda: (self._save_current_entry(), self._navigate(1)))
 
         # View
-        view_menu = mb.addMenu("&View")
-        view_menu.addAction("Compare language…", self._on_compare_lang)
-        view_menu.addAction("Auto-propagate", self._on_auto_propagate)
+        view_menu = mb.addMenu(self.tr("&View"))
+        view_menu.addAction(self.tr("Compare language…"), self._on_compare_lang)
+        view_menu.addAction(self.tr("Auto-propagate"), self._on_auto_propagate)
 
         # Git
-        git_menu = mb.addMenu("&Git")
-        git_menu.addAction("Status…", self._on_git_status)
-        git_menu.addAction("Diff…", self._on_git_diff)
-        git_menu.addAction("Commit…", self._on_git_commit)
-        git_menu.addAction("Switch branch…", self._on_git_branch)
+        git_menu = mb.addMenu(self.tr("&Git"))
+        git_menu.addAction(self.tr("Status…"), self._on_git_status)
+        git_menu.addAction(self.tr("Diff…"), self._on_git_diff)
+        git_menu.addAction(self.tr("Commit…"), self._on_git_commit)
+        git_menu.addAction(self.tr("Switch branch…"), self._on_git_branch)
 
         # Platforms
-        platform_menu = mb.addMenu("&Platforms")
-        platform_menu.addAction("Platform settings…", self._on_platform_settings)
+        platform_menu = mb.addMenu(self.tr("&Platforms"))
+        platform_menu.addAction(self.tr("Platform settings…"), self._on_platform_settings)
         platform_menu.addSeparator()
-        pull_menu = platform_menu.addMenu("Pull from…")
-        pull_menu.addAction("Transifex", lambda: self._on_sync("transifex", "pull"))
-        pull_menu.addAction("Weblate", lambda: self._on_sync("weblate", "pull"))
-        pull_menu.addAction("Crowdin", lambda: self._on_sync("crowdin", "pull"))
-        push_menu = platform_menu.addMenu("Push to…")
-        push_menu.addAction("Transifex", lambda: self._on_sync("transifex", "push"))
-        push_menu.addAction("Weblate", lambda: self._on_sync("weblate", "push"))
-        push_menu.addAction("Crowdin", lambda: self._on_sync("crowdin", "push"))
+        pull_menu = platform_menu.addMenu(self.tr("Pull from…"))
+        pull_menu.addAction(self.tr("Transifex"), lambda: self._on_sync("transifex", "pull"))
+        pull_menu.addAction(self.tr("Weblate"), lambda: self._on_sync("weblate", "pull"))
+        pull_menu.addAction(self.tr("Crowdin"), lambda: self._on_sync("crowdin", "pull"))
+        push_menu = platform_menu.addMenu(self.tr("Push to…"))
+        push_menu.addAction(self.tr("Transifex"), lambda: self._on_sync("transifex", "push"))
+        push_menu.addAction(self.tr("Weblate"), lambda: self._on_sync("weblate", "push"))
+        push_menu.addAction(self.tr("Crowdin"), lambda: self._on_sync("crowdin", "push"))
 
         # Help
-        help_menu = mb.addMenu("&Help")
-        help_menu.addAction("GitHub PR…", self._on_github_pr)
-        help_menu.addAction("Check for updates", self._on_check_updates)
+        help_menu = mb.addMenu(self.tr("&Help"))
+        help_menu.addAction(self.tr("GitHub PR…"), self._on_github_pr)
+        help_menu.addAction(self.tr("Check for updates"), self._on_check_updates)
         help_menu.addSeparator()
-        help_menu.addAction("Donate ♥", self._on_donate)
+        help_menu.addAction(self.tr("Donate ♥"), self._on_donate)
         help_menu.addSeparator()
-        help_menu.addAction("About LinguaEdit", self._on_about)
+        help_menu.addAction(self.tr("About LinguaEdit"), self._on_about)
         help_menu.addAction(self.tr("About Qt"), lambda: QApplication.instance().aboutQt())
 
     # ── Toolbar ───────────────────────────────────────────────────
@@ -2157,9 +2157,9 @@ class LinguaEditWindow(QMainWindow):
         lang_group = QGroupBox("Languages")
         lang_form = QFormLayout(lang_group)
         source_edit = QLineEdit(self._trans_source)
-        lang_form.addRow("Source language:", source_edit)
+        lang_form.addRow(self.tr("Source language:"), source_edit)
         target_edit = QLineEdit(self._trans_target)
-        lang_form.addRow("Target language:", target_edit)
+        lang_form.addRow(self.tr("Target language:"), target_edit)
         layout.addWidget(lang_group)
 
         options_group = QGroupBox("Options")
@@ -2309,12 +2309,12 @@ class LinguaEditWindow(QMainWindow):
             return
 
         dialog = QDialog(self)
-        dialog.setWindowTitle("File Header / Metadata")
+        dialog.setWindowTitle(self.tr("File Header / Metadata"))
         dialog.setMinimumSize(600, 450)
         layout = QVBoxLayout(dialog)
 
         # Description
-        desc = QLabel("Edit file header metadata. Changes are applied when you click Save.")
+        desc = QLabel(self.tr("Edit file header metadata. Changes are applied when you click Save."))
         desc.setWordWrap(True)
         layout.addWidget(desc)
 
@@ -2322,7 +2322,7 @@ class LinguaEditWindow(QMainWindow):
             # Editable key-value table for PO metadata
             meta = self._file_data.metadata
             table = QTableWidget(len(meta), 2)
-            table.setHorizontalHeaderLabels(["Key", "Value"])
+            table.setHorizontalHeaderLabels([self.tr("Key"), self.tr("Value")])
             table.horizontalHeader().setStretchLastSection(True)
             table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
             table.verticalHeader().setVisible(False)
@@ -2337,8 +2337,8 @@ class LinguaEditWindow(QMainWindow):
 
             # Add/Remove buttons
             btn_row = QHBoxLayout()
-            add_btn = QPushButton("Add Field")
-            remove_btn = QPushButton("Remove Selected")
+            add_btn = QPushButton(self.tr("Add Field"))
+            remove_btn = QPushButton(self.tr("Remove Selected"))
 
             def add_field():
                 row = table.rowCount()
@@ -2362,8 +2362,8 @@ class LinguaEditWindow(QMainWindow):
             form = QFormLayout()
             lang_edit = QLineEdit(getattr(self._file_data, 'language', ''))
             src_lang_edit = QLineEdit(getattr(self._file_data, 'source_language', ''))
-            form.addRow("Language:", lang_edit)
-            form.addRow("Source language:", src_lang_edit)
+            form.addRow(self.tr("Language:"), lang_edit)
+            form.addRow(self.tr("Source language:"), src_lang_edit)
             layout.addLayout(form)
 
         elif self._file_type == "xliff":
@@ -2371,21 +2371,21 @@ class LinguaEditWindow(QMainWindow):
             ver_edit = QLineEdit(getattr(self._file_data, 'version', ''))
             src_edit = QLineEdit(getattr(self._file_data, 'source_language', ''))
             tgt_edit = QLineEdit(getattr(self._file_data, 'target_language', ''))
-            form.addRow("Version:", ver_edit)
-            form.addRow("Source language:", src_edit)
-            form.addRow("Target language:", tgt_edit)
+            form.addRow(self.tr("Version:"), ver_edit)
+            form.addRow(self.tr("Source language:"), src_edit)
+            form.addRow(self.tr("Target language:"), tgt_edit)
             layout.addLayout(form)
 
         elif self._file_type == "arb":
             form = QFormLayout()
             locale_edit = QLineEdit(getattr(self._file_data, 'locale', ''))
-            form.addRow("Locale:", locale_edit)
+            form.addRow(self.tr("Locale:"), locale_edit)
             layout.addLayout(form)
 
         elif self._file_type == "yaml":
             form = QFormLayout()
             root_edit = QLineEdit(getattr(self._file_data, 'root_key', ''))
-            form.addRow("Root key:", root_edit)
+            form.addRow(self.tr("Root key:"), root_edit)
             layout.addLayout(form)
 
         else:
@@ -2531,9 +2531,9 @@ class LinguaEditWindow(QMainWindow):
 
     def _on_donate(self):
         msg = QMessageBox(self)
-        msg.setWindowTitle("Donate ♥")
+        msg.setWindowTitle(self.tr("Donate ♥"))
         msg.setTextFormat(Qt.RichText)
-        msg.setText(
+        msg.setText(self.tr(
             "<p>LinguaEdit is free software.</p>"
             "<p>If you find it useful, consider supporting development:</p>"
             "<p>❤️ <b>GitHub Sponsors:</b> <a href='https://github.com/sponsors/yeager'>"
@@ -2541,7 +2541,7 @@ class LinguaEditWindow(QMainWindow):
             "<p>🇸🇪 <b>Swish:</b> +46702526206 — "
             "<a href='swish://payment?payee=0702526206&message=LinguaEdit'>"
             "Öppna Swish</a></p>"
-        )
+        ))
         msg.exec()
 
     # ── About ─────────────────────────────────────────────────────
@@ -2552,7 +2552,7 @@ class LinguaEditWindow(QMainWindow):
             icon_html = f"<p><img src='{self._app_icon_path}' width='64' height='64'></p>"
         QMessageBox.about(
             self,
-            "About LinguaEdit",
+            self.tr("About LinguaEdit"),
             f"{icon_html}"
             f"<h2>LinguaEdit</h2>"
             f"<p>Version {__version__}</p>"

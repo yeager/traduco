@@ -2,6 +2,23 @@
 
 All notable changes to LinguaEdit will be documented in this file.
 
+## [0.4.1] — 2026-02-08
+
+### Added
+
+- **Full i18n for all menus and dialogs** — all menu items, metadata dialog, and donate dialog now use Qt translation system (self.tr())
+- **Editable file header/metadata dialog** — edit PO metadata key-value pairs, TS/XLIFF language fields, ARB locale, YAML root key
+- **Donate dialog** — GitHub Sponsors (yeager) + Swish with deep link
+
+### Improved
+
+- **Swedish translations** — 188 translated strings covering toolbar, menus, metadata dialog, donate dialog, and all UI elements
+- **Menu structure** — added &Catalog, &Go, &Git menus with full keyboard shortcut support
+
+### Fixed
+
+- Menu strings that were hardcoded in English now properly translatable
+
 ## [0.4.0] — 2026-02-08
 
 ### Changed
