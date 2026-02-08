@@ -2218,7 +2218,10 @@ class LinguaEditWindow(QMainWindow):
         self._populate_list()
 
         dialog = ValidationDialog(self, result, self._lint_cache)
-        dialog.exec()
+        dialog.setModal(False)
+        dialog.setAttribute(Qt.WA_DeleteOnClose)
+        dialog.show()
+        self._validation_dialog = dialog  # prevent GC
 
     # ── Consistency check ─────────────────────────────────────────
 
