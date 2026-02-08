@@ -1,5 +1,6 @@
 # LinguaEdit
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![GitHub Release](https://img.shields.io/github/v/release/yeager/linguaedit)
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
@@ -8,7 +9,7 @@
 
 **Professional translation file editor built with Qt6/PySide6**
 
-![LinguaEdit](docs/screenshot.png)
+*Screenshots coming soon - see the complete feature list below for all capabilities*
 
 ## ✨ Features for Translators
 
@@ -174,8 +175,8 @@ sudo dnf install linguaedit
 
 ### Windows & macOS Installers
 Download platform-specific installers from [GitHub Releases](https://github.com/yeager/linguaedit/releases):
-- **Windows**: `LinguaEdit-0.9.0-Windows-x64.exe`
-- **macOS**: `LinguaEdit-0.9.0-macOS.dmg`
+- **Windows**: `LinguaEdit-1.0.0-Windows-x64.exe`
+- **macOS**: `LinguaEdit-1.0.0-macOS.dmg`
 
 ## 🛠️ Development
 

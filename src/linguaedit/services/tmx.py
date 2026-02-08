@@ -8,7 +8,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterator
 
-from linguaedit.services.tm import TM_DATABASE
+from linguaedit.services.tm import TM_DB
 
 
 class TMXService:
@@ -21,7 +21,7 @@ class TMXService:
         Returns the number of translation units exported.
         """
         # Connect to TM database
-        conn = sqlite3.connect(TM_DATABASE)
+        conn = sqlite3.connect(TM_DB)
         cursor = conn.cursor()
         
         # Create TMX root
@@ -106,7 +106,7 @@ class TMXService:
                 return 0, errors
             
             # Connect to TM database
-            conn = sqlite3.connect(TM_DATABASE)
+            conn = sqlite3.connect(TM_DB)
             cursor = conn.cursor()
             
             # Ensure tables exist

@@ -8,8 +8,7 @@ from __future__ import annotations
 
 from typing import List, Optional
 from PySide6.QtWidgets import (
-    QPlainTextEdit, QCompleter, QAbstractItemView, QWidget,
-    QStringListModel
+    QPlainTextEdit, QCompleter, QAbstractItemView, QWidget
 )
 from PySide6.QtCore import Qt, Signal, QStringListModel, QTimer
 from PySide6.QtGui import QKeyEvent, QTextCursor

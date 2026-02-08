@@ -37,7 +37,7 @@ from PySide6.QtWidgets import (
     QToolBar, QFrame, QScrollArea, QGroupBox, QTableWidget, QTableWidgetItem,
     QDialog, QDialogButtonBox, QFormLayout, QFileDialog,
     QMessageBox, QInputDialog, QApplication, QToolButton,
-    QAbstractItemView,
+    QAbstractItemView, QSpinBox, QDockWidget, QStyledItemDelegate,
 )
 from PySide6.QtCore import Qt, QTimer, QFileSystemWatcher, Signal, Slot
 from PySide6.QtGui import (
@@ -85,6 +85,7 @@ from linguaedit.ui.ai_review_dialog import AIReviewDialog
 from linguaedit.ui.translation_editor import TranslationEditor
 from linguaedit.ui.plural_forms_editor import PluralFormsEditor
 from linguaedit.ui.minimap import MinimapWidget
+from linguaedit.ui.quick_actions import QuickActionsMenu
 from linguaedit.ui.regex_tester_dialog import RegexTesterDialog
 from linguaedit.ui.layout_simulator_dialog import LayoutSimulatorDialog
 from linguaedit.ui.locale_map_dialog import LocaleMapDialog
@@ -385,6 +386,13 @@ class LinguaEditWindow(QMainWindow):
             self._app_icon_path = str(_icon_path)
         else:
             self._app_icon_path = None
+
+        # Feature 13: Quick Actions
+        self._quick_actions_menu = QuickActionsMenu(self)
+        
+        # Feature 15: Watch Mode
+        self._file_watcher = None
+        self._watch_mode_enabled = False
 
         # File state
         self._file_data = None
@@ -1121,6 +1129,7 @@ class LinguaEditWindow(QMainWindow):
         view_menu.addAction(self.tr("Auto-propagate"), self._on_auto_propagate)
         view_menu.addSeparator()
         view_menu.addAction(self.tr("Show Bookmarked Only"), self._toggle_bookmarked_filter, QKeySequence("Ctrl+Shift+K"))
+        view_menu.addAction(self.tr("Show Pinned First"), self._toggle_pinned_first, QKeySequence("Ctrl+Shift+P"))
         view_menu.addAction(self.tr("Review Mode"), self._toggle_review_mode, QKeySequence("Ctrl+R"))
         view_menu.addAction(self.tr("Focus Mode"), self._toggle_focus_mode, QKeySequence("Ctrl+Shift+F"))
         # Feature 13: Fullscreen Mode
@@ -1128,6 +1137,8 @@ class LinguaEditWindow(QMainWindow):
         view_menu.addSeparator()
         # Feature 10: Minimap
         view_menu.addAction(self.tr("Minimap"), self._toggle_minimap, QKeySequence("Ctrl+Shift+M"))
+        # Feature 15: Watch Mode
+        view_menu.addAction(self.tr("Watch File"), self._toggle_watch_mode, QKeySequence("Ctrl+W"))
         view_menu.addAction(self.tr("Translation Map…"), self._show_locale_map_dialog)
         view_menu.addSeparator()
         # Feature 10: Achievements
@@ -1229,6 +1240,9 @@ class LinguaEditWindow(QMainWindow):
         
         # Feature 13: Fullscreen escape
         QShortcut(QKeySequence("Escape"), self, self._exit_fullscreen_if_active)
+        
+        # Feature 13: Quick Actions
+        QShortcut(QKeySequence("Ctrl+."), self, self._show_quick_actions)
 
     # ══════════════════════════════════════════════════════════════
     #  ENTRY TABLE (QTreeWidget)
@@ -1260,8 +1274,13 @@ class LinguaEditWindow(QMainWindow):
             src_preview = msgid[:200].replace("\n", "⏎ ") if msgid else "(empty)"
             trans_preview = msgstr[:200].replace("\n", "⏎ ") if msgstr else ""
 
-            # Bokmärke och taggar
-            bookmark_icon = "⭐" if orig_idx in self._bookmarks else ""
+            # Bokmärke, pinned och taggar
+            icons = []
+            if orig_idx in self._pinned_entries:
+                icons.append("📌")
+            if orig_idx in self._bookmarks:
+                icons.append("⭐")
+            bookmark_icon = " ".join(icons)
             tags_text = ", ".join(self._tags.get(orig_idx, []))
 
             item = _SortableItem([str(orig_idx + 1), bookmark_icon, src_preview, trans_preview, tags_text, status])
@@ -2131,6 +2150,12 @@ class LinguaEditWindow(QMainWindow):
             self._sort_order = indices
         else:
             self._sort_order = indices
+        
+        # Apply pinned first sorting if enabled
+        if self._show_pinned_first and self._pinned_entries:
+            pinned_indices = [i for i in self._sort_order if i in self._pinned_entries]
+            unpinned_indices = [i for i in self._sort_order if i not in self._pinned_entries]
+            self._sort_order = pinned_indices + unpinned_indices
 
     # ── Search & Replace ─────────────────────────────────────────
 
@@ -2517,6 +2542,7 @@ class LinguaEditWindow(QMainWindow):
         
         # Load bookmarks and tags for this file  
         self._load_bookmarks()
+        self._load_pinned()
         self._load_tags()
         
         self._populate_list()
@@ -4149,6 +4175,270 @@ class LinguaEditWindow(QMainWindow):
         except Exception as e:
             print(f"Failed to load bookmarks: {e}")
             self._bookmarks.clear()
+    
+    # ── Feature 11: Pinned Entries ──────────────────────────────
+    
+    def _toggle_pin(self):
+        """Toggle pin status för aktuell entry."""
+        if self._current_index < 0 or not self._file_data:
+            return
+        
+        if self._current_index in self._pinned_entries:
+            self._pinned_entries.remove(self._current_index)
+            self._show_toast(self.tr("Entry unpinned"))
+        else:
+            self._pinned_entries.add(self._current_index)
+            self._show_toast(self.tr("Entry pinned"))
+        
+        self._save_pinned()
+        self._populate_list()
+    
+    def _toggle_pinned_first(self):
+        """Toggle om pinnade entries ska visas först."""
+        self._show_pinned_first = not self._show_pinned_first
+        
+        if self._show_pinned_first:
+            self._show_toast(self.tr("Showing pinned entries first"))
+        else:
+            self._show_toast(self.tr("Normal sorting order"))
+        
+        self._populate_list()
+    
+    def _save_pinned(self):
+        """Sparar pinnade entries till fil."""
+        if not self._file_data:
+            return
+            
+        try:
+            self._pinned_file.parent.mkdir(parents=True, exist_ok=True)
+            file_key = str(Path(self._file_data.path).resolve()) if hasattr(self._file_data, 'path') else str(self._file_data.file_path)
+            
+            # Ladda befintlig data
+            pinned_data = {}
+            if self._pinned_file.exists():
+                try:
+                    pinned_data = json.loads(self._pinned_file.read_text("utf-8"))
+                except json.JSONDecodeError:
+                    pinned_data = {}
+            
+            # Uppdatera för denna fil
+            pinned_data[file_key] = list(self._pinned_entries)
+            
+            # Spara
+            self._pinned_file.write_text(json.dumps(pinned_data, ensure_ascii=False, indent=2), "utf-8")
+            
+        except Exception as e:
+            print(f"Failed to save pinned: {e}")
+    
+    def _load_pinned(self):
+        """Laddar pinnade entries från fil."""
+        if not self._file_data:
+            self._pinned_entries.clear()
+            return
+        
+        try:
+            if not self._pinned_file.exists():
+                self._pinned_entries.clear()
+                return
+            
+            pinned_data = json.loads(self._pinned_file.read_text("utf-8"))
+            file_key = str(Path(self._file_data.path).resolve()) if hasattr(self._file_data, 'path') else str(self._file_data.file_path)
+            
+            self._pinned_entries = set(pinned_data.get(file_key, []))
+            
+        except Exception as e:
+            print(f"Failed to load pinned: {e}")
+            self._pinned_entries.clear()
+    
+    # ── Feature 12: Drag & Drop ─────────────────────────────────
+    
+    def dragEnterEvent(self, event: QDragEnterEvent):
+        """Hantera drag enter event."""
+        if event.mimeData().hasUrls():
+            # Kolla om det finns translation files
+            urls = event.mimeData().urls()
+            for url in urls:
+                if url.isLocalFile():
+                    path = Path(url.toLocalFile())
+                    if path.suffix.lower() in {'.po', '.pot', '.ts', '.json', '.xliff', '.xlf', '.xml', 
+                                             '.arb', '.php', '.yml', '.yaml', '.csv', '.tres', 
+                                             '.properties', '.srt', '.vtt'}:
+                        event.acceptProposedAction()
+                        return
+        event.ignore()
+    
+    def dropEvent(self, event: QDropEvent):
+        """Hantera file drop."""
+        if event.mimeData().hasUrls():
+            urls = event.mimeData().urls()
+            for url in urls:
+                if url.isLocalFile():
+                    file_path = url.toLocalFile()
+                    path = Path(file_path)
+                    
+                    # Validera filtyp
+                    if path.suffix.lower() in {'.po', '.pot', '.ts', '.json', '.xliff', '.xlf', '.xml', 
+                                             '.arb', '.php', '.yml', '.yaml', '.csv', '.tres', 
+                                             '.properties', '.srt', '.vtt'}:
+                        try:
+                            self._load_file(file_path)
+                            self._show_toast(self.tr(f"Loaded: {path.name}"))
+                            event.acceptProposedAction()
+                            break
+                        except Exception as e:
+                            self._show_toast(self.tr(f"Error loading {path.name}: {e}"))
+                            event.ignore()
+                    else:
+                        event.ignore()
+        else:
+            event.ignore()
+    
+    # ── Feature 13: Quick Actions ───────────────────────────────
+    
+    def _show_quick_actions(self):
+        """Visa quick actions popup."""
+        if self._current_index < 0 or not self._file_data:
+            return
+        
+        entries = self._get_entries()
+        if self._current_index >= len(entries):
+            return
+        
+        source_text, current_text, _ = entries[self._current_index]
+        
+        # Få cursor position från translation editor
+        cursor_rect = self._trans_view.cursorRect()
+        global_pos = self._trans_view.mapToGlobal(cursor_rect.bottomLeft())
+        
+        # Visa quick actions menu
+        if self._quick_actions_menu.show_for_context(source_text, current_text, global_pos):
+            self._connect_quick_actions()
+    
+    def _connect_quick_actions(self):
+        """Koppla quick actions signaler."""
+        if hasattr(self._quick_actions_menu, '_connected'):
+            return
+        
+        self._quick_actions_menu.copy_source_requested.connect(self._copy_source_to_target)
+        self._quick_actions_menu.apply_tm_requested.connect(self._apply_quick_tm)
+        self._quick_actions_menu.apply_glossary_requested.connect(self._apply_quick_glossary)
+        self._quick_actions_menu.fix_case_requested.connect(self._fix_quick_case)
+        self._quick_actions_menu.add_punctuation_requested.connect(self._add_quick_punctuation)
+        
+        self._quick_actions_menu._connected = True
+    
+    def _apply_quick_tm(self, text: str):
+        """Applicera TM-förslag från quick actions."""
+        self._trans_view.setPlainText(text)
+    
+    def _apply_quick_glossary(self, text: str):
+        """Applicera glossary term från quick actions."""
+        current_text = self._trans_view.toPlainText()
+        if current_text.strip():
+            # Lägg till i slutet
+            self._trans_view.setPlainText(current_text + " " + text)
+        else:
+            # Ersätt tomt fält
+            self._trans_view.setPlainText(text)
+    
+    def _fix_quick_case(self):
+        """Fixa case från quick actions."""
+        current_text = self._trans_view.toPlainText()
+        if not current_text.strip():
+            return
+        
+        entries = self._get_entries()
+        if self._current_index >= len(entries):
+            return
+        
+        source_text = entries[self._current_index][0]
+        if not source_text.strip():
+            return
+        
+        source_first = source_text.strip()[0]
+        if source_first.isalpha():
+            if source_first.isupper():
+                # Capitalize first letter
+                fixed_text = current_text[0].upper() + current_text[1:]
+            else:
+                # Lowercase first letter  
+                fixed_text = current_text[0].lower() + current_text[1:]
+            
+            self._trans_view.setPlainText(fixed_text)
+    
+    def _add_quick_punctuation(self, punct: str):
+        """Lägg till interpunktion från quick actions."""
+        current_text = self._trans_view.toPlainText()
+        self._trans_view.setPlainText(current_text + punct)
+    
+    # ── Feature 15: Watch Mode ──────────────────────────────────
+    
+    def _toggle_watch_mode(self):
+        """Toggle file watching mode."""
+        if self._watch_mode_enabled:
+            self._disable_watch_mode()
+        else:
+            self._enable_watch_mode()
+    
+    def _enable_watch_mode(self):
+        """Enable file watching."""
+        if not self._file_data or not hasattr(self._file_data, 'path'):
+            self._show_toast(self.tr("No file loaded"))
+            return
+        
+        if self._file_watcher is None:
+            self._file_watcher = QFileSystemWatcher(self)
+            self._file_watcher.fileChanged.connect(self._on_file_changed)
+        
+        file_path = str(self._file_data.path)
+        if file_path not in self._file_watcher.files():
+            self._file_watcher.addPath(file_path)
+        
+        self._watch_mode_enabled = True
+        self._show_toast(self.tr("Watch mode enabled - file changes will be detected"))
+    
+    def _disable_watch_mode(self):
+        """Disable file watching."""
+        if self._file_watcher:
+            self._file_watcher.removePaths(self._file_watcher.files())
+        
+        self._watch_mode_enabled = False
+        self._show_toast(self.tr("Watch mode disabled"))
+    
+    def _on_file_changed(self, path: str):
+        """Hantera när fil ändras externt."""
+        if not self._file_data or str(self._file_data.path) != path:
+            return
+        
+        # Kolla om auto-reload är aktiverat
+        auto_reload = getattr(self._app_settings, 'auto_reload_on_change', False)
+        
+        if auto_reload:
+            self._reload_current_file()
+            self._show_toast(self.tr("File reloaded (external change detected)"))
+        else:
+            # Visa dialog
+            reply = QMessageBox.question(
+                self, 
+                self.tr("File Changed"),
+                self.tr("The file has been changed externally. Reload?"),
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self._reload_current_file()
+    
+    def _setup_file_monitor(self, file_path: Path):
+        """Setup file monitoring för en fil."""
+        if self._watch_mode_enabled:
+            if self._file_watcher is None:
+                self._file_watcher = QFileSystemWatcher(self)
+                self._file_watcher.fileChanged.connect(self._on_file_changed)
+            
+            # Remove old paths and add new one
+            self._file_watcher.removePaths(self._file_watcher.files())
+            self._file_watcher.addPath(str(file_path))
 
     # ── Feature 7: Taggar/Filter ─────────────────────────────────
 
@@ -4417,6 +4707,12 @@ class LinguaEditWindow(QMainWindow):
             menu.addAction(self.tr("Remove Bookmark"), lambda: self._toggle_bookmark())
         else:
             menu.addAction(self.tr("Add Bookmark"), lambda: self._toggle_bookmark())
+        
+        # Pin entry
+        if index in self._pinned_entries:
+            menu.addAction(self.tr("📌 Unpin Entry"), lambda: self._toggle_pin())
+        else:
+            menu.addAction(self.tr("📌 Pin Entry"), lambda: self._toggle_pin())
         
         menu.addSeparator()
         
