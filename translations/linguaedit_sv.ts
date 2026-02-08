@@ -8,7 +8,7 @@
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation>Fuzzy</translation>
+            <translation>Luddig</translation>
         </message>
         <message>
             <source>Leading whitespace mismatch</source>
@@ -1025,19 +1025,19 @@ Sparad i: %2</translation>
         </message>
         <message>
             <source>Fuzzy / Needs work</source>
-            <translation>Fuzzy / Behöver granskas</translation>
+            <translation>Luddig / Behöver granskas</translation>
         </message>
         <message>
             <source>Fuzzy diff (previous → current)</source>
-            <translation>Fuzzy-diff (föregående → nuvarande)</translation>
+            <translation>Luddig diff (föregående → nuvarande)</translation>
         </message>
         <message>
             <source>Fuzzy: %d</source>
-            <translation>Fuzzy: %d</translation>
+            <translation>Luddiga: %d</translation>
         </message>
         <message>
             <source>Fuzzy: 0</source>
-            <translation>Fuzzy: 0</translation>
+            <translation>Luddiga: 0</translation>
         </message>
         <message>
             <source>Git Branches</source>
@@ -1093,7 +1093,7 @@ Sparad i: %2</translation>
         </message>
         <message>
             <source>Mark this string as fuzzy / needs review (Ctrl+U)</source>
-            <translation>Markera denna sträng som fuzzy / behöver granskning (Ctrl+U)</translation>
+            <translation>Markera denna sträng som luddig / behöver granskning (Ctrl+U)</translation>
         </message>
         <message>
             <source>Metadata updated</source>
@@ -1256,8 +1256,8 @@ Sparad i: %2</translation>
             <translation>ord</translation>
         </message>
         <message>
-            <source>%d strings — %d translated, %d fuzzy, %d untranslated</source>
-            <translation>%d strängar — %d översatta, %d fuzzy, %d oöversatta</translation>
+            <source>%d strings — %d translated, %d luddiga, %d untranslated</source>
+            <translation>%d strängar — %d översatta, %d luddiga, %d oöversatta</translation>
         </message>
         <message>
             <source>Source text</source>
