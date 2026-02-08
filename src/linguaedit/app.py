@@ -41,6 +41,9 @@ class LinguaEditApp:
                 info['CFBundleName'] = 'LinguaEdit'
             except ImportError:
                 pass
+            # Also patch argv[0] – Qt uses this for the menu title on macOS
+            if argv:
+                argv[0] = 'LinguaEdit'
 
         self._qt_app = QApplication(argv)
         self._qt_app.setApplicationName("LinguaEdit")
