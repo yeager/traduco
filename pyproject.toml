@@ -25,6 +25,7 @@ dependencies = [
     "polib>=1.2",
     "requests>=2.28",
     "pyenchant>=3.2",
+    "PyYAML>=6.0",
 ]
 
 [project.optional-dependencies]
