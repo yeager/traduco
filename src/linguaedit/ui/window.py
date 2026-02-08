@@ -139,13 +139,46 @@ def _lint_single(msgid: str, msgstr: str, flags: list[str]) -> list[LintIssue]:
 
 # ── Color constants (POedit-inspired) ────────────────────────────────
 
-_CLR_TRANSLATED = QColor(220, 245, 220)     # light green
-_CLR_UNTRANSLATED = QColor(255, 230, 230)   # light red
-_CLR_FUZZY = QColor(255, 245, 200)          # light yellow
-_CLR_WARNING = QColor(255, 220, 180)        # light orange
-_CLR_TRANSLATED_FG = QColor(0, 120, 0)
-_CLR_UNTRANSLATED_FG = QColor(180, 0, 0)
-_CLR_FUZZY_FG = QColor(180, 140, 0)
+# Light theme colors
+_LIGHT_COLORS = {
+    'translated': QColor(230, 248, 230),
+    'untranslated': QColor(248, 240, 240),
+    'fuzzy': QColor(252, 248, 230),
+    'warning': QColor(252, 242, 225),
+    'translated_fg': QColor(30, 130, 50),
+    'untranslated_fg': QColor(160, 50, 50),
+    'fuzzy_fg': QColor(160, 120, 20),
+}
+
+# Dark theme colors
+_DARK_COLORS = {
+    'translated': QColor(25, 50, 30),
+    'untranslated': QColor(55, 25, 25),
+    'fuzzy': QColor(55, 48, 20),
+    'warning': QColor(55, 40, 15),
+    'translated_fg': QColor(80, 200, 100),
+    'untranslated_fg': QColor(230, 100, 100),
+    'fuzzy_fg': QColor(230, 190, 60),
+}
+
+def _is_dark_theme():
+    """Detect if the system/app is using a dark theme."""
+    palette = QApplication.instance().palette()
+    bg = palette.color(QPalette.Window)
+    return bg.lightness() < 128
+
+def _get_colors():
+    """Return the appropriate color set for the current theme."""
+    return _DARK_COLORS if _is_dark_theme() else _LIGHT_COLORS
+
+# Defaults (updated at runtime)
+_CLR_TRANSLATED = _LIGHT_COLORS['translated']
+_CLR_UNTRANSLATED = _LIGHT_COLORS['untranslated']
+_CLR_FUZZY = _LIGHT_COLORS['fuzzy']
+_CLR_WARNING = _LIGHT_COLORS['warning']
+_CLR_TRANSLATED_FG = _LIGHT_COLORS['translated_fg']
+_CLR_UNTRANSLATED_FG = _LIGHT_COLORS['untranslated_fg']
+_CLR_FUZZY_FG = _LIGHT_COLORS['fuzzy_fg']
 
 
 # ── Tab data holder ──────────────────────────────────────────────────
@@ -708,6 +741,11 @@ class LinguaEditWindow(QMainWindow):
         view_menu = mb.addMenu(self.tr("&View"))
         view_menu.addAction(self.tr("Compare language…"), self._on_compare_lang)
         view_menu.addAction(self.tr("Auto-propagate"), self._on_auto_propagate)
+        view_menu.addSeparator()
+        theme_menu = view_menu.addMenu(self.tr("Theme"))
+        theme_menu.addAction(self.tr("System"), lambda: self._set_theme("system"))
+        theme_menu.addAction(self.tr("Light"), lambda: self._set_theme("light"))
+        theme_menu.addAction(self.tr("Dark"), lambda: self._set_theme("dark"))
 
         # Git
         git_menu = mb.addMenu(self.tr("&Git"))
@@ -837,21 +875,22 @@ class LinguaEditWindow(QMainWindow):
             item = _SortableItem([str(orig_idx + 1), src_preview, trans_preview, status])
             item.setData(0, Qt.UserRole, orig_idx)
 
-            # Row colors (POedit style)
+            # Row colors (theme-aware)
+            colors = _get_colors()
             if has_warning:
-                self._color_row(item, _CLR_WARNING)
+                self._color_row(item, colors['warning'])
             elif is_fuzzy:
-                self._color_row(item, _CLR_FUZZY)
+                self._color_row(item, colors['fuzzy'])
             elif not msgstr:
-                self._color_row(item, _CLR_UNTRANSLATED)
+                self._color_row(item, colors['untranslated'])
 
             # Status column color
             if not msgstr:
-                item.setForeground(3, QBrush(_CLR_UNTRANSLATED_FG))
+                item.setForeground(3, QBrush(colors['untranslated_fg']))
             elif is_fuzzy:
-                item.setForeground(3, QBrush(_CLR_FUZZY_FG))
+                item.setForeground(3, QBrush(colors['fuzzy_fg']))
             elif msgstr:
-                item.setForeground(3, QBrush(_CLR_TRANSLATED_FG))
+                item.setForeground(3, QBrush(colors['translated_fg']))
 
             self._tree.addTopLevelItem(item)
 
@@ -1546,6 +1585,41 @@ class LinguaEditWindow(QMainWindow):
                 entry.fuzzy = False
 
     # ── Auto-propagate ────────────────────────────────────────────
+
+    def _set_theme(self, theme: str):
+        """Set application theme: system, light, or dark."""
+        from PySide6.QtWidgets import QStyleFactory
+        app = QApplication.instance()
+        settings = Settings.get()
+        settings["theme"] = theme
+
+        if theme == "dark":
+            palette = QPalette()
+            palette.setColor(QPalette.Window, QColor(30, 30, 30))
+            palette.setColor(QPalette.WindowText, QColor(224, 224, 224))
+            palette.setColor(QPalette.Base, QColor(22, 22, 22))
+            palette.setColor(QPalette.AlternateBase, QColor(35, 35, 35))
+            palette.setColor(QPalette.ToolTipBase, QColor(40, 40, 40))
+            palette.setColor(QPalette.ToolTipText, QColor(224, 224, 224))
+            palette.setColor(QPalette.Text, QColor(224, 224, 224))
+            palette.setColor(QPalette.Button, QColor(40, 40, 40))
+            palette.setColor(QPalette.ButtonText, QColor(224, 224, 224))
+            palette.setColor(QPalette.BrightText, QColor(255, 50, 50))
+            palette.setColor(QPalette.Link, QColor(90, 170, 255))
+            palette.setColor(QPalette.Highlight, QColor(50, 100, 180))
+            palette.setColor(QPalette.HighlightedText, QColor(240, 240, 240))
+            app.setPalette(palette)
+        elif theme == "light":
+            app.setPalette(app.style().standardPalette())
+        else:
+            # System default
+            app.setPalette(app.style().standardPalette())
+
+        settings.save()
+        # Refresh list to update row colors
+        if self._file_data:
+            self._populate_list()
+        self._show_toast(self.tr("Theme changed"))
 
     def _on_auto_propagate(self):
         if not self._file_data:
