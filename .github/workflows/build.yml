@@ -16,8 +16,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: |
-          pip install pyinstaller PySide6 polib requests pyenchant PyYAML
+        run: pip install pyinstaller PySide6 polib requests PyYAML
       - name: Build .app
         run: |
           pyinstaller --windowed --name LinguaEdit \
@@ -27,9 +26,10 @@ jobs:
             --exclude-module=enchant \
             --paths=src src/linguaedit/app.py
           cd dist && zip -r ../LinguaEdit-${{ github.ref_name }}-macOS.zip LinguaEdit.app
-      - uses: softprops/action-gh-release@v2
+      - uses: actions/upload-artifact@v4
         with:
-          files: LinguaEdit-${{ github.ref_name }}-macOS.zip
+          name: macos-build
+          path: LinguaEdit-${{ github.ref_name }}-macOS.zip
 
   windows:
     runs-on: windows-latest
@@ -39,8 +39,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install deps
-        run: |
-          pip install pyinstaller PySide6 polib requests PyYAML
+        run: pip install pyinstaller PySide6 polib requests PyYAML
       - name: Build .exe
         run: |
           pyinstaller --windowed --name LinguaEdit `
@@ -51,9 +50,10 @@ jobs:
             --paths=src src/linguaedit/app.py
           cd dist
           7z a ../LinguaEdit-${{ github.ref_name }}-Windows.zip LinguaEdit/
-      - uses: softprops/action-gh-release@v2
+      - uses: actions/upload-artifact@v4
         with:
-          files: LinguaEdit-${{ github.ref_name }}-Windows.zip
+          name: windows-build
+          path: LinguaEdit-${{ github.ref_name }}-Windows.zip
 
   linux:
     runs-on: ubuntu-latest
@@ -67,57 +67,67 @@ jobs:
           VERSION=${GITHUB_REF_NAME#v}
           PKG=linguaedit-deb-build
           mkdir -p ${PKG}/DEBIAN
-          mkdir -p ${PKG}/opt/linguaedit
+          mkdir -p ${PKG}/usr/lib/python3/dist-packages/linguaedit
           mkdir -p ${PKG}/usr/bin
           mkdir -p ${PKG}/usr/share/linguaedit/translations
 
           # Copy source
-          cp -r src/linguaedit ${PKG}/opt/linguaedit/
+          cp -r src/linguaedit/* ${PKG}/usr/lib/python3/dist-packages/linguaedit/
           [ -d translations ] && cp translations/*.qm ${PKG}/usr/share/linguaedit/translations/ 2>/dev/null || true
-          [ -d resources ] && cp -r resources ${PKG}/opt/linguaedit/ 2>/dev/null || true
 
-          # Launcher script (uses system python + pip-installed deps)
+          # Launcher script
           cat > ${PKG}/usr/bin/linguaedit << 'SCRIPT'
-          #!/usr/bin/env python3
-          import sys
-          sys.path.insert(0, '/opt/linguaedit')
-          from linguaedit.app import main
-          main()
-          SCRIPT
+#!/usr/bin/env python3
+import sys, os
+sys.path.insert(0, '/usr/lib/python3/dist-packages')
+from linguaedit.app import main
+main()
+SCRIPT
           chmod 755 ${PKG}/usr/bin/linguaedit
 
           # Control file
           cat > ${PKG}/DEBIAN/control << EOF
-          Package: linguaedit
-          Version: ${VERSION}
-          Section: devel
-          Priority: optional
-          Architecture: all
-          Depends: python3 (>= 3.10), python3-pip, python3-venv
-          Maintainer: Daniel Nylander <po@danielnylander.se>
-          Description: Qt6 translation file editor
-           A PySide6/Qt6 translation file editor for PO, TS, JSON, XLIFF,
-           Android XML, ARB, PHP, and YAML i18n files with linting,
-           pre-translation, and platform integration.
-          EOF
+Package: linguaedit
+Version: ${VERSION}
+Section: devel
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.10), python3-pip, python3-venv
+Maintainer: Daniel Nylander <po@danielnylander.se>
+Description: Qt6 translation file editor
+ A PySide6/Qt6 translation file editor for PO, TS, JSON, XLIFF,
+ Android XML, ARB, PHP, and YAML i18n files with linting,
+ pre-translation, and platform integration.
+EOF
 
           # postinst: install pip deps
           cat > ${PKG}/DEBIAN/postinst << 'POSTINST'
-          #!/bin/bash
-          set -e
-          python3 -m venv /opt/linguaedit/venv
-          /opt/linguaedit/venv/bin/pip install --quiet PySide6 polib requests pyenchant PyYAML
-          POSTINST
+#!/bin/bash
+set -e
+pip install --break-system-packages --quiet PySide6 polib requests PyYAML 2>/dev/null || \
+  pip install --quiet PySide6 polib requests PyYAML
+POSTINST
           chmod 755 ${PKG}/DEBIAN/postinst
 
-          # prerm: cleanup
-          cat > ${PKG}/DEBIAN/prerm << 'PRERM'
-          #!/bin/bash
-          rm -rf /opt/linguaedit/venv
-          PRERM
-          chmod 755 ${PKG}/DEBIAN/prerm
-
           dpkg-deb --build ${PKG} linguaedit_${VERSION}_all.deb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: linguaedit_*_all.deb
+
+  release:
+    needs: [macos, windows, linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+      - name: List files
+        run: ls -la
       - uses: softprops/action-gh-release@v2
         with:
-          files: linguaedit_*_all.deb
+          files: |
+            LinguaEdit-*-macOS.zip
+            LinguaEdit-*-Windows.zip
+            linguaedit_*_all.deb
+          overwrite_files: true
