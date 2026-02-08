@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QProgressBar, QTabWidget, QWidget, QCheckBox,
     QAbstractItemView, QFrame
 )
-from PySide6.QtCore import Qt, Signal, QThread, pyqtSignal
+from PySide6.QtCore import Qt, Signal, QThread
 from PySide6.QtGui import QFont, QColor, QTextCharFormat, QTextCursor, QBrush
 
 # Import parsers (assuming they exist)
@@ -27,8 +27,8 @@ from linguaedit.parsers.xliff_parser import parse_xliff
 class DiffComparisonThread(QThread):
     """Thread for comparing large files."""
     
-    progress_updated = pyqtSignal(int, str)  # progress, status
-    comparison_completed = pyqtSignal(dict)  # results
+    progress_updated = Signal(int, str)  # progress, status
+    comparison_completed = Signal(dict)  # results
     
     def __init__(self, file1_entries: List[Dict], file2_entries: List[Dict], options: Dict):
         super().__init__()

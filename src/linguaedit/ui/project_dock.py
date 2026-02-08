@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
     QHeaderView, QAbstractItemView, QFileDialog,
     QMessageBox, QToolButton, QFrame
 )
-from PySide6.QtCore import Qt, Signal, QThread, pyqtSignal, QFileSystemWatcher
+from PySide6.QtCore import Qt, Signal, QThread, QFileSystemWatcher
 from PySide6.QtGui import QAction, QIcon, QBrush, QColor, QPixmap
 
 # Import parsers for statistics
@@ -30,9 +30,9 @@ from linguaedit.parsers.yaml_parser import parse_yaml
 class FileAnalysisThread(QThread):
     """Thread for analyzing project files."""
     
-    progress_updated = pyqtSignal(int, str)  # progress, status
-    file_analyzed = pyqtSignal(dict)  # file info
-    analysis_completed = pyqtSignal()
+    progress_updated = Signal(int, str)  # progress, status
+    file_analyzed = Signal(dict)  # file info
+    analysis_completed = Signal()
     
     def __init__(self, project_path: str, extensions: List[str]):
         super().__init__()

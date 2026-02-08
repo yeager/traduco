@@ -12,15 +12,15 @@ from PySide6.QtWidgets import (
     QButtonGroup, QTreeWidget, QTreeWidgetItem, QHeaderView,
     QDialogButtonBox, QProgressBar, QMessageBox, QFrame
 )
-from PySide6.QtCore import Qt, Signal, QThread, pyqtSignal
+from PySide6.QtCore import Qt, Signal, QThread
 from PySide6.QtGui import QFont, QBrush, QColor
 
 
 class BatchOperationThread(QThread):
     """Thread for performing batch operations."""
     
-    progress_updated = pyqtSignal(int, str)  # progress, status
-    operation_completed = pyqtSignal(dict)  # results
+    progress_updated = Signal(int, str)  # progress, status
+    operation_completed = Signal(dict)  # results
     
     def __init__(self, operation_type: str, entries: List[Dict], params: Dict):
         super().__init__()

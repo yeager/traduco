@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
     QGroupBox, QTextEdit, QComboBox, QProgressBar,
     QAbstractItemView, QMenu, QFrame
 )
-from PySide6.QtCore import Qt, Signal, QThread, pyqtSignal
+from PySide6.QtCore import Qt, Signal, QThread
 from PySide6.QtGui import QAction, QIcon, QKeySequence, QShortcut
 
 from linguaedit.services.glossary import (
@@ -25,8 +25,8 @@ from linguaedit.services.glossary import (
 class GlossaryImportThread(QThread):
     """Thread for importing glossary from CSV."""
     
-    progress_updated = pyqtSignal(int, str)  # progress, status
-    import_completed = pyqtSignal(dict)  # results
+    progress_updated = Signal(int, str)  # progress, status
+    import_completed = Signal(dict)  # results
     
     def __init__(self, file_path: str, language: str = ""):
         super().__init__()
