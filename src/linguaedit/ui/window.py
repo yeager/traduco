@@ -167,6 +167,20 @@ class TabData:
         self.search_text = ""
 
 
+# ── Custom tree item with numeric sort on column 0 ───────────────────
+
+class _SortableItem(QTreeWidgetItem):
+    """QTreeWidgetItem that sorts column 0 numerically."""
+    def __lt__(self, other):
+        col = self.treeWidget().sortColumn() if self.treeWidget() else 0
+        if col == 0:
+            try:
+                return int(self.text(0)) < int(other.text(0))
+            except ValueError:
+                pass
+        return self.text(col).lower() < other.text(col).lower()
+
+
 # ── Window ────────────────────────────────────────────────────────────
 
 class LinguaEditWindow(QMainWindow):
@@ -377,6 +391,7 @@ class LinguaEditWindow(QMainWindow):
         self._tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self._tree.setUniformRowHeights(True)
         self._tree.setHeaderLabels(["#", "Source text", "Translation", ""])
+        self._tree.setSortingEnabled(True)
         header = self._tree.header()
         header.setStretchLastSection(False)
         header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
@@ -818,7 +833,7 @@ class LinguaEditWindow(QMainWindow):
             src_preview = msgid[:200].replace("\n", "⏎ ") if msgid else "(empty)"
             trans_preview = msgstr[:200].replace("\n", "⏎ ") if msgstr else ""
 
-            item = QTreeWidgetItem([str(orig_idx + 1), src_preview, trans_preview, status])
+            item = _SortableItem([str(orig_idx + 1), src_preview, trans_preview, status])
             item.setData(0, Qt.UserRole, orig_idx)
 
             # Row colors (POedit style)
