@@ -16,6 +16,15 @@ All notable changes to LinguaEdit will be documented in this file.
 - Updated GitHub Actions workflow for PySide6 builds
 - Updated .deb packaging for PySide6 dependencies
 
+### Added
+
+- **Toolbar with icons and text** — Open, Save, Undo, Redo, Previous, Next, Copy Source, Pre-translate, Validate (Qt.ToolButtonTextUnderIcon style)
+- **App logo** — custom SVG/PNG icon (speech bubble + pen) used as window icon and in About dialog
+- **macOS app name fix** — menu bar now shows "LinguaEdit" instead of "Python" (via NSBundle + setApplicationDisplayName)
+- **Improved Swedish translations** — toolbar strings (Previous, Next, Copy Source, Validate) added and compiled
+- **Donate section** — GitHub Sponsors (yeager) + Swish; removed Ko-fi/PayPal links
+- **Screenshots** — main window and preferences dialog screenshots in `docs/screenshots/`
+
 ### Removed
 
 - GTK4/libadwaita/PyGObject dependencies

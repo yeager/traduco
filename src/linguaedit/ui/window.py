@@ -32,7 +32,7 @@ from PySide6.QtWidgets import (
     QTextEdit, QPlainTextEdit,
     QLabel, QPushButton, QCheckBox, QComboBox, QLineEdit,
     QProgressBar, QMenu, QStatusBar, QTabWidget,
-    QToolBar, QFrame, QScrollArea, QGroupBox,
+    QToolBar, QFrame, QScrollArea, QGroupBox, QTableWidget, QTableWidgetItem,
     QDialog, QDialogButtonBox, QFormLayout, QFileDialog,
     QMessageBox, QInputDialog, QApplication, QToolButton,
     QAbstractItemView,
@@ -174,6 +174,14 @@ class LinguaEditWindow(QMainWindow):
         self.setWindowTitle("LinguaEdit")
         self.resize(1200, 800)
         self.setAcceptDrops(True)
+
+        # Window icon
+        _icon_path = Path(__file__).parent.parent.parent.parent / "resources" / "icon.png"
+        if _icon_path.exists():
+            self.setWindowIcon(QIcon(str(_icon_path)))
+            self._app_icon_path = str(_icon_path)
+        else:
+            self._app_icon_path = None
 
         # File state
         self._file_data = None
@@ -716,25 +724,37 @@ class LinguaEditWindow(QMainWindow):
     def _build_toolbar(self):
         tb = QToolBar("Main")
         tb.setMovable(False)
-        tb.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        tb.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.addToolBar(tb)
 
+        style = self.style()
+
         # File operations
-        tb.addAction("Open", self._on_open).setShortcut(QKeySequence.Open)
-        tb.addAction("Save", self._on_save).setShortcut(QKeySequence.Save)
+        open_act = tb.addAction(style.standardIcon(style.StandardPixmap.SP_DirOpenIcon), self.tr("Open"), self._on_open)
+        open_act.setShortcut(QKeySequence.Open)
+        save_act = tb.addAction(style.standardIcon(style.StandardPixmap.SP_DialogSaveButton), self.tr("Save"), self._on_save)
+        save_act.setShortcut(QKeySequence.Save)
         tb.addSeparator()
 
-        # Navigation (POedit-style prev/next untranslated)
-        tb.addAction("◀ Prev", lambda: self._navigate_untranslated(-1))
+        # Undo / Redo
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowBack), self.tr("Undo"), self._do_undo)
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowForward), self.tr("Redo"), self._do_redo)
+        tb.addSeparator()
+
+        # Navigation
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowUp), self.tr("Previous"), lambda: self._navigate(-1))
         self._nav_counter_label = QLabel(" 0 / 0 ")
         self._nav_counter_label.setStyleSheet("font-weight: bold; padding: 0 4px;")
         tb.addWidget(self._nav_counter_label)
-        tb.addAction("Next ▶", lambda: self._navigate_untranslated(1))
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_ArrowDown), self.tr("Next"), lambda: self._navigate(1))
         tb.addSeparator()
 
-        # Validation / tools
-        tb.addAction("Validate", self._on_lint)
+        # Copy Source
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_FileIcon), self.tr("Copy Source"), self._copy_source_to_target)
         tb.addSeparator()
+
+        # Pre-translate
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_BrowserReload), self.tr("Pre-translate"), self._on_pretranslate_all)
 
         # Translation engine
         self._engine_dropdown = QComboBox()
@@ -747,8 +767,10 @@ class LinguaEditWindow(QMainWindow):
             pass
         self._engine_dropdown.setMinimumWidth(120)
         tb.addWidget(self._engine_dropdown)
-        tb.addAction("⚡ Translate", self._on_translate_current)
-        tb.addAction("Pre-translate all", self._on_pretranslate_all)
+        tb.addSeparator()
+
+        # Validate
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_DialogApplyButton), self.tr("Validate"), self._on_lint)
 
     # ── Keyboard shortcuts ────────────────────────────────────────
 
@@ -2285,22 +2307,126 @@ class LinguaEditWindow(QMainWindow):
         if not self._file_data:
             self._show_toast("No file loaded")
             return
+
+        dialog = QDialog(self)
+        dialog.setWindowTitle("File Header / Metadata")
+        dialog.setMinimumSize(600, 450)
+        layout = QVBoxLayout(dialog)
+
+        # Description
+        desc = QLabel("Edit file header metadata. Changes are applied when you click Save.")
+        desc.setWordWrap(True)
+        layout.addWidget(desc)
+
         if self._file_type == "po":
+            # Editable key-value table for PO metadata
             meta = self._file_data.metadata
-            lines = [f"{k}: {v}" for k, v in meta.items()]
-            text = "\n".join(lines) or "No metadata"
+            table = QTableWidget(len(meta), 2)
+            table.setHorizontalHeaderLabels(["Key", "Value"])
+            table.horizontalHeader().setStretchLastSection(True)
+            table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+            table.verticalHeader().setVisible(False)
+
+            for row, (key, value) in enumerate(meta.items()):
+                key_item = QTableWidgetItem(key)
+                val_item = QTableWidgetItem(value)
+                table.setItem(row, 0, key_item)
+                table.setItem(row, 1, val_item)
+
+            layout.addWidget(table)
+
+            # Add/Remove buttons
+            btn_row = QHBoxLayout()
+            add_btn = QPushButton("Add Field")
+            remove_btn = QPushButton("Remove Selected")
+
+            def add_field():
+                row = table.rowCount()
+                table.insertRow(row)
+                table.setItem(row, 0, QTableWidgetItem(""))
+                table.setItem(row, 1, QTableWidgetItem(""))
+
+            def remove_field():
+                row = table.currentRow()
+                if row >= 0:
+                    table.removeRow(row)
+
+            add_btn.clicked.connect(add_field)
+            remove_btn.clicked.connect(remove_field)
+            btn_row.addWidget(add_btn)
+            btn_row.addWidget(remove_btn)
+            btn_row.addStretch()
+            layout.addLayout(btn_row)
+
         elif self._file_type == "ts":
-            text = f"Language: {self._file_data.language}\nSource language: {self._file_data.source_language}"
+            form = QFormLayout()
+            lang_edit = QLineEdit(getattr(self._file_data, 'language', ''))
+            src_lang_edit = QLineEdit(getattr(self._file_data, 'source_language', ''))
+            form.addRow("Language:", lang_edit)
+            form.addRow("Source language:", src_lang_edit)
+            layout.addLayout(form)
+
         elif self._file_type == "xliff":
-            text = (f"Version: {self._file_data.version}\nSource: {self._file_data.source_language}\n"
-                    f"Target: {self._file_data.target_language}")
+            form = QFormLayout()
+            ver_edit = QLineEdit(getattr(self._file_data, 'version', ''))
+            src_edit = QLineEdit(getattr(self._file_data, 'source_language', ''))
+            tgt_edit = QLineEdit(getattr(self._file_data, 'target_language', ''))
+            form.addRow("Version:", ver_edit)
+            form.addRow("Source language:", src_edit)
+            form.addRow("Target language:", tgt_edit)
+            layout.addLayout(form)
+
         elif self._file_type == "arb":
-            text = f"Locale: {self._file_data.locale}\nEntries: {self._file_data.total_count}"
+            form = QFormLayout()
+            locale_edit = QLineEdit(getattr(self._file_data, 'locale', ''))
+            form.addRow("Locale:", locale_edit)
+            layout.addLayout(form)
+
         elif self._file_type == "yaml":
-            text = f"Root key: {self._file_data.root_key}\nEntries: {self._file_data.total_count}"
+            form = QFormLayout()
+            root_edit = QLineEdit(getattr(self._file_data, 'root_key', ''))
+            form.addRow("Root key:", root_edit)
+            layout.addLayout(form)
+
         else:
-            text = f"File: {self._file_data.path.name}\nEntries: {self._file_data.total_count}"
-        self._show_dialog("File Metadata", text)
+            info = QLabel(f"File: {self._file_data.path.name}\nEntries: {self._file_data.total_count}")
+            layout.addWidget(info)
+
+        # Dialog buttons
+        buttons = QDialogButtonBox(QDialogButtonBox.Save | QDialogButtonBox.Cancel)
+        layout.addWidget(buttons)
+
+        def on_save():
+            if self._file_type == "po":
+                new_meta = {}
+                for row in range(table.rowCount()):
+                    key = table.item(row, 0)
+                    val = table.item(row, 1)
+                    if key and key.text().strip():
+                        new_meta[key.text().strip()] = val.text() if val else ""
+                self._file_data.metadata = new_meta
+                self._modified = True
+            elif self._file_type == "ts":
+                self._file_data.language = lang_edit.text()
+                self._file_data.source_language = src_lang_edit.text()
+                self._modified = True
+            elif self._file_type == "xliff":
+                self._file_data.version = ver_edit.text()
+                self._file_data.source_language = src_edit.text()
+                self._file_data.target_language = tgt_edit.text()
+                self._modified = True
+            elif self._file_type == "arb":
+                self._file_data.locale = locale_edit.text()
+                self._modified = True
+            elif self._file_type == "yaml":
+                self._file_data.root_key = root_edit.text()
+                self._modified = True
+            self._show_toast("Metadata updated")
+            dialog.accept()
+
+        buttons.accepted.connect(on_save)
+        buttons.rejected.connect(dialog.reject)
+        dialog.exec()
 
     # ── Compare language / Split view ─────────────────────────────
 
@@ -2404,22 +2530,30 @@ class LinguaEditWindow(QMainWindow):
     # ── Donate ────────────────────────────────────────────────────
 
     def _on_donate(self):
-        self._show_dialog(
-            "Donate ♥",
-            "LinguaEdit is free software.\n\n"
-            "If you find it useful, consider supporting development:\n\n"
-            "• GitHub Sponsors: github.com/sponsors/danielnylander\n"
-            "• Ko-fi: ko-fi.com/danielnylander\n"
-            "• PayPal: paypal.me/danielnylander\n"
-            "• 🇸🇪 Swish: +46702526206"
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Donate ♥")
+        msg.setTextFormat(Qt.RichText)
+        msg.setText(
+            "<p>LinguaEdit is free software.</p>"
+            "<p>If you find it useful, consider supporting development:</p>"
+            "<p>❤️ <b>GitHub Sponsors:</b> <a href='https://github.com/sponsors/yeager'>"
+            "github.com/sponsors/yeager</a></p>"
+            "<p>🇸🇪 <b>Swish:</b> +46702526206 — "
+            "<a href='swish://payment?payee=0702526206&message=LinguaEdit'>"
+            "Öppna Swish</a></p>"
         )
+        msg.exec()
 
     # ── About ─────────────────────────────────────────────────────
 
     def _on_about(self):
+        icon_html = ""
+        if self._app_icon_path:
+            icon_html = f"<p><img src='{self._app_icon_path}' width='64' height='64'></p>"
         QMessageBox.about(
             self,
             "About LinguaEdit",
+            f"{icon_html}"
             f"<h2>LinguaEdit</h2>"
             f"<p>Version {__version__}</p>"
             f"<p>A translation file editor for PO, TS, JSON, XLIFF, "

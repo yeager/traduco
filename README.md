@@ -7,7 +7,7 @@ A Qt6/PySide6 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, *
 ![Version](https://img.shields.io/badge/version-0.4.0-orange)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
-<!-- ![Screenshot](docs/screenshot.png) -->
+![LinguaEdit main window](docs/screenshots/main-window.png)
 
 ## Features
 
@@ -33,6 +33,8 @@ A Qt6/PySide6 translation file editor for **PO**, **TS**, **JSON**, **XLIFF**, *
 - **Comment editing** — translator comments per entry
 - **Character & word count** — live display in status bar
 - **Dark/light theme** — follows system preference or manual toggle
+- **Icon toolbar** — Open, Save, Undo, Redo, Previous, Next, Copy Source, Pre-translate, Validate — with icons and text labels
+- **App logo** — custom SVG/PNG icon for window and About dialog
 
 ### Platform Integration
 
@@ -139,6 +141,11 @@ linguaedit/
 ## License
 
 GPL-3.0-or-later — see [LICENSE](LICENSE)
+
+## Support / Donate
+
+- [GitHub Sponsors](https://github.com/sponsors/yeager)
+- 🇸🇪 Swish: +46702526206
 
 ## Author
 

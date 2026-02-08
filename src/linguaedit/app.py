@@ -31,8 +31,20 @@ class LinguaEditApp:
 
     def __init__(self, argv: list[str]):
         self._argv = argv
+
+        # Fix macOS menu bar app name (must be before QApplication)
+        if sys.platform == 'darwin':
+            try:
+                from Foundation import NSBundle
+                bundle = NSBundle.mainBundle()
+                info = bundle.localizedInfoDictionary() or bundle.infoDictionary()
+                info['CFBundleName'] = 'LinguaEdit'
+            except ImportError:
+                pass
+
         self._qt_app = QApplication(argv)
         self._qt_app.setApplicationName("LinguaEdit")
+        self._qt_app.setApplicationDisplayName("LinguaEdit")
         self._qt_app.setOrganizationName("danielnylander")
         self._qt_app.setOrganizationDomain("danielnylander.se")
         self._qt_app.setDesktopFileName(APP_ID)

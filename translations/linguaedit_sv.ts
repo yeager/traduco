@@ -625,5 +625,21 @@ Sparad i: %2</translation>
         <source>About Qt</source>
         <translation>Om Qt</translation>
     </message>
+    <message>
+        <source>Previous</source>
+        <translation>Föregående</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Nästa</translation>
+    </message>
+    <message>
+        <source>Copy Source</source>
+        <translation>Kopiera källa</translation>
+    </message>
+    <message>
+        <source>Validate</source>
+        <translation>Validera</translation>
+    </message>
 </context>
 </TS>
