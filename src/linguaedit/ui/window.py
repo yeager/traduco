@@ -377,7 +377,7 @@ class LinguaEditWindow(QMainWindow):
         self._sort_combo.addItems([
             self.tr("File order"), self.tr("Source A → Z"), self.tr("Source Z → A"),
             self.tr("Translation A → Z"), self.tr("Translation Z → A"),
-            self.tr("By status"), self.tr("By length"), self.tr("By reference"),
+            self.tr("Untranslated/errors first"), self.tr("By length"), self.tr("By reference"),
         ])
         self._sort_combo.setMinimumWidth(120)
         self._sort_combo.currentIndexChanged.connect(self._on_sort_changed)
@@ -1518,7 +1518,14 @@ class LinguaEditWindow(QMainWindow):
         elif mode == "status":
             def status_key(i):
                 _, msgstr, fuzzy = entries[i]
-                return 0 if not msgstr else (1 if fuzzy else 2)
+                has_lint = bool(self._lint_cache.get(i))
+                if not msgstr:
+                    return 0  # untranslated first
+                if has_lint:
+                    return 1  # lint errors second
+                if fuzzy:
+                    return 2  # fuzzy third
+                return 3  # translated last
             indices.sort(key=status_key)
             self._sort_order = indices
         elif mode == "length":
