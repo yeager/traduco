@@ -16,8 +16,8 @@ from linguaedit.services.settings import Settings
 def _find_translations_dir() -> Path:
     """Find the translations directory, checking multiple locations."""
     candidates = [
+        Path(__file__).parent / "translations",                 # installed (inside package)
         Path(__file__).parent.parent.parent / "translations",  # dev: repo root
-        Path(__file__).parent / "translations",                 # installed
         Path(sys.prefix) / "share" / "linguaedit" / "translations",
     ]
     for d in candidates:
@@ -61,11 +61,27 @@ class LinguaEditApp:
 
         # If language is "en", also check system locale for a better match
         if lang == "en":
-            sys_locale = QLocale.system().name()[:2]  # e.g. "sv"
+            # Try QLocale first, then macOS defaults, then Python locale
+            sys_lang = QLocale.system().name()[:2]
+            if sys_lang in ("C", "en", ""):
+                try:
+                    import subprocess
+                    result = subprocess.run(
+                        ["defaults", "read", "-g", "AppleLanguages"],
+                        capture_output=True, text=True, timeout=2
+                    )
+                    # Parse first language from plist output like '(\n    "sv-SE",\n    "en-SE"\n)'
+                    for line in result.stdout.splitlines():
+                        line = line.strip().strip('",')
+                        if line and len(line) >= 2 and not line.startswith("(") and not line.startswith(")"):
+                            sys_lang = line[:2]
+                            break
+                except Exception:
+                    pass
             translations_dir = _find_translations_dir()
-            sys_qm = translations_dir / f"linguaedit_{sys_locale}.qm"
+            sys_qm = translations_dir / f"linguaedit_{sys_lang}.qm"
             if sys_qm.exists():
-                lang = sys_locale
+                lang = sys_lang
 
         qt_locale = QLocale(lang)
 
