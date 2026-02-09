@@ -83,7 +83,7 @@ class SplitDialog(QDialog):
             part1 = self._source[:pos].strip()
             part2 = self._source[pos:].strip()
             self._preview_label.setText(
-                self.tr("Segment 1: "{}"  |  Segment 2: "{}"").format(
+                self.tr("Segment 1: \u201c{}\u201d  |  Segment 2: \u201c{}\u201d").format(
                     part1[:60] + ("…" if len(part1) > 60 else ""),
                     part2[:60] + ("…" if len(part2) > 60 else ""),
                 )

@@ -27,6 +27,7 @@ dependencies = [
     "pyenchant>=3.2",
     "PyYAML>=6.0",
     "pyobjc-framework-Cocoa>=9.0; sys_platform == 'darwin'",
+    "defusedxml>=0.7",
 ]
 
 [project.optional-dependencies]

@@ -163,6 +163,63 @@ def get_tm_stats() -> dict:
     return {"total": total, "languages": languages}
 
 
+def concordance_search(query: str, source_lang: str = "", target_lang: str = "", max_results: int = 100) -> List[TMMatch]:
+    """Search TM for segments containing the query in source or target."""
+    if not query.strip():
+        return []
+
+    try:
+        _init_db()
+    except Exception:
+        return []
+
+    matches = []
+    pattern = f"%{query}%"
+
+    try:
+        with sqlite3.connect(TM_DB) as conn:
+            if source_lang and target_lang:
+                cursor = conn.execute("""
+                    SELECT source, target, source_lang, target_lang, file_path, timestamp
+                    FROM translation_memory
+                    WHERE (source LIKE ? OR target LIKE ?)
+                      AND source_lang = ? AND target_lang = ?
+                    ORDER BY timestamp DESC
+                    LIMIT ?
+                """, (pattern, pattern, source_lang, target_lang, max_results))
+            else:
+                cursor = conn.execute("""
+                    SELECT source, target, source_lang, target_lang, file_path, timestamp
+                    FROM translation_memory
+                    WHERE source LIKE ? OR target LIKE ?
+                    ORDER BY timestamp DESC
+                    LIMIT ?
+                """, (pattern, pattern, max_results))
+
+            query_lower = query.lower()
+            for row in cursor:
+                db_source, db_target, db_src_lang, db_tgt_lang, db_file, db_timestamp = row
+                # Score based on how prominent the match is
+                src_count = db_source.lower().count(query_lower)
+                tgt_count = db_target.lower().count(query_lower)
+                total_len = max(len(db_source) + len(db_target), 1)
+                score = (src_count + tgt_count) * len(query) / total_len
+                matches.append(TMMatch(
+                    source=db_source,
+                    target=db_target,
+                    source_lang=db_src_lang,
+                    target_lang=db_tgt_lang,
+                    similarity=min(score, 1.0),
+                    file_path=db_file,
+                    timestamp=db_timestamp,
+                ))
+    except Exception:
+        return []
+
+    matches.sort(key=lambda m: m.similarity, reverse=True)
+    return matches[:max_results]
+
+
 def clear_tm() -> int:
     """Clear all TM entries. Returns count of deleted entries."""
     try:

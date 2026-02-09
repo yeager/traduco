@@ -40,6 +40,12 @@ class TranslationEntry:
         )
 
     def to_polib(self) -> polib.POEntry:
+        # Sync fuzzy bool back to flags list
+        flags = list(self.flags)
+        if self.fuzzy and "fuzzy" not in flags:
+            flags.append("fuzzy")
+        elif not self.fuzzy and "fuzzy" in flags:
+            flags.remove("fuzzy")
         entry = polib.POEntry(
             msgid=self.msgid,
             msgstr=self.msgstr,
@@ -47,7 +53,7 @@ class TranslationEntry:
             msgctxt=self.msgctxt or None,
             comment=self.comment,
             tcomment=self.tcomment,
-            flags=self.flags,
+            flags=flags,
             occurrences=self.occurrences,
         )
         if self.msgstr_plural:
