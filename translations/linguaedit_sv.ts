@@ -3267,6 +3267,26 @@ Please reload the file to see changes.</source>
         <source>Report a Bug</source>
         <translation>Rapportera ett fel</translation>
     </message>
+    <message>
+        <source>Extract Subtitles from Video…</source>
+        <translation>Extrahera undertexter från video…</translation>
+    </message>
+    <message>
+        <source>Video</source>
+        <translation>Video</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation>Statistik</translation>
+    </message>
+    <message>
+        <source>AI Review</source>
+        <translation>AI-granskning</translation>
+    </message>
+    <message>
+        <source>Glossary</source>
+        <translation>Ordlista</translation>
+    </message>
 </context>
 <context>
     <name>Linter</name>
@@ -5385,6 +5405,182 @@ kvalitetssäkring, stavningskontroll och plattformsintegrering.</translation>
         <location filename="../src/linguaedit/ui/locale_map_dialog.py" line="180"/>
         <source>Translation Progress</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FFmpegMissingDialog</name>
+    <message>
+        <source>FFmpeg krävs</source>
+        <translation>FFmpeg krävs</translation>
+    </message>
+    <message>
+        <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
+        <translation>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Installationsanvisningar</source>
+        <translation>Installationsanvisningar</translation>
+    </message>
+    <message>
+        <source>Bläddra efter ffmpeg…</source>
+        <translation>Bläddra efter ffmpeg…</translation>
+    </message>
+    <message>
+        <source>Försök igen</source>
+        <translation>Försök igen</translation>
+    </message>
+    <message>
+        <source>Öppna hämtningssida</source>
+        <translation>Öppna hämtningssida</translation>
+    </message>
+    <message>
+        <source>Avbryt</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Välj ffmpeg-binär</source>
+        <translation>Välj ffmpeg-binär</translation>
+    </message>
+    <message>
+        <source>Körbara filer (*)</source>
+        <translation>Körbara filer (*)</translation>
+    </message>
+    <message>
+        <source>Ogiltig fil</source>
+        <translation>Ogiltig fil</translation>
+    </message>
+    <message>
+        <source>Den valda filen verkar inte vara ffmpeg.</source>
+        <translation>Den valda filen verkar inte vara ffmpeg.</translation>
+    </message>
+    <message>
+        <source>Fel</source>
+        <translation>Fel</translation>
+    </message>
+    <message>
+        <source>Kunde inte köra den valda filen.</source>
+        <translation>Kunde inte köra den valda filen.</translation>
+    </message>
+    <message>
+        <source>Ej hittad</source>
+        <translation>Ej hittad</translation>
+    </message>
+    <message>
+        <source>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</source>
+        <translation>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</translation>
+    </message>
+</context>
+<context>
+    <name>VideoSubtitleDialog</name>
+    <message>
+        <source>Extrahera undertexter från video</source>
+        <translation>Extrahera undertexter från video</translation>
+    </message>
+    <message>
+        <source>Videofil</source>
+        <translation>Videofil</translation>
+    </message>
+    <message>
+        <source>Ingen fil vald</source>
+        <translation>Ingen fil vald</translation>
+    </message>
+    <message>
+        <source>Bläddra…</source>
+        <translation>Bläddra…</translation>
+    </message>
+    <message>
+        <source>Undertextspår</source>
+        <translation>Undertextspår</translation>
+    </message>
+    <message>
+        <source>Utdataformat</source>
+        <translation>Utdataformat</translation>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation>Format:</translation>
+    </message>
+    <message>
+        <source>Förhandsgranskning</source>
+        <translation>Förhandsgranskning</translation>
+    </message>
+    <message>
+        <source>Välj en videofil för att förhandsgranska undertexter</source>
+        <translation>Välj en videofil för att förhandsgranska undertexter</translation>
+    </message>
+    <message>
+        <source>Spela upp / pausa</source>
+        <translation>Spela upp / pausa</translation>
+    </message>
+    <message>
+        <source>Stoppa</source>
+        <translation>Stoppa</translation>
+    </message>
+    <message>
+        <source>Extrahera och öppna</source>
+        <translation>Extrahera och öppna</translation>
+    </message>
+    <message>
+        <source>Extrahera och spara som…</source>
+        <translation>Extrahera och spara som…</translation>
+    </message>
+    <message>
+        <source>Stäng</source>
+        <translation>Stäng</translation>
+    </message>
+    <message>
+        <source>Välj videofil</source>
+        <translation>Välj videofil</translation>
+    </message>
+    <message>
+        <source>Inga undertextspår hittades</source>
+        <translation>Inga undertextspår hittades</translation>
+    </message>
+    <message>
+        <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+        <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
+    </message>
+    <message>
+        <source>%d undertextspår hittades. Längd: %s</source>
+        <translation>%d undertextspår hittades. Längd: %s</translation>
+    </message>
+    <message>
+        <source>Förhandsgranskning misslyckades: %s</source>
+        <translation>Förhandsgranskning misslyckades: %s</translation>
+    </message>
+    <message>
+        <source>Spara undertext som</source>
+        <translation>Spara undertext som</translation>
+    </message>
+    <message>
+        <source>Klart</source>
+        <translation>Klart</translation>
+    </message>
+    <message>
+        <source>Undertexten har sparats till:
+%s</source>
+        <translation>Undertexten har sparats till:
+%s</translation>
+    </message>
+    <message>
+        <source>Fel vid extrahering</source>
+        <translation>Fel vid extrahering</translation>
+    </message>
+    <message>
+        <source>Kunde inte extrahera undertexten:
+%s</source>
+        <translation>Kunde inte extrahera undertexten:
+%s</translation>
+    </message>
+    <message>
+        <source>Fel</source>
+        <translation>Fel</translation>
+    </message>
+    <message>
+        <source>Kunde inte läsa videofilen:
+%s</source>
+        <translation>Kunde inte läsa videofilen:
+%s</translation>
     </message>
 </context>
 </TS>

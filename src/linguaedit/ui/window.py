@@ -103,6 +103,7 @@ from linguaedit.services.achievements import get_achievement_manager
 from linguaedit.services.macros import get_macro_manager, MacroActionType
 from linguaedit.ui.plugin_dialog import PluginDialog
 from linguaedit.ui.history_dialog import HistoryDialog, FileHistoryDialog
+from linguaedit.ui.video_subtitle_dialog import VideoSubtitleDialog
 from linguaedit.ui.unicode_dialog import UnicodeDialog
 from linguaedit.ui.achievements_dialog import AchievementsDialog
 from linguaedit.ui.macro_dialog import MacroDialog
@@ -165,7 +166,7 @@ _ALL_EXTENSIONS = {
     ".xml", ".arb", ".php", ".yml", ".yaml",
 }
 
-_FILE_FILTER = "Translation files (*.po *.pot *.ts *.json *.xliff *.xlf *.xml *.arb *.php *.yml *.yaml *.csv *.tres *.properties *.srt *.vtt)"
+_FILE_FILTER = "Translation files (*.po *.pot *.ts *.json *.xliff *.xlf *.xml *.arb *.php *.yml *.yaml *.csv *.tres *.properties *.srt *.vtt);;Video files (*.mkv *.mp4 *.avi *.mov *.webm *.flv *.wmv *.ogv)"
 
 
 # ── Inline linting for a single entry ────────────────────────────────
@@ -688,7 +689,7 @@ class LinguaEditWindow(QMainWindow):
         # ── Bottom: source + translation editors ──
         editor_container = QWidget()
         editor_layout = QVBoxLayout(editor_container)
-        editor_layout.setContentsMargins(0, 4, 0, 0)
+        editor_layout.setContentsMargins(8, 4, 8, 0)
         editor_layout.setSpacing(4)
 
         # Fuzzy diff (hidden by default)
@@ -703,7 +704,7 @@ class LinguaEditWindow(QMainWindow):
 
         # Source label + view
         self._source_header = QLabel(self.tr("<b>Source text:</b>"))
-        self._source_header.setContentsMargins(6, 0, 6, 0)
+        self._source_header.setContentsMargins(12, 2, 12, 0)
         editor_layout.addWidget(self._source_header)
         self._source_view = QTextEdit()
         self._source_view.setReadOnly(True)
@@ -714,7 +715,7 @@ class LinguaEditWindow(QMainWindow):
 
         # Translation label + view
         self._trans_header = QLabel(self.tr("<b>Translation:</b>"))
-        self._trans_header.setContentsMargins(6, 0, 6, 0)
+        self._trans_header.setContentsMargins(12, 2, 12, 0)
         editor_layout.addWidget(self._trans_header)
         self._trans_view = TranslationEditor()
         self._trans_view.setFrameShape(QFrame.StyledPanel)
@@ -926,23 +927,39 @@ class LinguaEditWindow(QMainWindow):
         outer_splitter.addWidget(self._side_panel)
         outer_splitter.setSizes([850, 300])
 
-        # ── Left sidebar (quick actions) ──
+        # ── Left sidebar (quick actions — full panel) ──
+        from PySide6.QtCore import QSize
         self._sidebar = QToolBar()
         self._sidebar.setOrientation(Qt.Vertical)
         self._sidebar.setMovable(False)
-        self._sidebar.setIconSize(self._sidebar.iconSize() * 1.4)
+        self._sidebar.setIconSize(QSize(28, 28))
         self._sidebar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-        self._sidebar.setStyleSheet("QToolBar { spacing: 6px; padding: 4px; }")
+        self._sidebar.setStyleSheet(
+            "QToolBar { spacing: 8px; padding: 6px; background: palette(window); "
+            "border-right: 1px solid palette(mid); }"
+            "QToolButton { min-width: 72px; padding: 6px 4px; font-size: 11px; }"
+        )
 
         style = self.style()
+        # File operations
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_DialogOpenButton), self.tr("Open"), self._on_open)
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_DialogSaveButton), self.tr("Save"), self._on_save)
         self._sidebar.addSeparator()
+        # Quality
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_DialogApplyButton), self.tr("Validate"), self._on_lint)
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_MediaPlay), self.tr("Compile"), self._on_compile)
         self._sidebar.addSeparator()
+        # Translation
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_ComputerIcon), self.tr("Pre-translate"), self._on_pretranslate_all)
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_FileDialogContentsView), self.tr("Search"), self._toggle_search_replace)
+        self._sidebar.addSeparator()
+        # Video subtitle extraction
+        self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_DriveDVDIcon), self.tr("Video"), self._on_video_subtitles)
+        self._sidebar.addSeparator()
+        # Tools
+        self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_MessageBoxInformation), self.tr("Statistics"), self._show_statistics_dialog)
+        self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_BrowserReload), self.tr("AI Review"), self._show_ai_review)
+        self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_FileDialogDetailedView), self.tr("Glossary"), self._show_glossary_dialog)
         self._sidebar.addSeparator()
         self._sidebar.addAction(style.standardIcon(style.StandardPixmap.SP_FileDialogDetailedView), self.tr("Settings"), self._on_preferences)
 
@@ -1122,6 +1139,8 @@ class LinguaEditWindow(QMainWindow):
         crowdin_menu.addAction(self.tr("Pull Latest"), self._crowdin_pull_latest)
         tools_menu.addSeparator()
         tools_menu.addAction(self.tr("Glossary…"), self._show_glossary_dialog)
+        tools_menu.addSeparator()
+        tools_menu.addAction(self.tr("Extract Subtitles from Video…"), self._on_video_subtitles)
         
         # View
         view_menu = mb.addMenu(self.tr("&View"))
@@ -2521,6 +2540,13 @@ class LinguaEditWindow(QMainWindow):
             elif p.suffix == ".resx":
                 self._file_data = parse_resx(p)
                 self._file_type = "resx"
+            elif p.suffix.lower() in (".mkv", ".mp4", ".avi", ".mov", ".webm", ".flv", ".wmv", ".ogv", ".mpg", ".mpeg", ".m2ts", ".3gp"):
+                # Video file — open extraction dialog instead
+                dlg = VideoSubtitleDialog(self)
+                dlg.subtitle_extracted.connect(self._load_file)
+                dlg.open_video(p)
+                dlg.exec()
+                return
             else:
                 self._show_toast(self.tr("Unsupported file type: %s") % p.suffix)
                 return
@@ -3697,6 +3723,12 @@ class LinguaEditWindow(QMainWindow):
         dialog.exec()
 
     # ── Compile translation ──────────────────────────────────────
+
+    def _on_video_subtitles(self):
+        """Open the video subtitle extraction dialog."""
+        dlg = VideoSubtitleDialog(self)
+        dlg.subtitle_extracted.connect(self._load_file)
+        dlg.exec()
 
     def _on_compile(self):
         """Compile the current translation file (.po → .mo, .ts → .qm)."""
