@@ -37,18 +37,43 @@ Section: devel
 Priority: optional
 Architecture: all
 Depends: python3 (>= 3.10), python3-pip, python3-venv
+Recommends: python3-polib, python3-yaml
 Maintainer: Daniel Nylander <po@danielnylander.se>
 Description: Qt6 translation file editor
  A PySide6/Qt6 translation file editor for PO, TS, JSON, XLIFF,
  Android XML, ARB, PHP, and YAML i18n files with linting,
  pre-translation, and platform integration.
+ .
+ PySide6 is installed automatically via pip during package setup.
+ If the automatic install fails, run: pip install PySide6
 """)
 
 # postinst
 with open(f"{PKG}/DEBIAN/postinst", "w") as f:
-    f.write("#!/bin/bash\nset -e\n")
-    f.write("pip install --break-system-packages --quiet PySide6 polib requests PyYAML 2>/dev/null || ")
-    f.write("pip install --quiet PySide6 polib requests PyYAML\n")
+    f.write("""#!/bin/bash
+set -e
+
+DEPS="PySide6 polib requests PyYAML pyenchant"
+
+# Try pip install with --break-system-packages (Python 3.11+/PEP 668),
+# fall back to regular pip, then pipx as last resort
+if python3 -m pip install --break-system-packages --quiet $DEPS 2>/dev/null; then
+    echo "LinguaEdit: Python dependencies installed via pip"
+elif python3 -m pip install --quiet $DEPS 2>/dev/null; then
+    echo "LinguaEdit: Python dependencies installed via pip"
+elif command -v pipx >/dev/null 2>&1; then
+    pipx install linguaedit 2>/dev/null || true
+    echo "LinguaEdit: Installed via pipx"
+else
+    echo ""
+    echo "=========================================="
+    echo "  LinguaEdit: Could not auto-install PySide6."
+    echo "  Please run manually:"
+    echo "    pip install PySide6 polib requests PyYAML pyenchant"
+    echo "=========================================="
+    echo ""
+fi
+""")
 os.chmod(f"{PKG}/DEBIAN/postinst", 0o755)
 
 # Desktop file

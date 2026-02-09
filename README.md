@@ -137,29 +137,33 @@ Work efficiently with full keyboard support:
 
 ## 🚀 Installation
 
-### Package Managers
+### pip / pipx (All Platforms)
 ```bash
-# Python package managers
 pip install linguaedit
+# or
 pipx install linguaedit
-
-# macOS Homebrew (coming soon)
-brew install linguaedit
 ```
 
 ### Linux Packages
 
-#### Debian/Ubuntu (APT Repository)
+#### Debian/Ubuntu (.deb)
 ```bash
+# Add APT repository
 echo "deb https://yeager.github.io/debian-repo stable main" | sudo tee /etc/apt/sources.list.d/yeager.list
 wget -O - https://yeager.github.io/debian-repo/key.gpg | sudo apt-key add -
 sudo apt update
 sudo apt install linguaedit
 ```
 
+> **Note:** PySide6 is not available as a system package on most Ubuntu/Debian versions.
+> The .deb package will attempt to install it via pip automatically.
+> If that fails, install it manually:
+> ```bash
+> pip install PySide6
+> ```
+
 #### RPM-based (RHEL, Fedora, openSUSE)
 ```bash
-# Add RPM repository
 sudo tee /etc/yum.repos.d/yeager.repo << EOF
 [yeager]
 name=Yeager's RPM Repository
@@ -173,10 +177,22 @@ sudo yum install linguaedit
 sudo dnf install linguaedit
 ```
 
-### Windows & macOS Installers
-Download platform-specific installers from [GitHub Releases](https://github.com/yeager/linguaedit/releases):
-- **Windows**: `LinguaEdit-1.0.0-Windows-x64.exe`
-- **macOS**: `LinguaEdit-1.0.0-macOS.dmg`
+### Windows
+
+Download the standalone `.exe` installer from [GitHub Releases](https://github.com/yeager/linguaedit/releases):
+- **Windows**: `LinguaEdit-x.x.x-Windows-x64.exe`
+
+The Windows build is a self-contained PyInstaller bundle — no Python installation required.
+
+> **File associations:** A future NSIS/Inno Setup installer will offer to associate
+> `.po`, `.ts`, `.xliff`, and other translation file types with LinguaEdit during installation.
+
+### macOS
+
+Download from [GitHub Releases](https://github.com/yeager/linguaedit/releases):
+- **macOS**: `LinguaEdit-x.x.x-macOS.dmg`
+
+Or install via pip/pipx (see above). Homebrew tap coming soon.
 
 ## 🛠️ Development
 
