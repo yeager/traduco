@@ -4455,13 +4455,13 @@ class LinguaEditWindow(QMainWindow):
             f"{icon_html}"
             f"<h2>LinguaEdit</h2>"
             f"<p>Version {__version__}</p>"
-            f"<p>A translation file editor for PO, TS, JSON, XLIFF, "
-            f"Android, ARB, PHP, and YAML files.</p>"
-            f"<p>Developer: Daniel Nylander &lt;po@danielnylander.se&gt;</p>"
-            f"<p>License: GPL-3.0-or-later</p>"
-            f"<p>Website: <a href='https://github.com/yeager/linguaedit'>"
-            f"github.com/yeager/linguaedit</a></p>"
-            f"<p>© 2026 Daniel Nylander</p>"
+            "<p>" + self.tr("A translation file editor for PO, TS, JSON, XLIFF, "
+            "Android, ARB, PHP, and YAML files.") + "</p>"
+            "<p>" + self.tr("Developer:") + " Daniel Nylander &lt;po@danielnylander.se&gt;</p>"
+            "<p>" + self.tr("License:") + " GPL-3.0-or-later</p>"
+            "<p>" + self.tr("Website:") + " <a href='https://www.linguaedit.org'>"
+            "www.linguaedit.org</a></p>"
+            "<p>© 2026 Daniel Nylander</p>"
         )
 
     # ── Platform integration ──────────────────────────────────────
@@ -4923,11 +4923,11 @@ class LinguaEditWindow(QMainWindow):
         fuzzy = sum(1 for _, _, is_fuzzy in entries if is_fuzzy)
         untranslated = total - translated - fuzzy
         
-        html_content.append("<h2>Statistics</h2>")
-        html_content.append(f"<p>Total entries: {total}</p>")
-        html_content.append(f"<p>Translated: {translated} ({translated/total*100:.1f}%)</p>")
-        html_content.append(f"<p>Fuzzy: {fuzzy} ({fuzzy/total*100:.1f}%)</p>")
-        html_content.append(f"<p>Untranslated: {untranslated} ({untranslated/total*100:.1f}%)</p>")
+        html_content.append("<h2>" + self.tr("Statistics") + "</h2>")
+        html_content.append("<p>" + self.tr("Total entries:") + f" {total}</p>")
+        html_content.append("<p>" + self.tr("Translated:") + f" {translated} ({translated/total*100:.1f}%)</p>")
+        html_content.append("<p>" + self.tr("Fuzzy:") + f" {fuzzy} ({fuzzy/total*100:.1f}%)</p>")
+        html_content.append("<p>" + self.tr("Untranslated:") + f" {untranslated} ({untranslated/total*100:.1f}%)</p>")
         
         # Table
         html_content.append("<h2>Entries</h2>")

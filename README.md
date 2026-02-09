@@ -12,7 +12,7 @@
 
 LinguaEdit is a feature-rich, cross-platform translation editor that supports 17+ file formats, translation memory, AI-powered review, and a modern UI designed for productive translation workflows.
 
-🌐 **Website:** [linguaedit.org](https://linguaedit.org) (coming soon)
+🌐 **Website:** [www.linguaedit.org](https://www.linguaedit.org)
 📦 **Releases:** [GitHub Releases](https://github.com/yeager/linguaedit/releases)
 📝 **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 🐛 **Issues:** [GitHub Issues](https://github.com/yeager/linguaedit/issues)
