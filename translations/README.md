@@ -1,45 +1,50 @@
-# Translating LinguaEdit 🌍
+# Translations
 
-Want to help translate LinguaEdit into your language? Awesome!
+LinguaEdit uses Qt's translation system (`.ts` files).
 
-## How to contribute
+## Current Languages
+
+| Language | File | Status |
+|----------|------|--------|
+| Swedish (sv) | `linguaedit_sv.ts` | ✅ Maintained |
+
+## How to Contribute a Translation
 
 1. **Copy the template:**
    ```bash
-   cp linguaedit_template.ts linguaedit_XX.ts
+   cp linguaedit_template.ts linguaedit_LANG.ts
    ```
-   Replace `XX` with your [language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `de`, `fr`, `ja`, `pt_BR`).
+   Replace `LANG` with your language code (e.g., `de`, `fr`, `ja`, `zh_CN`).
 
-2. **Translate** using one of:
-   - **LinguaEdit itself** — open your `.ts` file and start translating!
-   - **Qt Linguist** — `linguist linguaedit_XX.ts`
-   - Any text editor (it's XML)
+2. **Translate the strings** using one of:
+   - [Qt Linguist](https://doc.qt.io/qt-6/linguist-translators.html) (recommended)
+   - [LinguaEdit](https://github.com/yeager/linguaedit) itself!
+   - Any text editor (`.ts` files are XML)
 
-3. **Compile** (optional — we'll do this before release):
-   ```bash
-   pyside6-lrelease linguaedit_XX.ts -qm linguaedit_XX.qm
-   ```
+3. **Submit a Pull Request** with:
+   - Your `linguaedit_LANG.ts` file
+   - Add your language to the table above
 
-4. **Submit a PR** with your `.ts` file.
+## Translation Guidelines
 
-## Current translations
+- Use **formal language** — avoid informal "you" where possible
+- Keep keyboard shortcuts (e.g., `&File`) — the `&` marks the accelerator key
+- Preserve format specifiers like `%1`, `%s`, `{name}`
+- Don't translate technical terms that are universally understood (e.g., "XLIFF", "UTF-8")
+- When in doubt, check how established software (Firefox, LibreOffice) translates the term in your language
 
-| Language | Code | Status |
-|----------|------|--------|
-| Swedish  | `sv` | ✅ Complete (590/590) |
+## Compiling Translations
 
-## Guidelines
+After editing, compile `.ts` → `.qm`:
 
-- Use **formal language** (e.g. Swedish "Visa" not "Kolla")
-- Keep keyboard shortcuts (& accelerators) intact
-- Preserve `%s`, `%d`, `{0}` format placeholders exactly
-- Test your translations if possible: `LANGUAGE=xx linguaedit`
+```bash
+pyside6-lrelease linguaedit_LANG.ts -qm linguaedit_LANG.qm
+```
 
-## Files
+## Template
 
-- `linguaedit_template.ts` — Empty template with all 590 strings
-- `linguaedit_sv.ts` — Swedish (reference translation)
+`linguaedit_template.ts` contains all extractable strings from the source code. It is regenerated before each release using:
 
-## Questions?
-
-Open an issue or reach out at https://github.com/yeager/linguaedit/issues
+```bash
+find src/linguaedit -name "*.py" | sort | xargs pyside6-lupdate -ts translations/linguaedit_template.ts
+```
