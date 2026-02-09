@@ -107,32 +107,26 @@ def _parse_string_table(string_table: Dict[str, Any], entries: List[TranslationE
         
         if isinstance(entry_data, dict):
             localized_string = entry_data.get('m_LocalizedValue', '')
-            metadata = entry_data.get('m_Metadata', {})
+            meta = entry_data.get('m_Metadata', {})
             
-            # Create translation entry
+            # Build comment from metadata
+            meta_comments = []
+            if isinstance(meta, dict):
+                for meta_key, meta_value in meta.items():
+                    meta_comments.append(f"{meta_key}: {meta_value}")
+            
             entry = TranslationEntry(
-                source=key,
-                target=localized_string,
-                context=key,
-                comments=[],
-                locations=[file_path],
-                flags=set(),
-                previous_source="",
-                fuzzy=False
+                msgid=key,
+                msgstr=localized_string,
+                msgctxt=key,
+                comment="; ".join(meta_comments) if meta_comments else "",
             )
-            
-            # Add metadata as comments
-            if isinstance(metadata, dict):
-                for meta_key, meta_value in metadata.items():
-                    entry.comments.append(f"{meta_key}: {meta_value}")
             
             entries.append(entry)
 
 
 def _parse_asset_table(asset_table: Dict[str, Any], entries: List[TranslationEntry], file_path: str):
     """Parse Unity AssetTable structure (for assets, not strings)."""
-    # Asset tables typically contain references to other assets
-    # For translation purposes, we might extract the key names
     if 'm_TableData' not in asset_table:
         return
     
@@ -148,19 +142,15 @@ def _parse_asset_table(asset_table: Dict[str, Any], entries: List[TranslationEnt
         entry_data = item.get('m_Value', {})
         
         if isinstance(entry_data, dict):
-            # For assets, we might want to track the asset reference
             asset_reference = entry_data.get('m_AssetReference', {})
             asset_guid = asset_reference.get('m_AssetGUID', '') if isinstance(asset_reference, dict) else ''
             
             entry = TranslationEntry(
-                source=key,
-                target=key,  # Asset keys typically don't get translated
-                context=key,
-                comments=[f"Asset GUID: {asset_guid}"] if asset_guid else [],
-                locations=[file_path],
-                flags={'asset-reference'},
-                previous_source="",
-                fuzzy=False
+                msgid=key,
+                msgstr=key,  # Asset keys typically don't get translated
+                msgctxt=key,
+                comment=f"Asset GUID: {asset_guid}" if asset_guid else "",
+                flags=['asset-reference'],
             )
             
             entries.append(entry)
@@ -168,20 +158,14 @@ def _parse_asset_table(asset_table: Dict[str, Any], entries: List[TranslationEnt
 
 def _parse_localization_table(localization_table: Dict[str, Any], entries: List[TranslationEntry], file_path: str):
     """Parse generic Unity LocalizationTable structure."""
-    # This is a fallback for other localization table formats
     if 'entries' in localization_table:
         table_entries = localization_table['entries']
         if isinstance(table_entries, dict):
             for key, value in table_entries.items():
                 entry = TranslationEntry(
-                    source=key,
-                    target=str(value),
-                    context=key,
-                    comments=[],
-                    locations=[file_path],
-                    flags=set(),
-                    previous_source="",
-                    fuzzy=False
+                    msgid=key,
+                    msgstr=str(value),
+                    msgctxt=key,
                 )
                 entries.append(entry)
 
@@ -251,18 +235,19 @@ def _update_string_table_document(data_dict: Dict[str, Any], entries: List[Trans
             continue  # Skip asset references for string tables
         
         item = {
-            'm_Key': entry.source,
+            'm_Key': entry.msgid,
             'm_Value': {
-                'm_LocalizedValue': entry.target,
+                'm_LocalizedValue': entry.msgstr,
                 'm_Metadata': {}
             }
         }
         
-        # Add metadata from comments
-        for comment in entry.comments:
-            if ': ' in comment:
-                key, value = comment.split(': ', 1)
-                item['m_Value']['m_Metadata'][key] = value
+        # Add metadata from comment
+        if entry.comment:
+            for part in entry.comment.split("; "):
+                if ': ' in part:
+                    key, value = part.split(': ', 1)
+                    item['m_Value']['m_Metadata'][key] = value
         
         table_data.append(item)
     
@@ -281,9 +266,9 @@ def _create_string_table_document(entries: List[TranslationEntry], metadata: Dic
             continue
         
         item = {
-            'm_Key': entry.source,
+            'm_Key': entry.msgid,
             'm_Value': {
-                'm_LocalizedValue': entry.target,
+                'm_LocalizedValue': entry.msgstr,
                 'm_Metadata': {}
             }
         }

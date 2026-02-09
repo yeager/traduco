@@ -2290,6 +2290,8 @@ class LinguaEditWindow(QMainWindow):
             return [(e.key, e.value, False) for e in self._file_data.entries]
         elif self._file_type == "subtitles":
             return [(e.text, e.translation, False) for e in self._file_data.entries]
+        elif self._file_type in ("apple_strings", "unity_asset", "resx"):
+            return [(e.msgid, e.msgstr, e.fuzzy) for e in self._file_data.entries]
         return []
 
     def _get_reference(self, idx: int) -> str:
@@ -3165,6 +3167,11 @@ class LinguaEditWindow(QMainWindow):
             entry = self._file_data.entries[self._current_index]
             if entry.translation != text:
                 entry.translation = text
+                self._modified = True
+        elif self._file_type in ("apple_strings", "unity_asset", "resx"):
+            entry = self._file_data.entries[self._current_index]
+            if entry.msgstr != text:
+                entry.msgstr = text
                 self._modified = True
 
     def _on_timestamp_edited(self):
@@ -6088,10 +6095,11 @@ class LinguaEditWindow(QMainWindow):
         target_text = ""
         
         # Get current entry texts
-        current_entry = self._get_current_entry()
-        if current_entry:
-            source_text = current_entry.source
-            target_text = current_entry.target
+        if self._current_index >= 0 and self._file_data:
+            entries = self._get_entries()
+            if self._current_index < len(entries):
+                source_text = entries[self._current_index][0]
+                target_text = entries[self._current_index][1]
         
         dialog = LayoutSimulatorDialog(self, source_text, target_text)
         dialog.exec()

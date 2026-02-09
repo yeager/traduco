@@ -60,14 +60,9 @@ def _parse_strings(file_path: Path) -> AppleStringsData:
         value = _unescape_string(value)
         
         entry = TranslationEntry(
-            source=key,
-            target=value,
-            context=key,  # Use key as context
-            comments=[],
-            locations=[str(file_path)],
-            flags=set(),
-            previous_source="",
-            fuzzy=False
+            msgid=key,
+            msgstr=value,
+            msgctxt=key,
         )
         
         entries.append(entry)
@@ -107,40 +102,27 @@ def _parse_stringsdict(file_path: Path) -> AppleStringsData:
             if plural_forms:
                 for rule, text in plural_forms.items():
                     entry = TranslationEntry(
-                        source=f"{key}[{rule}]",
-                        target=text,
-                        context=key,
-                        comments=[f"Plural form: {rule}", f"Format: {format_key}"],
-                        locations=[str(file_path)],
-                        flags={'plural'},
-                        previous_source="",
-                        fuzzy=False
+                        msgid=f"{key}[{rule}]",
+                        msgstr=text,
+                        msgctxt=key,
+                        comment=f"Plural form: {rule}; Format: {format_key}",
+                        flags=['plural'],
                     )
                     entries.append(entry)
             else:
                 # Regular entry
                 entry = TranslationEntry(
-                    source=key,
-                    target=format_key,
-                    context=key,
-                    comments=[],
-                    locations=[str(file_path)],
-                    flags=set(),
-                    previous_source="",
-                    fuzzy=False
+                    msgid=key,
+                    msgstr=format_key,
+                    msgctxt=key,
                 )
                 entries.append(entry)
         else:
             # Simple key-value pair
             entry = TranslationEntry(
-                source=key,
-                target=str(value),
-                context=key,
-                comments=[],
-                locations=[str(file_path)],
-                flags=set(),
-                previous_source="",
-                fuzzy=False
+                msgid=key,
+                msgstr=str(value),
+                msgctxt=key,
             )
             entries.append(entry)
     
@@ -164,12 +146,11 @@ def _save_strings(data: AppleStringsData, file_path: Path) -> None:
     lines = []
     
     for entry in data.entries:
-        if entry.comments:
-            for comment in entry.comments:
-                lines.append(f"/* {comment} */")
+        if entry.comment:
+            lines.append(f"/* {entry.comment} */")
         
-        key = _escape_string(entry.source)
-        value = _escape_string(entry.target)
+        key = _escape_string(entry.msgid)
+        value = _escape_string(entry.msgstr)
         lines.append(f'"{key}" = "{value}";')
         lines.append("")  # Empty line for readability
     
@@ -186,7 +167,7 @@ def _save_stringsdict(data: AppleStringsData, file_path: Path) -> None:
     # Group entries by context (original key)
     grouped_entries = {}
     for entry in data.entries:
-        context = entry.context or entry.source
+        context = entry.msgctxt or entry.msgid
         if context not in grouped_entries:
             grouped_entries[context] = []
         grouped_entries[context].append(entry)
@@ -215,16 +196,16 @@ def _save_stringsdict(data: AppleStringsData, file_path: Path) -> None:
             # Fill in the plural forms
             for entry in plural_entries:
                 # Extract plural rule from source like "key[zero]"
-                match = re.search(r'\[(\w+)\]$', entry.source)
+                match = re.search(r'\[(\w+)\]$', entry.msgid)
                 if match:
                     rule = match.group(1)
-                    plural_dict[f'VARIABLE_{context.upper()}']['NSStringFormatValueTypeKey'][rule] = entry.target
+                    plural_dict[f'VARIABLE_{context.upper()}']['NSStringFormatValueTypeKey'][rule] = entry.msgstr
             
             plist_data[context] = plural_dict
         else:
             # Simple key-value
             if entries:
-                plist_data[context] = entries[0].target
+                plist_data[context] = entries[0].msgstr
     
     with open(file_path, 'wb') as f:
         plistlib.dump(plist_data, f)

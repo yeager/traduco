@@ -222,14 +222,13 @@ def convert_resx_to_po_entries(resx_data: RESXData) -> List[TranslationEntry]:
     for entry in resx_data.entries:
         # Use the key as both source and context
         po_entry = TranslationEntry(
-            source=entry.source,  # The key becomes the source
-            target="",  # Empty target for translation
-            context=entry.source,
-            comments=entry.comments + [f"Original value: {entry.target}"],
-            locations=entry.locations,
+            msgid=entry.msgid,
+            msgstr="",
+            msgctxt=entry.msgid,
+            comment=((entry.comment + "\n") if entry.comment else "") + f"Original value: {entry.msgstr}",
+            occurrences=entry.occurrences,
             flags=entry.flags,
-            previous_source="",
-            fuzzy=True  # Mark as fuzzy since it needs translation
+            fuzzy=True,
         )
         po_entries.append(po_entry)
     
@@ -238,30 +237,25 @@ def convert_resx_to_po_entries(resx_data: RESXData) -> List[TranslationEntry]:
 
 def update_resx_from_po_entries(resx_data: RESXData, po_entries: List[TranslationEntry]) -> RESXData:
     """Update RESX data with translations from PO entries."""
-    # Create a mapping from source (key) to target (translation)
     translations = {}
     for po_entry in po_entries:
-        if po_entry.target and not po_entry.fuzzy:
-            translations[po_entry.source] = po_entry.target
+        if po_entry.msgstr and not po_entry.fuzzy:
+            translations[po_entry.msgid] = po_entry.msgstr
     
-    # Update RESX entries
     updated_entries = []
     for resx_entry in resx_data.entries:
-        if resx_entry.source in translations:
-            # Update with translation
+        if resx_entry.msgid in translations:
             updated_entry = TranslationEntry(
-                source=resx_entry.source,
-                target=translations[resx_entry.source],
-                context=resx_entry.context,
-                comments=resx_entry.comments,
-                locations=resx_entry.locations,
+                msgid=resx_entry.msgid,
+                msgstr=translations[resx_entry.msgid],
+                msgctxt=resx_entry.msgctxt,
+                comment=resx_entry.comment,
+                occurrences=resx_entry.occurrences,
                 flags=resx_entry.flags,
-                previous_source=resx_entry.previous_source,
-                fuzzy=False
+                fuzzy=False,
             )
             updated_entries.append(updated_entry)
         else:
-            # Keep original
             updated_entries.append(resx_entry)
     
     return RESXData(
