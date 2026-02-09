@@ -573,3 +573,265 @@ class DiffDialog(QDialog):
         """Show error message."""
         from PySide6.QtWidgets import QMessageBox
         QMessageBox.critical(self, self.tr("Error"), message)
+
+
+# ── Git-based diff dialog ───────────────────────────────────────────
+
+class GitDiffDialog(QDialog):
+    """Compare current file with a previous git commit."""
+
+    def __init__(self, parent=None, file_path: str = "", file_type: str = "",
+                 current_entries: list = None):
+        super().__init__(parent)
+        self.setWindowTitle(self.tr("Diff with Previous Version"))
+        self.setMinimumSize(950, 650)
+
+        self._file_path = file_path
+        self._file_type = file_type
+        self._current_entries = current_entries or []
+        self._old_entries: list = []
+        self._commits: list = []
+
+        self._build_ui()
+        self._load_commits()
+
+    def _build_ui(self):
+        layout = QVBoxLayout(self)
+
+        # Commit selector
+        top = QHBoxLayout()
+        top.addWidget(QLabel(self.tr("Compare with commit:")))
+        self._commit_combo = QComboBox()
+        self._commit_combo.setMinimumWidth(400)
+        top.addWidget(self._commit_combo, 1)
+        self._compare_btn = QPushButton(self.tr("Compare"))
+        self._compare_btn.clicked.connect(self._run_compare)
+        top.addWidget(self._compare_btn)
+        layout.addLayout(top)
+
+        # Status
+        self._status = QLabel("")
+        layout.addWidget(self._status)
+
+        # Results tabs
+        self._tabs = QTabWidget()
+
+        # Summary tab
+        summary_w = QWidget()
+        summary_l = QVBoxLayout(summary_w)
+        self._summary_text = QTextEdit()
+        self._summary_text.setReadOnly(True)
+        summary_l.addWidget(self._summary_text)
+        self._tabs.addTab(summary_w, self.tr("Summary"))
+
+        # Changes table
+        changes_w = QWidget()
+        changes_l = QVBoxLayout(changes_w)
+        self._changes_table = QTableWidget()
+        self._changes_table.setColumnCount(5)
+        self._changes_table.setHorizontalHeaderLabels([
+            self.tr("Type"), self.tr("Source (old)"), self.tr("Source (new)"),
+            self.tr("Translation (old)"), self.tr("Translation (new)"),
+        ])
+        self._changes_table.setAlternatingRowColors(True)
+        self._changes_table.setSelectionBehavior(QAbstractItemView.SelectRows)
+        header = self._changes_table.horizontalHeader()
+        for c in range(5):
+            header.setSectionResizeMode(c, QHeaderView.Stretch if c > 0 else QHeaderView.ResizeToContents)
+        changes_l.addWidget(self._changes_table)
+        self._tabs.addTab(changes_w, self.tr("Changes"))
+
+        # Outdated tab
+        outdated_w = QWidget()
+        outdated_l = QVBoxLayout(outdated_w)
+        outdated_l.addWidget(QLabel(self.tr(
+            "<b>Outdated translations</b> — source changed but translation stayed the same."
+        )))
+        self._outdated_table = QTableWidget()
+        self._outdated_table.setColumnCount(4)
+        self._outdated_table.setHorizontalHeaderLabels([
+            self.tr("Old Source"), self.tr("New Source"),
+            self.tr("Translation"), self.tr("Status"),
+        ])
+        self._outdated_table.setAlternatingRowColors(True)
+        oh = self._outdated_table.horizontalHeader()
+        for c in range(4):
+            oh.setSectionResizeMode(c, QHeaderView.Stretch)
+        outdated_l.addWidget(self._outdated_table)
+        self._tabs.addTab(outdated_w, self.tr("Outdated"))
+
+        layout.addWidget(self._tabs, 1)
+
+        # Close
+        bb = QDialogButtonBox(QDialogButtonBox.Close)
+        bb.rejected.connect(self.reject)
+        layout.addWidget(bb)
+
+    def _load_commits(self):
+        from linguaedit.services.git_integration import get_commits_for_file
+        self._commits = get_commits_for_file(self._file_path)
+        self._commit_combo.clear()
+        if not self._commits:
+            self._commit_combo.addItem(self.tr("No git history found"))
+            self._compare_btn.setEnabled(False)
+            return
+        for sha, subject in self._commits:
+            self._commit_combo.addItem(f"{sha[:8]} — {subject}", sha)
+
+    def _parse_content(self, content: str):
+        """Parse file content string into entries list."""
+        import tempfile, os
+        suffix = "." + self._file_type if self._file_type else ".po"
+        # Map file_type to actual extension
+        ext_map = {"po": ".po", "ts": ".ts", "json": ".json", "xliff": ".xliff"}
+        suffix = ext_map.get(self._file_type, ".po")
+
+        tmp = tempfile.NamedTemporaryFile(mode="w", suffix=suffix, delete=False, encoding="utf-8")
+        tmp.write(content)
+        tmp.close()
+        try:
+            from pathlib import Path as P
+            p = P(tmp.name)
+            if self._file_type == "po":
+                fd = parse_po(p)
+                return [(e.msgid, e.msgstr, e.fuzzy) for e in fd.entries]
+            elif self._file_type == "ts":
+                fd = parse_ts(p)
+                return [(e.source, e.translation, e.is_fuzzy) for e in fd.entries]
+            elif self._file_type == "json":
+                fd = parse_json(p)
+                return [(e.key, e.value, False) for e in fd.entries]
+            elif self._file_type == "xliff":
+                fd = parse_xliff(p)
+                return [(e.source, e.target, e.is_fuzzy) for e in fd.entries]
+        except Exception:
+            return []
+        finally:
+            os.unlink(tmp.name)
+        return []
+
+    def _run_compare(self):
+        idx = self._commit_combo.currentIndex()
+        if idx < 0 or not self._commits:
+            return
+        sha = self._commit_combo.currentData()
+        if not sha:
+            return
+
+        from linguaedit.services.git_integration import get_file_at_commit
+        ok, content = get_file_at_commit(self._file_path, sha)
+        if not ok:
+            self._status.setText(self.tr("Failed to get file at commit %s") % sha[:8])
+            return
+
+        self._old_entries = self._parse_content(content)
+        if not self._old_entries:
+            self._status.setText(self.tr("Could not parse old version"))
+            return
+
+        self._status.setText(self.tr("Comparing %d old vs %d current entries…") % (
+            len(self._old_entries), len(self._current_entries)))
+        self._do_compare()
+
+    def _do_compare(self):
+        old_dict = {}
+        for msgid, msgstr, fuzzy in self._old_entries:
+            old_dict[msgid] = (msgstr, fuzzy)
+
+        new_dict = {}
+        for msgid, msgstr, fuzzy in self._current_entries:
+            new_dict[msgid] = (msgstr, fuzzy)
+
+        added = []
+        removed = []
+        changed_source = []  # source key changed (approximated by missing old + new)
+        changed_trans = []
+        outdated = []
+
+        all_keys = set(old_dict.keys()) | set(new_dict.keys())
+
+        for key in all_keys:
+            old = old_dict.get(key)
+            new = new_dict.get(key)
+            if old and not new:
+                removed.append((key, old[0]))
+            elif new and not old:
+                added.append((key, new[0]))
+            elif old and new:
+                if old[0] != new[0]:
+                    changed_trans.append((key, old[0], new[0]))
+
+        # Detect outdated: find entries where source text changed but translation is same
+        # Use sequence matching to pair old→new renamed sources
+        old_only = [k for k in old_dict if k not in new_dict]
+        new_only = [k for k in new_dict if k not in old_dict]
+
+        from difflib import SequenceMatcher
+        for old_key in old_only:
+            best_ratio = 0
+            best_new = None
+            for new_key in new_only:
+                r = SequenceMatcher(None, old_key, new_key).ratio()
+                if r > best_ratio and r > 0.6:
+                    best_ratio = r
+                    best_new = new_key
+            if best_new:
+                old_trans = old_dict[old_key][0]
+                new_trans = new_dict[best_new][0]
+                if old_trans and old_trans == new_trans:
+                    outdated.append((old_key, best_new, old_trans))
+                elif old_key != best_new:
+                    changed_source.append((old_key, best_new, old_dict[old_key][0], new_dict[best_new][0]))
+
+        # Summary
+        lines = [
+            self.tr("<h3>Comparison Results</h3>"),
+            self.tr("<b>Added strings:</b> %d") % len(added),
+            self.tr("<b>Removed strings:</b> %d") % len(removed),
+            self.tr("<b>Changed translations:</b> %d") % len(changed_trans),
+            self.tr("<b>Changed source text:</b> %d") % len(changed_source),
+            self.tr("<b>Potentially outdated:</b> %d") % len(outdated),
+        ]
+        self._summary_text.setHtml("<br>".join(lines))
+
+        # Changes table
+        rows = []
+        for key, trans in added:
+            rows.append((self.tr("Added"), "", key[:80], "", trans[:80]))
+        for key, trans in removed:
+            rows.append((self.tr("Removed"), key[:80], "", trans[:80], ""))
+        for key, old_t, new_t in changed_trans:
+            rows.append((self.tr("Modified"), key[:80], key[:80], old_t[:80], new_t[:80]))
+        for old_k, new_k, old_t, new_t in changed_source:
+            rows.append((self.tr("Source changed"), old_k[:80], new_k[:80], old_t[:80], new_t[:80]))
+
+        self._changes_table.setRowCount(len(rows))
+        color_map = {
+            self.tr("Added"): QColor(220, 255, 220),
+            self.tr("Removed"): QColor(255, 220, 220),
+            self.tr("Modified"): QColor(255, 255, 220),
+            self.tr("Source changed"): QColor(230, 230, 255),
+        }
+        for r, (typ, *cols) in enumerate(rows):
+            ti = QTableWidgetItem(typ)
+            bg = color_map.get(typ)
+            if bg:
+                ti.setBackground(QBrush(bg))
+            self._changes_table.setItem(r, 0, ti)
+            for c, val in enumerate(cols):
+                item = QTableWidgetItem(val)
+                if bg:
+                    item.setBackground(QBrush(bg))
+                self._changes_table.setItem(r, c + 1, item)
+
+        # Outdated table
+        self._outdated_table.setRowCount(len(outdated))
+        for r, (old_src, new_src, trans) in enumerate(outdated):
+            self._outdated_table.setItem(r, 0, QTableWidgetItem(old_src[:100]))
+            self._outdated_table.setItem(r, 1, QTableWidgetItem(new_src[:100]))
+            self._outdated_table.setItem(r, 2, QTableWidgetItem(trans[:100]))
+            warn = QTableWidgetItem(self.tr("⚠ Outdated"))
+            warn.setForeground(QBrush(QColor(200, 120, 0)))
+            self._outdated_table.setItem(r, 3, warn)
+
+        self._status.setText(self.tr("Comparison complete."))

@@ -120,6 +120,30 @@ def create_branch(file_path: str | Path, branch: str) -> tuple[bool, str]:
     return _run_git(["checkout", "-b", branch], cwd)
 
 
+def get_file_at_commit(file_path: str | Path, commit: str = "HEAD~1") -> tuple[bool, str]:
+    """Return the contents of *file_path* at the given commit."""
+    cwd = Path(file_path).parent
+    fname = Path(file_path).name
+    return _run_git(["show", f"{commit}:{fname}"], cwd)
+
+
+def get_commits_for_file(file_path: str | Path, count: int = 20) -> list[tuple[str, str]]:
+    """Return [(hash, subject), ...] for the file's history."""
+    cwd = Path(file_path).parent
+    fname = Path(file_path).name
+    ok, output = _run_git(
+        ["log", f"-{count}", "--format=%H %s", "--", fname], cwd,
+    )
+    if not ok or not output:
+        return []
+    result = []
+    for line in output.splitlines():
+        parts = line.split(" ", 1)
+        if len(parts) == 2:
+            result.append((parts[0], parts[1]))
+    return result
+
+
 def get_log(file_path: str | Path, count: int = 10) -> str:
     """Get recent git log for the file."""
     cwd = Path(file_path).parent

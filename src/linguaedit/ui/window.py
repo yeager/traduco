@@ -62,6 +62,8 @@ from linguaedit.parsers.subtitles import parse_subtitles, save_subtitles, Subtit
 from linguaedit.parsers.apple_strings import parse_apple_strings, save_apple_strings, AppleStringsData
 from linguaedit.parsers.unity_asset import parse_unity_asset, save_unity_asset, UnityAssetData
 from linguaedit.parsers.resx import parse_resx, save_resx, RESXData
+from linguaedit.parsers.sdlxliff_parser import parse_sdlxliff, save_sdlxliff, SDLXLIFFFileData
+from linguaedit.parsers.mqxliff_parser import parse_mqxliff, save_mqxliff, MQXLIFFFileData
 from linguaedit.services.linter import lint_entries, LintResult, LintIssue
 from linguaedit.services.spellcheck import check_text, available_languages
 from linguaedit.services.translator import translate, ENGINES, TranslationError
@@ -79,7 +81,9 @@ from linguaedit.ui.batch_edit_dialog import BatchEditDialog
 from linguaedit.ui.glossary_dialog import GlossaryDialog
 from linguaedit.ui.statistics_dialog import StatisticsDialog
 from linguaedit.ui.header_dialog import HeaderDialog
-from linguaedit.ui.diff_dialog import DiffDialog
+from linguaedit.ui.diff_dialog import DiffDialog, GitDiffDialog
+from linguaedit.ui.dashboard_dialog import DashboardDialog
+from linguaedit.ui.batch_translate_dialog import BatchTranslateDialog
 from linguaedit.ui.project_dock import ProjectDockWidget
 from linguaedit.ui.ai_review_dialog import AIReviewDialog
 from linguaedit.ui.translation_editor import TranslationEditor
@@ -164,9 +168,10 @@ _FMT_RE = re.compile(
 _ALL_EXTENSIONS = {
     ".po", ".pot", ".ts", ".json", ".xliff", ".xlf",
     ".xml", ".arb", ".php", ".yml", ".yaml",
+    ".sdlxliff", ".mqxliff",
 }
 
-_FILE_FILTER = "Translation files (*.po *.pot *.ts *.json *.xliff *.xlf *.xml *.arb *.php *.yml *.yaml *.csv *.tres *.properties *.srt *.vtt);;Video files (*.mkv *.mp4 *.avi *.mov *.webm *.flv *.wmv *.ogv)"
+_FILE_FILTER = "Translation files (*.po *.pot *.ts *.json *.xliff *.xlf *.xml *.arb *.php *.yml *.yaml *.csv *.tres *.properties *.srt *.vtt *.sdlxliff *.mqxliff);;CAT files (*.sdlxliff *.mqxliff);;Video files (*.mkv *.mp4 *.avi *.mov *.webm *.flv *.wmv *.ogv)"
 
 
 # ── Inline linting for a single entry ────────────────────────────────
@@ -579,7 +584,7 @@ class LinguaEditWindow(QMainWindow):
 
         self._filter_combo = QComboBox()
         self._filter_combo.addItems([self.tr("All strings"), self.tr("Untranslated"), self.tr("Fuzzy / Needs work"),
-                                      self.tr("Translated"), self.tr("With warnings")])
+                                      self.tr("Translated"), self.tr("Reviewed"), self.tr("With warnings")])
         self._filter_combo.setMinimumWidth(140)
         self._filter_combo.currentIndexChanged.connect(self._on_filter_combo_changed)
         filter_bar.addWidget(self._filter_combo)
@@ -721,7 +726,12 @@ class LinguaEditWindow(QMainWindow):
         self._trans_view.setFrameShape(QFrame.StyledPanel)
         self._trans_view.textChanged.connect(self._on_trans_buffer_changed)
         self._trans_view.translation_changed.connect(self._on_trans_buffer_changed)
+        self._trans_view._load_save_user_dict(save=False)  # Load user dictionary
         editor_layout.addWidget(self._trans_view, 1)
+
+        # MT suggestion widget (below translation editor)
+        self._mt_suggestion_widget = self._trans_view.get_mt_widget()
+        editor_layout.addWidget(self._mt_suggestion_widget)
         
         # Translator comment field
         comment_label = QLabel(self.tr("<b>Translator comment:</b>"))
@@ -1246,20 +1256,24 @@ class LinguaEditWindow(QMainWindow):
     # ── Keyboard shortcuts ────────────────────────────────────────
 
     def _setup_shortcuts(self):
-        QShortcut(QKeySequence("Ctrl+Return"), self, lambda: (self._save_current_entry(), self._navigate(1)))
+        # Poedit-style shortcuts
+        QShortcut(QKeySequence("Ctrl+Return"), self, self._copy_source_to_target)
         QShortcut(QKeySequence("Ctrl+U"), self, lambda: self._fuzzy_check.toggle())
-        
+        QShortcut(QKeySequence("Alt+Return"), self, lambda: self._navigate_untranslated(1))
+        QShortcut(QKeySequence("Ctrl+Shift+Up"), self, lambda: self._navigate_fuzzy(-1))
+        QShortcut(QKeySequence("Ctrl+Shift+Down"), self, lambda: self._navigate_fuzzy(1))
+
         # Feature 6: Bokmärken
         QShortcut(QKeySequence("Ctrl+B"), self, self._toggle_bookmark)
         QShortcut(QKeySequence("F2"), self, lambda: self._navigate_bookmarks(1))
         QShortcut(QKeySequence("Shift+F2"), self, lambda: self._navigate_bookmarks(-1))
-        
+
         # Feature 7: Taggar
         QShortcut(QKeySequence("Ctrl+T"), self, self._add_tag)
-        
+
         # Feature 13: Fullscreen escape
         QShortcut(QKeySequence("Escape"), self, self._exit_fullscreen_if_active)
-        
+
         # Feature 13: Quick Actions
         QShortcut(QKeySequence("Ctrl+."), self, self._show_quick_actions)
 
@@ -1398,6 +1412,30 @@ class LinguaEditWindow(QMainWindow):
 
         self._show_toast(self.tr("No more untranslated strings"))
 
+    def _navigate_fuzzy(self, direction: int):
+        """Navigate to next/previous fuzzy entry (Poedit-style)."""
+        if not self._file_data:
+            return
+        entries = self._get_entries()
+        count = self._tree.topLevelItemCount()
+        current = self._tree.currentItem()
+        cur_row = self._tree.indexOfTopLevelItem(current) if current else -1
+
+        row = cur_row + direction
+        while 0 <= row < count:
+            item = self._tree.topLevelItem(row)
+            if not item.isHidden():
+                orig_idx = item.data(0, Qt.UserRole)
+                if orig_idx is not None and orig_idx < len(entries):
+                    _, _, is_fuzzy = entries[orig_idx]
+                    if is_fuzzy:
+                        self._tree.setCurrentItem(item)
+                        self._tree.scrollToItem(item)
+                        return
+            row += direction
+
+        self._show_toast(self.tr("No more fuzzy strings"))
+
     def _navigate_to_entry(self, orig_idx):
         """Navigate to a specific entry by its original index."""
         for i in range(self._tree.topLevelItemCount()):
@@ -1423,7 +1461,16 @@ class LinguaEditWindow(QMainWindow):
         self._trans_block = True
         self._trans_view.setPlainText(msgstr)
         self._trans_block = False
-        
+
+        # Trigger MT suggestions for source text (if translation is empty)
+        if not msgstr.strip():
+            self._trans_view.set_source_text(msgid)
+        else:
+            self._trans_view.set_source_text("")  # hide suggestions
+
+        # Set spell check language
+        self._trans_view.set_spell_language(self._spell_lang)
+
         # Load translator comment
         comment = ""
         if self._file_type == "po":
@@ -1495,6 +1542,28 @@ class LinguaEditWindow(QMainWindow):
                 self._msgctxt_row.setVisible(True)
             if e.state:
                 self._flags_label.setText(f"State: {e.state}")
+                self._flags_row.setVisible(True)
+        elif self._file_type in ("sdlxliff", "mqxliff"):
+            e = self._file_data.entries[idx]
+            if e.note:
+                self._extracted_comment_label.setText(e.note)
+                self._extracted_comment_row.setVisible(True)
+            if e.id:
+                self._msgctxt_label.setText(f"ID: {e.id}")
+                self._msgctxt_row.setVisible(True)
+            info_parts = []
+            if e.state:
+                info_parts.append(f"State: {e.state}")
+            if hasattr(e, 'origin') and e.origin:
+                info_parts.append(f"Origin: {e.origin}")
+            if hasattr(e, 'match_percent') and e.match_percent:
+                info_parts.append(f"Match: {e.match_percent}%")
+            if e.locked:
+                info_parts.append("Locked")
+            if e.confirmed:
+                info_parts.append("Confirmed")
+            if info_parts:
+                self._flags_label.setText(" | ".join(info_parts))
                 self._flags_row.setVisible(True)
         elif self._file_type == "arb":
             e = self._file_data.entries[idx]
@@ -1981,7 +2050,7 @@ class LinguaEditWindow(QMainWindow):
     # ══════════════════════════════════════════════════════════════
 
     def _on_filter_combo_changed(self, index):
-        modes = ["all", "untranslated", "fuzzy", "translated", "warnings"]
+        modes = ["all", "untranslated", "fuzzy", "translated", "reviewed", "warnings"]
         if index < len(modes):
             self._filter_mode = modes[index]
             self._apply_filter()
@@ -2025,6 +2094,8 @@ class LinguaEditWindow(QMainWindow):
                     visible = is_fuzzy
                 elif self._filter_mode == "translated":
                     visible = bool(msgstr) and not is_fuzzy
+                elif self._filter_mode == "reviewed":
+                    visible = self._review_status.get(orig_idx) == "approved"
                 elif self._filter_mode == "warnings":
                     visible = has_warning
 
@@ -2051,6 +2122,8 @@ class LinguaEditWindow(QMainWindow):
         elif self._file_type == "json":
             return [(e.key, e.value, False) for e in self._file_data.entries]
         elif self._file_type == "xliff":
+            return [(e.source, e.target, e.is_fuzzy) for e in self._file_data.entries]
+        elif self._file_type in ("sdlxliff", "mqxliff"):
             return [(e.source, e.target, e.is_fuzzy) for e in self._file_data.entries]
         elif self._file_type == "android":
             return [(e.key, e.value, False) for e in self._file_data.entries]
@@ -2316,7 +2389,7 @@ class LinguaEditWindow(QMainWindow):
             self._file_data.entries[idx].translation = text
         elif self._file_type == "json":
             self._file_data.entries[idx].value = text
-        elif self._file_type in ("xliff",):
+        elif self._file_type in ("xliff", "sdlxliff", "mqxliff"):
             self._file_data.entries[idx].target = text
         elif self._file_type in ("android", "arb", "php", "yaml"):
             self._file_data.entries[idx].value = text
@@ -2363,7 +2436,7 @@ class LinguaEditWindow(QMainWindow):
         self._show_toast(self.tr("Theme changed to %s") % theme)
 
     def _apply_dark_theme(self, app):
-        """Apply dark theme."""
+        """Apply dark theme with comprehensive palette and stylesheet."""
         palette = QPalette()
         palette.setColor(QPalette.Window, QColor(30, 30, 30))
         palette.setColor(QPalette.WindowText, QColor(224, 224, 224))
@@ -2378,7 +2451,252 @@ class LinguaEditWindow(QMainWindow):
         palette.setColor(QPalette.Link, QColor(90, 170, 255))
         palette.setColor(QPalette.Highlight, QColor(50, 100, 180))
         palette.setColor(QPalette.HighlightedText, QColor(240, 240, 240))
+        palette.setColor(QPalette.Mid, QColor(60, 60, 60))
+        palette.setColor(QPalette.Dark, QColor(18, 18, 18))
+        palette.setColor(QPalette.Shadow, QColor(10, 10, 10))
+        # Disabled colors
+        palette.setColor(QPalette.Disabled, QPalette.WindowText, QColor(100, 100, 100))
+        palette.setColor(QPalette.Disabled, QPalette.Text, QColor(100, 100, 100))
+        palette.setColor(QPalette.Disabled, QPalette.ButtonText, QColor(100, 100, 100))
         app.setPalette(palette)
+
+        # Comprehensive stylesheet for all widgets
+        app.setStyleSheet("""
+            QMainWindow, QDialog {
+                background-color: #1e1e1e;
+            }
+            QToolBar {
+                background-color: #252525;
+                border-bottom: 1px solid #3a3a3a;
+                spacing: 4px;
+                padding: 2px;
+            }
+            QToolBar QToolButton {
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 3px;
+                padding: 4px;
+                color: #e0e0e0;
+            }
+            QToolBar QToolButton:hover {
+                background-color: #3a3a3a;
+                border-color: #505050;
+            }
+            QToolBar QToolButton:pressed {
+                background-color: #2a5a8a;
+            }
+            QMenuBar {
+                background-color: #252525;
+                color: #e0e0e0;
+                border-bottom: 1px solid #3a3a3a;
+            }
+            QMenuBar::item:selected {
+                background-color: #3a3a3a;
+            }
+            QMenu {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+            }
+            QMenu::item:selected {
+                background-color: #3264b4;
+            }
+            QMenu::separator {
+                height: 1px;
+                background: #3a3a3a;
+                margin: 4px 8px;
+            }
+            QTreeWidget, QTableWidget, QListWidget {
+                background-color: #1a1a1a;
+                alternate-background-color: #222222;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+                selection-background-color: #2a5a8a;
+                gridline-color: #3a3a3a;
+            }
+            QTreeWidget::item:hover, QTableWidget::item:hover {
+                background-color: #2a2a2a;
+            }
+            QHeaderView::section {
+                background-color: #2a2a2a;
+                color: #c0c0c0;
+                border: 1px solid #3a3a3a;
+                padding: 4px;
+            }
+            QTextEdit, QPlainTextEdit {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+                selection-background-color: #2a5a8a;
+            }
+            QLineEdit {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+                border-radius: 3px;
+                padding: 4px;
+            }
+            QLineEdit:focus {
+                border-color: #5a8aba;
+            }
+            QComboBox {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+                border-radius: 3px;
+                padding: 4px;
+            }
+            QComboBox::drop-down {
+                border-left: 1px solid #3a3a3a;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                selection-background-color: #3264b4;
+            }
+            QPushButton {
+                background-color: #353535;
+                color: #e0e0e0;
+                border: 1px solid #4a4a4a;
+                border-radius: 3px;
+                padding: 5px 12px;
+            }
+            QPushButton:hover {
+                background-color: #404040;
+                border-color: #5a5a5a;
+            }
+            QPushButton:pressed {
+                background-color: #2a5a8a;
+            }
+            QPushButton:disabled {
+                background-color: #2a2a2a;
+                color: #666666;
+            }
+            QCheckBox {
+                color: #e0e0e0;
+                spacing: 6px;
+            }
+            QCheckBox::indicator {
+                width: 16px;
+                height: 16px;
+                border: 1px solid #4a4a4a;
+                border-radius: 3px;
+                background-color: #2a2a2a;
+            }
+            QCheckBox::indicator:checked {
+                background-color: #3264b4;
+                border-color: #5a8aba;
+            }
+            QProgressBar {
+                background-color: #2a2a2a;
+                border: 1px solid #3a3a3a;
+                border-radius: 3px;
+                text-align: center;
+                color: #e0e0e0;
+            }
+            QProgressBar::chunk {
+                background-color: #3264b4;
+                border-radius: 2px;
+            }
+            QTabWidget::pane {
+                border: 1px solid #3a3a3a;
+                background-color: #1e1e1e;
+            }
+            QTabBar::tab {
+                background-color: #252525;
+                color: #b0b0b0;
+                border: 1px solid #3a3a3a;
+                padding: 6px 12px;
+                margin-right: 2px;
+            }
+            QTabBar::tab:selected {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+                border-bottom-color: #1e1e1e;
+            }
+            QTabBar::tab:hover {
+                background-color: #303030;
+            }
+            QGroupBox {
+                color: #c0c0c0;
+                border: 1px solid #3a3a3a;
+                border-radius: 4px;
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 10px;
+                padding: 0 4px;
+            }
+            QStatusBar {
+                background-color: #252525;
+                color: #b0b0b0;
+                border-top: 1px solid #3a3a3a;
+            }
+            QSplitter::handle {
+                background-color: #3a3a3a;
+            }
+            QScrollBar:vertical {
+                background-color: #1e1e1e;
+                width: 12px;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background-color: #4a4a4a;
+                border-radius: 4px;
+                min-height: 20px;
+                margin: 2px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background-color: #5a5a5a;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                height: 0;
+            }
+            QScrollBar:horizontal {
+                background-color: #1e1e1e;
+                height: 12px;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background-color: #4a4a4a;
+                border-radius: 4px;
+                min-width: 20px;
+                margin: 2px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background-color: #5a5a5a;
+            }
+            QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+                width: 0;
+            }
+            QDockWidget {
+                color: #e0e0e0;
+                titlebar-close-icon: none;
+            }
+            QDockWidget::title {
+                background-color: #252525;
+                border: 1px solid #3a3a3a;
+                padding: 4px;
+            }
+            QLabel {
+                color: #e0e0e0;
+            }
+            QSpinBox {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                border: 1px solid #3a3a3a;
+                border-radius: 3px;
+                padding: 2px;
+            }
+            QToolTip {
+                background-color: #2a2a2a;
+                color: #e0e0e0;
+                border: 1px solid #4a4a4a;
+                padding: 4px;
+            }
+        """)
 
     def _apply_solarized_dark_theme(self, app):
         """Apply Solarized Dark theme."""
@@ -2506,6 +2824,12 @@ class LinguaEditWindow(QMainWindow):
             elif p.suffix in (".xliff", ".xlf"):
                 self._file_data = parse_xliff(p)
                 self._file_type = "xliff"
+            elif p.suffix == ".sdlxliff":
+                self._file_data = parse_sdlxliff(p)
+                self._file_type = "sdlxliff"
+            elif p.suffix == ".mqxliff":
+                self._file_data = parse_mqxliff(p)
+                self._file_type = "mqxliff"
             elif p.suffix == ".xml":
                 self._file_data = parse_android(p)
                 self._file_type = "android"
@@ -2665,6 +2989,13 @@ class LinguaEditWindow(QMainWindow):
             if entry.target != text:
                 entry.target = text
                 self._modified = True
+        elif self._file_type in ("sdlxliff", "mqxliff"):
+            entry = self._file_data.entries[self._current_index]
+            if entry.target != text:
+                entry.target = text
+                if text.strip():
+                    entry.confirmed = True
+                self._modified = True
         elif self._file_type in ("android", "arb", "php", "yaml"):
             entry = self._file_data.entries[self._current_index]
             if entry.value != text:
@@ -2711,6 +3042,10 @@ class LinguaEditWindow(QMainWindow):
                 save_json(self._file_data)
             elif self._file_type == "xliff":
                 save_xliff(self._file_data)
+            elif self._file_type == "sdlxliff":
+                save_sdlxliff(self._file_data)
+            elif self._file_type == "mqxliff":
+                save_mqxliff(self._file_data)
             elif self._file_type == "android":
                 save_android(self._file_data)
             elif self._file_type == "arb":
@@ -3512,6 +3847,17 @@ class LinguaEditWindow(QMainWindow):
             form.addRow(self.tr("Target language:"), tgt_edit)
             layout.addLayout(form)
 
+        elif self._file_type in ("sdlxliff", "mqxliff"):
+            form = QFormLayout()
+            src_edit = QLineEdit(getattr(self._file_data, 'source_language', ''))
+            tgt_edit = QLineEdit(getattr(self._file_data, 'target_language', ''))
+            fmt_label = QLineEdit("SDLXLIFF (Trados)" if self._file_type == "sdlxliff" else "MQXLIFF (memoQ)")
+            fmt_label.setReadOnly(True)
+            form.addRow(self.tr("Format:"), fmt_label)
+            form.addRow(self.tr("Source language:"), src_edit)
+            form.addRow(self.tr("Target language:"), tgt_edit)
+            layout.addLayout(form)
+
         elif self._file_type == "arb":
             form = QFormLayout()
             locale_edit = QLineEdit(getattr(self._file_data, 'locale', ''))
@@ -3548,6 +3894,10 @@ class LinguaEditWindow(QMainWindow):
                 self._modified = True
             elif self._file_type == "xliff":
                 self._file_data.version = ver_edit.text()
+                self._file_data.source_language = src_edit.text()
+                self._file_data.target_language = tgt_edit.text()
+                self._modified = True
+            elif self._file_type in ("sdlxliff", "mqxliff"):
                 self._file_data.source_language = src_edit.text()
                 self._file_data.target_language = tgt_edit.text()
                 self._modified = True
