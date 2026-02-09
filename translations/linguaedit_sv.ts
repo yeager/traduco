@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="194"/>
         <source>AI Översättningsgranskning</source>
-        <translation >AI Översättningsgranskning</translation>
+        <translation>AI Översättningsgranskning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="205"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="208"/>
         <source>Källtext:</source>
-        <translation >Källtext:</translation>
+        <translation>Källtext:</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="216"/>
         <source>Översättning:</source>
-        <translation >Översättning:</translation>
+        <translation>Översättning:</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="226"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="232"/>
         <source>Analyserar översättning...</source>
-        <translation >Analyserar översättning...</translation>
+        <translation>Analyserar översättning...</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="238"/>
@@ -41,22 +41,22 @@
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="251"/>
         <source>Förklaring:</source>
-        <translation >Förklaring:</translation>
+        <translation>Förklaring:</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="257"/>
         <source>Förbättringsförslag:</source>
-        <translation >Förbättringsförslag:</translation>
+        <translation>Förbättringsförslag:</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="265"/>
         <source>Applicera förslag</source>
-        <translation >Applicera förslag</translation>
+        <translation>Applicera förslag</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="306"/>
         <source>Inga specifika förslag.</source>
-        <translation >Inga specifika förslag.</translation>
+        <translation>Inga specifika förslag.</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="311"/>
@@ -66,12 +66,12 @@
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="313"/>
         <source>Fel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fel</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ai_review_dialog.py" line="314"/>
         <source>Kunde inte analysera översättning: </source>
-        <translation >Kunde inte analysera översättning: </translation>
+        <translation>Kunde inte analysera översättning: </translation>
     </message>
 </context>
 <context>
@@ -108,12 +108,12 @@
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="246"/>
         <source>Statistics</source>
-        <translation >Statistik</translation>
+        <translation>Statistik</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="254"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="268"/>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="274"/>
         <source>Unlocked</source>
-        <translation >Upplåst</translation>
+        <translation>Upplåst</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="279"/>
@@ -188,7 +188,7 @@
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="252"/>
         <source>Options</source>
-        <translation >Alternativ</translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="255"/>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="256"/>
         <source>Regular expression</source>
-        <translation >Reguljärt uttryck</translation>
+        <translation>Reguljärt uttryck</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="272"/>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="335"/>
         <source>Warning</source>
-        <translation >Varning</translation>
+        <translation>Varning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="335"/>
@@ -279,12 +279,12 @@
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="416"/>
         <source>Yes</source>
-        <translation >Ja</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="416"/>
         <source>No</source>
-        <translation >Nej</translation>
+        <translation>Nej</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/batch_edit_dialog.py" line="451"/>
@@ -496,7 +496,70 @@
     <message>
         <location filename="../src/linguaedit/ui/diff_dialog.py" line="575"/>
         <source>Error</source>
-        <translation >Fel</translation>
+        <translation>Fel</translation>
+    </message>
+</context>
+<context>
+    <name>FFmpegMissingDialog</name>
+    <message>
+        <source>FFmpeg krävs</source>
+        <translation type="vanished">FFmpeg krävs</translation>
+    </message>
+    <message>
+        <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
+        <translation type="vanished">&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Installationsanvisningar</source>
+        <translation type="vanished">Installationsanvisningar</translation>
+    </message>
+    <message>
+        <source>Bläddra efter ffmpeg…</source>
+        <translation type="vanished">Bläddra efter ffmpeg…</translation>
+    </message>
+    <message>
+        <source>Försök igen</source>
+        <translation type="vanished">Försök igen</translation>
+    </message>
+    <message>
+        <source>Öppna hämtningssida</source>
+        <translation type="vanished">Öppna hämtningssida</translation>
+    </message>
+    <message>
+        <source>Avbryt</source>
+        <translation type="vanished">Avbryt</translation>
+    </message>
+    <message>
+        <source>Välj ffmpeg-binär</source>
+        <translation type="vanished">Välj ffmpeg-binär</translation>
+    </message>
+    <message>
+        <source>Körbara filer (*)</source>
+        <translation type="vanished">Körbara filer (*)</translation>
+    </message>
+    <message>
+        <source>Ogiltig fil</source>
+        <translation type="vanished">Ogiltig fil</translation>
+    </message>
+    <message>
+        <source>Den valda filen verkar inte vara ffmpeg.</source>
+        <translation type="vanished">Den valda filen verkar inte vara ffmpeg.</translation>
+    </message>
+    <message>
+        <source>Fel</source>
+        <translation type="vanished">Fel</translation>
+    </message>
+    <message>
+        <source>Kunde inte köra den valda filen.</source>
+        <translation type="vanished">Kunde inte köra den valda filen.</translation>
+    </message>
+    <message>
+        <source>Ej hittad</source>
+        <translation type="vanished">Ej hittad</translation>
+    </message>
+    <message>
+        <source>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</source>
+        <translation type="vanished">FFmpeg kunde fortfarande inte hittas i systemets sökväg.</translation>
     </message>
 </context>
 <context>
@@ -544,7 +607,7 @@
     <message>
         <location filename="../src/linguaedit/ui/history_dialog.py" line="328"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/history_dialog.py" line="359"/>
@@ -588,17 +651,17 @@
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="131"/>
         <source>Notes</source>
-        <translation >Anteckningar</translation>
+        <translation>Anteckningar</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="131"/>
         <source>Source</source>
-        <translation >Källtext</translation>
+        <translation>Källtext</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="131"/>
         <source>Target</source>
-        <translation >Måltext</translation>
+        <translation>Måltext</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="131"/>
@@ -628,23 +691,23 @@
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="184"/>
         <source>Add</source>
-        <translation >Lägg till</translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="185"/>
         <source>Update</source>
-        <translation >Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="186"/>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="471"/>
         <source>Delete</source>
-        <translation >Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="187"/>
         <source>Clear</source>
-        <translation >Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="197"/>
@@ -678,7 +741,7 @@
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="426"/>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="560"/>
         <source>Warning</source>
-        <translation >Varning</translation>
+        <translation>Varning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="385"/>
@@ -715,7 +778,7 @@
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="467"/>
         <source>Edit</source>
-        <translation >Redigera</translation>
+        <translation>Redigera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/glossary_dialog.py" line="477"/>
@@ -1098,7 +1161,7 @@ First errors:
     <message>
         <location filename="../src/linguaedit/ui/history_dialog.py" line="149"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/history_dialog.py" line="174"/>
@@ -1239,7 +1302,7 @@ This will replace the current text with:
     <message>
         <location filename="../src/linguaedit/ui/layout_simulator_dialog.py" line="203"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/layout_simulator_dialog.py" line="250"/>
@@ -1796,7 +1859,7 @@ This will replace the current text with:
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1088"/>
         <source>AI Review</source>
-        <translation >AI-granskning</translation>
+        <translation>AI-granskning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1090"/>
@@ -1858,7 +1921,7 @@ This will replace the current text with:
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1112"/>
         <source>Status</source>
-        <translation >Status</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1113"/>
@@ -1908,7 +1971,7 @@ This will replace the current text with:
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1136"/>
         <source>Fullscreen</source>
-        <translation >Helskärm</translation>
+        <translation>Helskärm</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1139"/>
@@ -2228,7 +2291,7 @@ This will replace the current text with:
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="4735"/>
         <source>Review</source>
-        <translation >Granskning</translation>
+        <translation>Granskning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="4737"/>
@@ -2388,7 +2451,7 @@ Errors:
         <location filename="../src/linguaedit/ui/window.py" line="5115"/>
         <location filename="../src/linguaedit/ui/window.py" line="5501"/>
         <source>Error</source>
-        <translation >Fel</translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="5116"/>
@@ -2539,7 +2602,7 @@ This would pull latest translations using distribution hash.</source>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="5480"/>
         <source>Success</source>
-        <translation >Framgång</translation>
+        <translation>Framgång</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="5481"/>
@@ -3269,23 +3332,15 @@ Please reload the file to see changes.</source>
     </message>
     <message>
         <source>Extract Subtitles from Video…</source>
-        <translation>Extrahera undertexter från video…</translation>
+        <translation type="vanished">Extrahera undertexter från video…</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
-    </message>
-    <message>
-        <source>Statistics</source>
-        <translation>Statistik</translation>
-    </message>
-    <message>
-        <source>AI Review</source>
-        <translation>AI-granskning</translation>
+        <translation type="vanished">Video</translation>
     </message>
     <message>
         <source>Glossary</source>
-        <translation>Ordlista</translation>
+        <translation type="vanished">Ordlista</translation>
     </message>
 </context>
 <context>
@@ -3426,12 +3481,12 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/locale_map_dialog.py" line="314"/>
         <source>Refresh</source>
-        <translation >Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/locale_map_dialog.py" line="318"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/locale_map_dialog.py" line="332"/>
@@ -3474,12 +3529,12 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="59"/>
         <source>Import</source>
-        <translation >Importera</translation>
+        <translation>Importera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="63"/>
         <source>Export</source>
-        <translation >Exportera</translation>
+        <translation>Exportera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="71"/>
@@ -3505,7 +3560,7 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="99"/>
         <source>Delete</source>
-        <translation >Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="108"/>
@@ -3540,7 +3595,7 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="148"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/macro_dialog.py" line="165"/>
@@ -3768,7 +3823,7 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="201"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="212"/>
@@ -3888,7 +3943,7 @@ Please reload the file to see changes.</source>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="317"/>
         <source>Select All</source>
-        <translation >Markera allt</translation>
+        <translation>Markera allt</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="321"/>
@@ -3935,7 +3990,7 @@ Installation instructions:
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="409"/>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="527"/>
         <source>Error</source>
-        <translation >Fel</translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="409"/>
@@ -3970,7 +4025,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="517"/>
         <source>Success</source>
-        <translation >Framgång</translation>
+        <translation>Framgång</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/ocr_dialog.py" line="518"/>
@@ -4075,7 +4130,7 @@ Installation instructions:
         <location filename="../src/linguaedit/ui/platform_dialog.py" line="192"/>
         <location filename="../src/linguaedit/ui/platform_dialog.py" line="271"/>
         <source>Save</source>
-        <translation >Spara</translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/platform_dialog.py" line="125"/>
@@ -4166,7 +4221,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/plugin_dialog.py" line="59"/>
         <source>Name</source>
-        <translation >Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/plugin_dialog.py" line="59"/>
@@ -4206,7 +4261,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/plugin_dialog.py" line="130"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/plugin_dialog.py" line="203"/>
@@ -4249,7 +4304,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/plural_forms_editor.py" line="61"/>
         <source>Synkronisera från singular</source>
-        <translation >Synkronisera från singular</translation>
+        <translation>Synkronisera från singular</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/plural_forms_editor.py" line="67"/>
@@ -4400,7 +4455,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="176"/>
         <source>Project</source>
-        <translation >Projekt</translation>
+        <translation>Projekt</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="201"/>
@@ -4420,7 +4475,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="213"/>
         <source>Refresh</source>
-        <translation >Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="214"/>
@@ -4447,7 +4502,7 @@ Installation instructions:
         <location filename="../src/linguaedit/ui/project_dock.py" line="235"/>
         <location filename="../src/linguaedit/ui/project_dock.py" line="414"/>
         <source>Complete</source>
-        <translation >Klar</translation>
+        <translation>Klar</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="236"/>
@@ -4476,22 +4531,22 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="248"/>
         <source>Translated</source>
-        <translation >Översatt</translation>
+        <translation>Översatt</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="248"/>
         <source>File</source>
-        <translation >Fil</translation>
+        <translation>Fil</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="248"/>
         <source>Progress</source>
-        <translation >Framsteg</translation>
+        <translation>Framsteg</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="248"/>
         <source>Type</source>
-        <translation >Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="269"/>
@@ -4531,7 +4586,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="442"/>
         <source>Open</source>
-        <translation >Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="451"/>
@@ -4546,7 +4601,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="467"/>
         <source>Properties</source>
-        <translation >Egenskaper</translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/project_dock.py" line="514"/>
@@ -4645,7 +4700,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/regex_tester_dialog.py" line="97"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/regex_tester_dialog.py" line="152"/>
@@ -4675,7 +4730,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/regex_tester_dialog.py" line="222"/>
         <source>Error</source>
-        <translation >Fel</translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/regex_tester_dialog.py" line="223"/>
@@ -4693,7 +4748,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="47"/>
         <source>Search</source>
-        <translation >Sök</translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="51"/>
@@ -4718,7 +4773,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="65"/>
         <source>Options</source>
-        <translation >Alternativ</translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="70"/>
@@ -4733,7 +4788,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="72"/>
         <source>Regular expression</source>
-        <translation >Reguljärt uttryck</translation>
+        <translation>Reguljärt uttryck</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="81"/>
@@ -4748,7 +4803,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="85"/>
         <source>Translation</source>
-        <translation >Översättning</translation>
+        <translation>Översättning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="86"/>
@@ -4773,7 +4828,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="121"/>
         <source>Replace</source>
-        <translation >Ersätt</translation>
+        <translation>Ersätt</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="122"/>
@@ -4783,7 +4838,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="130"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/search_replace_dialog.py" line="275"/>
@@ -4949,7 +5004,7 @@ Installation instructions:
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="158"/>
         <source>Details</source>
-        <translation >Detaljer</translation>
+        <translation>Detaljer</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/achievements_dialog.py" line="164"/>
@@ -5120,7 +5175,7 @@ Saved to: %2</source>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="76"/>
         <source>Clear</source>
-        <translation >Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="82"/>
@@ -5150,7 +5205,7 @@ Saved to: %2</source>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="101"/>
         <source>Name</source>
-        <translation >Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="101"/>
@@ -5175,7 +5230,7 @@ Saved to: %2</source>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="157"/>
         <source>Close</source>
-        <translation >Stäng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/unicode_dialog.py" line="245"/>
@@ -5256,6 +5311,119 @@ Saved to: %2</source>
         <location filename="../src/linguaedit/ui/window.py" line="310"/>
         <source>Close</source>
         <translation>Stäng</translation>
+    </message>
+</context>
+<context>
+    <name>VideoSubtitleDialog</name>
+    <message>
+        <source>Extrahera undertexter från video</source>
+        <translation type="vanished">Extrahera undertexter från video</translation>
+    </message>
+    <message>
+        <source>Videofil</source>
+        <translation type="vanished">Videofil</translation>
+    </message>
+    <message>
+        <source>Ingen fil vald</source>
+        <translation type="vanished">Ingen fil vald</translation>
+    </message>
+    <message>
+        <source>Bläddra…</source>
+        <translation type="vanished">Bläddra…</translation>
+    </message>
+    <message>
+        <source>Undertextspår</source>
+        <translation type="vanished">Undertextspår</translation>
+    </message>
+    <message>
+        <source>Utdataformat</source>
+        <translation type="vanished">Utdataformat</translation>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation type="vanished">Format:</translation>
+    </message>
+    <message>
+        <source>Förhandsgranskning</source>
+        <translation type="vanished">Förhandsgranskning</translation>
+    </message>
+    <message>
+        <source>Välj en videofil för att förhandsgranska undertexter</source>
+        <translation type="vanished">Välj en videofil för att förhandsgranska undertexter</translation>
+    </message>
+    <message>
+        <source>Spela upp / pausa</source>
+        <translation type="vanished">Spela upp / pausa</translation>
+    </message>
+    <message>
+        <source>Stoppa</source>
+        <translation type="vanished">Stoppa</translation>
+    </message>
+    <message>
+        <source>Extrahera och öppna</source>
+        <translation type="vanished">Extrahera och öppna</translation>
+    </message>
+    <message>
+        <source>Extrahera och spara som…</source>
+        <translation type="vanished">Extrahera och spara som…</translation>
+    </message>
+    <message>
+        <source>Stäng</source>
+        <translation type="vanished">Stäng</translation>
+    </message>
+    <message>
+        <source>Välj videofil</source>
+        <translation type="vanished">Välj videofil</translation>
+    </message>
+    <message>
+        <source>Inga undertextspår hittades</source>
+        <translation type="vanished">Inga undertextspår hittades</translation>
+    </message>
+    <message>
+        <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+        <translation type="vanished">Denna videofil innehåller inga inbäddade undertextspår.</translation>
+    </message>
+    <message>
+        <source>%d undertextspår hittades. Längd: %s</source>
+        <translation type="vanished">%d undertextspår hittades. Längd: %s</translation>
+    </message>
+    <message>
+        <source>Förhandsgranskning misslyckades: %s</source>
+        <translation type="vanished">Förhandsgranskning misslyckades: %s</translation>
+    </message>
+    <message>
+        <source>Spara undertext som</source>
+        <translation type="vanished">Spara undertext som</translation>
+    </message>
+    <message>
+        <source>Klart</source>
+        <translation type="vanished">Klart</translation>
+    </message>
+    <message>
+        <source>Undertexten har sparats till:
+%s</source>
+        <translation type="vanished">Undertexten har sparats till:
+%s</translation>
+    </message>
+    <message>
+        <source>Fel vid extrahering</source>
+        <translation type="vanished">Fel vid extrahering</translation>
+    </message>
+    <message>
+        <source>Kunde inte extrahera undertexten:
+%s</source>
+        <translation type="vanished">Kunde inte extrahera undertexten:
+%s</translation>
+    </message>
+    <message>
+        <source>Fel</source>
+        <translation type="vanished">Fel</translation>
+    </message>
+    <message>
+        <source>Kunde inte läsa videofilen:
+%s</source>
+        <translation type="vanished">Kunde inte läsa videofilen:
+%s</translation>
     </message>
 </context>
 <context>
@@ -5405,182 +5573,6 @@ kvalitetssäkring, stavningskontroll och plattformsintegrering.</translation>
         <location filename="../src/linguaedit/ui/locale_map_dialog.py" line="180"/>
         <source>Translation Progress</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FFmpegMissingDialog</name>
-    <message>
-        <source>FFmpeg krävs</source>
-        <translation>FFmpeg krävs</translation>
-    </message>
-    <message>
-        <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>Installationsanvisningar</source>
-        <translation>Installationsanvisningar</translation>
-    </message>
-    <message>
-        <source>Bläddra efter ffmpeg…</source>
-        <translation>Bläddra efter ffmpeg…</translation>
-    </message>
-    <message>
-        <source>Försök igen</source>
-        <translation>Försök igen</translation>
-    </message>
-    <message>
-        <source>Öppna hämtningssida</source>
-        <translation>Öppna hämtningssida</translation>
-    </message>
-    <message>
-        <source>Avbryt</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Välj ffmpeg-binär</source>
-        <translation>Välj ffmpeg-binär</translation>
-    </message>
-    <message>
-        <source>Körbara filer (*)</source>
-        <translation>Körbara filer (*)</translation>
-    </message>
-    <message>
-        <source>Ogiltig fil</source>
-        <translation>Ogiltig fil</translation>
-    </message>
-    <message>
-        <source>Den valda filen verkar inte vara ffmpeg.</source>
-        <translation>Den valda filen verkar inte vara ffmpeg.</translation>
-    </message>
-    <message>
-        <source>Fel</source>
-        <translation>Fel</translation>
-    </message>
-    <message>
-        <source>Kunde inte köra den valda filen.</source>
-        <translation>Kunde inte köra den valda filen.</translation>
-    </message>
-    <message>
-        <source>Ej hittad</source>
-        <translation>Ej hittad</translation>
-    </message>
-    <message>
-        <source>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</source>
-        <translation>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</translation>
-    </message>
-</context>
-<context>
-    <name>VideoSubtitleDialog</name>
-    <message>
-        <source>Extrahera undertexter från video</source>
-        <translation>Extrahera undertexter från video</translation>
-    </message>
-    <message>
-        <source>Videofil</source>
-        <translation>Videofil</translation>
-    </message>
-    <message>
-        <source>Ingen fil vald</source>
-        <translation>Ingen fil vald</translation>
-    </message>
-    <message>
-        <source>Bläddra…</source>
-        <translation>Bläddra…</translation>
-    </message>
-    <message>
-        <source>Undertextspår</source>
-        <translation>Undertextspår</translation>
-    </message>
-    <message>
-        <source>Utdataformat</source>
-        <translation>Utdataformat</translation>
-    </message>
-    <message>
-        <source>Format:</source>
-        <translation>Format:</translation>
-    </message>
-    <message>
-        <source>Förhandsgranskning</source>
-        <translation>Förhandsgranskning</translation>
-    </message>
-    <message>
-        <source>Välj en videofil för att förhandsgranska undertexter</source>
-        <translation>Välj en videofil för att förhandsgranska undertexter</translation>
-    </message>
-    <message>
-        <source>Spela upp / pausa</source>
-        <translation>Spela upp / pausa</translation>
-    </message>
-    <message>
-        <source>Stoppa</source>
-        <translation>Stoppa</translation>
-    </message>
-    <message>
-        <source>Extrahera och öppna</source>
-        <translation>Extrahera och öppna</translation>
-    </message>
-    <message>
-        <source>Extrahera och spara som…</source>
-        <translation>Extrahera och spara som…</translation>
-    </message>
-    <message>
-        <source>Stäng</source>
-        <translation>Stäng</translation>
-    </message>
-    <message>
-        <source>Välj videofil</source>
-        <translation>Välj videofil</translation>
-    </message>
-    <message>
-        <source>Inga undertextspår hittades</source>
-        <translation>Inga undertextspår hittades</translation>
-    </message>
-    <message>
-        <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
-        <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
-    </message>
-    <message>
-        <source>%d undertextspår hittades. Längd: %s</source>
-        <translation>%d undertextspår hittades. Längd: %s</translation>
-    </message>
-    <message>
-        <source>Förhandsgranskning misslyckades: %s</source>
-        <translation>Förhandsgranskning misslyckades: %s</translation>
-    </message>
-    <message>
-        <source>Spara undertext som</source>
-        <translation>Spara undertext som</translation>
-    </message>
-    <message>
-        <source>Klart</source>
-        <translation>Klart</translation>
-    </message>
-    <message>
-        <source>Undertexten har sparats till:
-%s</source>
-        <translation>Undertexten har sparats till:
-%s</translation>
-    </message>
-    <message>
-        <source>Fel vid extrahering</source>
-        <translation>Fel vid extrahering</translation>
-    </message>
-    <message>
-        <source>Kunde inte extrahera undertexten:
-%s</source>
-        <translation>Kunde inte extrahera undertexten:
-%s</translation>
-    </message>
-    <message>
-        <source>Fel</source>
-        <translation>Fel</translation>
-    </message>
-    <message>
-        <source>Kunde inte läsa videofilen:
-%s</source>
-        <translation>Kunde inte läsa videofilen:
-%s</translation>
     </message>
 </context>
 </TS>

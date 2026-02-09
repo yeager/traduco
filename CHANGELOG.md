@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.1.0 (2026-02-09) — Video Subtitle Extraction
+
+### Added
+- **FFmpeg video subtitle extraction** — extract subtitles from video files (.mkv, .mp4, .avi, etc.)
+- **FFmpeg missing dialog** — user-friendly dialog when FFmpeg is not installed, with options to get install info, browse manually, retry, or cancel
+- **Video subtitle stream selection** — pick which subtitle track to extract from multi-stream videos
+- **Enhanced sidebar** — large icons for better navigation and visibility
+- **Increased Source/Translation margins** — more readable editing area
+
 ## 1.0.0 (2026-02-08) — The Everything Release
 
 LinguaEdit 1.0.0 marks a major milestone with 55+ new features, 15+ supported file formats, and comprehensive translation tools for professionals and hobbyists alike.
