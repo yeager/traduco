@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="sv" datatype="plaintext" original="test">
+    <body>
+      <trans-unit id="1">
+        <source>Hello</source>
+        <target>Hej</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Goodbye</source>
+        <target>Hejdå</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Save</source>
+        <target state="needs-translation"></target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>File</source>
+        <target>Fil</target>
+        <note>Menu item</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

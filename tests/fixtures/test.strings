@@ -1,0 +1,9 @@
+/* Greeting */
+"hello" = "Hej";
+
+/* Farewell */
+"goodbye" = "Hejdå";
+
+"save" = "Spara";
+"cancel" = "";
+"file" = "Fil";

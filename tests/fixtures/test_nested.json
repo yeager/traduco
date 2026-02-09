@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "file": "Fil",
+    "edit": "Redigera",
+    "view": "Visa"
+  },
+  "buttons": {
+    "ok": "OK",
+    "cancel": ""
+  }
+}

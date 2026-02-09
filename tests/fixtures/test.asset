@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc123}
+  m_Name: TestTable
+  m_TableCollectionName: TestTable
+  m_Id: table1
+  m_SharedData:
+    m_Entries:
+    - m_Id: 1
+      m_Key: hello
+      m_Metadata:
+        m_Items: []
+    - m_Id: 2
+      m_Key: goodbye
+      m_Metadata:
+        m_Items: []
+    - m_Id: 3
+      m_Key: save
+      m_Metadata:
+        m_Items: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: Hej
+  - m_Id: 2
+    m_Localized: "Hejd\xE5"
+  - m_Id: 3
+    m_Localized: Spara

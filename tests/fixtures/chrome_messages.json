@@ -1,0 +1,24 @@
+{
+  "appName": {
+    "message": "TestApp",
+    "description": "The app name"
+  },
+  "hello": {
+    "message": "Hej",
+    "description": "Greeting"
+  },
+  "goodbye": {
+    "message": "Hejdå",
+    "description": "Farewell"
+  },
+  "greeting": {
+    "message": "Hej $USER$!",
+    "description": "Greeting with name",
+    "placeholders": {
+      "user": {
+        "content": "$1",
+        "example": "Dansen"
+      }
+    }
+  }
+}

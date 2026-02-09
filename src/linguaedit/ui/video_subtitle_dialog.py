@@ -19,7 +19,7 @@ from typing import Optional
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
     QComboBox, QFileDialog, QMessageBox, QGroupBox,
-    QProgressBar, QSlider, QWidget, QDialogButtonBox,
+    QProgressBar, QProgressDialog, QSlider, QWidget, QDialogButtonBox,
     QApplication, QStyle,
 )
 from PySide6.QtCore import Qt, QUrl, QTimer, Signal
@@ -525,14 +525,27 @@ class VideoSubtitleDialog(QDialog):
         if output_path is None:
             output_path = self._video_path.with_suffix(fmt)
 
-        self._progress.setVisible(True)
-        self._progress.setRange(0, 100)
-        self._progress.setValue(0)
-        self._progress.setFormat(self.tr("Extraherar undertexter… %p%"))
-        QApplication.processEvents()
+        progress_dlg = QProgressDialog(
+            self.tr("Extraherar undertexter…"),
+            self.tr("Avbryt"),
+            0, 100,
+            self,
+        )
+        progress_dlg.setWindowTitle(self.tr("Extraherar"))
+        progress_dlg.setWindowModality(Qt.WindowModal)
+        progress_dlg.setMinimumDuration(0)
+        progress_dlg.setValue(0)
+        self._extract_cancelled = False
+
+        def _on_cancel():
+            self._extract_cancelled = True
+
+        progress_dlg.canceled.connect(_on_cancel)
 
         def _on_progress(pct: float):
-            self._progress.setValue(int(pct * 100))
+            if self._extract_cancelled:
+                return
+            progress_dlg.setValue(int(pct * 100))
             QApplication.processEvents()
 
         try:
@@ -541,12 +554,11 @@ class VideoSubtitleDialog(QDialog):
                 progress_callback=_on_progress,
                 duration=self._duration,
             )
-            self._progress.setValue(100)
-            QApplication.processEvents()
-            self._progress.setVisible(False)
+            progress_dlg.setValue(100)
+            progress_dlg.close()
             return result
         except Exception as e:
-            self._progress.setVisible(False)
+            progress_dlg.close()
             QMessageBox.critical(
                 self, self.tr("Fel vid extrahering"),
                 self.tr("Kunde inte extrahera undertexten:\n%s") % str(e),

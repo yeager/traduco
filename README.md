@@ -1,6 +1,6 @@
 # LinguaEdit
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Version](https://img.shields.io/badge/version-1.3.2-blue)
 ![GitHub Release](https://img.shields.io/github/v/release/yeager/linguaedit)
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
@@ -261,6 +261,10 @@ Distraction-free translation workflow (Ctrl+Shift+Z):
 - **Save flash animation** — green border flash confirming save
 - Fullscreen mode (F11)
 - Syntax highlighting for HTML tags, format strings, escape sequences
+
+### 🧪 Testing
+
+- **90 unit tests** covering parsers, linter, TM, settings, and security
 
 ### 🛠️ Advanced Tools
 

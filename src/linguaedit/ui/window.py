@@ -36,10 +36,10 @@ from PySide6.QtWidgets import (
     QProgressBar, QMenu, QStatusBar, QTabWidget,
     QToolBar, QFrame, QScrollArea, QGroupBox, QTableWidget, QTableWidgetItem,
     QDialog, QDialogButtonBox, QFormLayout, QFileDialog,
-    QMessageBox, QInputDialog, QApplication, QToolButton,
+    QMessageBox, QInputDialog, QApplication, QToolButton, QProgressDialog,
     QAbstractItemView, QSpinBox, QDockWidget, QStyledItemDelegate,
 )
-from PySide6.QtCore import Qt, QTimer, QFileSystemWatcher, Signal, Slot, QPropertyAnimation, QEasingCurve
+from PySide6.QtCore import Qt, QTimer, QFileSystemWatcher, Signal, Slot, QPropertyAnimation, QEasingCurve, QSettings
 from PySide6.QtGui import (
     QAction, QKeySequence, QFont, QColor, QIcon, QBrush,
     QDragEnterEvent, QDropEvent, QPalette, QShortcut, QDesktopServices,
@@ -529,6 +529,7 @@ class LinguaEditWindow(QMainWindow):
 
         self._horizontal_split = self._app_settings.get_value("horizontal_split", False)
         self._context_panel = None
+        self._dirty = False
 
         self._build_ui()
         self._apply_settings()
@@ -537,6 +538,21 @@ class LinguaEditWindow(QMainWindow):
         # Apply saved split orientation
         if self._horizontal_split:
             self._apply_split_orientation()
+
+        # Restore saved geometry and splitter positions
+        settings = QSettings("LinguaEdit", "LinguaEdit")
+        geo = settings.value("geometry")
+        if geo:
+            self.restoreGeometry(geo)
+        ws = settings.value("windowState")
+        if ws:
+            self.restoreState(ws)
+        outer = settings.value("outerSplitter")
+        if outer:
+            self._outer_splitter.restoreState(outer)
+        vs = settings.value("vSplitter")
+        if vs:
+            self._v_splitter.restoreState(vs)
 
     # ── Settings ──────────────────────────────────────────────────
 
@@ -765,6 +781,8 @@ class LinguaEditWindow(QMainWindow):
         self._source_view.setReadOnly(True)
         self._source_view.setMaximumHeight(90)
         self._source_view.setFrameShape(QFrame.StyledPanel)
+        self._source_view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self._source_view.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self._source_view.setStyleSheet("QTextEdit { background: palette(alternate-base); }")
         editor_layout.addWidget(self._source_view)
 
@@ -774,6 +792,8 @@ class LinguaEditWindow(QMainWindow):
         editor_layout.addWidget(self._trans_header)
         self._trans_view = TranslationEditor()
         self._trans_view.setFrameShape(QFrame.StyledPanel)
+        self._trans_view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self._trans_view.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self._trans_view.textChanged.connect(self._on_trans_buffer_changed)
         self._trans_view.translation_changed.connect(self._on_trans_buffer_changed)
         self._trans_view._load_save_user_dict(save=False)  # Load user dictionary
@@ -791,6 +811,7 @@ class LinguaEditWindow(QMainWindow):
         self._comment_view = QTextEdit()
         self._comment_view.setMaximumHeight(60)
         self._comment_view.setFrameShape(QFrame.StyledPanel)
+        self._comment_view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self._comment_view.setPlaceholderText(self.tr("Add translator notes..."))
         self._comment_view.textChanged.connect(self._on_comment_changed)
         editor_layout.addWidget(self._comment_view)
@@ -3108,6 +3129,8 @@ class LinguaEditWindow(QMainWindow):
     # ══════════════════════════════════════════════════════════════
 
     def _on_open(self):
+        if not self._ask_save_changes():
+            return
         last_dir = self._app_settings.get_value("last_open_directory", "")
         path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Translation File"), last_dir, _FILE_FILTER)
         if path:
@@ -3387,11 +3410,16 @@ class LinguaEditWindow(QMainWindow):
             self._modified = True
         elif self._file_type == "ts":
             entry = self._file_data.entries[self._current_index]
-            entry.type = "unfinished" if checked else ""
+            entry.translation_type = "unfinished" if checked else ""
             self._modified = True
         elif self._file_type == "xliff":
             entry = self._file_data.entries[self._current_index]
             entry.state = "needs-review-translation" if checked else "translated"
+            self._modified = True
+        elif self._file_type in ("sdlxliff", "mqxliff"):
+            entry = self._file_data.entries[self._current_index]
+            if hasattr(entry, 'confirmation_level'):
+                entry.confirmation_level = "Draft" if checked else "Translated"
             self._modified = True
 
         # Update the current tree row visually
@@ -6790,3 +6818,41 @@ class LinguaEditWindow(QMainWindow):
         menu = QMenu(self)
         menu.addAction(self.tr("Customize Toolbar…"), self._show_toolbar_customizer)
         menu.exec(self._sidebar.mapToGlobal(pos))
+
+    # ── Unsaved changes dialog ────────────────────────────────────
+
+    def _ask_save_changes(self) -> bool:
+        """Ask the user to save unsaved changes.
+
+        Returns True if the caller may proceed (saved or discarded),
+        False if the user chose Cancel.
+        """
+        if not self._modified:
+            return True
+        ret = QMessageBox.question(
+            self,
+            self.tr("Unsaved Changes"),
+            self.tr("The current file has unsaved changes.\nDo you want to save before continuing?"),
+            QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel,
+            QMessageBox.Save,
+        )
+        if ret == QMessageBox.Save:
+            self._on_save()
+            return True
+        elif ret == QMessageBox.Discard:
+            return True
+        else:  # Cancel
+            return False
+
+    def closeEvent(self, event):
+        """Prompt to save and persist window geometry before closing."""
+        if not self._ask_save_changes():
+            event.ignore()
+            return
+        # Save geometry and splitter state
+        settings = QSettings("LinguaEdit", "LinguaEdit")
+        settings.setValue("geometry", self.saveGeometry())
+        settings.setValue("windowState", self.saveState())
+        settings.setValue("outerSplitter", self._outer_splitter.saveState())
+        settings.setValue("vSplitter", self._v_splitter.saveState())
+        super().closeEvent(event)

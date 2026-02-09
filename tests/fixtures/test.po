@@ -1,0 +1,21 @@
+# Test PO file
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: sv\n"
+
+msgid "Hello"
+msgstr "Hej"
+
+msgid "Goodbye"
+msgstr "Hejdå"
+
+#, fuzzy
+msgid "Welcome"
+msgstr "Välkommen"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "File"
+msgstr "Fil"

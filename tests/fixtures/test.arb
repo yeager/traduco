@@ -1,0 +1,11 @@
+{
+  "@@locale": "sv",
+  "hello": "Hej",
+  "@hello": {
+    "description": "Greeting"
+  },
+  "goodbye": "Hejdå",
+  "save": "Spara",
+  "cancel": "",
+  "welcome": "Välkommen"
+}

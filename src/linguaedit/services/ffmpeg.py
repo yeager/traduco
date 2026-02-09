@@ -155,9 +155,14 @@ def extract_subtitle(
                 current_ms = int(m.group(1))
                 pct = min(current_ms / (duration * 1_000_000), 1.0)
                 progress_callback(pct)
-        proc.wait(timeout=120)
+        try:
+            proc.wait(timeout=120)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            raise RuntimeError("ffmpeg extraction timed out after 120 seconds")
         if proc.returncode != 0:
-            raise RuntimeError("ffmpeg extraction failed")
+            stderr = proc.stderr.read() if proc.stderr else ""
+            raise RuntimeError(f"ffmpeg extraction failed: {stderr.strip()}")
     else:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         if result.returncode != 0:

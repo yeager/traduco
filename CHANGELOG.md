@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v1.3.2 — "Rock Solid" (2026-02-09)
+
+### Bug Fixes
+- Fuzzy toggle now works correctly for TS files (was using `entry.type` instead of `entry.translation_type`)
+- FFmpeg subtitle extraction shows progress dialog instead of blank window
+- FFmpeg extraction has timeout handling and error reporting
+
+### Improvements
+- Scrollbars on all text areas (source, translation, comment)
+- Unsaved changes dialog when closing or opening new file
+- Window geometry and splitter positions saved/restored via QSettings
+- 90 unit tests added (parsers, linter, TM, settings, security)
+
+### Known Issues
+- Unity .asset parser doesn't handle `!u!` YAML tags
+
 ## v1.3.1 — "Polished & Translated" (2026-02-09)
 
 ### Bug Fixes

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="1.4b">
+  <header creationtool="test" datatype="plaintext" segtype="sentence" adminlang="en" srclang="en"/>
+  <body>
+    <tu tuid="1">
+      <tuv xml:lang="en"><seg>Hello</seg></tuv>
+      <tuv xml:lang="sv"><seg>Hej</seg></tuv>
+    </tu>
+    <tu tuid="2">
+      <tuv xml:lang="en"><seg>Goodbye</seg></tuv>
+      <tuv xml:lang="sv"><seg>Hejdå</seg></tuv>
+    </tu>
+    <tu tuid="3">
+      <tuv xml:lang="en"><seg>Save</seg></tuv>
+      <tuv xml:lang="sv"><seg>Spara</seg></tuv>
+    </tu>
+  </body>
+</tmx>
