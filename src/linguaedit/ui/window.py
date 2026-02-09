@@ -4474,13 +4474,14 @@ class LinguaEditWindow(QMainWindow):
     # ── About ─────────────────────────────────────────────────────
 
     def _on_about(self):
-        icon_html = ""
+        from PySide6.QtGui import QPixmap
+        msg = QMessageBox(self)
+        msg.setWindowTitle(self.tr("About LinguaEdit"))
+        msg.setTextFormat(Qt.RichText)
         if self._app_icon_path:
-            icon_html = f"<p><img src='{self._app_icon_path}' width='64' height='64'></p>"
-        QMessageBox.about(
-            self,
-            self.tr("About LinguaEdit"),
-            f"{icon_html}"
+            msg.setIconPixmap(QPixmap(self._app_icon_path).scaled(
+                64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        msg.setText(
             f"<h2>LinguaEdit</h2>"
             f"<p>Version {__version__}</p>"
             "<p>" + self.tr("A translation file editor for PO, TS, JSON, XLIFF, "
@@ -4491,6 +4492,7 @@ class LinguaEditWindow(QMainWindow):
             "www.linguaedit.org</a></p>"
             "<p>© 2026 Daniel Nylander</p>"
         )
+        msg.exec()
 
     # ── Platform integration ──────────────────────────────────────
 
