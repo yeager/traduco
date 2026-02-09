@@ -19,6 +19,28 @@ LinguaEdit is a feature-rich, cross-platform translation editor that supports 17
 
 ---
 
+## 📸 Screenshots
+
+### Main Editor
+![Main Editor](docs/screenshots/main-editor.png)
+
+### Translation Engines
+![Translation Engines](docs/screenshots/mt-engines.png)
+
+### Validation
+![Validation](docs/screenshots/validation.png)
+
+### Statistics
+![Statistics](docs/screenshots/statistics.png)
+
+### Video Subtitle Extraction
+![Video Subtitles](docs/screenshots/video-subtitles.png)
+
+### Glossary Management
+![Glossary](docs/screenshots/glossary.png)
+
+---
+
 ## 📦 Installation
 
 ### pip / pipx (recommended)
