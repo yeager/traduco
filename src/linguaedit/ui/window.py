@@ -3719,7 +3719,7 @@ class LinguaEditWindow(QMainWindow):
         opt_form.addRow("DeepL formality:", formality_combo)
         openai_edit = QLineEdit(getattr(self, "_openai_model", "gpt-4o-mini"))
         opt_form.addRow("OpenAI model:", openai_edit)
-        anthropic_edit = QLineEdit(getattr(self, "_anthropic_model", "claude-sonnet-4-20250514"))
+        anthropic_edit = QLineEdit(getattr(self, "_anthropic_model", "claude-sonnet-4-20260514"))
         opt_form.addRow("Anthropic model:", anthropic_edit)
         layout.addWidget(options_group)
 
@@ -3741,7 +3741,7 @@ class LinguaEditWindow(QMainWindow):
             formality_vals = ["default", "less", "more", "prefer_less", "prefer_more"]
             self._deepl_formality = formality_vals[formality_combo.currentIndex()]
             self._openai_model = openai_edit.text().strip() or "gpt-4o-mini"
-            self._anthropic_model = anthropic_edit.text().strip() or "claude-sonnet-4-20250514"
+            self._anthropic_model = anthropic_edit.text().strip() or "claude-sonnet-4-20260514"
             self._do_pretranslate_all()
 
     def _do_pretranslate_all(self):
@@ -4127,7 +4127,7 @@ class LinguaEditWindow(QMainWindow):
             f"<p>License: GPL-3.0-or-later</p>"
             f"<p>Website: <a href='https://github.com/yeager/linguaedit'>"
             f"github.com/yeager/linguaedit</a></p>"
-            f"<p>© 2025 Daniel Nylander</p>"
+            f"<p>© 2026 Daniel Nylander</p>"
         )
 
     # ── Platform integration ──────────────────────────────────────

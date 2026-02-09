@@ -196,7 +196,7 @@ def translate_openai(text: str, source: str = "en", target: str = "sv",
 
 
 def translate_anthropic(text: str, source: str = "en", target: str = "sv",
-                        api_key: str = "", model: str = "claude-sonnet-4-20250514", **kw) -> str:
+                        api_key: str = "", model: str = "claude-sonnet-4-20260514", **kw) -> str:
     """Paid translation via Anthropic API."""
     api_key = api_key or get_secret("anthropic", "api_key") or ""
     if not api_key:
