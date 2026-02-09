@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 1.3.0 (2026-02-09) — Secure, Polished & Video-Ready
+
+### Security
+- **Cross-platform credential storage** — macOS Keychain, Windows Credential Locker, Linux Secret Service, AES-encrypted fallback
+- **Security status in Preferences** — shows which backend is active with 🔒/⚠️ indicator
+
+### Video & Subtitles
+- **Auto video preview** — opening a subtitle file automatically shows the matching video
+- **Extraction prompt with progress bar** — percentage-based progress when extracting subtitles from video
+- **Editable timestamps** — subtitle time intervals as a dedicated editable column
+- **Non-modal preview** — video plays alongside the editor
+
+### Bug Fixes
+- **Fuzzy click fixed** — column index mismatch (was writing to col 3 instead of col 5)
+- **Fuzzy toggle for TS/XLIFF** — now works for all file formats, not just PO
+
+### Packaging
+- **Ubuntu 25.10 compatible** — removed python3-pyside6 dependency, improved postinst with pip fallbacks
+- **Better install docs** — separate sections for Linux, macOS, and Windows
+
 ## 1.2.1 (2026-02-09) — Full Swedish Translation
 
 ### Updated

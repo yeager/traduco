@@ -229,7 +229,7 @@ class VideoSubtitleDialog(QDialog):
         self._preview_label.setMinimumHeight(120)
         self._preview_label.setStyleSheet(
             "QLabel { background: palette(base); border: 1px solid palette(mid); "
-            "padding: 8px; font-family: monospace; }"
+            "padding: 8px; font-family: Menlo, Courier New, monospace; }"
         )
         preview_layout.addWidget(self._preview_label)
 

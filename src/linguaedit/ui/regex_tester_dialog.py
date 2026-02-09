@@ -79,7 +79,7 @@ class RegexTesterDialog(QDialog):
         self._preview_edit.setReadOnly(True)
         self._preview_edit.setMaximumHeight(100)
         font = QFont("Consolas", 10)
-        font.setFamily("monospace")
+        font.setFamily("Menlo")
         self._preview_edit.setFont(font)
         preview_layout.addWidget(self._preview_edit)
         

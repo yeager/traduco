@@ -734,7 +734,7 @@ class LinguaEditWindow(QMainWindow):
         ts_layout.setContentsMargins(8, 4, 8, 4)
         self._timestamp_edit = QLineEdit()
         self._timestamp_edit.setPlaceholderText("HH:MM:SS,mmm --> HH:MM:SS,mmm")
-        self._timestamp_edit.setFont(QFont("monospace"))
+        self._timestamp_edit.setFont(QFont("Menlo"))
         self._timestamp_edit.editingFinished.connect(self._on_timestamp_edited)
         ts_layout.addWidget(QLabel(self.tr("Time:")))
         ts_layout.addWidget(self._timestamp_edit, 1)
