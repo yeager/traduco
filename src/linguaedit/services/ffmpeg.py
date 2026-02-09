@@ -116,11 +116,17 @@ def extract_subtitle(
     track: SubtitleTrack,
     output_path: Path,
     output_format: str = ".srt",
+    progress_callback: Optional[callable] = None,
+    duration: float = 0.0,
 ) -> Path:
     """Extract a single subtitle track to *output_path*.
 
     *output_format* should be one of the keys in ``SUBTITLE_FORMATS``
     (e.g. ``".srt"``, ``".vtt"``).
+
+    If *progress_callback* is provided, it is called with a float 0.0–1.0
+    representing extraction progress. *duration* (seconds) is needed for
+    progress calculation.
     """
     ffmpeg = find_ffmpeg()
     if not ffmpeg:
@@ -131,15 +137,31 @@ def extract_subtitle(
     cmd = [
         ffmpeg,
         "-y",
+        "-progress", "pipe:1",
         "-i", str(video_path),
         "-map", f"0:{track.stream_index}",
         "-c:s", codec,
         str(output_path),
     ]
 
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
-    if result.returncode != 0:
-        raise RuntimeError(f"ffmpeg extraction failed: {result.stderr.strip()}")
+    if progress_callback and duration > 0:
+        import re as _re
+        proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+        )
+        for line in proc.stdout:
+            m = _re.match(r'out_time_ms=(\d+)', line.strip())
+            if m:
+                current_ms = int(m.group(1))
+                pct = min(current_ms / (duration * 1_000_000), 1.0)
+                progress_callback(pct)
+        proc.wait(timeout=120)
+        if proc.returncode != 0:
+            raise RuntimeError("ffmpeg extraction failed")
+    else:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if result.returncode != 0:
+            raise RuntimeError(f"ffmpeg extraction failed: {result.stderr.strip()}")
 
     return output_path
 

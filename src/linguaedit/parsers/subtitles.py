@@ -15,9 +15,15 @@ class SubtitleEntry:
     start_time: str
     end_time: str
     text: str
+    translation: str = ""  # Översättning av undertexten
     cue_settings: str = ""  # För VTT
     note: str = ""  # För NOTE-kommentarer i VTT
     line_number: int = 0
+
+    @property
+    def timestamp(self) -> str:
+        """Return formatted timestamp interval."""
+        return f"{self.start_time} --> {self.end_time}"
 
 
 @dataclass

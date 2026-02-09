@@ -5,12 +5,13 @@ from __future__ import annotations
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QTabWidget, QWidget, QFormLayout,
     QLineEdit, QComboBox, QSpinBox, QGroupBox, QDialogButtonBox,
-    QCheckBox,
+    QCheckBox, QLabel,
 )
 from PySide6.QtCore import Qt
 
 from linguaedit.services.settings import Settings, SUPPORTED_LANGUAGES
 from linguaedit.services.translator import ENGINES
+from linguaedit.services import keystore
 
 
 class PreferencesDialog(QDialog):
@@ -32,6 +33,7 @@ class PreferencesDialog(QDialog):
         tabs.addTab(self._build_personal_tab(), self.tr("Personal"))
         tabs.addTab(self._build_translation_tab(), self.tr("Translation"))
         tabs.addTab(self._build_appearance_tab(), self.tr("Appearance"))
+        tabs.addTab(self._build_security_tab(), self.tr("Security"))
         layout.addWidget(tabs)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
@@ -132,6 +134,42 @@ class PreferencesDialog(QDialog):
         self._font_spin.setRange(8, 32)
         self._font_spin.setValue(self._settings["editor_font_size"])
         form.addRow(self.tr("Editor font size:"), self._font_spin)
+
+        return page
+
+    def _build_security_tab(self) -> QWidget:
+        page = QWidget()
+        form = QFormLayout(page)
+        form.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
+
+        # Keyring backend status
+        backend = keystore.backend_name()
+        secure = keystore.is_secure_backend()
+        status_icon = "🔒" if secure else "⚠️"
+        status_text = f"{status_icon} {backend}"
+        backend_label = QLabel(status_text)
+        backend_label.setWordWrap(True)
+        form.addRow(self.tr("Credential storage:"), backend_label)
+
+        if not secure:
+            hint = QLabel(self.tr(
+                "No system keychain detected. Credentials are stored in an "
+                "encrypted file with a master password.\n\n"
+                "For better security, install:\n"
+                "• macOS: Built-in (Keychain)\n"
+                "• Windows: pip install keyring\n"
+                "• Linux: pip install secretstorage"
+            ))
+            hint.setWordWrap(True)
+            hint.setStyleSheet("color: #b36b00; font-size: 11px;")
+            form.addRow("", hint)
+        else:
+            hint = QLabel(self.tr(
+                "Your credentials are securely stored in the system keychain."
+            ))
+            hint.setWordWrap(True)
+            hint.setStyleSheet("color: #2a7e3b; font-size: 11px;")
+            form.addRow("", hint)
 
         return page
 

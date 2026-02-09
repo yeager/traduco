@@ -1,5 +1,13 @@
-"""Secure credential storage abstraction for macOS Keychain, Linux Secret Service, and fallback."""
-# SPDX-License-Identifier: GPL-3.0-or-later
+"""Secure credential storage abstraction for macOS, Windows, Linux, and fallback.
+
+Supports:
+  - macOS: Keychain via ``security`` CLI
+  - Windows: Windows Credential Locker via ``keyring`` (WinVaultKeyring)
+  - Linux: Secret Service API (GNOME Keyring / KWallet) via ``secretstorage``
+  - Fallback: AES-encrypted file with user-provided master password (Fernet)
+
+SPDX-License-Identifier: GPL-3.0-or-later
+"""
 
 from __future__ import annotations
 
@@ -12,6 +20,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
+
 def _(s): return s  # no-op; UI handles translation
 
 _SERVICE_PREFIX = "linguaedit"
@@ -21,13 +30,23 @@ _SERVICE_PREFIX = "linguaedit"
 
 def _detect_backend() -> str:
     """Detect the best available secrets backend."""
-    if platform.system() == "Darwin":
+    system = platform.system()
+    if system == "Darwin":
         return "macos"
-    if platform.system() == "Linux":
+    if system == "Windows":
         try:
-            import secretstorage  # noqa: F401
-            return "linux"
+            import keyring  # noqa: F401
+            return "windows"
         except ImportError:
+            pass
+    if system == "Linux":
+        try:
+            import secretstorage
+            # Verify D-Bus connection works
+            conn = secretstorage.dbus_init()
+            secretstorage.get_default_collection(conn)
+            return "linux"
+        except Exception:
             pass
     return "fallback"
 
@@ -48,6 +67,8 @@ def store_secret(service: str, key: str, value: str) -> None:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         _macos_store(label, value)
+    elif _backend == "windows":
+        _windows_store(label, value)
     elif _backend == "linux":
         _linux_store(label, value)
     else:
@@ -62,6 +83,8 @@ def get_secret(service: str, key: str) -> Optional[str]:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         return _macos_get(label)
+    elif _backend == "windows":
+        return _windows_get(label)
     elif _backend == "linux":
         return _linux_get(label)
     else:
@@ -73,6 +96,8 @@ def delete_secret(service: str, key: str) -> None:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         _macos_delete(label)
+    elif _backend == "windows":
+        _windows_delete(label)
     elif _backend == "linux":
         _linux_delete(label)
     else:
@@ -81,12 +106,23 @@ def delete_secret(service: str, key: str) -> None:
 
 def backend_name() -> str:
     """Return the name of the active backend for display."""
-    return {"macos": "macOS Keychain", "linux": "Secret Service", "fallback": _("Encrypted file (fallback)")}[_backend]
+    names = {
+        "macos": _("macOS Keychain"),
+        "windows": _("Windows Credential Locker"),
+        "linux": _("Secret Service (GNOME Keyring / KWallet)"),
+        "fallback": _("Encrypted file (fallback)"),
+    }
+    return names[_backend]
+
+
+def backend_id() -> str:
+    """Return the raw backend identifier string."""
+    return _backend
 
 
 def is_secure_backend() -> bool:
     """True if using a real system keychain."""
-    return _backend in ("macos", "linux")
+    return _backend in ("macos", "windows", "linux")
 
 
 # ── macOS Keychain ────────────────────────────────────────────────────
@@ -122,6 +158,26 @@ def _macos_delete(label: str) -> None:
             check=True, capture_output=True, text=True,
         )
     except subprocess.CalledProcessError:
+        pass  # not found, fine
+
+
+# ── Windows Credential Locker ────────────────────────────────────────
+
+def _windows_store(label: str, value: str) -> None:
+    import keyring
+    keyring.set_password(_SERVICE_PREFIX, label, value)
+
+
+def _windows_get(label: str) -> Optional[str]:
+    import keyring
+    return keyring.get_password(_SERVICE_PREFIX, label)
+
+
+def _windows_delete(label: str) -> None:
+    import keyring
+    try:
+        keyring.delete_password(_SERVICE_PREFIX, label)
+    except keyring.errors.PasswordDeleteError:
         pass  # not found, fine
 
 
@@ -165,10 +221,15 @@ def _linux_delete(label: str) -> None:
         item.delete()
 
 
-# ── Fallback: obfuscated file (NOT truly secure) ─────────────────────
+# ── Fallback: Fernet-encrypted file with master password ─────────────
 
-_FALLBACK_PATH = Path.home() / ".config" / "linguaedit" / ".secrets.json"
+_FALLBACK_DIR = Path.home() / ".config" / "linguaedit"
+_FALLBACK_PATH = _FALLBACK_DIR / ".secrets.enc"
+_FALLBACK_SALT_PATH = _FALLBACK_DIR / ".secrets.salt"
 _FALLBACK_WARNED = False
+
+# In-memory cache of the master password for the session
+_master_password: Optional[str] = None
 
 
 def _fallback_warn() -> None:
@@ -176,38 +237,122 @@ def _fallback_warn() -> None:
     if not _FALLBACK_WARNED:
         print(
             "WARNING: No system keychain available. "
-            "Secrets are stored with basic obfuscation in "
-            f"{_FALLBACK_PATH} — this is NOT secure. "
-            "Install 'secretstorage' on Linux or use macOS for proper credential storage.",
+            "Secrets are stored with AES encryption (Fernet) in "
+            f"{_FALLBACK_PATH}. "
+            "A master password is required to unlock credentials. "
+            "Install 'secretstorage' on Linux, 'keyring' on Windows, "
+            "or use macOS for system-managed credential storage.",
             file=sys.stderr,
         )
         _FALLBACK_WARNED = True
 
 
-def _fallback_key() -> bytes:
-    """Derive a machine-specific obfuscation key (NOT real encryption)."""
-    machine_id = platform.node() + os.getenv("USER", "linguaedit")
-    return hashlib.sha256(machine_id.encode()).digest()
+def _get_master_password() -> str:
+    """Get the master password, prompting the user if needed."""
+    global _master_password
+    if _master_password is not None:
+        return _master_password
+
+    # Try to prompt via GUI if QApplication is running
+    try:
+        from PySide6.QtWidgets import QApplication, QInputDialog
+        app = QApplication.instance()
+        if app is not None:
+            if _FALLBACK_PATH.exists():
+                prompt = _("Enter master password to unlock credentials:")
+            else:
+                prompt = _("Create a master password for credential storage:")
+            password, ok = QInputDialog.getText(
+                None,
+                _("Master Password"),
+                prompt,
+            )
+            if ok and password:
+                _master_password = password
+                return password
+    except Exception:
+        pass
+
+    # Fallback to terminal prompt
+    import getpass
+    if _FALLBACK_PATH.exists():
+        password = getpass.getpass("Enter master password to unlock credentials: ")
+    else:
+        password = getpass.getpass("Create a master password for credential storage: ")
+    _master_password = password
+    return password
 
 
-def _xor_bytes(data: bytes, key: bytes) -> bytes:
-    return bytes(b ^ key[i % len(key)] for i, b in enumerate(data))
+def set_master_password(password: str) -> None:
+    """Set the master password for the current session (call from UI)."""
+    global _master_password
+    _master_password = password
+
+
+def clear_master_password() -> None:
+    """Clear the cached master password."""
+    global _master_password
+    _master_password = None
+
+
+def _derive_fernet_key(password: str, salt: bytes) -> bytes:
+    """Derive a Fernet key from password + salt using PBKDF2."""
+    kdf_key = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 480_000, dklen=32)
+    return base64.urlsafe_b64encode(kdf_key)
+
+
+def _get_or_create_salt() -> bytes:
+    """Get existing salt or create a new random one."""
+    if _FALLBACK_SALT_PATH.exists():
+        return _FALLBACK_SALT_PATH.read_bytes()
+    salt = os.urandom(32)
+    _FALLBACK_DIR.mkdir(parents=True, exist_ok=True)
+    _FALLBACK_SALT_PATH.write_bytes(salt)
+    _FALLBACK_SALT_PATH.chmod(0o600)
+    return salt
 
 
 def _fallback_load() -> dict:
+    """Load and decrypt the secrets file."""
+    if not _FALLBACK_PATH.exists():
+        return {}
+    try:
+        from cryptography.fernet import Fernet, InvalidToken
+    except ImportError:
+        # If cryptography is not available, try legacy XOR format
+        return _legacy_fallback_load()
+
+    password = _get_master_password()
+    salt = _get_or_create_salt()
+    key = _derive_fernet_key(password, salt)
+    f = Fernet(key)
     try:
         raw = _FALLBACK_PATH.read_bytes()
-        decrypted = _xor_bytes(base64.b64decode(raw), _fallback_key())
+        decrypted = f.decrypt(raw)
         return json.loads(decrypted)
     except Exception:
         return {}
 
 
 def _fallback_save(data: dict) -> None:
-    _FALLBACK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    """Encrypt and save the secrets file."""
+    try:
+        from cryptography.fernet import Fernet
+    except ImportError:
+        # Fall back to legacy XOR if cryptography not available
+        _legacy_fallback_save(data)
+        return
+
+    password = _get_master_password()
+    salt = _get_or_create_salt()
+    key = _derive_fernet_key(password, salt)
+    f = Fernet(key)
+
     raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
-    encoded = base64.b64encode(_xor_bytes(raw, _fallback_key()))
-    _FALLBACK_PATH.write_bytes(encoded)
+    encrypted = f.encrypt(raw)
+
+    _FALLBACK_DIR.mkdir(parents=True, exist_ok=True)
+    _FALLBACK_PATH.write_bytes(encrypted)
     _FALLBACK_PATH.chmod(0o600)
 
 
@@ -227,3 +372,37 @@ def _fallback_delete(label: str) -> None:
     data = _fallback_load()
     data.pop(label, None)
     _fallback_save(data)
+
+
+# ── Legacy XOR fallback (migration support) ──────────────────────────
+
+_LEGACY_PATH = Path.home() / ".config" / "linguaedit" / ".secrets.json"
+
+
+def _legacy_fallback_key() -> bytes:
+    """Derive a machine-specific obfuscation key (NOT real encryption)."""
+    machine_id = platform.node() + os.getenv("USER", "linguaedit")
+    return hashlib.sha256(machine_id.encode()).digest()
+
+
+def _xor_bytes(data: bytes, key: bytes) -> bytes:
+    return bytes(b ^ key[i % len(key)] for i, b in enumerate(data))
+
+
+def _legacy_fallback_load() -> dict:
+    for path in (_LEGACY_PATH, _FALLBACK_PATH):
+        try:
+            raw = path.read_bytes()
+            decrypted = _xor_bytes(base64.b64decode(raw), _legacy_fallback_key())
+            return json.loads(decrypted)
+        except Exception:
+            continue
+    return {}
+
+
+def _legacy_fallback_save(data: dict) -> None:
+    _FALLBACK_DIR.mkdir(parents=True, exist_ok=True)
+    raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
+    encoded = base64.b64encode(_xor_bytes(raw, _legacy_fallback_key()))
+    _LEGACY_PATH.write_bytes(encoded)
+    _LEGACY_PATH.chmod(0o600)

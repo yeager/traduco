@@ -728,6 +728,19 @@ class LinguaEditWindow(QMainWindow):
         self._diff_frame.setVisible(False)
         editor_layout.addWidget(self._diff_frame)
 
+        # Subtitle timestamp editor (hidden by default)
+        self._timestamp_frame = QGroupBox(self.tr("Timestamp"))
+        ts_layout = QHBoxLayout(self._timestamp_frame)
+        ts_layout.setContentsMargins(8, 4, 8, 4)
+        self._timestamp_edit = QLineEdit()
+        self._timestamp_edit.setPlaceholderText("HH:MM:SS,mmm --> HH:MM:SS,mmm")
+        self._timestamp_edit.setFont(QFont("monospace"))
+        self._timestamp_edit.editingFinished.connect(self._on_timestamp_edited)
+        ts_layout.addWidget(QLabel(self.tr("Time:")))
+        ts_layout.addWidget(self._timestamp_edit, 1)
+        self._timestamp_frame.setVisible(False)
+        editor_layout.addWidget(self._timestamp_frame)
+
         # Source label + view
         self._source_header = QLabel(self.tr("<b>Source text:</b>"))
         self._source_header.setContentsMargins(12, 2, 12, 0)
@@ -1350,6 +1363,24 @@ class LinguaEditWindow(QMainWindow):
         self._tree.setSortingEnabled(False)
         self._tree.clear()
 
+        # Set headers based on file type
+        if self._file_type == "subtitles":
+            self._tree.setHeaderLabels([
+                "#", "⭐",
+                self.tr("Timestamp"),
+                self.tr("Source text"),
+                self.tr("Translation"),
+                "",
+            ])
+        else:
+            self._tree.setHeaderLabels([
+                "#", "⭐",
+                self.tr("Source text"),
+                self.tr("Translation"),
+                self.tr("Tags"),
+                "",
+            ])
+
         entries = self._get_entries()
         self._compute_sort_order()
 
@@ -1378,9 +1409,14 @@ class LinguaEditWindow(QMainWindow):
             if orig_idx in self._bookmarks:
                 icons.append("⭐")
             bookmark_icon = " ".join(icons)
-            tags_text = ", ".join(self._tags.get(orig_idx, []))
 
-            item = _SortableItem([str(orig_idx + 1), bookmark_icon, src_preview, trans_preview, tags_text, status])
+            if self._file_type == "subtitles":
+                entry = self._file_data.entries[orig_idx]
+                timestamp = entry.timestamp
+                item = _SortableItem([str(orig_idx + 1), bookmark_icon, timestamp, src_preview, trans_preview, status])
+            else:
+                tags_text = ", ".join(self._tags.get(orig_idx, []))
+                item = _SortableItem([str(orig_idx + 1), bookmark_icon, src_preview, trans_preview, tags_text, status])
             item.setData(0, Qt.UserRole, orig_idx)
 
             # Set delegate status for colored borders
@@ -1532,7 +1568,21 @@ class LinguaEditWindow(QMainWindow):
         msgid, msgstr, is_fuzzy = entries[idx]
 
         self._source_view.setPlainText(msgid)
-        self._source_header.setText(f"<b>{self.tr('Source text')}</b>  <span style='color:gray'>({len(msgid.split())} {self.tr('words')})</span>")
+        if self._file_type == "subtitles":
+            entry = self._file_data.entries[idx]
+            self._source_header.setText(
+                f"<b>{self.tr('Source text')}</b>  "
+                f"<span style='color:gray'>#{entry.index} | {entry.timestamp}</span>"
+            )
+            # Show timestamp editor
+            self._timestamp_frame.setVisible(True)
+            fmt = "," if self._file_data.format == "srt" else "."
+            start = entry.start_time.replace(".", fmt)
+            end = entry.end_time.replace(".", fmt)
+            self._timestamp_edit.setText(f"{start} --> {end}")
+        else:
+            self._source_header.setText(f"<b>{self.tr('Source text')}</b>  <span style='color:gray'>({len(msgid.split())} {self.tr('words')})</span>")
+            self._timestamp_frame.setVisible(False)
 
         self._trans_block = True
         self._trans_view.setPlainText(msgstr)
@@ -1915,7 +1965,7 @@ class LinguaEditWindow(QMainWindow):
         self._lint_cache[idx] = issues
         has_warning = any(iss.severity in ("error", "warning") for iss in issues)
 
-        # Update status icon
+        # Update status icon (column 5 = status column)
         if has_warning:
             status = "⚠"
         elif is_fuzzy:
@@ -1924,7 +1974,19 @@ class LinguaEditWindow(QMainWindow):
             status = "✓"
         else:
             status = "●"
-        item.setText(3, status)
+        item.setText(5, status)
+
+        # Update delegate status for colored borders
+        if has_warning:
+            delegate_status = EntryItemDelegate.STATUS_WARNING
+        elif is_fuzzy:
+            delegate_status = EntryItemDelegate.STATUS_FUZZY
+        elif not msgstr:
+            delegate_status = EntryItemDelegate.STATUS_UNTRANSLATED
+        else:
+            delegate_status = EntryItemDelegate.STATUS_TRANSLATED
+        for col in range(6):
+            item.setData(col, Qt.UserRole + 1, delegate_status)
 
         # Update row color
         colors = _get_colors()
@@ -1936,16 +1998,16 @@ class LinguaEditWindow(QMainWindow):
             self._color_row(item, colors['untranslated'])
         else:
             # Clear background for translated rows
-            for col in range(4):
+            for col in range(6):
                 item.setBackground(col, QBrush())
 
-        # Update status column foreground
+        # Update status column foreground (column 5)
         if not msgstr:
-            item.setForeground(3, QBrush(colors['untranslated_fg']))
+            item.setForeground(5, QBrush(colors['untranslated_fg']))
         elif is_fuzzy:
-            item.setForeground(3, QBrush(colors['fuzzy_fg']))
+            item.setForeground(5, QBrush(colors['fuzzy_fg']))
         else:
-            item.setForeground(3, QBrush(colors['translated_fg']))
+            item.setForeground(5, QBrush(colors['translated_fg']))
 
     # ── Info panel ────────────────────────────────────────────────
 
@@ -2220,7 +2282,7 @@ class LinguaEditWindow(QMainWindow):
         elif self._file_type == "java_properties":
             return [(e.key, e.value, False) for e in self._file_data.entries]
         elif self._file_type == "subtitles":
-            return [(f"#{e.index} {e.start_time}-{e.end_time}", e.text, False) for e in self._file_data.entries]
+            return [(e.text, e.translation, False) for e in self._file_data.entries]
         return []
 
     def _get_reference(self, idx: int) -> str:
@@ -2930,6 +2992,8 @@ class LinguaEditWindow(QMainWindow):
             elif p.suffix in (".srt", ".vtt"):
                 self._file_data = parse_subtitles(p)
                 self._file_type = "subtitles"
+                # Auto-detect matching video file
+                self._check_matching_video(p)
             elif p.name == "messages.json" or p.parent.name == "_locales":
                 # Chrome extension i18n (heuristik)
                 self._file_data = parse_chrome_i18n(p)
@@ -3080,6 +3144,37 @@ class LinguaEditWindow(QMainWindow):
             if entry.value != text:
                 entry.value = text
                 self._modified = True
+        elif self._file_type == "subtitles":
+            entry = self._file_data.entries[self._current_index]
+            if entry.translation != text:
+                entry.translation = text
+                self._modified = True
+
+    def _on_timestamp_edited(self):
+        """Handle timestamp editing for subtitle entries."""
+        if self._current_index < 0 or not self._file_data or self._file_type != "subtitles":
+            return
+        text = self._timestamp_edit.text().strip()
+        match = re.match(
+            r'(\d{2}:\d{2}:\d{2}[,\.]\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}[,\.]\d{3})',
+            text,
+        )
+        if not match:
+            return
+        entry = self._file_data.entries[self._current_index]
+        # Normalize to dot format for internal storage
+        new_start = match.group(1).replace(",", ".")
+        new_end = match.group(2).replace(",", ".")
+        if entry.start_time != new_start or entry.end_time != new_end:
+            entry.start_time = new_start
+            entry.end_time = new_end
+            self._modified = True
+            # Update tree item
+            for i in range(self._tree.topLevelItemCount()):
+                item = self._tree.topLevelItem(i)
+                if item.data(0, Qt.UserRole) == self._current_index:
+                    item.setText(2, entry.timestamp)
+                    break
 
     def _on_fuzzy_toggled(self, checked):
         if self._current_index < 0 or not self._file_data:
@@ -3094,6 +3189,20 @@ class LinguaEditWindow(QMainWindow):
                 entry.flags = [f for f in entry.flags if f != "fuzzy"]
                 entry.fuzzy = False
             self._modified = True
+        elif self._file_type == "ts":
+            entry = self._file_data.entries[self._current_index]
+            entry.type = "unfinished" if checked else ""
+            self._modified = True
+        elif self._file_type == "xliff":
+            entry = self._file_data.entries[self._current_index]
+            entry.state = "needs-review-translation" if checked else "translated"
+            self._modified = True
+
+        # Update the current tree row visually
+        current_item = self._tree.currentItem()
+        if current_item is not None:
+            self._lint_and_update_row(current_item, self._current_index)
+        self._update_stats()
 
     def _on_save(self):
         self._save_current_entry()
@@ -4152,6 +4261,29 @@ class LinguaEditWindow(QMainWindow):
         dialog.exec()
 
     # ── Compile translation ──────────────────────────────────────
+
+    def _check_matching_video(self, subtitle_path: Path):
+        """Check for a video file matching the subtitle filename and offer preview."""
+        from linguaedit.services.ffmpeg import SUPPORTED_VIDEO_EXTENSIONS
+        stem = subtitle_path.stem
+        parent = subtitle_path.parent
+        for ext in sorted(SUPPORTED_VIDEO_EXTENSIONS):
+            candidate = parent / (stem + ext)
+            if candidate.exists():
+                reply = QMessageBox.question(
+                    self,
+                    self.tr("Video found"),
+                    self.tr("A matching video file was found:\n%s\n\n"
+                            "Would you like to open the video preview?") % candidate.name,
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.Yes,
+                )
+                if reply == QMessageBox.Yes:
+                    dlg = VideoSubtitleDialog(self)
+                    dlg.subtitle_extracted.connect(self._load_file)
+                    dlg.open_video(candidate)
+                    dlg.exec()
+                return
 
     def _on_video_subtitles(self):
         """Open the video subtitle extraction dialog."""
