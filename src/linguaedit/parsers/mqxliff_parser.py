@@ -15,6 +15,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+from linguaedit.parsers import safe_parse_xml
+
 
 _NS_XLIFF = "urn:oasis:names:tc:xliff:document:1.2"
 _NS_MQ = "MQXliff"
@@ -139,7 +141,7 @@ def parse_mqxliff(path: str | Path) -> MQXLIFFFileData:
         if m:
             mq_ns = m.group(1)
 
-    tree = ET.parse(str(path))
+    tree = safe_parse_xml(path)
     root = tree.getroot()
 
     ET.register_namespace("", _NS_XLIFF)

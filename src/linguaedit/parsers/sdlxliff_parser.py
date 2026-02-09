@@ -16,6 +16,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+from linguaedit.parsers import safe_parse_xml
+
 
 _NS_XLIFF = "urn:oasis:names:tc:xliff:document:1.2"
 _NS_SDL = "http://sdl.com/FileTypes/SdlXliff/1.0"
@@ -119,7 +121,7 @@ class SDLXLIFFFileData:
 def parse_sdlxliff(path: str | Path) -> SDLXLIFFFileData:
     """Parse an SDLXLIFF file."""
     path = Path(path)
-    tree = ET.parse(str(path))
+    tree = safe_parse_xml(path)
     root = tree.getroot()
 
     # Register namespaces for round-trip fidelity

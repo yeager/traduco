@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+from linguaedit.parsers import safe_parse_xml
+
 
 @dataclass
 class XLIFFEntry:
@@ -91,7 +93,7 @@ def _detect_version(root: ET.Element) -> str:
 def parse_xliff(path: str | Path) -> XLIFFFileData:
     """Parse an XLIFF file (1.2 or 2.0)."""
     path = Path(path)
-    tree = ET.parse(str(path))
+    tree = safe_parse_xml(path)
     root = tree.getroot()
     version = _detect_version(root)
 

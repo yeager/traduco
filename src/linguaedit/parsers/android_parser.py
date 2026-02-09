@@ -7,6 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+from linguaedit.parsers import safe_parse_xml
+
 
 @dataclass
 class AndroidEntry:
@@ -76,7 +78,7 @@ class AndroidFileData:
 def parse_android(path: str | Path) -> AndroidFileData:
     """Parse an Android strings.xml file."""
     path = Path(path)
-    tree = ET.parse(str(path))
+    tree = safe_parse_xml(path)
     root = tree.getroot()
     entries: list[AndroidEntry] = []
     comment = ""

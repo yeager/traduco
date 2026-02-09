@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+from linguaedit.parsers import safe_parse_xml
+
 
 @dataclass
 class TSEntry:
@@ -65,7 +67,7 @@ class TSFileData:
 def parse_ts(path: str | Path) -> TSFileData:
     """Parse a Qt TS file."""
     path = Path(path)
-    tree = ET.parse(str(path))
+    tree = safe_parse_xml(path)
     root = tree.getroot()
     lang = root.get("language", "")
     src_lang = root.get("sourcelanguage", "")

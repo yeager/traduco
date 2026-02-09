@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Union
 
+from linguaedit.parsers import safe_parse_xml
 from linguaedit.parsers.po_parser import TranslationEntry
 
 
@@ -29,7 +30,7 @@ def parse_resx(file_path: Union[str, Path]) -> RESXData:
     schema = ""
     
     try:
-        tree = ET.parse(path)
+        tree = safe_parse_xml(path)
         root = tree.getroot()
         
         # Extract schema information

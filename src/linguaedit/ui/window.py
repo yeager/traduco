@@ -117,6 +117,8 @@ from linguaedit.ui.toolbar_customizer import ToolbarCustomizeDialog
 from linguaedit.ui.unicode_dialog import UnicodeDialog
 from linguaedit.ui.achievements_dialog import AchievementsDialog
 from linguaedit.ui.macro_dialog import MacroDialog
+from linguaedit.ui.concordance_dialog import ConcordanceDialog
+from linguaedit.ui.segment_ops import SplitDialog, MergePreviewDialog
 
 # ── Recent files helper ──────────────────────────────────────────────
 
@@ -677,6 +679,8 @@ class LinguaEditWindow(QMainWindow):
         self._tree.currentItemChanged.connect(self._on_tree_item_changed)
         self._tree.setContextMenuPolicy(Qt.CustomContextMenu)
         self._tree.customContextMenuRequested.connect(self._show_tree_context_menu)
+        self._tree.setMouseTracking(True)
+        self._tree.viewport().installEventFilter(self)
         
         # Custom delegate for colored borders
         self._entry_delegate = EntryItemDelegate(self._tree, dark_mode=_is_dark_theme())
@@ -824,6 +828,44 @@ class LinguaEditWindow(QMainWindow):
         action_bar.addWidget(comment_btn)
 
         editor_layout.addLayout(action_bar)
+
+        # Quick Actions Toolbar (Feature 3)
+        self._quick_toolbar = QFrame()
+        self._quick_toolbar.setFrameShape(QFrame.StyledPanel)
+        self._quick_toolbar.setStyleSheet("QFrame { background: palette(alternate-base); padding: 2px; }")
+        qt_layout = QHBoxLayout(self._quick_toolbar)
+        qt_layout.setContentsMargins(4, 2, 4, 2)
+        qt_layout.setSpacing(4)
+
+        self._qa_copy_src_btn = QPushButton(self.tr("📋 Copy Source"))
+        self._qa_copy_src_btn.setToolTip(self.tr("Copy source text to translation"))
+        self._qa_copy_src_btn.clicked.connect(self._copy_source_to_target)
+        qt_layout.addWidget(self._qa_copy_src_btn)
+
+        self._qa_apply_tm_btn = QPushButton(self.tr("💾 Apply TM #1"))
+        self._qa_apply_tm_btn.setToolTip(self.tr("Apply best Translation Memory match"))
+        self._qa_apply_tm_btn.setEnabled(False)
+        self._qa_apply_tm_btn.clicked.connect(self._qa_apply_best_tm)
+        qt_layout.addWidget(self._qa_apply_tm_btn)
+
+        self._qa_apply_mt_btn = QPushButton(self.tr("🤖 Apply MT"))
+        self._qa_apply_mt_btn.setToolTip(self.tr("Apply Machine Translation suggestion"))
+        self._qa_apply_mt_btn.setEnabled(False)
+        self._qa_apply_mt_btn.clicked.connect(self._qa_apply_mt)
+        qt_layout.addWidget(self._qa_apply_mt_btn)
+
+        self._qa_mark_reviewed_btn = QPushButton(self.tr("✅ Mark Reviewed"))
+        self._qa_mark_reviewed_btn.setToolTip(self.tr("Mark current entry as reviewed"))
+        self._qa_mark_reviewed_btn.clicked.connect(lambda: self._set_review_status("approved"))
+        qt_layout.addWidget(self._qa_mark_reviewed_btn)
+
+        self._qa_toggle_fuzzy_btn = QPushButton(self.tr("⚠️ Toggle Fuzzy"))
+        self._qa_toggle_fuzzy_btn.setToolTip(self.tr("Toggle fuzzy/needs work flag"))
+        self._qa_toggle_fuzzy_btn.clicked.connect(lambda: self._fuzzy_check.toggle())
+        qt_layout.addWidget(self._qa_toggle_fuzzy_btn)
+
+        qt_layout.addStretch()
+        editor_layout.addWidget(self._quick_toolbar)
 
         # Info label (spellcheck results, etc.)
         self._info_label = QLabel()
@@ -1054,7 +1096,35 @@ class LinguaEditWindow(QMainWindow):
         sb.addPermanentWidget(self._sb_cursor)
 
         self._trans_view.cursorPositionChanged.connect(self._on_cursor_position_changed)
-        
+
+        # ── Smooth transition effects ─────────────────────────────
+        self._source_opacity = QGraphicsOpacityEffect(self._source_view)
+        self._source_view.setGraphicsEffect(self._source_opacity)
+        self._source_opacity.setOpacity(1.0)
+
+        self._trans_opacity = QGraphicsOpacityEffect(self._trans_view)
+        self._trans_view.setGraphicsEffect(self._trans_opacity)
+        self._trans_opacity.setOpacity(1.0)
+
+        self._fade_anim_source = QPropertyAnimation(self._source_opacity, b"opacity")
+        self._fade_anim_source.setDuration(150)
+        self._fade_anim_source.setEasingCurve(QEasingCurve.InOutQuad)
+
+        self._fade_anim_trans = QPropertyAnimation(self._trans_opacity, b"opacity")
+        self._fade_anim_trans.setDuration(150)
+        self._fade_anim_trans.setEasingCurve(QEasingCurve.InOutQuad)
+
+        # ── Progress ring in status bar ───────────────────────────
+        self._progress_ring = ProgressRing()
+        self._progress_ring.setFixedSize(32, 32)
+        self.statusBar().addPermanentWidget(self._progress_ring)
+
+        # ── Live word/char count label ────────────────────────────
+        self._sb_wordcount = QLabel("")
+        self._sb_wordcount.setStyleSheet("color: gray; padding: 0 6px;")
+        self.statusBar().addPermanentWidget(self._sb_wordcount)
+        self._trans_view.textChanged.connect(self._update_live_word_count)
+
         # Install event filter for Tab/Shift+Tab navigation in translation editor
         self._trans_view.installEventFilter(self)
         
@@ -1119,8 +1189,8 @@ class LinguaEditWindow(QMainWindow):
         edit_menu.addAction(self.tr("Batch Edit…"), self._show_batch_edit_dialog, QKeySequence("Ctrl+Shift+B"))
         edit_menu.addSeparator()
         # Feature 4: Segmentation
-        edit_menu.addAction(self.tr("Split Entry"), self._on_split_entry, QKeySequence("Ctrl+Shift+S"))
-        edit_menu.addAction(self.tr("Merge Entries"), self._on_merge_entries)
+        edit_menu.addAction(self.tr("Split Entry…"), self._on_split_entry, QKeySequence("Ctrl+Alt+P"))
+        edit_menu.addAction(self.tr("Merge Entries…"), self._on_merge_entries, QKeySequence("Ctrl+Alt+M"))
         edit_menu.addSeparator()
         edit_menu.addAction(self.tr("Preferences…"), self._on_preferences, QKeySequence("Ctrl+,"))
 
@@ -1201,6 +1271,7 @@ class LinguaEditWindow(QMainWindow):
         crowdin_menu.addAction(self.tr("Pull Latest"), self._crowdin_pull_latest)
         tools_menu.addSeparator()
         tools_menu.addAction(self.tr("Glossary…"), self._show_glossary_dialog)
+        tools_menu.addAction(self.tr("Concordance Search…"), self._show_concordance_dialog, QKeySequence("Ctrl+Alt+K"))
         tools_menu.addSeparator()
         tools_menu.addAction(self.tr("Extract Subtitles from Video…"), self._on_video_subtitles)
         
@@ -1313,6 +1384,9 @@ class LinguaEditWindow(QMainWindow):
             pass
         self._engine_dropdown.setMinimumWidth(120)
         tb.addWidget(self._engine_dropdown)
+        tb.addSeparator()
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_FileDialogContentsView),
+                     self.tr("Concordance"), self._show_concordance_dialog)
 
     # ── Keyboard shortcuts ────────────────────────────────────────
 
@@ -1342,8 +1416,43 @@ class LinguaEditWindow(QMainWindow):
         QShortcut(QKeySequence("Ctrl+Shift+Z"), self, self._toggle_zen_mode)
 
     def eventFilter(self, obj, event):
-        """Handle Tab/Shift+Tab in translation editor for navigation."""
+        """Handle Tab/Shift+Tab in translation editor and tree hover tooltips."""
         from PySide6.QtCore import QEvent
+        from PySide6.QtWidgets import QToolTip
+
+        # Entry Preview on Hover (Feature 4)
+        if obj is self._tree.viewport() and event.type() == QEvent.ToolTip:
+            pos = event.pos()
+            item = self._tree.itemAt(pos)
+            if item and self._file_data:
+                idx = item.data(0, Qt.UserRole)
+                entries = self._get_entries()
+                if idx is not None and 0 <= idx < len(entries):
+                    msgid, msgstr, is_fuzzy = entries[idx]
+                    # Truncate long texts
+                    src = msgid[:120].replace("\n", " ")
+                    if len(msgid) > 120:
+                        src += "…"
+                    trn = msgstr[:120].replace("\n", " ")
+                    if len(msgstr) > 120:
+                        trn += "…"
+                    # Status color
+                    if is_fuzzy:
+                        status_html = "<span style='color:#b8860b;'>🔶 Fuzzy</span>"
+                    elif msgstr:
+                        status_html = "<span style='color:#1e8232;'>✓ Translated</span>"
+                    else:
+                        status_html = "<span style='color:#a03232;'>● Untranslated</span>"
+                    tooltip = (
+                        f"<b>{self.tr('Source:')}</b> {src}<br>"
+                        f"{self.tr('Translation:')} {trn}<br>"
+                        f"{status_html}"
+                    )
+                    QToolTip.showText(event.globalPos(), tooltip, self._tree)
+                    return True
+            QToolTip.hideText()
+            return True
+
         if obj is self._trans_view and event.type() == QEvent.KeyPress:
             if event.key() == Qt.Key_Tab and not event.modifiers():
                 self._tab_save_next()
@@ -1481,6 +1590,8 @@ class LinguaEditWindow(QMainWindow):
         idx = current.data(0, Qt.UserRole)
         if idx is not None:
             self._current_index = idx
+            # Smooth fade transition
+            self._play_entry_fade()
             self._display_entry(idx)
 
     def _navigate(self, delta: int):
@@ -3314,6 +3425,10 @@ class LinguaEditWindow(QMainWindow):
         self._progress_bar.setRange(0, 100)
         self._progress_bar.setValue(pct)
 
+        # Update progress ring
+        if hasattr(self, '_progress_ring'):
+            self._progress_ring.set_value(pct, self.tr("translated"))
+
         self._sb_total.setText(self.tr("%d strings") % d.total_count)
         self._sb_translated.setText(self.tr("Translated: %d") % d.translated_count)
         self._sb_fuzzy.setText(self.tr("Fuzzy: %d") % fuzzy)
@@ -3326,6 +3441,44 @@ class LinguaEditWindow(QMainWindow):
         line = cursor.blockNumber() + 1
         col = cursor.columnNumber() + 1
         self._sb_cursor.setText(self.tr("Ln %d, Col %d") % (line, col))
+
+    # ── Smooth fade transition ────────────────────────────────────
+
+    def _play_entry_fade(self):
+        """Trigger a quick opacity fade-in on source and translation views."""
+        for anim in (self._fade_anim_source, self._fade_anim_trans):
+            anim.stop()
+            anim.setStartValue(0.0)
+            anim.setEndValue(1.0)
+            anim.start()
+
+    # ── Live word / char count ────────────────────────────────────
+
+    def _update_live_word_count(self):
+        """Update the statusbar word/char counter from trans_view content."""
+        if self._trans_block or self._current_index < 0 or not self._file_data:
+            return
+        trans_text = self._trans_view.toPlainText()
+        trans_words = len(trans_text.split()) if trans_text.strip() else 0
+        trans_chars = len(trans_text)
+
+        entries = self._get_entries()
+        source_words = 0
+        ratio_warning = ""
+        if self._current_index < len(entries):
+            src = entries[self._current_index][0]
+            source_words = len(src.split()) if src.strip() else 0
+            if source_words > 0 and trans_words > 0:
+                ratio = trans_words / source_words
+                if ratio > 2.0:
+                    ratio_warning = self.tr(" ⚠ long")
+                elif ratio < 0.3:
+                    ratio_warning = self.tr(" ⚠ short")
+
+        self._sb_wordcount.setText(
+            self.tr("Words: %d | Chars: %d | Source: %dw%s")
+            % (trans_words, trans_chars, source_words, ratio_warning)
+        )
 
     # ── Tab management ────────────────────────────────────────────
 
@@ -5548,75 +5701,63 @@ class LinguaEditWindow(QMainWindow):
     
     # Feature 4: Segmentation
     def _on_split_entry(self):
-        """Split the current entry at sentence boundaries."""
+        """Split the current entry using an interactive dialog."""
         if self._current_index < 0 or not self._file_data:
             return
-        
+
         entry = self._file_data.entries[self._current_index]
         source = entry.msgid if hasattr(entry, 'msgid') else entry.source
         target = entry.msgstr if hasattr(entry, 'msgstr') else entry.translation
-        
+
         if not source.strip():
             self._show_toast(self.tr("Cannot split empty entry"))
             return
-        
-        # Check if suitable for splitting
-        if not TextSegmenter.is_suitable_for_splitting(source):
-            reply = QMessageBox.question(
-                self, self.tr("Split Entry"),
-                self.tr("This entry may not be suitable for splitting. Continue anyway?"),
-                QMessageBox.Yes | QMessageBox.No, QMessageBox.No
-            )
-            if reply != QMessageBox.Yes:
-                return
-        
-        # Split the entry
-        segments = EntrySegmenter.split_entry(
-            source, target,
-            self._app_settings.get("source_language", "en"),
-            self._app_settings.get("target_language", "sv")
-        )
-        
-        if len(segments) <= 1:
-            self._show_toast(self.tr("Entry could not be split"))
+
+        dlg = SplitDialog(source, target, parent=self)
+        if dlg.exec() != QDialog.Accepted:
             return
-        
-        # For PO files, we need to create new msgids
-        if self._file_type == "po":
-            # Replace current entry with first segment
-            if hasattr(entry, 'msgid'):
-                entry.msgid = segments[0][0]
-                entry.msgstr = segments[0][1]
-            
-            # Add new entries for remaining segments
-            for source_seg, target_seg in segments[1:]:
-                new_entry = type(entry)()
-                new_entry.msgid = source_seg
-                new_entry.msgstr = target_seg
-                new_entry.fuzzy = True  # Mark as fuzzy
-                self._file_data.entries.append(new_entry)
-        
+
+        result = dlg.get_result()
+        if result is None:
+            return
+
+        (src1, tgt1), (src2, tgt2) = result
+        idx = self._current_index
+
+        # Update the current entry with first segment
+        if hasattr(entry, 'msgid'):
+            entry.msgid = src1
+            entry.msgstr = tgt1
         else:
-            # For other formats, just update the current entry
-            entry.source = segments[0][0]
-            entry.translation = segments[0][1]
-            
-            # Would need format-specific logic for adding entries
-        
+            entry.source = src1
+            entry.translation = tgt1
+
+        # Create a new entry for the second segment and insert after current
+        new_entry = type(entry)()
+        if hasattr(new_entry, 'msgid'):
+            new_entry.msgid = src2
+            new_entry.msgstr = tgt2
+            if hasattr(new_entry, 'fuzzy'):
+                new_entry.fuzzy = True
+        else:
+            new_entry.source = src2
+            new_entry.translation = tgt2
+
+        self._file_data.entries.insert(idx + 1, new_entry)
+
         self._modified = True
         self._populate_list()
-        self._show_toast(self.tr("Entry split into {} segments").format(len(segments)))
+        self._show_toast(self.tr("Entry split into 2 segments"))
     
     def _on_merge_entries(self):
-        """Merge selected entries into one."""
+        """Merge selected entries into one with a preview dialog."""
         selected_indices = list(self._selected_indices)
         if len(selected_indices) < 2:
-            self._show_toast(self.tr("Select multiple entries to merge"))
+            self._show_toast(self.tr("Select at least 2 entries to merge"))
             return
-        
-        # Sort indices
+
         selected_indices.sort()
-        
+
         # Collect entries to merge
         entries_to_merge = []
         for idx in selected_indices:
@@ -5625,10 +5766,17 @@ class LinguaEditWindow(QMainWindow):
                 source = entry.msgid if hasattr(entry, 'msgid') else entry.source
                 target = entry.msgstr if hasattr(entry, 'msgstr') else entry.translation
                 entries_to_merge.append((source, target))
-        
-        # Merge entries
-        merged_source, merged_target = EntrySegmenter.merge_entries(entries_to_merge)
-        
+
+        if len(entries_to_merge) < 2:
+            return
+
+        # Show preview dialog
+        dlg = MergePreviewDialog(entries_to_merge, parent=self)
+        if dlg.exec() != QDialog.Accepted:
+            return
+
+        merged_source, merged_target = dlg.get_result()
+
         # Update first entry
         first_idx = selected_indices[0]
         first_entry = self._file_data.entries[first_idx]
@@ -5638,11 +5786,11 @@ class LinguaEditWindow(QMainWindow):
         else:
             first_entry.source = merged_source
             first_entry.translation = merged_target
-        
+
         # Remove other entries (in reverse order)
         for idx in reversed(selected_indices[1:]):
             del self._file_data.entries[idx]
-        
+
         self._modified = True
         self._selected_indices.clear()
         self._populate_list()
@@ -5858,6 +6006,131 @@ class LinguaEditWindow(QMainWindow):
                 self.tr("Text-to-speech failed: {}").format(str(e))
             )
     
+    # ══════════════════════════════════════════════════════════════
+    #  SPLIT VIEW (side-by-side source/translation)
+    # ══════════════════════════════════════════════════════════════
+
+    def _toggle_split_view(self):
+        """Toggle between vertical (stacked) and horizontal (side-by-side) editor layout."""
+        self._horizontal_split = not self._horizontal_split
+        self._app_settings.set_value("horizontal_split", self._horizontal_split)
+        self._app_settings.save()
+        self._apply_split_orientation()
+
+    def _apply_split_orientation(self):
+        """Apply current split orientation to editor area."""
+        if self._horizontal_split:
+            # Side-by-side: source left, translation right
+            self._v_splitter.setOrientation(Qt.Horizontal)
+            self._source_view.setMaximumHeight(16777215)  # Remove height limit
+            self._split_view_action.setText(self.tr("Stacked View"))
+        else:
+            # Stacked: source on top, translation below (default)
+            self._v_splitter.setOrientation(Qt.Vertical)
+            self._source_view.setMaximumHeight(90)
+            self._split_view_action.setText(self.tr("Side-by-Side View"))
+
+    # ══════════════════════════════════════════════════════════════
+    #  STICKY CONTEXT PANEL
+    # ══════════════════════════════════════════════════════════════
+
+    def _toggle_context_panel(self):
+        """Toggle the Context Panel dock widget."""
+        if self._context_panel is None:
+            self._context_panel = ContextPanel(self)
+            self._context_panel.set_engine_settings(
+                self._trans_engine, self._trans_source, self._trans_target
+            )
+            self._context_panel.apply_tm_requested.connect(self._apply_tm_match)
+            self._context_panel.apply_mt_requested.connect(self._apply_tm_match)
+            self._context_panel.apply_glossary_requested.connect(
+                lambda t: self._trans_view.insertPlainText(t)
+            )
+            self.addDockWidget(Qt.RightDockWidgetArea, self._context_panel)
+            # Populate with current entry
+            if self._current_index >= 0:
+                entries = self._get_entries()
+                if self._current_index < len(entries):
+                    self._context_panel.update_for_entry(entries[self._current_index][0])
+        else:
+            visible = self._context_panel.isVisible()
+            self._context_panel.setVisible(not visible)
+
+    def _update_context_panel(self, source_text: str):
+        """Update context panel if it exists and is visible."""
+        if self._context_panel and self._context_panel.isVisible():
+            self._context_panel.set_engine_settings(
+                self._trans_engine, self._trans_source, self._trans_target
+            )
+            self._context_panel.update_for_entry(source_text)
+
+    # ══════════════════════════════════════════════════════════════
+    #  QUICK ACTIONS TOOLBAR HELPERS
+    # ══════════════════════════════════════════════════════════════
+
+    def _qa_apply_best_tm(self):
+        """Apply the best TM match from the context panel."""
+        if self._context_panel:
+            text = self._context_panel.get_best_tm_target()
+            if text:
+                self._trans_view.setPlainText(text)
+                return
+        # Fallback: use existing TM lookup
+        if self._current_index >= 0 and self._file_data:
+            entries = self._get_entries()
+            if self._current_index < len(entries):
+                matches = lookup_tm(entries[self._current_index][0], threshold=0.6, max_results=1)
+                if matches:
+                    self._trans_view.setPlainText(matches[0].target)
+
+    def _qa_apply_mt(self):
+        """Apply the MT suggestion from the context panel."""
+        if self._context_panel:
+            text = self._context_panel.get_mt_text()
+            if text:
+                self._trans_view.setPlainText(text)
+                return
+        # Fallback: translate directly
+        if self._current_index >= 0 and self._file_data:
+            entries = self._get_entries()
+            if self._current_index < len(entries):
+                try:
+                    result = translate(
+                        entries[self._current_index][0],
+                        engine=self._trans_engine,
+                        source=self._trans_source,
+                        target=self._trans_target,
+                    )
+                    self._trans_view.setPlainText(result)
+                except Exception:
+                    self._show_toast(self.tr("MT translation failed"))
+
+    def _update_quick_toolbar_state(self):
+        """Enable/disable quick toolbar buttons based on current context."""
+        has_entry = self._current_index >= 0 and self._file_data is not None
+        self._qa_copy_src_btn.setEnabled(has_entry)
+        self._qa_mark_reviewed_btn.setEnabled(has_entry)
+        self._qa_toggle_fuzzy_btn.setEnabled(has_entry)
+
+        # TM button: enabled if context panel has a TM match
+        has_tm = False
+        if self._context_panel and self._context_panel.get_best_tm_target():
+            has_tm = True
+        elif has_entry:
+            entries = self._get_entries()
+            if self._current_index < len(entries):
+                matches = lookup_tm(entries[self._current_index][0], threshold=0.6, max_results=1)
+                has_tm = bool(matches)
+        self._qa_apply_tm_btn.setEnabled(has_tm)
+
+        # MT button: enabled if context panel has MT or entry exists
+        has_mt = False
+        if self._context_panel and self._context_panel.get_mt_text():
+            has_mt = True
+        elif has_entry:
+            has_mt = True  # Can always attempt MT
+        self._qa_apply_mt_btn.setEnabled(has_mt)
+
     # Feature 13: Fullscreen Mode
     def _toggle_fullscreen(self):
         """Toggle fullscreen mode."""
