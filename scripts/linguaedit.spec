@@ -1,5 +1,5 @@
 Name:           linguaedit
-Version:        1.3.1
+Version:        1.3.2
 Release:        1%{?dist}
 Summary:        Professional translation editor
 License:        GPL-3.0-or-later
@@ -63,6 +63,9 @@ update-mime-database /usr/share/mime 2>/dev/null || true
 %license LICENSE
 
 %changelog
+* Mon Feb 09 2026 Daniel Nylander <daniel@danielnylander.se> - 1.3.2-1
+- Bug fixes, QSettings, 90 unit tests (see CHANGELOG.md)
+
 * Sun Feb 09 2026 Daniel Nylander <daniel@danielnylander.se> - 1.3.1-1
 - Bug fixes and UI polish (see CHANGELOG.md)
 
