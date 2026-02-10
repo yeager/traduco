@@ -2539,7 +2539,7 @@ Detta ersätter nuvarande text med:
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1266"/>
         <source>&amp;Tools</source>
-        <translation>&amp;Verktyg</translation>
+        <translation>Ver&amp;ktyg</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="1083"/>

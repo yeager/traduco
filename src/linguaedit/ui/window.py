@@ -19,6 +19,7 @@ UI layout inspired by POedit and Qt Linguist:
 
 from __future__ import annotations
 
+import sys
 import json
 import re
 import shutil
@@ -3130,11 +3131,19 @@ class LinguaEditWindow(QMainWindow):
     #  FILE OPERATIONS
     # ══════════════════════════════════════════════════════════════
 
+    @staticmethod
+    def _file_dialog_options():
+        """Return file dialog options — use non-native dialog on Windows to avoid hang on cancel."""
+        if sys.platform == "win32":
+            return QFileDialog.DontUseNativeDialog
+        return QFileDialog.Options()
+
     def _on_open(self):
         if not self._ask_save_changes():
             return
         last_dir = self._app_settings.get_value("last_open_directory", "")
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Translation File"), last_dir, _FILE_FILTER)
+        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Translation File"), last_dir, _FILE_FILTER, options=self._file_dialog_options())
+        QApplication.processEvents()
         if path:
             self._app_settings.set_value("last_open_directory", str(Path(path).parent))
             self._load_file(path)
@@ -3811,7 +3820,8 @@ class LinguaEditWindow(QMainWindow):
         self._save_current_entry()
         path, _ = QFileDialog.getSaveFileName(
             self, self.tr("Save Report"), "",
-            self.tr("HTML (*.html);;PDF (*.pdf)"))
+            self.tr("HTML (*.html);;PDF (*.pdf)"), options=self._file_dialog_options())
+        QApplication.processEvents()
         if not path:
             return
         html = self._build_report_html()
@@ -4388,7 +4398,8 @@ class LinguaEditWindow(QMainWindow):
     # ── Compare language / Split view ─────────────────────────────
 
     def _on_compare_lang(self):
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Reference File"), "", _FILE_FILTER)
+        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open Reference File"), "", _FILE_FILTER, options=self._file_dialog_options())
+        QApplication.processEvents()
         if path:
             self._load_split_file(path)
 
@@ -4944,7 +4955,8 @@ class LinguaEditWindow(QMainWindow):
             self.tr("Save Report"),
             f"{Path(str(self._file_data.path)).stem}_report.html",
             self.tr("HTML files (*.html);;PDF files (*.pdf)")
-        )
+        , options=self._file_dialog_options())
+        QApplication.processEvents()
         
         if not file_path:
             return
@@ -5810,7 +5822,8 @@ class LinguaEditWindow(QMainWindow):
         """Import TMX file into translation memory."""
         file_path, _ = QFileDialog.getOpenFileName(
             self, self.tr("Import TMX"), "", self.tr("TMX Files (*.tmx)")
-        )
+        , options=self._file_dialog_options())
+        QApplication.processEvents()
         
         if not file_path:
             return
@@ -5836,7 +5849,8 @@ class LinguaEditWindow(QMainWindow):
         file_path, _ = QFileDialog.getSaveFileName(
             self, self.tr("Export TMX"), "translation_memory.tmx",
             self.tr("TMX Files (*.tmx)")
-        )
+        , options=self._file_dialog_options())
+        QApplication.processEvents()
         
         if not file_path:
             return
@@ -6587,7 +6601,8 @@ class LinguaEditWindow(QMainWindow):
             self.tr("Select POT File"),
             str(Path(self._current_file).parent),
             self.tr("POT Files (*.pot)")
-        )
+        , options=self._file_dialog_options())
+        QApplication.processEvents()
         
         if not pot_file:
             return
