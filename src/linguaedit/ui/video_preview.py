@@ -14,7 +14,7 @@ from typing import Optional
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
     QSlider, QLabel, QStyle, QSizePolicy, QDockWidget,
-    QComboBox, QCheckBox, QStackedLayout,
+    QComboBox, QCheckBox,
 )
 from PySide6.QtCore import Qt, QUrl, Slot, Signal, QTimer
 from PySide6.QtGui import QKeySequence, QShortcut, QFont, QPainter, QColor
@@ -167,19 +167,12 @@ class VideoPreviewWidget(QWidget):
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
-        # Container for video + overlay
-        self._video_container = QWidget()
-        self._video_container.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        container_layout = QStackedLayout(self._video_container)
-        container_layout.setStackingMode(QStackedLayout.StackAll)
-
+        # Video widget with overlay parented to it
         self._video_widget = QVideoWidget()
+        self._video_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self._subtitle_overlay = _SubtitleOverlay(self._video_widget)
 
-        container_layout.addWidget(self._video_widget)
-        container_layout.addWidget(self._subtitle_overlay)
-
-        main_layout.addWidget(self._video_container, 1)
+        main_layout.addWidget(self._video_widget, 1)
 
         # ── Controls row 1: slider ──
         self._slider = _VideoSlider(Qt.Horizontal)
@@ -357,7 +350,8 @@ class VideoPreviewWidget(QWidget):
 
     def resizeEvent(self, event):
         super().resizeEvent(event)
-        self._subtitle_overlay.setGeometry(self._video_widget.geometry())
+        # Overlay is child of video_widget, fill it completely
+        self._subtitle_overlay.setGeometry(0, 0, self._video_widget.width(), self._video_widget.height())
 
     def closeEvent(self, event):
         self._player.stop()

@@ -417,7 +417,6 @@ class LinguaEditWindow(QMainWindow):
         self._file_type = None
         self._current_index = -1
         self._modified = False
-        self._video_preview = None
         self._video_dock: Optional[VideoDockWidget] = None
         self._app_settings = Settings.get()
         self._spell_lang = "en_US"
