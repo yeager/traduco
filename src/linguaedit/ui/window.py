@@ -1053,6 +1053,7 @@ class LinguaEditWindow(QMainWindow):
         # ── Left sidebar (quick actions — full panel) ──
         from PySide6.QtCore import QSize
         self._sidebar = QToolBar()
+        self._sidebar.setObjectName("SidebarToolBar")
         self._sidebar.setOrientation(Qt.Vertical)
         self._sidebar.setMovable(False)
         self._sidebar.setIconSize(QSize(28, 28))
@@ -1393,6 +1394,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _build_toolbar(self):
         tb = QToolBar(self.tr("Main"))
+        tb.setObjectName("MainToolBar")
         tb.setMovable(False)
         tb.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.addToolBar(tb)
@@ -1436,6 +1438,8 @@ class LinguaEditWindow(QMainWindow):
         # Undo / Redo
         tb.addAction(_make_arrow_icon("undo", "#f0a050"), self.tr("Undo"), self._do_undo)
         tb.addAction(_make_arrow_icon("redo", "#f0a050"), self.tr("Redo"), self._do_redo)
+        tb.addAction(style.standardIcon(style.StandardPixmap.SP_DialogSaveButton),
+                     self.tr("Save As…"), self._on_save_as)
         tb.addSeparator()
 
         # Navigation
@@ -2320,6 +2324,7 @@ class LinguaEditWindow(QMainWindow):
 
     def _apply_tm_match(self, text):
         self._trans_view.setPlainText(text)
+        self._fuzzy_check.setChecked(True)
 
     # ── Concordance search ────────────────────────────────────────
 
@@ -5382,6 +5387,7 @@ class LinguaEditWindow(QMainWindow):
     def _apply_quick_tm(self, text: str):
         """Applicera TM-förslag från quick actions."""
         self._trans_view.setPlainText(text)
+        self._fuzzy_check.setChecked(True)
     
     def _apply_quick_glossary(self, text: str):
         """Applicera glossary term från quick actions."""
@@ -6297,6 +6303,7 @@ class LinguaEditWindow(QMainWindow):
             text = self._context_panel.get_best_tm_target()
             if text:
                 self._trans_view.setPlainText(text)
+                self._fuzzy_check.setChecked(True)
                 return
         # Fallback: use existing TM lookup
         if self._current_index >= 0 and self._file_data:
@@ -6305,6 +6312,7 @@ class LinguaEditWindow(QMainWindow):
                 matches = lookup_tm(entries[self._current_index][0], threshold=0.6, max_results=1)
                 if matches:
                     self._trans_view.setPlainText(matches[0].target)
+                    self._fuzzy_check.setChecked(True)
 
     def _qa_apply_mt(self):
         """Apply the MT suggestion from the context panel.

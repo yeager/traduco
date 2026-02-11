@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [1.6.0] — 2026-02-11
+
+### Added
+- **Save As toolbar button** — quick access to Save As directly from the main toolbar
+- **TM matches marked fuzzy** — Translation Memory matches and quick TM actions now auto-mark entries as fuzzy until manually approved
+
+### Changed
+- All auto-applied translations (MT, TM, batch) consistently marked as fuzzy
+
 ## [1.5.0] — 2026-02-10
 
 ### Added
