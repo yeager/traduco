@@ -778,20 +778,28 @@ class LinguaEditWindow(QMainWindow):
         # Source label + view
         self._source_header = QLabel(self.tr("<b>Source text:</b>"))
         self._source_header.setContentsMargins(12, 2, 12, 0)
-        editor_layout.addWidget(self._source_header)
         self._source_view = QTextEdit()
         self._source_view.setReadOnly(True)
-        self._source_view.setMaximumHeight(90)
+        self._source_view.setMinimumHeight(80)
+        self._source_view.setMaximumHeight(300)
         self._source_view.setFrameShape(QFrame.StyledPanel)
         self._source_view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self._source_view.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self._source_view.setStyleSheet("QTextEdit { background: palette(alternate-base); }")
-        editor_layout.addWidget(self._source_view)
+        # Use a splitter so user can drag between source and translation
+        self._editor_splitter = QSplitter(Qt.Vertical)
+        # Wrap source in a widget with its header
+        source_widget = QWidget()
+        source_layout = QVBoxLayout(source_widget)
+        source_layout.setContentsMargins(0, 0, 0, 0)
+        source_layout.setSpacing(2)
+        source_layout.addWidget(self._source_header)
+        source_layout.addWidget(self._source_view)
+        self._editor_splitter.addWidget(source_widget)
 
         # Translation label + view
         self._trans_header = QLabel(self.tr("<b>Translation:</b>"))
         self._trans_header.setContentsMargins(12, 2, 12, 0)
-        editor_layout.addWidget(self._trans_header)
         self._trans_view = TranslationEditor()
         self._trans_view.setFrameShape(QFrame.StyledPanel)
         self._trans_view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
@@ -799,7 +807,19 @@ class LinguaEditWindow(QMainWindow):
         self._trans_view.textChanged.connect(self._on_trans_buffer_changed)
         self._trans_view.translation_changed.connect(self._on_trans_buffer_changed)
         self._trans_view._load_save_user_dict(save=False)  # Load user dictionary
-        editor_layout.addWidget(self._trans_view, 1)
+        # Wrap translation in a widget with its header
+        trans_widget = QWidget()
+        trans_layout = QVBoxLayout(trans_widget)
+        trans_layout.setContentsMargins(0, 0, 0, 0)
+        trans_layout.setSpacing(2)
+        trans_layout.addWidget(self._trans_header)
+        trans_layout.addWidget(self._trans_view, 1)
+        self._editor_splitter.addWidget(trans_widget)
+        # Set initial splitter sizes (source smaller, translation bigger)
+        self._editor_splitter.setSizes([150, 300])
+        self._editor_splitter.setStretchFactor(0, 0)
+        self._editor_splitter.setStretchFactor(1, 1)
+        editor_layout.addWidget(self._editor_splitter, 1)
 
         # MT suggestion widget (below translation editor)
         self._mt_suggestion_widget = self._trans_view.get_mt_widget()
