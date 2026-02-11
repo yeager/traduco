@@ -1995,256 +1995,256 @@ Detta ersätter nuvarande text med:
     <name>LinguaEditWindow</name>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="742"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3114"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3529"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3565"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3731"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3757"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3821"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3839"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3868"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4023"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4050"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4069"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4078"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4094"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4134"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4282"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4310"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4670"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4780"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4852"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4871"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4887"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4901"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4925"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4966"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5444"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5644"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5810"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6114"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6814"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3134"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3549"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3585"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3751"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3777"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3841"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3859"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3888"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4043"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4070"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4089"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4098"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4114"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4154"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4302"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4330"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4690"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4800"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4872"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4891"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4907"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4921"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4945"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4986"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5464"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5664"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5830"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6134"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6834"/>
         <source>No file loaded</source>
         <translation>Ingen fil laddad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3512"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3532"/>
         <source>Saved!</source>
         <translation>Sparat!</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3160"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3180"/>
         <source>Open Translation File</source>
         <translation>Öppna översättningsfil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1078"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4140"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1098"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4160"/>
         <source>Pre-translate</source>
         <translation>Föröversätt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1069"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1089"/>
         <source>Open</source>
         <translation>Öppna</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1070"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1090"/>
         <source>Save</source>
         <translation>Spara</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1219"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1439"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1239"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1459"/>
         <source>Undo</source>
         <translation>Ångra</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1220"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1440"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1240"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1460"/>
         <source>Redo</source>
         <translation>Gör om</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1190"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1210"/>
         <source>&amp;File</source>
         <translation>&amp;Arkiv</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1191"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1211"/>
         <source>&amp;Open…</source>
         <translation>&amp;Öppna…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1195"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1215"/>
         <source>&amp;Save</source>
         <translation>&amp;Spara</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1204"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1224"/>
         <source>Recent Files</source>
         <translation>Senaste filer</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1215"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1235"/>
         <source>Quit</source>
         <translation>Avsluta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1218"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1238"/>
         <source>&amp;Edit</source>
         <translation>&amp;Redigera</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1222"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1242"/>
         <source>Find…</source>
         <translation>Sök…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1223"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1243"/>
         <source>Find &amp;&amp; Replace…</source>
         <translation>Sök &amp;&amp; Ersätt…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1234"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1254"/>
         <source>Preferences…</source>
         <translation>Inställningar…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1241"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1261"/>
         <source>Spell check current</source>
         <translation>Stavningskontroll</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1242"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1262"/>
         <source>File metadata…</source>
         <translation>Filmetadata…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1244"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1264"/>
         <source>Feed file to TM</source>
         <translation>Mata in fil till TM</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1255"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1275"/>
         <source>Quality</source>
         <translation>Kvalitet</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1256"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1276"/>
         <source>Consistency check</source>
         <translation>Konsekvenskontroll</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1257"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1312"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1277"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1332"/>
         <source>Glossary…</source>
         <translation>Ordlista…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1260"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1280"/>
         <source>Export report…</source>
         <translation>Exportera rapport…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1246"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1266"/>
         <source>Statistics…</source>
         <translation>Statistik…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1248"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1268"/>
         <source>Compile translation</source>
         <translation>Kompilera översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1074"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1094"/>
         <source>Compile</source>
         <translation>Kompilera</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1365"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1385"/>
         <source>Switch branch…</source>
         <translation>Byt gren…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1318"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1338"/>
         <source>&amp;View</source>
         <translation>&amp;Visa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1319"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1339"/>
         <source>Compare language…</source>
         <translation>Jämför språk…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1320"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1340"/>
         <source>Auto-propagate</source>
         <translation>Autopropagera</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1353"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1373"/>
         <source>System Default</source>
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1356"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1376"/>
         <source>Solarized Dark</source>
         <translation>Solarized Dark</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1357"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1377"/>
         <source>Nord</source>
         <translation>Nord</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1358"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1378"/>
         <source>Monokai</source>
         <translation>Monokai</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1368"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1388"/>
         <source>&amp;Platforms</source>
         <translation>&amp;Plattformar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1369"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1389"/>
         <source>Platform settings…</source>
         <translation>Plattformsinställningar…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1371"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1391"/>
         <source>Pull from…</source>
         <translation>Hämta från…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1375"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1395"/>
         <source>Push to…</source>
         <translation>Skicka till…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1381"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1401"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjälp</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1382"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1402"/>
         <source>GitHub PR…</source>
         <translation>GitHub PR…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1383"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1403"/>
         <source>Check for updates</source>
         <translation>Sök efter uppdateringar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1388"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4552"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1408"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4572"/>
         <source>Donate ♥</source>
         <translation>Donera ♥</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1390"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4570"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1410"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4590"/>
         <source>About LinguaEdit</source>
         <translation>Om LinguaEdit</translation>
     </message>
@@ -2259,12 +2259,12 @@ Detta ersätter nuvarande text med:
         <translation>Översatta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1112"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1132"/>
         <source>No file</source>
         <translation>Ingen fil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="981"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1001"/>
         <source>Search TM…</source>
         <translation>Sök TM…</translation>
     </message>
@@ -2289,79 +2289,79 @@ Detta ersätter nuvarande text med:
         <translation>Regex</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2354"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2374"/>
         <source>Add Comment</source>
         <translation>Lägg till kommentar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2354"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2374"/>
         <source>Enter translator note:</source>
         <translation>Ange översättarnotering:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1391"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1411"/>
         <source>About Qt</source>
         <translation>Om Qt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="950"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1446"/>
+        <location filename="../src/linguaedit/ui/window.py" line="970"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1466"/>
         <source>Previous</source>
         <translation>Föregående</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1450"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1470"/>
         <source>Next</source>
         <translation>Nästa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1454"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1474"/>
         <source>Copy Source</source>
         <translation>Kopiera källa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1073"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1093"/>
         <source>Validate</source>
         <translation>Validera</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1237"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1257"/>
         <source>&amp;Catalog</source>
         <translation>&amp;Katalog</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1263"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1283"/>
         <source>&amp;Go</source>
         <translation>&amp;Gå</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1361"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1381"/>
         <source>&amp;Git</source>
         <translation>&amp;Git</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1208"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1228"/>
         <source>Close Tab</source>
         <translation>Stäng flik</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1238"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1258"/>
         <source>Validate (Lint)</source>
         <translation>Validera (Lint)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1239"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1259"/>
         <source>Pre-translate…</source>
         <translation>Föröversätt…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1225"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1245"/>
         <source>Copy source to translation</source>
         <translation>Kopiera källa till översättning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="396"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3685"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3705"/>
         <source>LinguaEdit</source>
         <translation>LinguaEdit</translation>
     </message>
@@ -2372,105 +2372,105 @@ Detta ersätter nuvarande text med:
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="697"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1564"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1571"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1584"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1591"/>
         <source>Translation</source>
         <translation>Översättning</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="697"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1572"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5778"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1592"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5798"/>
         <source>Tags</source>
         <translation>Taggar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="809"/>
+        <location filename="../src/linguaedit/ui/window.py" line="829"/>
         <source>&lt;b&gt;Translator comment:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Översättarkommentar:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="818"/>
+        <location filename="../src/linguaedit/ui/window.py" line="838"/>
         <source>Add translator notes...</source>
         <translation>Lägg till översättarnoteringar...</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="925"/>
+        <location filename="../src/linguaedit/ui/window.py" line="945"/>
         <source>Notes</source>
         <translation>Anteckningar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="930"/>
+        <location filename="../src/linguaedit/ui/window.py" line="950"/>
         <source>Developer</source>
         <translation>Utvecklare</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="935"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1020"/>
+        <location filename="../src/linguaedit/ui/window.py" line="955"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1040"/>
         <source>Context</source>
         <translation>Kontext</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="940"/>
+        <location filename="../src/linguaedit/ui/window.py" line="960"/>
         <source>References</source>
         <translation>Referenser</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="945"/>
+        <location filename="../src/linguaedit/ui/window.py" line="965"/>
         <source>Flags</source>
         <translation>Flaggor</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="956"/>
+        <location filename="../src/linguaedit/ui/window.py" line="976"/>
         <source>Comments</source>
         <translation>Kommentarer</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1014"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1034"/>
         <source>No screenshot available</source>
         <translation>Ingen skärmbild tillgänglig</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1027"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1047"/>
         <source>Translation preview will appear here</source>
         <translation>Översättningsförhandsgranskning visas här</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1035"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1055"/>
         <source>Max width:</source>
         <translation>Max bredd:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1046"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1066"/>
         <source>Preview</source>
         <translation>Förhandsgranskning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1079"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1099"/>
         <source>Search</source>
         <translation>Sök</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1089"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1109"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1213"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1233"/>
         <source>Open Project…</source>
         <translation>Öppna projekt…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1226"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1962"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1973"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1981"/>
-        <location filename="../src/linguaedit/ui/window.py" line="2027"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1246"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1982"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1993"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2001"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2047"/>
         <source>Propagate Translation</source>
         <translation>Propagera översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1228"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1248"/>
         <source>Batch Edit…</source>
         <translation>Batchredigering…</translation>
     </message>
@@ -2483,68 +2483,68 @@ Detta ersätter nuvarande text med:
         <translation type="vanished">Sammanfoga poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1243"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1263"/>
         <source>Edit Header…</source>
         <translation>Redigera huvud…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1250"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1270"/>
         <source>Email Translation…</source>
         <translation>Skicka översättning via e-post…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1251"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1271"/>
         <source>Merge with POT…</source>
         <translation>Sammanfoga med POT…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1253"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1273"/>
         <source>Generate Report…</source>
         <translation>Generera rapport…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1258"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1278"/>
         <source>QA profile: Formal</source>
         <translation>QA-profil: Formell</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1259"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1279"/>
         <source>QA profile: Informal</source>
         <translation>QA-profil: Informell</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1264"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1284"/>
         <source>Previous entry</source>
         <translation>Föregående post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1265"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1285"/>
         <source>Next entry</source>
         <translation>Nästa post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1267"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1287"/>
         <source>Previous untranslated</source>
         <translation>Föregående oöversatt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1268"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1288"/>
         <source>Next untranslated</source>
         <translation>Nästa oöversatt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1270"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1290"/>
         <source>Done and next (Ctrl+Enter)</source>
         <translation>Klar och nästa (Ctrl+Enter)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1273"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1293"/>
         <source>&amp;Tools</source>
         <translation>Ver&amp;ktyg</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1086"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1274"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1106"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1294"/>
         <source>AI Review</source>
         <translation>AI-granskning</translation>
     </message>
@@ -2555,7 +2555,7 @@ Detta ersätter nuvarande text med:
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="766"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1562"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1582"/>
         <source>Timestamp</source>
         <translation>Tidsstämpel</translation>
     </message>
@@ -2565,721 +2565,721 @@ Detta ersätter nuvarande text med:
         <translation>Tid:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="874"/>
+        <location filename="../src/linguaedit/ui/window.py" line="894"/>
         <source>📋 Copy Source</source>
         <translation>📋 Kopiera källa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="875"/>
+        <location filename="../src/linguaedit/ui/window.py" line="895"/>
         <source>Copy source text to translation</source>
         <translation>Kopiera källtext till översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="879"/>
+        <location filename="../src/linguaedit/ui/window.py" line="899"/>
         <source>💾 Apply TM #1</source>
         <translation>💾 Tillämpa ÖM #1</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="880"/>
+        <location filename="../src/linguaedit/ui/window.py" line="900"/>
         <source>Apply best Translation Memory match</source>
         <translation>Tillämpa bästa träff från översättningsminnet</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="885"/>
+        <location filename="../src/linguaedit/ui/window.py" line="905"/>
         <source>🤖 Apply MT</source>
         <translation>🤖 Tillämpa MÖ</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="886"/>
+        <location filename="../src/linguaedit/ui/window.py" line="906"/>
         <source>Apply Machine Translation suggestion</source>
         <translation>Tillämpa maskinöversättningsförslag</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="891"/>
+        <location filename="../src/linguaedit/ui/window.py" line="911"/>
         <source>✅ Mark Reviewed</source>
         <translation>✅ Markera som granskad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="892"/>
+        <location filename="../src/linguaedit/ui/window.py" line="912"/>
         <source>Mark current entry as reviewed</source>
         <translation>Markera aktuell post som granskad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="896"/>
+        <location filename="../src/linguaedit/ui/window.py" line="916"/>
         <source>⚠️ Toggle Fuzzy</source>
         <translation>⚠️ Växla luddig</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="897"/>
+        <location filename="../src/linguaedit/ui/window.py" line="917"/>
         <source>Toggle fuzzy/needs work flag</source>
         <translation>Växla luddig/behöver bearbetas-flagga</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1199"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1219"/>
         <source>Save &amp;As…</source>
         <translation>Spara s&amp;om…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1231"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1251"/>
         <source>Split Entry…</source>
         <translation>Dela post…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1232"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1252"/>
         <source>Merge Entries…</source>
         <translation>Sammanfoga poster…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1240"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1260"/>
         <source>Batch Translate…</source>
         <translation>Satsöversätt…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1276"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1296"/>
         <source>Compare Files…</source>
         <translation>Jämför filer…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1277"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1297"/>
         <source>Diff with Previous Version…</source>
         <translation>Jämför med tidigare version…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1278"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1298"/>
         <source>Project Dashboard</source>
         <translation>Projektinstrumentpanel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1281"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1301"/>
         <source>TMX</source>
         <translation>TMX</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1282"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1302"/>
         <source>Import TMX…</source>
         <translation>Importera TMX…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1283"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1303"/>
         <source>Export TMX…</source>
         <translation>Exportera TMX…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1286"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1306"/>
         <source>Unicode Inspector</source>
         <translation>Unicode-inspektör</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1289"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1309"/>
         <source>Manage Plugins…</source>
         <translation>Hantera tillägg…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1292"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1312"/>
         <source>Macros</source>
         <translation>Makron</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1293"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6460"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1313"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6480"/>
         <source>Record Macro</source>
         <translation>Spela in makro</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1294"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6493"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1314"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6513"/>
         <source>Play Macro</source>
         <translation>Spela upp makro</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1295"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1315"/>
         <source>Manage Macros…</source>
         <translation>Hantera makron…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1298"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1318"/>
         <source>Git</source>
         <translation>Git</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1300"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1320"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1301"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1321"/>
         <source>Diff</source>
         <translation>Diff</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1303"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1323"/>
         <source>Regex Tester</source>
         <translation>Regex-testare</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1304"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1324"/>
         <source>Layout Simulator</source>
         <translation>Layoutsimulator</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1305"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1325"/>
         <source>OCR Screenshot…</source>
         <translation>OCR-skärmbild…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1310"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1330"/>
         <source>Pull Latest</source>
         <translation>Hämta senaste</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1313"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1333"/>
         <source>Concordance Search…</source>
         <translation>Konkordanssökning…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1322"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1342"/>
         <source>Show Bookmarked Only</source>
         <translation>Visa endast bokmärkta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1323"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1343"/>
         <source>Show Pinned First</source>
         <translation>Visa fästa först</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1324"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1344"/>
         <source>Review Mode</source>
         <translation>Granskningsläge</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1325"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1345"/>
         <source>Focus Mode</source>
         <translation>Fokusläge</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1329"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6743"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1349"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6763"/>
         <source>Editor on Right</source>
         <translation>Redigerare till höger</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1329"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6743"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1349"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6763"/>
         <source>Editor Below</source>
         <translation>Redigerare nedanför</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1333"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6802"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1353"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6822"/>
         <source>Simple Mode</source>
         <translation>Enkelt läge</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1338"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1358"/>
         <source>Zen Mode</source>
         <translation>Zenläge</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1341"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1361"/>
         <source>Fullscreen</source>
         <translation>Helskärm</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1344"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1364"/>
         <source>Minimap</source>
         <translation>Minikarta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1346"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1366"/>
         <source>Watch File</source>
         <translation>Bevaka fil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1347"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1367"/>
         <source>Translation Map…</source>
         <translation>Översättningskarta…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1350"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1370"/>
         <source>Achievements…</source>
         <translation>Prestationer…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1352"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1372"/>
         <source>Theme</source>
         <translation>Tema</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1470"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1490"/>
         <source>Concordance</source>
         <translation>Konkordans</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1743"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1763"/>
         <source>No more fuzzy strings</source>
         <translation>Inga fler luddiga strängar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1963"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1983"/>
         <source>Current string has no translation to propagate.</source>
         <translation>Aktuell sträng har ingen översättning att sprida.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1974"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1994"/>
         <source>No identical source strings found.</source>
         <translation>Inga identiska källsträngar hittades.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1987"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2007"/>
         <source>Found {len(identical_entries)} identical strings. Apply this translation to all?</source>
         <translation>Hittade {len(identical_entries)} identiska strängar. Tillämpa denna översättning på alla?</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1992"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2012"/>
         <source>&lt;b&gt;Translation:&lt;/b&gt; {html_escape(current_translation[:100])}</source>
         <translation>&lt;b&gt;Översättning:&lt;/b&gt; {html_escape(current_translation[:100])}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2028"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2048"/>
         <source>Applied translation to {applied_count} strings.</source>
         <translation>Tillämpade översättning på {applied_count} strängar.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3244"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3264"/>
         <source>Video file</source>
         <translation>Videofil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3245"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3265"/>
         <source>Would you like to extract subtitles from this video?</source>
         <translation>Vill du extrahera undertexter från denna video?</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3519"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3539"/>
         <source>Auto-compiled after save</source>
         <translation>Automatiskt kompilerad efter sparning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3535"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3555"/>
         <source>All files (*)</source>
         <translation>Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3537"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3557"/>
         <source>PO files (*.po);;All files (*)</source>
         <translation>PO-filer (*.po);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3539"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3559"/>
         <source>TS files (*.ts);;All files (*)</source>
         <translation>TS-filer (*.ts);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3541"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3561"/>
         <source>XLIFF files (*.xlf *.xliff);;All files (*)</source>
         <translation>XLIFF-filer (*.xlf *.xliff);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3543"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3563"/>
         <source>JSON files (*.json);;All files (*)</source>
         <translation>JSON-filer (*.json);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1442"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3546"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1462"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3566"/>
         <source>Save As…</source>
         <translation>Spara som…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3559"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3579"/>
         <source>Saved as %s</source>
         <translation>Sparad som %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3582"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3602"/>
         <source>translated</source>
         <translation>översatta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3626"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3646"/>
         <source> ⚠ long</source>
         <translation> ⚠ lång</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3628"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3648"/>
         <source> ⚠ short</source>
         <translation> ⚠ kort</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3631"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3651"/>
         <source>Words: %d | Chars: %d | Source: %dw%s</source>
         <translation>Ord: %d | Tecken: %d | Källa: %do%s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3656"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3676"/>
         <source>The file &apos;%s&apos; has unsaved changes.
 Do you want to save before closing?</source>
         <translation>Filen &apos;%s&apos; har osparade ändringar.
 Vill du spara innan du stänger?</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3657"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3677"/>
         <source>Untitled</source>
         <translation>Namnlös</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4387"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4407"/>
         <source>Format:</source>
         <translation>Format:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4578"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4598"/>
         <source>A translation file editor for PO, TS, JSON, XLIFF, Android, ARB, PHP, and YAML files.</source>
         <translation>En översättningsfilredigerare för PO, TS, JSON, XLIFF, Android, ARB, PHP och YAML-filer.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4580"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4600"/>
         <source>Developer:</source>
         <translation>Utvecklare:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4581"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4601"/>
         <source>License:</source>
         <translation>Licens:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4582"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4602"/>
         <source>Website:</source>
         <translation>Webbplats:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4811"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4831"/>
         <source>Applied changes to %d entries</source>
         <translation>Tillämpade ändringar på %d poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4877"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4897"/>
         <source>Header updated</source>
         <translation>Huvudet uppdaterat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4949"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4969"/>
         <source>%d translations applied</source>
         <translation>%d översättningar tillämpade</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4973"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4993"/>
         <source>Generate Report</source>
         <translation>Generera rapport</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4978"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4998"/>
         <source>Report Options</source>
         <translation>Rapportalternativ</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4981"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5001"/>
         <source>Bilingual export (source + translation)</source>
         <translation>Tvåspråkig export (källa + översättning)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4984"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5004"/>
         <source>Include fuzzy entries</source>
         <translation>Inkludera osäkra poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5007"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5027"/>
         <source>HTML files (*.html);;PDF files (*.pdf)</source>
         <translation>HTML-filer (*.html);;PDF-filer (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5016"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5036"/>
         <source>Report saved: %s</source>
         <translation>Rapport sparad: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5018"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5038"/>
         <source>Report error: %s</source>
         <translation>Rapportfel: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5049"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5069"/>
         <source>Total entries:</source>
         <translation>Totalt antal poster:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5050"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5070"/>
         <source>Translated:</source>
         <translation>Översatta:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5051"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5071"/>
         <source>Fuzzy:</source>
         <translation>Osäkra:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5052"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5072"/>
         <source>Untranslated:</source>
         <translation>Oöversatta:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5121"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5141"/>
         <source>No translation selected</source>
         <translation>Ingen översättning vald</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5129"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5149"/>
         <source>No source text to review</source>
         <translation>Ingen källtext att granska</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5139"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5159"/>
         <source>Translation updated from AI review</source>
         <translation>Översättning uppdaterad från AI-granskning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5150"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5170"/>
         <source>Bookmark removed</source>
         <translation>Bokmärke borttaget</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5153"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5173"/>
         <source>Bookmark added</source>
         <translation>Bokmärke tillagt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5163"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5183"/>
         <source>Showing only bookmarked entries</source>
         <translation>Visar endast bokmärkta poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5165"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5185"/>
         <source>Showing all entries</source>
         <translation>Visar alla poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5172"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5192"/>
         <source>No bookmarks set</source>
         <translation>Inga bokmärken satta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5245"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5265"/>
         <source>Entry unpinned</source>
         <translation>Post avfäst</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5248"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5268"/>
         <source>Entry pinned</source>
         <translation>Post fäst</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5258"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5278"/>
         <source>Showing pinned entries first</source>
         <translation>Visar fästa poster först</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5260"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5280"/>
         <source>Normal sorting order</source>
         <translation>Normal sorteringsordning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5342"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5362"/>
         <source>Loaded: {path.name}</source>
         <translation>Laddad: {path.name}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5346"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5366"/>
         <source>Error loading {path.name}: {e}</source>
         <translation>Fel vid laddning av {path.name}: {e}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5456"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5476"/>
         <source>Watch mode enabled - file changes will be detected</source>
         <translation>Bevakningsläge aktiverat – filändringar kommer att upptäckas</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5464"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5484"/>
         <source>Watch mode disabled</source>
         <translation>Bevakningsläge inaktiverat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5476"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5496"/>
         <source>File reloaded (external change detected)</source>
         <translation>Filen laddades om (extern ändring upptäckt)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5481"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5501"/>
         <source>File Changed</source>
         <translation>Filen ändrad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5482"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5502"/>
         <source>The file has been changed externally. Reload?</source>
         <translation>Filen har ändrats externt. Ladda om?</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5516"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5536"/>
         <source>Add Tag</source>
         <translation>Lägg till tagg</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5517"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5537"/>
         <source>Select or enter tag:</source>
         <translation>Välj eller ange tagg:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5530"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5550"/>
         <source>Tag &apos;{tag}&apos; added</source>
         <translation>Taggen &apos;{tag}&apos; tillagd</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5544"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5564"/>
         <source>Tag &apos;{tag}&apos; removed</source>
         <translation>Taggen &apos;{tag}&apos; borttagen</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5550"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5570"/>
         <source>Tag filter removed</source>
         <translation>Taggfilter borttaget</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5553"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5573"/>
         <source>Filtering by tag: {tag}</source>
         <translation>Filtrerar efter tagg: {tag}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5611"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5631"/>
         <source>Review mode enabled</source>
         <translation>Granskningsläge aktiverat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5613"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5633"/>
         <source>Review mode disabled</source>
         <translation>Granskningsläge inaktiverat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5637"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5657"/>
         <source>Status set to: {status}</source>
         <translation>Status satt till: {status}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5650"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5670"/>
         <source>Email Translation</source>
         <translation>Skicka översättning via e-post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5663"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5683"/>
         <source>To:</source>
         <translation>Till:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5669"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5689"/>
         <source>Subject:</source>
         <translation>Ämne:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5674"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5694"/>
         <source>Message:</source>
         <translation>Meddelande:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5677"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5697"/>
         <source>Attach current file</source>
         <translation>Bifoga aktuell fil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5698"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5718"/>
         <source>Email client opened</source>
         <translation>E-postklienten öppnad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5700"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5720"/>
         <source>Please enter recipient email</source>
         <translation>Ange mottagarens e-postadress</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5709"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5729"/>
         <source>Focus mode enabled - hiding completed translations</source>
         <translation>Fokusläge aktiverat – färdiga översättningar döljs</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5711"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5731"/>
         <source>Focus mode disabled</source>
         <translation>Fokusläge inaktiverat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5730"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5750"/>
         <source>{remaining}/{total} remaining</source>
         <translation>{remaining}/{total} återstående</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5765"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5785"/>
         <source>Remove Bookmark</source>
         <translation>Ta bort bokmärke</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5767"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5787"/>
         <source>Add Bookmark</source>
         <translation>Lägg till bokmärke</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5771"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5791"/>
         <source>📌 Unpin Entry</source>
         <translation>📌 Avfäst post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5773"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5793"/>
         <source>📌 Pin Entry</source>
         <translation>📌 Fäst post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5788"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5808"/>
         <source>Add Tag...</source>
         <translation>Lägg till tagg...</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5793"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5813"/>
         <source>Review</source>
         <translation>Granskning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5795"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5815"/>
         <source>Approve</source>
         <translation>Godkänn</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5797"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5817"/>
         <source>Reject</source>
         <translation>Avvisa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5799"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5819"/>
         <source>Needs Review</source>
         <translation>Behöver granskning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5818"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5838"/>
         <source>No translation to preview</source>
         <translation>Ingen översättning att förhandsgranska</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5875"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5895"/>
         <source>Import TMX</source>
         <translation>Importera TMX</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5875"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5902"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5895"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5922"/>
         <source>TMX Files (*.tmx)</source>
         <translation>TMX-filer (*.tmx)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5886"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5906"/>
         <source>Imported {} translation units</source>
         <translation>Importerade {} översättningsenheter</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5888"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5908"/>
         <source>
 
 Errors:
@@ -3290,83 +3290,83 @@ Fel:
 {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5890"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5910"/>
         <source>TMX Import</source>
         <translation>TMX-import</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5894"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5914"/>
         <source>Import Error</source>
         <translation>Importfel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5895"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5915"/>
         <source>Failed to import TMX file: {}</source>
         <translation>Kunde inte importera TMX-fil: {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5901"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5921"/>
         <source>Export TMX</source>
         <translation>Exportera TMX</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5919"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5939"/>
         <source>TMX Export</source>
         <translation>TMX-export</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5920"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5940"/>
         <source>Exported {} translation units to {}</source>
         <translation>Exporterade {} översättningsenheter till {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5927"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5947"/>
         <source>Export Error</source>
         <translation>Exportfel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5928"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5948"/>
         <source>Failed to export TMX file: {}</source>
         <translation>Kunde inte exportera TMX-fil: {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5942"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5962"/>
         <source>Cannot split empty entry</source>
         <translation>Kan inte dela tom post</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5979"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5999"/>
         <source>Entry split into 2 segments</source>
         <translation>Posten delades i 2 segment</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="5985"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6005"/>
         <source>Select at least 2 entries to merge</source>
         <translation>Välj minst 2 poster att sammanfoga</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6802"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6822"/>
         <source>Normal Mode</source>
         <translation>Normalt läge</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6956"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6976"/>
         <source>Sidebar</source>
         <translation>Sidopanel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6970"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6990"/>
         <source>Customize Toolbar…</source>
         <translation>Anpassa verktygsfält…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3655"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6985"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3675"/>
+        <location filename="../src/linguaedit/ui/window.py" line="7005"/>
         <source>Unsaved Changes</source>
         <translation>Osparade ändringar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6986"/>
+        <location filename="../src/linguaedit/ui/window.py" line="7006"/>
         <source>The current file has unsaved changes.
 Do you want to save before continuing?</source>
         <translation>Den aktuella filen har osparade ändringar.
@@ -3389,254 +3389,254 @@ Vill du spara innan du fortsätter?</translation>
         <translation type="vanished">Välj flera poster att sammanfoga</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6026"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6046"/>
         <source>Merged {} entries</source>
         <translation>Sammanfogade {} poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6060"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6080"/>
         <source>{} chars | {} words | Source: {} chars</source>
         <translation>{} tecken | {} ord | Källa: {} tecken</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6121"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6141"/>
         <source>Updated {} translation</source>
         <translation>Uppdaterade {} översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6149"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6169"/>
         <source>Push Changes</source>
         <translation>Skicka ändringar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6150"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6170"/>
         <source>Commit successful. Push to remote?</source>
         <translation>Commit lyckades. Skicka till fjärrarkiv?</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6159"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6179"/>
         <source>Changes pushed successfully</source>
         <translation>Ändringar skickade</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6161"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6181"/>
         <source>Changes committed locally</source>
         <translation>Ändringar committade lokalt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6165"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6185"/>
         <source>Git Error</source>
         <translation>Git-fel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6166"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6186"/>
         <source>Git operation failed: {}</source>
         <translation>Git-åtgärd misslyckades: {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6170"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6698"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6190"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6718"/>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6171"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6191"/>
         <source>Git operation error: {}</source>
         <translation>Git-operationsfel: {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6181"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6201"/>
         <source>Play Translation</source>
         <translation>Spela upp översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6195"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6215"/>
         <source>No text to play</source>
         <translation>Ingen text att spela upp</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6230"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6250"/>
         <source>Playing translation...</source>
         <translation>Spelar upp översättning...</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6234"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6254"/>
         <source>TTS Error</source>
         <translation>TTS-fel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6235"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6255"/>
         <source>Text-to-speech failed: {}</source>
         <translation>Text-till-tal misslyckades: {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6255"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6275"/>
         <source>Stacked View</source>
         <translation>Stapelvy</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6260"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6280"/>
         <source>Side-by-Side View</source>
         <translation>Vy sida vid sida</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6337"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6357"/>
         <source>MT translation failed</source>
         <translation>Maskinöversättning misslyckades</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6406"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6426"/>
         <source>Fullscreen mode - Press Escape to exit</source>
         <translation>Helskärmsläge – tryck Escape för att avsluta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6455"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6475"/>
         <source>Already recording a macro</source>
         <translation>Spelar redan in ett makro</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6461"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6481"/>
         <source>Enter macro name:</source>
         <translation>Ange makronamn:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6470"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6490"/>
         <source>Macro Exists</source>
         <translation>Makrot finns redan</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6471"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6491"/>
         <source>A macro with this name already exists.</source>
         <translation>Ett makro med detta namn finns redan.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6478"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6498"/>
         <source>Recording macro &apos;{}&apos;...</source>
         <translation>Spelar in makro &apos;{}&apos;…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6484"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6504"/>
         <source>No macros available</source>
         <translation>Inga makron tillgängliga</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6489"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6509"/>
         <source>No enabled macros</source>
         <translation>Inga aktiverade makron</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6494"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6514"/>
         <source>Select macro to play:</source>
         <translation>Välj makro att spela upp:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6501"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6521"/>
         <source>Failed to play macro</source>
         <translation>Kunde inte spela upp makro</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6550"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6570"/>
         <source>Translation rolled back</source>
         <translation>Översättning återställd</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6559"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6579"/>
         <source>Auto-compile enabled</source>
         <translation>Automatisk kompilering aktiverad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6583"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6603"/>
         <source>Translation History…</source>
         <translation>Översättningshistorik…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6586"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6606"/>
         <source>🔊 Play Translation</source>
         <translation>🔊 Spela upp översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6635"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6655"/>
         <source>OCR extraction completed. {} strings extracted.</source>
         <translation>OCR-extrahering slutförd. {} strängar extraherade.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6641"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6661"/>
         <source>Crowdin OTA</source>
         <translation>Crowdin OTA</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6642"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6662"/>
         <source>Crowdin Over-The-Air functionality not yet implemented.
 This would pull latest translations using distribution hash.</source>
         <translation>Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.
 Detta skulle hämta senaste översättningar med distributionshash.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6649"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6669"/>
         <source>No File</source>
         <translation>Ingen fil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6649"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6669"/>
         <source>Please open a PO file first.</source>
         <translation>Öppna en PO-fil först.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6653"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6673"/>
         <source>Wrong File Type</source>
         <translation>Fel filtyp</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6653"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6673"/>
         <source>This feature only works with PO files.</source>
         <translation>Denna funktion fungerar bara med PO-filer.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6659"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6679"/>
         <source>Select POT File</source>
         <translation>Välj POT-fil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6661"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6681"/>
         <source>POT Files (*.pot)</source>
         <translation>POT-filer (*.pot)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6677"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6697"/>
         <source>Success</source>
         <translation>Framgång</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6678"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6698"/>
         <source>PO file merged successfully with POT file.
 Please reload the file to see changes.</source>
         <translation>PO-filen sammanfogades med POT-filen.
 Ladda om filen för att se ändringarna.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6685"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6705"/>
         <source>Msgmerge Error</source>
         <translation>Msgmerge-fel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6686"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6706"/>
         <source>msgmerge failed:
 {}</source>
         <translation>msgmerge misslyckades:
 {}</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6692"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6712"/>
         <source>Msgmerge Not Found</source>
         <translation>Msgmerge hittades inte</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6693"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6713"/>
         <source>msgmerge command not found. Please install gettext tools.</source>
         <translation>Kommandot msgmerge hittades inte. Installera gettext-verktygen.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="6699"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6719"/>
         <source>Failed to run msgmerge:
 {}</source>
         <translation>Kunde inte köra msgmerge:
@@ -3647,67 +3647,67 @@ Ladda om filen för att se ändringarna.</translation>
         <translation type="vanished">System</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1354"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1374"/>
         <source>Light</source>
         <translation>Ljust</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1355"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1375"/>
         <source>Dark</source>
         <translation>Mörkt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1362"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1382"/>
         <source>Status…</source>
         <translation>Status…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1363"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1383"/>
         <source>Diff…</source>
         <translation>Diff…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1299"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1364"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1319"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1384"/>
         <source>Commit…</source>
         <translation>Commit…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1372"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1376"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1392"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1396"/>
         <source>Transifex</source>
         <translation>Transifex</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1373"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1377"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1393"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1397"/>
         <source>Weblate</source>
         <translation>Weblate</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1309"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1374"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1378"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1329"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1394"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1398"/>
         <source>Crowdin</source>
         <translation>Crowdin</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1385"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1405"/>
         <source>Documentation</source>
         <translation>Dokumentation</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1396"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1416"/>
         <source>Main</source>
         <translation>Huvudverktygsfält</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1918"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1938"/>
         <source>… and %d more</source>
         <translation>… och %d till</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2047"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2067"/>
         <source>Plural: %s</source>
         <translation>Plural: %s</translation>
     </message>
@@ -3716,146 +3716,146 @@ Ladda om filen för att se ändringarna.</translation>
         <translation type="vanished">Tema ändrat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3574"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3594"/>
         <source>%d strings — %d translated, %d fuzzy, %d untranslated</source>
         <translation>%d strängar — %d översatta, %d luddiga, %d oöversatta</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3779"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3799"/>
         <source>No inconsistencies found! ✓</source>
         <translation>Inga inkonsekvenser hittades! ✓</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3786"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3806"/>
         <source>No terms defined</source>
         <translation>Inga termer definierade</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3814"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3834"/>
         <source>No glossary violations found! ✓</source>
         <translation>Inga ordlisteavvikelser hittades! ✓</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3872"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5005"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3892"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5025"/>
         <source>Save Report</source>
         <translation>Spara rapport</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3873"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3893"/>
         <source>HTML (*.html);;PDF (*.pdf)</source>
         <translation>HTML (*.html);;PDF (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3890"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3910"/>
         <source>Report saved</source>
         <translation>Rapporten har sparats</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3920"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3940"/>
         <source>Unknown</source>
         <translation>Okänt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4073"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4093"/>
         <source>No changes</source>
         <translation>Inga ändringar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4304"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4324"/>
         <source>Spelling issues:
 %s</source>
         <translation>Stavningsproblem:
 %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4314"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4334"/>
         <source>File Header / Metadata</source>
         <translation>Filhuvud / Metadata</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4319"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4339"/>
         <source>Edit file header metadata. Changes are applied when you click Save.</source>
         <translation>Redigera filhuvudets metadata. Ändringar tillämpas när du klickar Spara.</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4327"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4347"/>
         <source>Key</source>
         <translation>Nyckel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4327"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4347"/>
         <source>Value</source>
         <translation>Värde</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4342"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4362"/>
         <source>Add Field</source>
         <translation>Lägg till fält</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4343"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4363"/>
         <source>Remove Selected</source>
         <translation>Ta bort markerat</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4367"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4387"/>
         <source>Language:</source>
         <translation>Språk:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4162"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4368"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4377"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4182"/>
         <location filename="../src/linguaedit/ui/window.py" line="4388"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4397"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4408"/>
         <source>Source language:</source>
         <translation>Källspråk:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2790"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2810"/>
         <source>Theme changed to %s</source>
         <translation>Tema ändrat till %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4164"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4378"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4389"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4184"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4398"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4409"/>
         <source>Target language:</source>
         <translation>Målspråk:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4376"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4396"/>
         <source>Version:</source>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4395"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4415"/>
         <source>Locale:</source>
         <translation>Locale:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4401"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4421"/>
         <source>Root key:</source>
         <translation>Rotnyckel:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4451"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4471"/>
         <source>Open Reference File</source>
         <translation>Öppna referensfil</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4555"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4575"/>
         <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att stödja utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2456"/>
-        <location filename="../src/linguaedit/ui/window.py" line="2639"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2476"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2659"/>
         <source>%d matches</source>
         <translation>%d träffar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3584"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3604"/>
         <source>%d strings</source>
         <translation>%d strängar</translation>
     </message>
@@ -3865,17 +3865,17 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>%p% översatt</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="979"/>
+        <location filename="../src/linguaedit/ui/window.py" line="999"/>
         <source>&lt;b&gt;Concordance search&lt;/b&gt;</source>
         <translation>&lt;b&gt;Konkordanssökning&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1000"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1020"/>
         <source>&lt;b&gt;Reference source:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Referenskälla:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1002"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1022"/>
         <source>&lt;b&gt;Reference translation:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Referensöversättning:&lt;/b&gt;</translation>
     </message>
@@ -3885,48 +3885,48 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>&lt;b&gt;Källtext:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="970"/>
+        <location filename="../src/linguaedit/ui/window.py" line="990"/>
         <source>&lt;b&gt;Suggestions&lt;/b&gt;</source>
         <translation>&lt;b&gt;Förslag&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="792"/>
+        <location filename="../src/linguaedit/ui/window.py" line="801"/>
         <source>&lt;b&gt;Translation:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Översättning:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4507"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4527"/>
         <source>&lt;i&gt;(no match in reference)&lt;/i&gt;</source>
         <translation>&lt;i&gt;(ingen träff i referens)&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="974"/>
+        <location filename="../src/linguaedit/ui/window.py" line="994"/>
         <source>&lt;i&gt;No suggestions&lt;/i&gt;</source>
         <translation>&lt;i&gt;Inga förslag&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4224"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4244"/>
         <source>API Keys</source>
         <translation>API-nycklar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4276"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4296"/>
         <source>API keys saved</source>
         <translation>API-nycklar sparade</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3793"/>
-        <location filename="../src/linguaedit/ui/window.py" line="3795"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3813"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3815"/>
         <source>Add Term</source>
         <translation>Lägg till term</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4287"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4307"/>
         <source>Added %d entries to Translation Memory</source>
         <translation>Lade till %d poster i översättningsminnet</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3798"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3818"/>
         <source>Added: %s → %s</source>
         <translation>Lade till: %s → %s</translation>
     </message>
@@ -3936,7 +3936,7 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Alla strängar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3143"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3163"/>
         <source>Auto-propagated %d entries</source>
         <translation>Auto-propagerade %d poster</translation>
     </message>
@@ -3951,86 +3951,86 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Efter referens</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4697"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4717"/>
         <source>Cannot compile: install &apos;polib&apos; or &apos;gettext&apos; (msgfmt)</source>
         <translation>Kan inte kompilera: installera &apos;polib&apos; eller &apos;gettext&apos; (msgfmt)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4707"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4727"/>
         <source>Cannot compile: pyside6-lrelease or lrelease not found</source>
         <translation>Kan inte kompilera: pyside6-lrelease eller lrelease hittades inte</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="855"/>
+        <location filename="../src/linguaedit/ui/window.py" line="875"/>
         <source>Clear</source>
         <translation>Rensa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="856"/>
+        <location filename="../src/linguaedit/ui/window.py" line="876"/>
         <source>Clear translation</source>
         <translation>Rensa översättning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4090"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4110"/>
         <source>Commit failed: %s</source>
         <translation>Commit misslyckades: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4081"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6120"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4101"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6140"/>
         <source>Commit message:</source>
         <translation>Commit-meddelande:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4088"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4108"/>
         <source>Committed!</source>
         <translation>Committad!</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4700"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4721"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4720"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4741"/>
         <source>Compile error: %s</source>
         <translation>Kompileringsfel: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4724"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4744"/>
         <source>Compile not supported for %s files</source>
         <translation>Kompilering stöds inte för %s-filer</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4681"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4691"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4715"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4701"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4711"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4735"/>
         <source>Compiled: %s</source>
         <translation>Kompilerad: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3780"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3800"/>
         <source>Consistency Check</source>
         <translation>Konsekvenskontroll</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="850"/>
+        <location filename="../src/linguaedit/ui/window.py" line="870"/>
         <source>Copy source</source>
         <translation>Kopiera källa</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="851"/>
+        <location filename="../src/linguaedit/ui/window.py" line="871"/>
         <source>Copy source text to translation (Ctrl+B)</source>
         <translation>Kopiera källtext till översättning (Ctrl+B)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3261"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3281"/>
         <source>Error loading file: %s</source>
         <translation>Fel vid laddning av fil: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4486"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4506"/>
         <source>Error loading reference: %s</source>
         <translation>Fel vid laddning av referens: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3169"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3189"/>
         <source>File not found: %s</source>
         <translation>Filen hittades inte: %s</translation>
     </message>
@@ -4040,7 +4040,7 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Filordning</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3341"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3361"/>
         <source>File reloaded (changed externally)</source>
         <translation>Filen laddades om (ändrad externt)</translation>
     </message>
@@ -4060,145 +4060,145 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Luddig diff (föregående → nuvarande)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3586"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3606"/>
         <source>Fuzzy: %d</source>
         <translation>Luddiga: %d</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1124"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1144"/>
         <source>Fuzzy: 0</source>
         <translation>Luddiga: 0</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4099"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4119"/>
         <source>Git Branches</source>
         <translation>Git-grenar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4081"/>
-        <location filename="../src/linguaedit/ui/window.py" line="6119"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4101"/>
+        <location filename="../src/linguaedit/ui/window.py" line="6139"/>
         <source>Git Commit</source>
         <translation>Git-commit</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4074"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4094"/>
         <source>Git Diff</source>
         <translation>Git-diff</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4054"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4065"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4074"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4085"/>
         <source>Git Status</source>
         <translation>Git-status</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4530"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4550"/>
         <source>GitHub PR</source>
         <translation>GitHub PR</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3788"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3808"/>
         <source>Glossary / Terminology</source>
         <translation>Ordlista / Terminologi</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3815"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3835"/>
         <source>Glossary Check</source>
         <translation>Ordlistekontroll</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2625"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2645"/>
         <source>Invalid regex</source>
         <translation>Ogiltigt reguljärt uttryck</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4159"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4179"/>
         <source>Languages</source>
         <translation>Språk</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3595"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3615"/>
         <source>Ln %d, Col %d</source>
         <translation>Rad %d, Kol %d</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1130"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1150"/>
         <source>Ln 1, Col 1</source>
         <translation>Rad 1, Kol 1</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4489"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4509"/>
         <source>Loaded reference: %s</source>
         <translation>Laddade referens: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4178"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4198"/>
         <source>Manage API Keys…</source>
         <translation>Hantera API-nycklar…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="844"/>
+        <location filename="../src/linguaedit/ui/window.py" line="864"/>
         <source>Mark this string as fuzzy / needs review (Ctrl+U)</source>
         <translation>Markera denna sträng som luddig / behöver granskning (Ctrl+U)</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4441"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4461"/>
         <source>Metadata updated</source>
         <translation>Metadata uppdaterad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="843"/>
+        <location filename="../src/linguaedit/ui/window.py" line="863"/>
         <source>Needs work</source>
         <translation>Behöver granskas</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1719"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1739"/>
         <source>No more untranslated strings</source>
         <translation>Inga fler oöversatta strängar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4294"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4314"/>
         <source>No text to check</source>
         <translation>Ingen text att kontrollera</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4054"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4074"/>
         <source>Not a git repository</source>
         <translation>Inte ett git-arkiv</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4167"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4187"/>
         <source>Options</source>
         <translation>Alternativ</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4218"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4238"/>
         <source>Pre-translated %d entries via %s</source>
         <translation>Förhandsöversatte %d poster via %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3833"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3853"/>
         <source>QA Profile: %s</source>
         <translation>QA-profil: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1007"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1027"/>
         <source>Reference</source>
         <translation>Referens</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="2686"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4768"/>
+        <location filename="../src/linguaedit/ui/window.py" line="2706"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4788"/>
         <source>Replaced in %d entries</source>
         <translation>Ersatt i %d poster</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3862"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3882"/>
         <source>Report saved to %s</source>
         <translation>Rapport sparad till %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3521"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3541"/>
         <source>Save error: %s</source>
         <translation>Fel vid sparning: %s</translation>
     </message>
@@ -4218,44 +4218,44 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Källa Ö → A</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3793"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3813"/>
         <source>Source term:</source>
         <translation>Källterm:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1085"/>
-        <location filename="../src/linguaedit/ui/window.py" line="4044"/>
-        <location filename="../src/linguaedit/ui/window.py" line="5048"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1105"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4064"/>
+        <location filename="../src/linguaedit/ui/window.py" line="5068"/>
         <source>Statistics</source>
         <translation>Statistik</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="964"/>
+        <location filename="../src/linguaedit/ui/window.py" line="984"/>
         <source>String Info</source>
         <translation>Stränginformation</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="992"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1012"/>
         <source>TM / Suggestions</source>
         <translation>TM / Förslag</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3795"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3815"/>
         <source>Target term:</source>
         <translation>Målterm:</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4118"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4138"/>
         <source>Translated via %s</source>
         <translation>Översatt via %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3585"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3605"/>
         <source>Translated: %d</source>
         <translation>Översatta: %d</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1121"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1141"/>
         <source>Translated: 0</source>
         <translation>Översatta: 0</translation>
     </message>
@@ -4265,7 +4265,7 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Översättning A → Ö</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4144"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4164"/>
         <source>Translation Engine</source>
         <translation>Översättningsmotor</translation>
     </message>
@@ -4275,27 +4275,27 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Översättning Ö → A</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3258"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3278"/>
         <source>Unsupported file type: %s</source>
         <translation>Filtypen stöds inte: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="3587"/>
+        <location filename="../src/linguaedit/ui/window.py" line="3607"/>
         <source>Untranslated: %d</source>
         <translation>Oöversatta: %d</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1127"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1147"/>
         <source>Untranslated: 0</source>
         <translation>Oöversatta: 0</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4546"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4566"/>
         <source>Up to date</source>
         <translation>Uppdaterad</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4543"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4563"/>
         <source>Update Available</source>
         <translation>Uppdatering tillgänglig</translation>
     </message>
@@ -4305,54 +4305,54 @@ Ladda om filen för att se ändringarna.</translation>
         <translation>Med varningar</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4718"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4738"/>
         <source>lrelease error: %s</source>
         <translation>lrelease-fel: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4694"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4714"/>
         <source>msgfmt error: %s</source>
         <translation>msgfmt-fel: %s</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="4298"/>
+        <location filename="../src/linguaedit/ui/window.py" line="4318"/>
         <source>✓ No spelling issues found</source>
         <translation>✓ Inga stavningsfel hittades</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="860"/>
+        <location filename="../src/linguaedit/ui/window.py" line="880"/>
         <source>💬 Comment</source>
         <translation>💬 Kommentar</translation>
     </message>
     <message>
         <location filename="../src/linguaedit/ui/window.py" line="697"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1563"/>
-        <location filename="../src/linguaedit/ui/window.py" line="1570"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1583"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1590"/>
         <source>Source text</source>
         <translation>Källtext</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1384"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1404"/>
         <source>GitHub Repository</source>
         <translation>GitHub-arkiv</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1386"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1406"/>
         <source>Report a Bug</source>
         <translation>Rapportera ett fel</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1315"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1335"/>
         <source>Extract Subtitles from Video…</source>
         <translation>Extrahera undertexter från video…</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1082"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1102"/>
         <source>Video</source>
         <translation>Video</translation>
     </message>
     <message>
-        <location filename="../src/linguaedit/ui/window.py" line="1087"/>
+        <location filename="../src/linguaedit/ui/window.py" line="1107"/>
         <source>Glossary</source>
         <translation>Ordlista</translation>
     </message>

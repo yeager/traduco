@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.7.0] — 2026-02-11
+
+### Added
+- **Resizable source text view** — drag the splitter between source and translation to adjust heights
+- Larger default source text area (150px vs 90px), supports up to 300px
+
 ## [1.6.0] — 2026-02-11
 
 ### Added
