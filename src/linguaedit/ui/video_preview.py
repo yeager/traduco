@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Optional
 
 from PySide6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QStackedLayout,
+    QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
     QSlider, QLabel, QStyle, QSizePolicy, QDockWidget,
     QComboBox, QCheckBox, QFrame, QToolButton,
 )
@@ -125,25 +125,17 @@ class _SubtitleOverlay(QWidget):
 
 # ── Video widget with subtitle overlay ──────────────────────────
 
-class _VideoWithSubtitles(QWidget):
-    """QVideoWidget + transparent subtitle overlay stacked together."""
+class _VideoWithSubtitles(QVideoWidget):
+    """QVideoWidget with a child overlay widget for subtitles."""
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self._video_widget = QVideoWidget()
-        self._overlay = _SubtitleOverlay()
-
-        # Stack video and overlay on top of each other
-        layout = QStackedLayout(self)
-        layout.setStackingMode(QStackedLayout.StackAll)
-        layout.addWidget(self._video_widget)
-        layout.addWidget(self._overlay)
-        # Overlay on top
+        self._overlay = _SubtitleOverlay(self)
         self._overlay.raise_()
 
-    @property
-    def video_widget(self) -> QVideoWidget:
-        return self._video_widget
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._overlay.setGeometry(self.rect())
 
     def set_texts(self, source: str, translation: str):
         self._overlay.set_texts(source, translation)
@@ -451,7 +443,7 @@ class VideoPreviewWidget(QWidget):
         self._audio = QAudioOutput()
         self._audio.setVolume(0.8)
         self._player.setAudioOutput(self._audio)
-        self._player.setVideoOutput(self._video_widget.video_widget)
+        self._player.setVideoOutput(self._video_widget)
         self._player.positionChanged.connect(self._on_position_changed)
         self._player.durationChanged.connect(self._on_duration_changed)
         self._player.playbackStateChanged.connect(self._on_state_changed)
