@@ -40,7 +40,7 @@ from PySide6.QtWidgets import (
     QMessageBox, QInputDialog, QApplication, QToolButton, QProgressDialog,
     QAbstractItemView, QSpinBox, QDockWidget, QStyledItemDelegate,
 )
-from PySide6.QtCore import Qt, QTimer, QFileSystemWatcher, Signal, Slot, QPropertyAnimation, QEasingCurve, QSettings
+from PySide6.QtCore import Qt, QTimer, QFileSystemWatcher, Signal, Slot, QPropertyAnimation, QEasingCurve, QSettings, QThread
 from PySide6.QtGui import (
     QAction, QKeySequence, QFont, QColor, QIcon, QBrush,
     QDragEnterEvent, QDropEvent, QPalette, QShortcut, QDesktopServices,
@@ -235,6 +235,43 @@ _CLR_WARNING = _LIGHT_COLORS['warning']
 _CLR_TRANSLATED_FG = _LIGHT_COLORS['translated_fg']
 _CLR_UNTRANSLATED_FG = _LIGHT_COLORS['untranslated_fg']
 _CLR_FUZZY_FG = _LIGHT_COLORS['fuzzy_fg']
+
+
+# ── Subtitle extraction worker ───────────────────────────────────────
+
+class _SubtitleExtractWorker(QThread):
+    """Run FFmpeg subtitle extraction in a background thread."""
+    progress = Signal(int)       # 0-100
+    finished = Signal()
+    error = Signal(str)
+
+    def __init__(self, video_path, track, output_path, duration, parent=None):
+        super().__init__(parent)
+        self._video_path = video_path
+        self._track = track
+        self._output_path = output_path
+        self._duration = duration
+        self._cancelled = False
+
+    def cancel(self):
+        self._cancelled = True
+
+    def run(self):
+        from linguaedit.services.ffmpeg import extract_subtitle
+        try:
+            def on_progress(pct):
+                if not self._cancelled:
+                    self.progress.emit(int(pct * 100))
+            extract_subtitle(
+                self._video_path, self._track, self._output_path, ".srt",
+                progress_callback=on_progress, duration=self._duration,
+            )
+            if not self._cancelled:
+                self.progress.emit(100)
+                self.finished.emit()
+        except Exception as e:
+            if not self._cancelled:
+                self.error.emit(str(e))
 
 
 # ── Tab data holder ──────────────────────────────────────────────────
@@ -4730,7 +4767,7 @@ class LinguaEditWindow(QMainWindow):
             return
         track = tracks[track_labels.index(chosen)]
 
-        # Extract with progress
+        # Extract with progress (threaded so the dialog stays responsive)
         import tempfile
         tmp = tempfile.NamedTemporaryFile(suffix=".srt", delete=False)
         tmp.close()
@@ -4741,31 +4778,30 @@ class LinguaEditWindow(QMainWindow):
         progress2.setWindowModality(Qt.WindowModal)
         progress2.setMinimumDuration(0)
         progress2.setValue(0)
-        cancelled = False
+        progress2.show()
+        QApplication.processEvents()
 
-        def on_cancel():
-            nonlocal cancelled
-            cancelled = True
-        progress2.canceled.connect(on_cancel)
+        loop = __import__('PySide6.QtCore', fromlist=['QEventLoop']).QEventLoop(self)
+        extract_ok = [False]
+        extract_err = [None]
 
-        def on_progress(pct):
-            if not cancelled:
-                progress2.setValue(int(pct * 100))
-                QApplication.processEvents()
+        worker = _SubtitleExtractWorker(video_path, track, output_path, duration, self)
+        worker.progress.connect(progress2.setValue)
+        worker.finished.connect(lambda: (extract_ok.__setitem__(0, True), loop.quit()))
+        worker.error.connect(lambda msg: (extract_err.__setitem__(0, msg), loop.quit()))
+        progress2.canceled.connect(worker.cancel)
+        progress2.canceled.connect(loop.quit)
 
-        try:
-            extract_subtitle(video_path, track, output_path, ".srt",
-                             progress_callback=on_progress, duration=duration)
-            progress2.setValue(100)
-        except Exception as e:
-            progress2.close()
-            QMessageBox.critical(self, self.tr("Extraction Failed"), str(e))
+        worker.start()
+        loop.exec()
+        worker.wait()
+        progress2.close()
+
+        if extract_err[0]:
+            QMessageBox.critical(self, self.tr("Extraction Failed"), extract_err[0])
             return
-        finally:
-            progress2.close()
-
-        if cancelled:
-            return
+        if not extract_ok[0]:
+            return  # cancelled
 
         # Bug 2e: If a file is already open, ask to save/close first
         if self._file_data and self._modified:
