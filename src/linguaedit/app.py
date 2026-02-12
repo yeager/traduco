@@ -45,6 +45,14 @@ class LinguaEditApp:
             if argv:
                 argv[0] = 'LinguaEdit'
 
+        # Work around SIGSEGV in libqcocoa.dylib accessibility bridge (Qt 6 bug):
+        # macOS accessibility daemon queries widgets during creation/destruction,
+        # hitting dangling pointers in the Cocoa platform plugin.
+        # Users who need accessibility can set QT_ACCESSIBILITY=1 to re-enable.
+        if sys.platform == 'darwin':
+            import os
+            os.environ.setdefault("QT_ACCESSIBILITY", "0")
+
         self._qt_app = QApplication(argv)
         self._qt_app.setApplicationName("LinguaEdit")
         self._qt_app.setApplicationDisplayName("LinguaEdit")
