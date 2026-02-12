@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QMenu,
     QApplication,
 )
-from PySide6.QtCore import Qt, Signal, QStringListModel, QTimer, QThread, QObject, Slot
+from PySide6.QtCore import Qt, Signal, QStringListModel, QTimer, QObject, Slot
 from PySide6.QtGui import (
     QKeyEvent, QTextCursor, QTextCharFormat, QColor, QFont,
     QAction, QTextFormat, QPalette,
@@ -173,8 +173,7 @@ class TranslationEditor(QPlainTextEdit):
 
         # MT suggestion state
         self._mt_widget: Optional[MTSuggestionWidget] = None
-        self._mt_thread: Optional[QThread] = None
-        self._mt_worker: Optional[_MTWorker] = None
+        self._mt_generation = 0
         self._mt_source_text: str = ""  # current source text for MT
         self._mt_enabled = True
 
@@ -412,17 +411,15 @@ class TranslationEditor(QPlainTextEdit):
             self._mt_widget.setVisible(False)
 
     def _fetch_mt_suggestions(self, text: str):
-        """Fetch MT suggestions in a background thread."""
-        # Cancel any running request
-        if self._mt_thread and self._mt_thread.isRunning():
-            self._mt_thread.quit()
-            self._mt_thread.wait(500)
+        """Fetch MT suggestions in a daemon thread (no QThread — avoids GC crash)."""
+        # Bump generation so stale results are discarded
+        self._mt_generation = getattr(self, '_mt_generation', 0) + 1
+        gen = self._mt_generation
 
         settings = Settings.get()
         source = settings["source_language"]
         target = settings["target_language"]
 
-        # Determine which engines to query
         engines = []
         from linguaedit.services.keystore import get_secret
         if get_secret("deepl", "api_key"):
@@ -430,26 +427,32 @@ class TranslationEditor(QPlainTextEdit):
         if get_secret("openai", "api_key"):
             engines.append("openai")
         if not engines:
-            # Fall back to free engine
             engines.append("lingva")
 
         widget = self.get_mt_widget()
         widget.show_loading()
 
-        # Clean up any previous MT thread before starting a new one
-        if self._mt_thread is not None:
-            self._mt_thread.quit()
-            self._mt_thread.wait()
-            self._mt_thread.deleteLater()
-            self._mt_thread = None
+        import threading
 
-        self._mt_thread = QThread(self)  # parent prevents premature GC
-        self._mt_worker = _MTWorker(text, source, target, engines)
-        self._mt_worker.moveToThread(self._mt_thread)
-        self._mt_thread.started.connect(self._mt_worker.run)
-        self._mt_worker.finished.connect(self._on_mt_results)
-        self._mt_worker.finished.connect(self._mt_thread.quit)
-        self._mt_thread.start()
+        def _do_fetch():
+            results = []
+            for engine in engines:
+                try:
+                    from linguaedit.services.translator import translate, ENGINES
+                    result = translate(text, engine=engine,
+                                       source=source, target=target)
+                    if result and result.strip():
+                        name = ENGINES.get(engine, {}).get("name", engine)
+                        results.append((name, result.strip()))
+                except Exception:
+                    pass
+            # Deliver results to main thread via QTimer.singleShot
+            if gen == self._mt_generation:
+                from PySide6.QtCore import QTimer
+                QTimer.singleShot(0, lambda r=results: self._on_mt_results(r))
+
+        t = threading.Thread(target=_do_fetch, daemon=True)
+        t.start()
 
     def _on_mt_results(self, results: list[tuple[str, str]]):
         """Handle MT results from background thread."""
