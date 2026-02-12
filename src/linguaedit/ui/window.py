@@ -4771,17 +4771,23 @@ class LinguaEditWindow(QMainWindow):
             self.addDockWidget(Qt.RightDockWidgetArea, self._video_dock)
 
     def _on_video_dock_visibility(self, visible: bool):
-        """Hide/restore context panel when video dock is shown/hidden."""
-        if self._context_panel is None:
-            return
+        """Hide/restore side panel and context dock when video dock is shown/hidden."""
         if visible:
-            # Remember if context panel was visible, then hide it
-            self._context_was_visible = self._context_panel.isVisible()
-            if self._context_was_visible:
-                self._context_panel.hide()
+            # Remember side panel state and hide it
+            self._side_panel_was_visible = self._collapsible_side.isVisible()
+            if self._side_panel_was_visible:
+                self._collapsible_side.hide()
+            # Also hide context dock if present
+            if self._context_panel is not None:
+                self._context_was_visible = self._context_panel.isVisible()
+                if self._context_was_visible:
+                    self._context_panel.hide()
         else:
-            # Restore context panel if it was visible before
-            if getattr(self, '_context_was_visible', False):
+            # Restore side panel
+            if getattr(self, '_side_panel_was_visible', False):
+                self._collapsible_side.show()
+            # Restore context dock
+            if self._context_panel is not None and getattr(self, '_context_was_visible', False):
                 self._context_panel.show()
 
     def _goto_subtitle_at_time(self, position_ms: int):
