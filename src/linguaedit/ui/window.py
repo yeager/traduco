@@ -397,13 +397,18 @@ class LinguaEditWindow(QMainWindow):
         self.resize(1200, 800)
         self.setAcceptDrops(True)
 
-        # Window icon
-        _icon_path = Path(__file__).parent.parent.parent.parent / "resources" / "icon.png"
-        if _icon_path.exists():
-            self.setWindowIcon(QIcon(str(_icon_path)))
-            self._app_icon_path = str(_icon_path)
-        else:
-            self._app_icon_path = None
+        # Window icon — check multiple locations (dev, installed, bundled)
+        _icon_candidates = [
+            Path(__file__).parent.parent.parent.parent / "resources" / "icon.png",  # dev
+            Path(__file__).parent.parent / "resources" / "icon.png",  # installed package
+            Path(getattr(sys, '_MEIPASS', '')) / "resources" / "icon.png",  # PyInstaller bundle
+        ]
+        self._app_icon_path = None
+        for _icon_path in _icon_candidates:
+            if _icon_path.exists():
+                self.setWindowIcon(QIcon(str(_icon_path)))
+                self._app_icon_path = str(_icon_path)
+                break
 
         # Feature 13: Quick Actions
         self._quick_actions_menu = QuickActionsMenu(self)

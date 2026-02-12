@@ -5,7 +5,7 @@ a = Analysis(
     ['src/linguaedit/app.py'],
     pathex=['src'],
     binaries=[],
-    datas=[('translations', 'translations')],
+    datas=[('resources/icon.png', 'resources'), ('src/linguaedit/translations/*.qm', 'linguaedit/translations')],
     hiddenimports=['linguaedit', 'PySide6'],
     hookspath=[],
     hooksconfig={},
@@ -27,7 +27,7 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
-    icon='data/linguaedit.png',
+    icon='resources/icon.png',
 )
 
 coll = COLLECT(
