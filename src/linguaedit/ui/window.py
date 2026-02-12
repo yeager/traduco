@@ -3563,6 +3563,27 @@ class LinguaEditWindow(QMainWindow):
             if idx >= 0:
                 self._tab_widget.setTabText(idx, Path(path).name)
 
+        # Warn about incomplete subtitle files
+        if self._file_type == "subtitles" and self._file_data:
+            total = len(self._file_data.entries)
+            translated = sum(1 for e in self._file_data.entries if e.translation.strip())
+            untranslated = total - translated
+            if untranslated > 0:
+                pct = int(translated / total * 100) if total else 0
+                answer = QMessageBox.warning(
+                    self, self.tr("Incomplete Subtitles"),
+                    self.tr(
+                        "%d of %d entries (%d%%) have no translation.\n\n"
+                        "Untranslated entries will be saved with empty text, "
+                        "which means those lines will be silent/blank during playback.\n\n"
+                        "Save anyway?"
+                    ) % (untranslated, total, pct),
+                    QMessageBox.Save | QMessageBox.Cancel,
+                    QMessageBox.Cancel,
+                )
+                if answer == QMessageBox.Cancel:
+                    return
+
         if self._file_watcher:
             files = self._file_watcher.files()
             if files:
