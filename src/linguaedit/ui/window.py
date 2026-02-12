@@ -2186,7 +2186,15 @@ class LinguaEditWindow(QMainWindow):
             if current_item is not None:
                 self._lint_and_update_row(current_item, self._current_index)
         self._lint_timer.start()
-        
+
+        # Live-update translation column in tree view
+        current_item = self._tree.currentItem()
+        if current_item is not None:
+            text = self._trans_view.toPlainText()
+            preview = text[:200].replace("\n", "⏎ ") if text else ""
+            trans_col = 4 if self._file_type == "subtitles" else 3
+            current_item.setText(trans_col, preview)
+
         # Feature 7: Update character counter
         if self._app_settings.get_value("show_character_counter", True):
             self._update_character_count()
