@@ -806,7 +806,7 @@ class LinguaEditWindow(QMainWindow):
         editor_layout.addWidget(self._diff_frame)
 
         # Subtitle timestamp editor (hidden by default)
-        self._timestamp_frame = QGroupBox(self.tr("Timestamp"))
+        self._timestamp_frame = QGroupBox(self.tr("Time interval"))
         ts_layout = QHBoxLayout(self._timestamp_frame)
         ts_layout.setContentsMargins(8, 4, 8, 4)
         self._timestamp_edit = QLineEdit()
@@ -1623,7 +1623,7 @@ class LinguaEditWindow(QMainWindow):
         if self._file_type == "subtitles":
             self._tree.setHeaderLabels([
                 "#", "⭐",
-                self.tr("Timestamp"),
+                self.tr("Time interval"),
                 self.tr("Source text"),
                 self.tr("Translation"),
                 "",
@@ -4725,6 +4725,7 @@ class LinguaEditWindow(QMainWindow):
             if candidate.exists():
                 self._ensure_video_dock()
                 self._video_dock.open_video(candidate)
+                self._sync_subtitle_entries_to_video()
                 return
 
     def _on_video_subtitles(self):
@@ -4739,7 +4740,54 @@ class LinguaEditWindow(QMainWindow):
             self._video_dock = VideoDockWidget(self)
             self._video_dock.player.request_prev_segment.connect(lambda: self._navigate(-1))
             self._video_dock.player.request_next_segment.connect(lambda: self._navigate(1))
+            self._video_dock.player.request_goto_current_time.connect(self._goto_subtitle_at_time)
             self.addDockWidget(Qt.RightDockWidgetArea, self._video_dock)
+
+    def _goto_subtitle_at_time(self, position_ms: int):
+        """Navigate to the subtitle entry matching a playback position."""
+        if not self._file_data or self._file_type != "subtitles":
+            return
+        from linguaedit.ui.video_preview import _parse_time_to_ms
+        target_idx = -1
+        for i, entry in enumerate(self._file_data.entries):
+            start = _parse_time_to_ms(entry.start_time)
+            end = _parse_time_to_ms(entry.end_time)
+            if start <= position_ms <= end:
+                target_idx = i
+                break
+        if target_idx < 0:
+            # Find nearest entry
+            best_dist = float('inf')
+            for i, entry in enumerate(self._file_data.entries):
+                start = _parse_time_to_ms(entry.start_time)
+                dist = abs(start - position_ms)
+                if dist < best_dist:
+                    best_dist = dist
+                    target_idx = i
+        if target_idx < 0:
+            return
+        # Find tree item with this orig_idx
+        for row in range(self._tree.topLevelItemCount()):
+            item = self._tree.topLevelItem(row)
+            if item and item.data(0, Qt.UserRole) == target_idx:
+                self._tree.setCurrentItem(item)
+                self._tree.scrollToItem(item)
+                return
+
+    def _sync_subtitle_entries_to_video(self):
+        """Feed all subtitle entries to the video player for time-synced overlay."""
+        if not self._video_dock or not self._file_data or self._file_type != "subtitles":
+            return
+        from linguaedit.ui.video_preview import _parse_time_to_ms
+        entries = []
+        for e in self._file_data.entries:
+            entries.append((
+                _parse_time_to_ms(e.start_time),
+                _parse_time_to_ms(e.end_time),
+                e.text,
+                e.translation or "",
+            ))
+        self._video_dock.player.set_subtitle_entries(entries)
 
     def _on_open_video(self):
         """Open a video file — probe subtitle tracks, let user pick, extract."""
@@ -4881,6 +4929,7 @@ class LinguaEditWindow(QMainWindow):
         # Also open video dock for preview
         self._ensure_video_dock()
         self._video_dock.open_video(video_path)
+        self._sync_subtitle_entries_to_video()
 
     def _update_compile_icon(self, success: bool):
         """Update compile action icon: green check = OK, red X = error."""
