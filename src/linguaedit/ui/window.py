@@ -4940,13 +4940,6 @@ class LinguaEditWindow(QMainWindow):
         # Load the extracted subtitle file
         self._load_file(str(output_path))
 
-        # Copy source text to translation and mark as fuzzy (needs review)
-        if self._file_data and self._file_type == "subtitles":
-            for entry in self._file_data.entries:
-                entry.translation = entry.text
-                entry.fuzzy = True
-            self._modified = True
-            self._populate_list()
 
         # Also open video dock for preview
         self._ensure_video_dock()
