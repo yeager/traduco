@@ -734,7 +734,7 @@ class LinguaEditWindow(QMainWindow):
         self._tree = QTreeWidget()
         self._tree.setRootIsDecorated(False)
         self._tree.setAlternatingRowColors(True)
-        self._tree.setSelectionMode(QAbstractItemView.SingleSelection)
+        self._tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self._tree.setUniformRowHeights(True)
         self._tree.setHeaderLabels(["#", "⭐", self.tr("Source text"), self.tr("Translation"), self.tr("Tags"), ""])
         self._tree.setSortingEnabled(True)
