@@ -4380,6 +4380,8 @@ class LinguaEditWindow(QMainWindow):
 
         count = 0
         errors = 0
+        last_error = ""
+        skip_errors = False
         for step, (i, msgid) in enumerate(to_translate):
             if progress.wasCanceled():
                 break
@@ -4406,8 +4408,24 @@ class LinguaEditWindow(QMainWindow):
                 if result:
                     self._set_entry_translation(i, result)
                     count += 1
-            except TranslationError:
+            except TranslationError as e:
                 errors += 1
+                last_error = str(e)
+                if not skip_errors:
+                    from PySide6.QtWidgets import QMessageBox
+                    msg = QMessageBox(self)
+                    msg.setIcon(QMessageBox.Warning)
+                    msg.setWindowTitle(self.tr("Translation Error"))
+                    msg.setText(self.tr("Error translating string %d of %d:") % (step + 1, len(to_translate)))
+                    msg.setInformativeText(str(e))
+                    msg.addButton(self.tr("Skip All Errors"), QMessageBox.AcceptRole)
+                    msg.addButton(self.tr("Continue"), QMessageBox.RejectRole)
+                    abort_btn = msg.addButton(self.tr("Stop"), QMessageBox.DestructiveRole)
+                    msg.exec()
+                    if msg.clickedButton() == abort_btn:
+                        break
+                    elif msg.buttonRole(msg.clickedButton()) == QMessageBox.AcceptRole:
+                        skip_errors = True
 
             progress.setValue(step + 1)
             QApplication.processEvents()
@@ -4418,7 +4436,7 @@ class LinguaEditWindow(QMainWindow):
         self._populate_list()
         self._update_stats()
         if errors:
-            self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors)") % (count, self._trans_engine, errors))
+            self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors — last: %s)") % (count, self._trans_engine, errors, last_error))
         else:
             self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
 
