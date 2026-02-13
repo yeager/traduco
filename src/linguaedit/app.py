@@ -17,16 +17,22 @@ def _find_translations_dir() -> Path:
     """Find the translations directory, checking multiple locations."""
     candidates = [
         Path(__file__).parent / "translations",                 # installed (inside package) & dev
-        Path(sys.prefix) / "share" / "linguaedit" / "translations",
-        Path(sys.prefix) / "Lib" / "site-packages" / "linguaedit" / "translations",  # Windows pip
     ]
+    # PyInstaller frozen bundle: files are in sys._MEIPASS
+    if getattr(sys, 'frozen', False):
+        meipass = Path(sys._MEIPASS)  # type: ignore[attr-defined]
+        candidates.insert(0, meipass / "linguaedit" / "translations")
     # Also check relative to the package install location via importlib
     try:
         import importlib.resources as _res
         pkg_dir = Path(_res.files("linguaedit").__fspath__())  # type: ignore[union-attr]
-        candidates.insert(1, pkg_dir / "translations")
+        candidates.append(pkg_dir / "translations")
     except Exception:
         pass
+    candidates += [
+        Path(sys.prefix) / "share" / "linguaedit" / "translations",
+        Path(sys.prefix) / "Lib" / "site-packages" / "linguaedit" / "translations",  # Windows pip
+    ]
     for d in candidates:
         if d.is_dir():
             return d
@@ -74,32 +80,37 @@ class LinguaEditApp:
 
     def _load_translations(self):
         """Load Qt and app translations for current locale."""
+        import logging
+        log = logging.getLogger("linguaedit.i18n")
+
         settings = Settings.get()
         lang = settings["language"]
+        log.info("Settings language: %s", lang)
 
-        # If language is "en", also check system locale for a better match
+        # If language is "en", try to detect system language
         if lang == "en":
-            # Try QLocale first, then macOS defaults, then Python locale
             sys_lang = QLocale.system().name()[:2]
+            log.info("System locale: %s", sys_lang)
             if sys_lang in ("C", "en", ""):
-                try:
-                    import subprocess
-                    result = subprocess.run(
-                        ["defaults", "read", "-g", "AppleLanguages"],
-                        capture_output=True, text=True, timeout=2
-                    )
-                    # Parse first language from plist output like '(\n    "sv-SE",\n    "en-SE"\n)'
-                    for line in result.stdout.splitlines():
-                        line = line.strip().strip('",')
-                        if line and len(line) >= 2 and not line.startswith("(") and not line.startswith(")"):
-                            sys_lang = line[:2]
-                            break
-                except Exception:
-                    pass
+                if sys.platform == "darwin":
+                    try:
+                        import subprocess
+                        result = subprocess.run(
+                            ["defaults", "read", "-g", "AppleLanguages"],
+                            capture_output=True, text=True, timeout=2
+                        )
+                        for line in result.stdout.splitlines():
+                            line = line.strip().strip('",')
+                            if line and len(line) >= 2 and not line.startswith("(") and not line.startswith(")"):
+                                sys_lang = line[:2]
+                                break
+                    except Exception:
+                        pass
             translations_dir = _find_translations_dir()
             sys_qm = translations_dir / f"linguaedit_{sys_lang}.qm"
             if sys_qm.exists():
                 lang = sys_lang
+                log.info("Auto-detected language: %s", lang)
 
         qt_locale = QLocale(lang)
 
@@ -107,12 +118,24 @@ class LinguaEditApp:
         qt_translations_path = QLibraryInfo.path(QLibraryInfo.TranslationsPath)
         if self._qt_translator.load(qt_locale, "qtbase", "_", qt_translations_path):
             self._qt_app.installTranslator(self._qt_translator)
+            log.info("Loaded Qt base translations for %s", lang)
 
         # Load LinguaEdit translations
         translations_dir = _find_translations_dir()
+        log.info("Translations dir: %s (exists: %s)", translations_dir, translations_dir.is_dir())
+        if translations_dir.is_dir():
+            qm_files = list(translations_dir.glob("*.qm"))
+            log.info("Available .qm files: %s", [f.name for f in qm_files])
+
         qm_file = translations_dir / f"linguaedit_{lang}.qm"
+        log.info("Looking for: %s (exists: %s)", qm_file, qm_file.exists())
         if qm_file.exists() and self._translator.load(str(qm_file)):
             self._qt_app.installTranslator(self._translator)
+            log.info("✓ Loaded translations: %s", qm_file.name)
+        elif qm_file.exists():
+            log.warning("✗ .qm file exists but QTranslator.load() failed: %s", qm_file)
+        else:
+            log.warning("✗ Translation file not found: %s", qm_file)
 
     def run(self) -> int:
         settings = Settings.get()
@@ -140,6 +163,8 @@ class LinguaEditApp:
 
 
 def main():
+    import logging
+    logging.basicConfig(level=logging.INFO, format="%(name)s: %(message)s")
     app = LinguaEditApp(sys.argv)
     sys.exit(app.run())
 

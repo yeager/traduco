@@ -124,6 +124,12 @@ class WelcomeDialog(QDialog):
         self._available_langs.sort(key=lambda x: (x[0] != "en", x[1]))
 
         current_lang = self._settings["language"]
+        # Auto-detect system language if still on default "en"
+        if current_lang == "en":
+            from PySide6.QtCore import QLocale
+            sys_code = QLocale.system().name()[:2]
+            if sys_code and sys_code != "C" and any(c == sys_code for c, _ in self._available_langs):
+                current_lang = sys_code
         for i, (code, label) in enumerate(self._available_langs):
             self._lang_combo.addItem(_flag_icon(code), label, code)
             if code == current_lang:

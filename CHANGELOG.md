@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.8.10] — 2026-02-13
+
+### Fixed
+- **Windows translations** — PyInstaller bundle: translations dir lookup via `sys._MEIPASS`
+- **Auto-detect language** — Welcome wizard now pre-selects system language instead of defaulting to English
+- **i18n logging** — added debug logging for translation loading (helps diagnose issues)
+- **macOS-only code guarded** — `defaults read` fallback only runs on macOS
+
 ## [1.8.9] — 2026-02-13
 
 ### Fixed
