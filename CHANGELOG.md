@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.8.8] — 2026-02-13
+
+### Fixed
+- **Swedish translation** — 21 inconsistencies corrected (terminology, accelerators, formatting)
+- **CI** — compile only non-empty translations, remove stale .qm before build
+
 ## [1.8.7] — 2026-02-13
 
 ### Added
