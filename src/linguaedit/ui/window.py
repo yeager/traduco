@@ -1944,10 +1944,10 @@ class LinguaEditWindow(QMainWindow):
                 self._extracted_comment_label.setText(e.note)
                 self._extracted_comment_row.setVisible(True)
             if e.id:
-                self._msgctxt_label.setText(f"ID: {e.id}")
+                self._msgctxt_label.setText(self.tr("ID: %1").arg(e.id))
                 self._msgctxt_row.setVisible(True)
             if e.state:
-                self._flags_label.setText(f"State: {e.state}")
+                self._flags_label.setText(self.tr("State: %1").arg(e.state))
                 self._flags_row.setVisible(True)
         elif self._file_type in ("sdlxliff", "mqxliff"):
             e = self._file_data.entries[idx]
@@ -1955,11 +1955,11 @@ class LinguaEditWindow(QMainWindow):
                 self._extracted_comment_label.setText(e.note)
                 self._extracted_comment_row.setVisible(True)
             if e.id:
-                self._msgctxt_label.setText(f"ID: {e.id}")
+                self._msgctxt_label.setText(self.tr("ID: %1").arg(e.id))
                 self._msgctxt_row.setVisible(True)
             info_parts = []
             if e.state:
-                info_parts.append(f"State: {e.state}")
+                info_parts.append(self.tr("State: %1").arg(e.state))
             if hasattr(e, 'origin') and e.origin:
                 info_parts.append(f"Origin: {e.origin}")
             if hasattr(e, 'match_percent') and e.match_percent:
@@ -4322,11 +4322,11 @@ class LinguaEditWindow(QMainWindow):
         opt_form = QFormLayout(options_group)
         formality_combo = QComboBox()
         formality_combo.addItems(["default", "less", "more", "prefer_less", "prefer_more"])
-        opt_form.addRow("DeepL formality:", formality_combo)
+        opt_form.addRow(self.tr("DeepL formality:"), formality_combo)
         openai_edit = QLineEdit(getattr(self, "_openai_model", "gpt-4o-mini"))
-        opt_form.addRow("OpenAI model:", openai_edit)
+        opt_form.addRow(self.tr("OpenAI model:"), openai_edit)
         anthropic_edit = QLineEdit(getattr(self, "_anthropic_model", "claude-sonnet-4-20260514"))
-        opt_form.addRow("Anthropic model:", anthropic_edit)
+        opt_form.addRow(self.tr("Anthropic model:"), anthropic_edit)
         layout.addWidget(options_group)
 
         keys_btn = QPushButton(self.tr("Manage API Keys…"))
@@ -4398,14 +4398,14 @@ class LinguaEditWindow(QMainWindow):
             form.addRow(f"{label}:", edit)
 
         ms_region_edit = QLineEdit(ks_get("microsoft_translator", "region") or "global")
-        form.addRow("MS Azure region:", ms_region_edit)
+        form.addRow(self.tr("MS Azure region:"), ms_region_edit)
         aws_secret_edit = QLineEdit()
         aws_secret_edit.setEchoMode(QLineEdit.Password)
         if ks_get("aws", "secret_access_key"):
             aws_secret_edit.setPlaceholderText("••••••••")
-        form.addRow("AWS Secret Key:", aws_secret_edit)
+        form.addRow(self.tr("AWS Secret Key:"), aws_secret_edit)
         aws_region_edit = QLineEdit(ks_get("aws", "region") or "us-east-1")
-        form.addRow("AWS Region:", aws_region_edit)
+        form.addRow(self.tr("AWS Region:"), aws_region_edit)
         layout.addLayout(form)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Save | QDialogButtonBox.Cancel)
@@ -6033,7 +6033,7 @@ class LinguaEditWindow(QMainWindow):
         # Subject
         subject_edit = QLineEdit()
         filename = Path(self._file_data.file_path).name
-        subject_edit.setText(f"Translation: {filename}")
+        subject_edit.setText(self.tr("Translation: %1").arg(filename))
         layout.addRow(self.tr("Subject:"), subject_edit)
         
         # Body

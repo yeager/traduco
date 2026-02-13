@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.8.2] — 2026-02-13
+
+### Changed
+- **Video subtitle overlay** — rewritten to use QGraphicsView + QGraphicsVideoItem; subtitles are now actually visible on the video
+- **Subtitle color logic** — yellow for translated or no-translations-yet, red only for untranslated when file has other translations
+- **Video overlay resync** — overlay resyncs automatically after editing translations
+- **Subtitle column widths** — 20% time / 40% source / 40% translation
+- **Default columns** — auto-size for #/tags/status, equal stretch for source and translation
+- **i18n** — 14 newly wrapped strings in `self.tr()`
+- **Complete Swedish translation** — updated via DeepL (1,337 strings)
+- **Mass operations** — subtitles case added to `_set_entry_translation`
+
 ## [1.8.1] — 2026-02-13
 
 ### Added

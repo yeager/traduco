@@ -355,7 +355,7 @@ class OCRDialog(QDialog):
                                   capture_output=True, text=True, timeout=5)
             if result.returncode == 0:
                 version = result.stdout.split('\n')[0] if result.stdout else "Unknown version"
-                self._status_label.setText(f"✓ Tesseract available: {version}")
+                self._status_label.setText(self.tr("✓ Tesseract available: %1").arg(version))
                 self._status_label.setStyleSheet("color: green;")
             else:
                 self._show_tesseract_error()
@@ -403,7 +403,7 @@ class OCRDialog(QDialog):
         if not pixmap.isNull():
             self._image_preview.set_image(pixmap)
             self._process_btn.setEnabled(True)
-            self._status_label.setText(f"Image loaded: {Path(file_path).name}")
+            self._status_label.setText(self.tr("Image loaded: %1").arg(Path(file_path).name))
             self._status_label.setStyleSheet("color: blue;")
         else:
             QMessageBox.warning(self, self.tr("Error"), self.tr("Could not load image."))
@@ -440,7 +440,7 @@ class OCRDialog(QDialog):
         self._process_btn.setEnabled(True)
         
         if strings:
-            self._status_label.setText(f"✓ OCR completed. Found {len(strings)} text strings.")
+            self._status_label.setText(self.tr("✓ OCR completed. Found %1 text strings.").arg(len(strings)))
             self._status_label.setStyleSheet("color: green;")
             
             # Populate strings list
@@ -466,7 +466,7 @@ class OCRDialog(QDialog):
         self._progress_bar.setVisible(False)
         self._process_btn.setEnabled(True)
         
-        self._status_label.setText(f"✗ OCR failed: {error}")
+        self._status_label.setText(self.tr("✗ OCR failed: %1").arg(error))
         self._status_label.setStyleSheet("color: red;")
         
         QMessageBox.warning(self, self.tr("OCR Error"), error)

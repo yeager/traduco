@@ -1,3 +1,16 @@
+linguaedit (1.8.2) stable; urgency=medium
+
+  * Video subtitle overlay: QGraphicsView + QGraphicsVideoItem (subtitles visible on video)
+  * Subtitle colors: yellow for translated/no-translations-yet, red only for untranslated
+  * Video overlay resyncs after editing translations
+  * Subtitle column widths: 20% time / 40% source / 40% translation
+  * Default columns: auto-size for #/tags/status, equal stretch for source/translation
+  * i18n: 14 newly wrapped strings in self.tr()
+  * Complete Swedish translation via DeepL (1,337 strings)
+  * subtitles case added to _set_entry_translation for mass operations
+
+ -- Daniel Nylander <daniel@danielnylander.se>  Fri, 13 Feb 2026 07:47:00 +0100
+
 linguaedit (1.8.1) stable; urgency=medium
 
   * Complete Swedish translation (285 → 1,323 strings)

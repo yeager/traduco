@@ -376,7 +376,7 @@ class ProjectDockWidget(QDockWidget):
         self._progress_bar.setVisible(False)
         
         total_files = len(self._file_info_cache)
-        self._total_files_label.setText(f"{total_files} files")
+        self._total_files_label.setText(self.tr("%1 files").arg(total_files))
         
         if total_files > 0:
             # Calculate average progress
