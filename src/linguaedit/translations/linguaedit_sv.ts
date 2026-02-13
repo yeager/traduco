@@ -5914,5 +5914,17 @@
             <source>Translation Error</source>
             <translation>Översättningsfel</translation>
         </message>
+        <message>
+            <source>Pre-translate cancelled — no translations made</source>
+            <translation>Föröversättning avbruten — inga översättningar gjorda</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d of %d entries via %s (cancelled)</source>
+            <translation>Föröversatte %d av %d poster via %s (avbruten)</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)</source>
+            <translation>Föröversatte %d av %d poster via %s (avbruten, %d fel — senaste: %s)</translation>
+        </message>
     </context>
 </TS>

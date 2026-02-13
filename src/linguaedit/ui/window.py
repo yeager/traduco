@@ -4382,8 +4382,10 @@ class LinguaEditWindow(QMainWindow):
         errors = 0
         last_error = ""
         skip_errors = False
+        stopped = False
         for step, (i, msgid) in enumerate(to_translate):
             if progress.wasCanceled():
+                stopped = True
                 break
 
             # Update label with ETA
@@ -4423,6 +4425,7 @@ class LinguaEditWindow(QMainWindow):
                     abort_btn = msg.addButton(self.tr("Stop"), QMessageBox.DestructiveRole)
                     msg.exec()
                     if msg.clickedButton() == abort_btn:
+                        stopped = True
                         break
                     elif msg.buttonRole(msg.clickedButton()) == QMessageBox.AcceptRole:
                         skip_errors = True
@@ -4432,10 +4435,18 @@ class LinguaEditWindow(QMainWindow):
 
         progress.close()
 
-        self._modified = True
-        self._populate_list()
-        self._update_stats()
-        if errors:
+        if count > 0:
+            self._modified = True
+            self._populate_list()
+            self._update_stats()
+
+        if count == 0 and stopped:
+            self._show_toast(self.tr("Pre-translate cancelled — no translations made"))
+        elif stopped and errors:
+            self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)") % (count, len(to_translate), self._trans_engine, errors, last_error))
+        elif stopped:
+            self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled)") % (count, len(to_translate), self._trans_engine))
+        elif errors:
             self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors — last: %s)") % (count, self._trans_engine, errors, last_error))
         else:
             self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
