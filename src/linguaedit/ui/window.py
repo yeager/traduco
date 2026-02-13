@@ -4352,12 +4352,54 @@ class LinguaEditWindow(QMainWindow):
 
     def _do_pretranslate_all(self):
         self._save_current_entry()
-        count = 0
         entries = self._get_entries()
         extra = self._build_engine_kwargs()
-        for i, (msgid, msgstr, _) in enumerate(entries):
-            if msgstr or not msgid:
-                continue
+
+        # Collect untranslated entries
+        to_translate = [(i, msgid) for i, (msgid, msgstr, _) in enumerate(entries)
+                        if not msgstr and msgid]
+
+        if not to_translate:
+            self._show_toast(self.tr("No untranslated entries"))
+            return
+
+        # Create progress dialog
+        from PySide6.QtWidgets import QProgressDialog
+        from PySide6.QtCore import QElapsedTimer
+
+        progress = QProgressDialog(
+            self.tr("Pre-translating…"), self.tr("Cancel"), 0, len(to_translate), self
+        )
+        progress.setWindowTitle(self.tr("Pre-translate"))
+        progress.setWindowModality(Qt.WindowModal)
+        progress.setMinimumDuration(0)
+        progress.setValue(0)
+
+        elapsed = QElapsedTimer()
+        elapsed.start()
+
+        count = 0
+        errors = 0
+        for step, (i, msgid) in enumerate(to_translate):
+            if progress.wasCanceled():
+                break
+
+            # Update label with ETA
+            if step > 0:
+                elapsed_ms = elapsed.elapsed()
+                ms_per = elapsed_ms / step
+                remaining = (len(to_translate) - step) * ms_per / 1000
+                speed = step / (elapsed_ms / 1000) if elapsed_ms > 0 else 0
+                if remaining >= 60:
+                    eta_str = self.tr("%d min %d s remaining") % (int(remaining) // 60, int(remaining) % 60)
+                else:
+                    eta_str = self.tr("%d s remaining") % int(remaining)
+                progress.setLabelText(
+                    self.tr("%d of %d strings · %.1f strings/s · %s") % (
+                        step, len(to_translate), speed, eta_str
+                    )
+                )
+
             try:
                 result = translate(msgid, engine=self._trans_engine,
                                    source=self._trans_source, target=self._trans_target, **extra)
@@ -4365,11 +4407,20 @@ class LinguaEditWindow(QMainWindow):
                     self._set_entry_translation(i, result)
                     count += 1
             except TranslationError:
-                continue
+                errors += 1
+
+            progress.setValue(step + 1)
+            QApplication.processEvents()
+
+        progress.close()
+
         self._modified = True
         self._populate_list()
         self._update_stats()
-        self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
+        if errors:
+            self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors)") % (count, self._trans_engine, errors))
+        else:
+            self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
 
     def _show_api_keys_dialog(self):
         from linguaedit.services.keystore import store_secret, get_secret as ks_get, backend_name
