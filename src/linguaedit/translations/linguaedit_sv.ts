@@ -1,4 +1,5 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv">
+<?xml version='1.0' encoding='utf-8'?>
+<TS version="2.1" language="sv">
     <context>
         <name>AIReviewDialog</name>
         <message>
@@ -633,8 +634,8 @@
             <translation>Oöversatt</translation>
         </message>
         <message>
-            <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style=&apos;color:green&apos;&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:orange&apos;&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:red&apos;&gt;Untranslated: %d&lt;/span&gt;</source>
-            <translation>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style=&apos;color:green&apos;&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:orange&apos;&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:red&apos;&gt;Untranslated: %d&lt;/span&gt;</translation>
+            <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</source>
+            <translation>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</translation>
         </message>
     </context>
     <context>
@@ -1232,8 +1233,8 @@
             <translation>Varning</translation>
         </message>
         <message>
-            <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
-            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
+            <source>Delete term '%s' → '%s'?</source>
+            <translation>Ta bort term '%s' → '%s'?</translation>
         </message>
     </context>
     <context>
@@ -3236,7 +3237,7 @@
         </message>
         <message>
             <source>Toggle fuzzy/needs work flag</source>
-            <translation>Växla mellan flaggan &quot;luddig&quot; och &quot;behöver bearbetas&quot;</translation>
+            <translation>Växla mellan flaggan "luddig" och "behöver bearbetas"</translation>
         </message>
         <message>
             <source>Total</source>
@@ -3595,12 +3596,12 @@
             <translation>%d s kvar</translation>
         </message>
         <message>
-            <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
-            <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att ge ditt stöd till utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
+            <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
+            <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att ge ditt stöd till utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
         </message>
         <message>
-            <source>Cannot compile: install &apos;polib&apos; or &apos;gettext&apos; (msgfmt)</source>
-            <translation>Kan inte kompilera: installera &apos;polib&apos; eller &apos;gettext&apos; (msgfmt)</translation>
+            <source>Cannot compile: install 'polib' or 'gettext' (msgfmt)</source>
+            <translation>Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)</translation>
         </message>
         <message>
             <source>No untranslated entries</source>
@@ -3651,12 +3652,12 @@
             <translation>Stoppa</translation>
         </message>
         <message>
-            <source>Recording macro &apos;{}&apos;...</source>
-            <translation>Spelar in makro &apos;{}&apos;...</translation>
+            <source>Recording macro '{}'...</source>
+            <translation>Spelar in makro '{}'...</translation>
         </message>
         <message>
-            <source>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</source>
-            <translation>Filen &apos;%s&apos; har osparade ändringar.\nVill du spara innan du stänger?</translation>
+            <source>The file '%s' has unsaved changes.\nDo you want to save before closing?</source>
+            <translation>Filen '%s' har osparade ändringar.\nVill du spara innan du stänger?</translation>
         </message>
         <message>
             <source>LinguaEdit — %s</source>
@@ -3667,8 +3668,8 @@
             <translation>Backend: %s</translation>
         </message>
         <message>
-            <source>Source: \&quot;%s\&quot;\n  Entries: %s\n  Translations: %s\n</source>
-            <translation>Källa: \&quot;%s\&quot;\n  Poster: %s\n  Översättningar: %s\n</translation>
+            <source>Source: \"%s\"\n  Entries: %s\n  Translations: %s\n</source>
+            <translation>Källa: \"%s\"\n  Poster: %s\n  Översättningar: %s\n</translation>
         </message>
     <message>
             <source>Source: %s\nTarget: %s</source>
@@ -3697,10 +3698,6 @@
         <message>
             <source>Weblate Error</source>
             <translation>Weblate-fel</translation>
-        </message>
-        <message>
-            <source>Weblate</source>
-            <translation>Weblate</translation>
         </message>
         <message>
             <source>Weblate — %s</source>
@@ -4106,16 +4103,16 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
             <translation>🔴 Inspelning... ({} åtgärder)</translation>
         </message>
         <message>
-            <source>Are you sure you want to delete the macro &apos;{}&apos;?</source>
-            <translation>Är du säker på att du vill radera makrot &apos;{}&apos;?</translation>
+            <source>Are you sure you want to delete the macro '{}'?</source>
+            <translation>Är du säker på att du vill radera makrot '{}'?</translation>
         </message>
         <message>
-            <source>Failed to play macro &apos;{}&apos;.</source>
-            <translation>Kunde inte spela upp makro &apos;{}&apos;.</translation>
+            <source>Failed to play macro '{}'.</source>
+            <translation>Kunde inte spela upp makro '{}'.</translation>
         </message>
         <message>
-            <source>Macro &apos;{}&apos; has been saved successfully.</source>
-            <translation>Makro &apos;{}&apos; har sparats.</translation>
+            <source>Macro '{}' has been saved successfully.</source>
+            <translation>Makro '{}' har sparats.</translation>
         </message>
     </context>
     <context>
@@ -4458,11 +4455,11 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>✗ Select an organization first</source>
-            <translation type="unfinished"></translation>
+            <translation type="unfinished" />
         </message>
         <message>
             <source>✗ Select a project first</source>
-            <translation type="unfinished"></translation>
+            <translation type="unfinished" />
         </message>
         <message>
             <source>Select Organization</source>
@@ -5868,7 +5865,7 @@ För bättre säkerhet, installera:
             <translation>LinguaEdit är en modern översättningsredigerare för PO-, TS-, JSON-, XLIFF-, Android XML-, ARB-, PHP- och YAML-filer. Funktionerna inkluderar AI-driven föröversättning, översättningsminne, kvalitetssäkring, stavningskontroll och plattformsintegration.</translation>
         </message>
         <message>
-            <source>You&apos;re all set!</source>
+            <source>You're all set!</source>
             <translation>Du är redo!</translation>
         </message>
         <message>
@@ -6002,20 +5999,12 @@ För bättre säkerhet, installera:
             <translation>&lt;b&gt;Källtext:&lt;/b&gt;</translation>
         </message>
         <message>
-            <source>&lt;b&gt;Source text&lt;/b&gt;</source>
-            <translation>&lt;b&gt;Källtext&lt;/b&gt;</translation>
-        </message>
-        <message>
             <source>&lt;b&gt;Suggestions&lt;/b&gt;</source>
             <translation>&lt;b&gt;Förslag&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translation:&lt;/b&gt;</source>
             <translation>&lt;b&gt;Översättning:&lt;/b&gt;</translation>
-        </message>
-        <message>
-            <source>&lt;b&gt;Translation&lt;/b&gt;</source>
-            <translation>&lt;b&gt;Översättning&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translator comment:&lt;/b&gt;</source>
@@ -6050,28 +6039,28 @@ För bättre säkerhet, installera:
             <translation>&lt;i&gt;Inga förslag&lt;/i&gt;</translation>
         </message>
         <message>
-            <source>Are you sure you want to delete the macro &apos;{}&apos;?</source>
-            <translation>Är du säker på att du vill radera makrot &apos;{}&apos;?</translation>
+            <source>Are you sure you want to delete the macro '{}'?</source>
+            <translation>Är du säker på att du vill radera makrot '{}'?</translation>
         </message>
         <message>
-            <source>Cannot compile: install &apos;polib&apos; or &apos;gettext&apos; (msgfmt)</source>
-            <translation>Kan inte kompilera: installera &apos;polib&apos; eller &apos;gettext&apos; (msgfmt)</translation>
+            <source>Cannot compile: install 'polib' or 'gettext' (msgfmt)</source>
+            <translation>Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)</translation>
         </message>
         <message>
             <source>Click in the source text where you want to split, then press OK.</source>
             <translation>Klicka i källtexten där du vill dela, tryck sedan OK.</translation>
         </message>
         <message>
-            <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
-            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
+            <source>Delete term '%s' → '%s'?</source>
+            <translation>Ta bort term '%s' → '%s'?</translation>
         </message>
         <message>
             <source>This video file contains no embedded subtitle tracks.</source>
             <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
         </message>
         <message>
-            <source>Failed to play macro &apos;{}&apos;.</source>
-            <translation>Kunde inte spela upp makro &apos;{}&apos;.</translation>
+            <source>Failed to play macro '{}'.</source>
+            <translation>Kunde inte spela upp makro '{}'.</translation>
         </message>
         <message>
             <source>Find &amp; Replace</source>
@@ -6082,12 +6071,12 @@ För bättre säkerhet, installera:
             <translation>Sök och ersätt…</translation>
         </message>
         <message>
-            <source>Macro &apos;{}&apos; has been saved successfully.</source>
-            <translation>Makro &apos;{}&apos; har sparats.</translation>
+            <source>Macro '{}' has been saved successfully.</source>
+            <translation>Makro '{}' har sparats.</translation>
         </message>
         <message>
-            <source>Recording macro &apos;{}&apos;...</source>
-            <translation>Spelar in makro &apos;{}&apos;...</translation>
+            <source>Recording macro '{}'...</source>
+            <translation>Spelar in makro '{}'...</translation>
         </message>
         <message>
             <source>Save &amp;As…</source>
@@ -6102,15 +6091,15 @@ För bättre säkerhet, installera:
             <translation>Sök och ersätt</translation>
         </message>
         <message>
-            <source>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</source>
-            <translation>Filen &apos;%s&apos; har osparade ändringar.\nVill du spara innan du stänger?</translation>
+            <source>The file '%s' has unsaved changes.\nDo you want to save before closing?</source>
+            <translation>Filen '%s' har osparade ändringar.\nVill du spara innan du stänger?</translation>
         </message>
         <message>
             <source>Total: {0} characters | Invisible: {1} | Suspicious: {2}</source>
             <translation>Totalt: {0} tecken | Osynliga: {1} | Misstänkta: {2}</translation>
         </message>
         <message>
-            <source>You&apos;re all set!</source>
+            <source>You're all set!</source>
             <translation>Du är redo!</translation>
         </message>
         <message>
