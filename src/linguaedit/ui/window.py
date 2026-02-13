@@ -67,6 +67,7 @@ from linguaedit.parsers.resx import parse_resx, save_resx, RESXData
 from linguaedit.parsers.sdlxliff_parser import parse_sdlxliff, save_sdlxliff, SDLXLIFFFileData
 from linguaedit.parsers.mqxliff_parser import parse_mqxliff, save_mqxliff, MQXLIFFFileData
 from linguaedit.services.linter import lint_entries, LintResult, LintIssue
+from linguaedit.services.svlang_checker import run_svlang_checks
 from linguaedit.services.spellcheck import check_text, available_languages
 from linguaedit.services.translator import translate, ENGINES, TranslationError
 from linguaedit.services.tm import lookup_tm, add_to_tm, feed_file_to_tm
@@ -497,6 +498,8 @@ class ValidationDialog(QDialog):
             flags = ["fuzzy"] if is_fuzzy else []
             lint_input.append({"index": i, "msgid": msgid, "msgstr": msgstr, "flags": flags})
         result = lint_entries(lint_input)
+        svlang_issues = run_svlang_checks(lint_input, self._parent_window._trans_target)
+        result.issues.extend(svlang_issues)
         self._parent_window._lint_cache.clear()
         for issue in result.issues:
             self._parent_window._lint_cache.setdefault(issue.entry_index, []).append(issue)
@@ -2331,6 +2334,11 @@ class LinguaEditWindow(QMainWindow):
         msgstr = self._trans_view.toPlainText()
         flags = ["fuzzy"] if is_fuzzy else []
         issues = _lint_single(msgid, msgstr, flags)
+        svlang_issues = run_svlang_checks(
+            [{"index": 0, "msgid": msgid, "msgstr": msgstr, "flags": flags}],
+            self._trans_target,
+        )
+        issues.extend(svlang_issues)
         self._lint_cache[self._current_index] = issues
         if issues:
             lines = []
@@ -4003,6 +4011,10 @@ class LinguaEditWindow(QMainWindow):
             flags = ["fuzzy"] if is_fuzzy else []
             lint_input.append({"index": i, "msgid": msgid, "msgstr": msgstr, "flags": flags})
         result = lint_entries(lint_input)
+
+        # svlang checks (Swedish only)
+        svlang_issues = run_svlang_checks(lint_input, self._trans_target)
+        result.issues.extend(svlang_issues)
 
         self._lint_cache.clear()
         for issue in result.issues:
