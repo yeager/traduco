@@ -1,3 +1,12 @@
+linguaedit (1.8.1) stable; urgency=medium
+
+  * Complete Swedish translation (285 → 1,323 strings)
+  * Video subtitle overlay: show only translation (yellow) or source in red
+  * Include .qm translation files in git
+  * macOS icon fixes
+
+ -- Daniel Nylander <daniel@danielnylander.se>  Fri, 13 Feb 2026 07:00:00 +0100
+
 linguaedit (1.8.0) stable; urgency=medium
 
   * Rewritten video preview: 16:9 aspect, full transport controls, subtitle overlay

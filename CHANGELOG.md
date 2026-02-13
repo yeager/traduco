@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.8.1] — 2026-02-13
+
+### Added
+- **Complete Swedish translation** — expanded from 285 to 1,323 translated strings
+
+### Changed
+- **Video subtitle overlay** — shows only translation text in yellow; untranslated segments show source in red
+- **Translation .qm files in git** — compiled translations now tracked in repository (previously gitignored)
+
+### Fixed
+- **macOS icon** — fixed icon display issues on macOS
+
 ## [1.8.0] — 2026-02-13
 
 ### Added

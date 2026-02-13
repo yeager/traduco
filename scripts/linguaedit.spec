@@ -1,5 +1,5 @@
 Name:           linguaedit
-Version:        1.8.0
+Version:        1.8.1
 Release:        1%{?dist}
 Summary:        Professional translation editor
 License:        GPL-3.0-or-later
@@ -63,6 +63,12 @@ update-mime-database /usr/share/mime 2>/dev/null || true
 %license LICENSE
 
 %changelog
+* Fri Feb 13 2026 Daniel Nylander <daniel@danielnylander.se> - 1.8.1-1
+- Complete Swedish translation (285 to 1323 strings)
+- Video subtitle overlay: translation-only yellow, source red when untranslated
+- Include .qm translation files in git
+- macOS icon fixes
+
 * Thu Feb 13 2026 Daniel Nylander <daniel@danielnylander.se> - 1.8.0-1
 - Video preview rewrite, live-update tree view, extended selection
 - Unity MonoBehaviour parser, SRT roundtrip fix, QThread crash fix
