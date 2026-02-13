@@ -449,7 +449,27 @@
             <source>Translation Settings</source>
             <translation>Översättningsinställningar</translation>
         </message>
-    </context>
+            <message>
+            <source>%d min %d s remaining</source>
+            <translation>%d min %d s kvar</translation>
+        </message>
+        <message>
+            <source>%d of %d strings · %.1f strings/s · %s</source>
+            <translation>%d av %d strängar · %.1f strängar/s · %s</translation>
+        </message>
+        <message>
+            <source>%d s remaining</source>
+            <translation>%d s kvar</translation>
+        </message>
+        <message>
+            <source>&lt;b&gt;%d&lt;/b&gt; untranslated strings out of &lt;b&gt;%d&lt;/b&gt; total.</source>
+            <translation>&lt;b&gt;%d&lt;/b&gt; untranslated strings out of &lt;b&gt;%d&lt;/b&gt; total.</translation>
+        </message>
+        <message>
+            <source>Completed %d strings in %d s</source>
+            <translation>Slutförde %d strängar på %d s</translation>
+        </message>
+</context>
     <context>
         <name>CollapsibleSidePanel</name>
         <message>
@@ -605,7 +625,11 @@
             <source>Untranslated</source>
             <translation>Oöversatt</translation>
         </message>
-    </context>
+            <message>
+            <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</source>
+            <translation>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</translation>
+        </message>
+</context>
     <context>
         <name>DiffDialog</name>
         <message>
@@ -819,7 +843,19 @@
             <source>Öppna hämtningssida</source>
             <translation>Öppna hämtningssida</translation>
         </message>
-    </context>
+            <message>
+            <source>&lt;b&gt;Ubuntu/Debian:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo apt install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Fedora:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo dnf install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Arch Linux:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo pacman -S ffmpeg&lt;/code&gt;</source>
+            <translation>&lt;b&gt;Ubuntu/Debian:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo apt install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Fedora:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo dnf install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Arch Linux:&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo pacman -S ffmpeg&lt;/code&gt;</translation>
+        </message>
+        <message>
+            <source>&lt;b&gt;macOS (Homebrew):&lt;/b&gt;&lt;br&gt;&lt;code&gt;brew install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;macOS (MacPorts):&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo port install ffmpeg&lt;/code&gt;</source>
+            <translation>&lt;b&gt;macOS (Homebrew):&lt;/b&gt;&lt;br&gt;&lt;code&gt;brew install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;macOS (MacPorts):&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo port install ffmpeg&lt;/code&gt;</translation>
+        </message>
+        <message>
+            <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
+            <translation>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</translation>
+        </message>
+</context>
     <context>
         <name>FileHistoryDialog</name>
         <message>
@@ -989,7 +1025,11 @@
             <source>⚠ Outdated</source>
             <translation>⚠ Föråldrad</translation>
         </message>
-    </context>
+            <message>
+            <source>&lt;b&gt;Outdated translations&lt;/b&gt; — source changed but translation stayed the same.</source>
+            <translation>&lt;b&gt;Outdated translations&lt;/b&gt; — source changed but translation stayed the same.</translation>
+        </message>
+</context>
     <context>
         <name>GlossaryDialog</name>
         <message>
@@ -1176,7 +1216,11 @@
             <source>Warning</source>
             <translation>Varning</translation>
         </message>
-    </context>
+            <message>
+            <source>Delete term '%s' → '%s'?</source>
+            <translation>Radera term '%s' → '%s'?</translation>
+        </message>
+</context>
     <context>
         <name>HeaderDialog</name>
         <message>
@@ -1442,7 +1486,11 @@
             <source>User</source>
             <translation>Användare</translation>
         </message>
-    </context>
+            <message>
+            <source>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</source>
+            <translation>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</translation>
+        </message>
+</context>
     <context>
         <name>ImagePreviewLabel</name>
         <message>
@@ -3467,7 +3515,51 @@
             <source>Translation: %1</source>
             <translation>Översättning: %1</translation>
         </message>
-    </context>
+            <message>
+            <source>%d min %d s remaining</source>
+            <translation>%d min %d s kvar</translation>
+        </message>
+        <message>
+            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be saved with empty text, which means those lines will be silent/blank during playback.\n\nSave anyway?</source>
+            <translation>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be saved with empty text, which means those lines will be silent/blank during playback.\n\nSave anyway?</translation>
+        </message>
+        <message>
+            <source>%d of %d strings · %.1f strings/s · %s</source>
+            <translation>%d av %d strängar · %.1f strängar/s · %s</translation>
+        </message>
+        <message>
+            <source>%d s remaining</source>
+            <translation>%d s kvar</translation>
+        </message>
+        <message>
+            <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
+            <translation>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
+        </message>
+        <message>
+            <source>Cannot compile: install 'polib' or 'gettext' (msgfmt)</source>
+            <translation>Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)</translation>
+        </message>
+        <message>
+            <source>No untranslated entries</source>
+            <translation>Inga oöversatta poster</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d entries via %s (%d errors)</source>
+            <translation>Föröversatte %d poster via %s (%d fel)</translation>
+        </message>
+        <message>
+            <source>Pre-translating…</source>
+            <translation>Föröversätter…</translation>
+        </message>
+        <message>
+            <source>Recording macro '{}'...</source>
+            <translation>Spelar in makro '{}'...</translation>
+        </message>
+        <message>
+            <source>The file '%s' has unsaved changes.\nDo you want to save before closing?</source>
+            <translation>The file '%s' has unsaved changes.\nDo you want to save before closing?</translation>
+        </message>
+</context>
     <context>
         <name>Linter</name>
         <message>
@@ -3856,7 +3948,19 @@
             <source>🔴 Recording... ({} actions)</source>
             <translation>🔴 Inspelning... ({} åtgärder)</translation>
         </message>
-    </context>
+            <message>
+            <source>Are you sure you want to delete the macro '{}'?</source>
+            <translation>Är du säker på att du vill radera makrot '{}'?</translation>
+        </message>
+        <message>
+            <source>Failed to play macro '{}'.</source>
+            <translation>Kunde inte spela upp makro '{}'.</translation>
+        </message>
+        <message>
+            <source>Macro '{}' has been saved successfully.</source>
+            <translation>Makro '{}' har sparats.</translation>
+        </message>
+</context>
     <context>
         <name>MergePreviewDialog</name>
         <message>
@@ -4085,7 +4189,19 @@
             <source>✗ OCR failed: %1</source>
             <translation>✗ OCR misslyckades: %1</translation>
         </message>
-    </context>
+            <message>
+            <source>OCR functionality requires tesseract-ocr to be installed.\n\nInstallation instructions:\n• macOS: brew install tesseract\n• Ubuntu/Debian: sudo apt install tesseract-ocr\n• Windows: Download from GitHub releases\n• Arch Linux: sudo pacman -S tesseract</source>
+            <translation>OCR functionality requires tesseract-ocr to be installed.\n\nInstallation instructions:\n• macOS: brew install tesseract\n• Ubuntu/Debian: sudo apt install tesseract-ocr\n• Windows: Download from GitHub releases\n• Arch Linux: sudo pacman -S tesseract</translation>
+        </message>
+        <message>
+            <source>⚠ No text found in image.</source>
+            <translation>⚠ Ingen text hittades i bilden.</translation>
+        </message>
+        <message>
+            <source>⚠ Tesseract not found. Please install tesseract-ocr.</source>
+            <translation>⚠ Tesseract hittades inte. Installera tesseract-ocr.</translation>
+        </message>
+</context>
     <context>
         <name>OCRWorker</name>
         <message>
@@ -4412,7 +4528,15 @@
             <source>Translation</source>
             <translation>Översättning</translation>
         </message>
-    </context>
+            <message>
+            <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</source>
+            <translation>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</translation>
+        </message>
+        <message>
+            <source>Your credentials are securely stored in the system keychain.</source>
+            <translation>Dina inloggningsuppgifter lagras säkert i systemets nyckelring.</translation>
+        </message>
+</context>
     <context>
         <name>ProjectDockWidget</name>
         <message>
@@ -4754,7 +4878,11 @@
             <source>Target:</source>
             <translation>Mål:</translation>
         </message>
-    </context>
+            <message>
+            <source>Click in the source text where you want to split, then press OK.</source>
+            <translation>Klicka i källtexten där du vill dela, tryck sedan OK.</translation>
+        </message>
+</context>
     <context>
         <name>StatisticsDialog</name>
         <message>
@@ -5113,7 +5241,11 @@
             <source>Unicode Inspector</source>
             <translation>Unicode-inspektör</translation>
         </message>
-    </context>
+            <message>
+            <source>Total: {0} characters | Invisible: {1} | Suspicious: {2}</source>
+            <translation>Totalt: {0} tecken | Osynliga: {1} | Misstänkta: {2}</translation>
+        </message>
+</context>
     <context>
         <name>ValidationDialog</name>
         <message>
@@ -5357,7 +5489,11 @@
             <source>Välj videofil</source>
             <translation>Välj videofil</translation>
         </message>
-    </context>
+            <message>
+            <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+            <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
+        </message>
+</context>
     <context>
         <name>WelcomeDialog</name>
         <message>
@@ -5456,7 +5592,15 @@
             <source>You</source>
             <translation>Du</translation>
         </message>
-    </context>
+            <message>
+            <source>LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,\nAndroid XML, ARB, PHP, and YAML files.\n\nFeatures include AI-powered pre-translation, translation memory,\nquality assurance, spell checking, and platform integration.</source>
+            <translation>LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,\nAndroid XML, ARB, PHP, and YAML files.\n\nFeatures include AI-powered pre-translation, translation memory,\nquality assurance, spell checking, and platform integration.</translation>
+        </message>
+        <message>
+            <source>You're all set!</source>
+            <translation>Du är redo!</translation>
+        </message>
+</context>
     <context>
         <name>WorldMapWidget</name>
         <message>
