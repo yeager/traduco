@@ -85,10 +85,12 @@ class _SubtitleOverlay(QWidget):
         bg = QColor(0, 0, 0, 190)
 
         lines = []
-        if self._source_text:
-            lines.append((self._source_text, self._font_size - 2, QColor(190, 190, 190)))
         if self._translation_text:
+            # Show translation in yellow
             lines.append((self._translation_text, self._font_size, QColor(255, 255, 60)))
+        elif self._source_text:
+            # No translation — show source in red to indicate untranslated
+            lines.append((self._source_text, self._font_size, QColor(255, 80, 80)))
 
         total_h = 0
         metrics = []
