@@ -466,7 +466,7 @@
         </message>
         <message>
             <source>&lt;b&gt;%d&lt;/b&gt; untranslated strings out of &lt;b&gt;%d&lt;/b&gt; total.</source>
-            <translation>&lt;b&gt;%d&lt;/b&gt; untranslated strings out of &lt;b&gt;%d&lt;/b&gt; total.</translation>
+            <translation>&lt;b&gt;%d&lt;/b&gt; oöversatta strängar av totalt &lt;b&gt;%d&lt;/b&gt;.</translation>
         </message>
         <message>
             <source>Completed %d strings in %d s</source>
@@ -610,7 +610,7 @@
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation>Fuzzy</translation>
+            <translation>Luddig</translation>
         </message>
         <message>
             <source>Per-Language Progress</source>
@@ -777,7 +777,7 @@
         </message>
         <message>
             <source>Total entries:</source>
-            <translation>Totalt antal bidrag:</translation>
+            <translation>Totalt antal poster:</translation>
         </message>
         <message>
             <source>Translation files (*.po *.pot *.ts *.json *.xliff *.xlf);;All files (*)</source>
@@ -930,7 +930,7 @@
         </message>
         <message>
             <source>&lt;b&gt;Potentially outdated:&lt;/b&gt; %d</source>
-            <translation>&lt;b&gt;Potentiellt föråldrad:&lt;/b&gt; %d</translation>
+            <translation>&lt;b&gt;Potentiellt föråldrade:&lt;/b&gt; %d</translation>
         </message>
         <message>
             <source>&lt;b&gt;Removed strings:&lt;/b&gt; %d</source>
@@ -1042,7 +1042,7 @@
         </message>
         <message>
             <source>&lt;b&gt;Outdated translations&lt;/b&gt; — source changed but translation stayed the same.</source>
-            <translation>&lt;b&gt;Outdated translations&lt;/b&gt; — source changed but translation stayed the same.</translation>
+            <translation>&lt;b&gt;Föråldrade översättningar&lt;/b&gt; — källan ändrades men översättningen behölls.</translation>
         </message>
     </context>
     <context>
@@ -1089,11 +1089,11 @@
         </message>
         <message>
             <source>Delete</source>
-            <translation>Radera</translation>
+            <translation>Ta bort</translation>
         </message>
         <message>
             <source>Delete term </source>
-            <translation>Radera term </translation>
+            <translation>Ta bort term </translation>
         </message>
         <message>
             <source>Domain</source>
@@ -1177,7 +1177,7 @@
         </message>
         <message>
             <source>Search &amp; Filter</source>
-            <translation>Sök &amp; filtrera</translation>
+            <translation>Sök och filtrera</translation>
         </message>
         <message>
             <source>Search in source or target...</source>
@@ -1233,7 +1233,7 @@
         </message>
         <message>
             <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
-            <translation>Radera term &apos;%s&apos; → &apos;%s&apos;?</translation>
+            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
         </message>
     </context>
     <context>
@@ -1503,7 +1503,7 @@
         </message>
         <message>
             <source>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</source>
-            <translation>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</translation>
+            <translation>Är du säker på att du vill återställa till denna version?\n\nDetta ersätter den nuvarande texten med:\n{}</translation>
         </message>
     </context>
     <context>
@@ -1636,7 +1636,7 @@
         </message>
         <message>
             <source>&amp;Go</source>
-            <translation>&amp;Kör</translation>
+            <translation>&amp;Gå</translation>
         </message>
         <message>
             <source>&amp;Help</source>
@@ -1880,11 +1880,11 @@
         </message>
         <message>
             <source>Clear</source>
-            <translation>Töm</translation>
+            <translation>Rensa</translation>
         </message>
         <message>
             <source>Clear translation</source>
-            <translation>Töm översättning</translation>
+            <translation>Rensa översättning</translation>
         </message>
         <message>
             <source>Close Current File?</source>
@@ -2172,11 +2172,11 @@
         </message>
         <message>
             <source>Extracting</source>
-            <translation>Extrahering</translation>
+            <translation>Extraherar</translation>
         </message>
         <message>
             <source>Extracting subtitles…</source>
-            <translation>Extraherar undertexter...</translation>
+            <translation>Extraherar undertexter…</translation>
         </message>
         <message>
             <source>Extraction Failed</source>
@@ -2880,7 +2880,7 @@
         </message>
         <message>
             <source>Remove Selected</source>
-            <translation>Ta bort valda</translation>
+            <translation>Ta bort markerade</translation>
         </message>
         <message>
             <source>Replace</source>
@@ -3256,15 +3256,15 @@
         </message>
         <message>
             <source>Translated:</source>
-            <translation>Översatt:</translation>
+            <translation>Översatta:</translation>
         </message>
         <message>
             <source>Translated: %d</source>
-            <translation>Översatt: %d</translation>
+            <translation>Översatta: %d</translation>
         </message>
         <message>
             <source>Translated: 0</source>
-            <translation>Översatt: 0</translation>
+            <translation>Översatta: 0</translation>
         </message>
         <message>
             <source>Translation</source>
@@ -3360,15 +3360,15 @@
         </message>
         <message>
             <source>Untranslated:</source>
-            <translation>Oöversatt:</translation>
+            <translation>Oöversatta:</translation>
         </message>
         <message>
             <source>Untranslated: %d</source>
-            <translation>Oöversatt: %d</translation>
+            <translation>Oöversatta: %d</translation>
         </message>
         <message>
             <source>Untranslated: 0</source>
-            <translation>Oöversatt: 0</translation>
+            <translation>Oöversatta: 0</translation>
         </message>
         <message>
             <source>Up to date</source>
@@ -3652,7 +3652,7 @@
         </message>
         <message>
             <source>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</source>
-            <translation>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</translation>
+            <translation>Filen &apos;%s&apos; har osparade ändringar.\nVill du spara innan du stänger?</translation>
         </message>
         <message>
             <source>LinguaEdit — %s</source>
@@ -4663,7 +4663,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>System default</source>
-            <translation>Systemets standardinställning</translation>
+            <translation>Systemets standard</translation>
         </message>
         <message>
             <source>Target language:</source>
@@ -4846,7 +4846,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Fuzzy: %d</source>
-            <translation>Osäkra: %d</translation>
+            <translation>Luddiga: %d</translation>
         </message>
         <message>
             <source>Untranslated: %d</source>
@@ -5164,11 +5164,11 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Total entries:</source>
-            <translation>Totalt antal bidrag:</translation>
+            <translation>Totalt antal poster:</translation>
         </message>
         <message>
             <source>Translated:</source>
-            <translation>Översatt:</translation>
+            <translation>Översatta:</translation>
         </message>
         <message>
             <source>Translation Progress:</source>
@@ -5188,7 +5188,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Untranslated:</source>
-            <translation>Oöversatt:</translation>
+            <translation>Oöversatta:</translation>
         </message>
         <message>
             <source>Words:</source>
@@ -5620,7 +5620,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Preview</source>
-            <translation>Förhandsgranskning</translation>
+            <translation>Förhandsgranska</translation>
         </message>
         <message>
             <source>Preview failed: %s</source>
@@ -5767,7 +5767,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Language / Locale:</source>
-            <translation>Språk/språkinställningar:</translation>
+            <translation>Språk/lokalisering:</translation>
         </message>
         <message>
             <source>Light</source>
@@ -5989,7 +5989,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>&lt;i&gt;MT unavailable&lt;/i&gt;</source>
-            <translation>&lt;i&gt;MT inte tillgänglig&lt;/i&gt;</translation>
+            <translation>&lt;i&gt;MT otillgänglig&lt;/i&gt;</translation>
         </message>
         <message>
             <source>&lt;i&gt;No matches&lt;/i&gt;</source>
@@ -6021,7 +6021,7 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
         </message>
         <message>
             <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
-            <translation>Radera term &apos;%s&apos; → &apos;%s&apos;?</translation>
+            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
         </message>
         <message>
             <source>This video file contains no embedded subtitle tracks.</source>
