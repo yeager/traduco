@@ -58,13 +58,13 @@ class PluralFormsEditor(QWidget):
         # Kontrollknappar
         controls = QHBoxLayout()
         
-        self._sync_button = QPushButton(self.tr("Synkronisera från singular"))
+        self._sync_button = QPushButton(self.tr("Sync from singular"))
         self._sync_button.clicked.connect(self._sync_from_singular)
         controls.addWidget(self._sync_button)
         
         controls.addStretch()
         
-        self._clear_button = QPushButton(self.tr("Rensa alla"))
+        self._clear_button = QPushButton(self.tr("Clear all"))
         self._clear_button.clicked.connect(self._clear_all)
         controls.addWidget(self._clear_button)
         

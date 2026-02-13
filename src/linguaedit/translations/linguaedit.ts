@@ -4,59 +4,59 @@
     <context>
         <name>AIReviewDialog</name>
         <message>
-            <source>AI Översättningsgranskning</source>
+            <source>AI Translation Review</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Analys</source>
+            <source>Analysis</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Analyserar översättning...</source>
+            <source>Analyzing translation...</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Applicera förslag</source>
+            <source>Apply Suggestion</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Betyg:</source>
+            <source>Score:</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Fel vid analys: </source>
+            <source>Analysis error: </source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Förbättringsförslag:</source>
+            <source>Improvement suggestions:</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Förklaring:</source>
+            <source>Explanation:</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Inga specifika förslag.</source>
+            <source>No specific suggestions.</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Kunde inte analysera översättning: </source>
+            <source>Could not analyze translation: </source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Källtext:</source>
+            <source>Source text:</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Text att granska</source>
+            <source>Text to Review</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Översättning:</source>
+            <source>Translation:</source>
             <translation type="unfinished" />
         </message>
     </context>
@@ -793,59 +793,59 @@
     <context>
         <name>FFmpegMissingDialog</name>
         <message>
-            <source>Avbryt</source>
+            <source>Cancel</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Bläddra efter ffmpeg…</source>
+            <source>Browse for ffmpeg…</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Den valda filen verkar inte vara ffmpeg.</source>
+            <source>The selected file does not appear to be ffmpeg.</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Ej hittad</source>
+            <source>Not Found</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>FFmpeg krävs</source>
+            <source>FFmpeg Required</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</source>
+            <source>FFmpeg could still not be found in the system path.</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Försök igen</source>
+            <source>Retry</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Installationsanvisningar</source>
+            <source>Installation Instructions</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Kunde inte köra den valda filen.</source>
+            <source>Could not run the selected file.</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Körbara filer (*)</source>
+            <source>Executable files (*)</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Ogiltig fil</source>
+            <source>Invalid File</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Välj ffmpeg-binär</source>
+            <source>Select ffmpeg binary</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Öppna hämtningssida</source>
+            <source>Open Download Page</source>
             <translation type="unfinished" />
         </message>
             <message>
@@ -857,7 +857,7 @@
             <translation type="unfinished" />
         </message>
         <message>
-            <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
+            <source>&lt;h3&gt;FFmpeg could not be found&lt;/h3&gt;&lt;p&gt;LinguaEdit needs &lt;b&gt;ffmpeg&lt;/b&gt; and &lt;b&gt;ffprobe&lt;/b&gt; to extract subtitles from video files.&lt;/p&gt;</source>
             <translation type="unfinished" />
         </message>
 </context>
@@ -4463,11 +4463,11 @@
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Rensa alla</source>
+            <source>Clear all</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Synkronisera från singular</source>
+            <source>Sync from singular</source>
             <translation type="unfinished" />
         </message>
     </context>
@@ -5431,47 +5431,47 @@
     <context>
         <name>VideoSubtitleDialog</name>
         <message>
-            <source>%d undertextspår hittades. Längd: %s</source>
+            <source>%d subtitle tracks found. Duration: %s</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Avbryt</source>
+            <source>Cancel</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Bläddra…</source>
+            <source>Browse…</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extrahera och spara som…</source>
+            <source>Extract and Save As…</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extrahera och öppna</source>
+            <source>Extract and Open</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extrahera undertexter från video</source>
+            <source>Extract Subtitles from Video</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extraherar</source>
+            <source>Extracting</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extraherar förhandsgranskning…</source>
+            <source>Extracting preview…</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Extraherar undertexter…</source>
+            <source>Extracting subtitles…</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Fel vid extrahering</source>
+            <source>Extraction Error</source>
             <translation type="unfinished" />
         </message>
         <message>
@@ -5479,79 +5479,79 @@
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Förhandsgranskning</source>
+            <source>Preview</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Förhandsgranskning misslyckades: %s</source>
+            <source>Preview failed: %s</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Inga undertextspår hittades</source>
+            <source>No subtitle tracks found</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Ingen fil vald</source>
+            <source>No file selected</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Klart</source>
+            <source>Done</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Kunde inte extrahera undertexten:\n%s</source>
+            <source>Could not extract the subtitle:\n%s</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Kunde inte läsa videofilen:\n%s</source>
+            <source>Could not read the video file:\n%s</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Spara undertext som</source>
+            <source>Save Subtitle As</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Spela upp / pausa</source>
+            <source>Play / Pause</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Stoppa</source>
+            <source>Stop</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Stäng</source>
+            <source>Close</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Undertexten har sparats till:\n%s</source>
+            <source>The subtitle has been saved to:\n%s</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Undertextspår</source>
+            <source>Subtitle Tracks</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Utdataformat</source>
+            <source>Output Format</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Videofil</source>
+            <source>Video File</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Videofiler (%s);;Alla filer (*)</source>
+            <source>Video files (%s);;All files (*)</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Välj en videofil för att förhandsgranska undertexter</source>
+            <source>Select a video file to preview subtitles</source>
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Välj videofil</source>
+            <source>Select Video File</source>
             <translation type="unfinished" />
         </message>
             <message>
-            <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+            <source>This video file contains no embedded subtitle tracks.</source>
             <translation type="unfinished" />
         </message>
 </context>
@@ -5852,7 +5852,7 @@
             <translation type="unfinished" />
         </message>
         <message>
-            <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+            <source>This video file contains no embedded subtitle tracks.</source>
             <translation type="unfinished" />
         </message>
         <message>

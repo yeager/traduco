@@ -46,22 +46,22 @@ class FFmpegMissingDialog(QDialog):
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
-        self.setWindowTitle(self.tr("FFmpeg krävs"))
+        self.setWindowTitle(self.tr("FFmpeg Required"))
         self.setMinimumWidth(480)
 
         layout = QVBoxLayout(self)
 
         # Header
         header = QLabel(self.tr(
-            "<h3>FFmpeg kunde inte hittas</h3>"
-            "<p>LinguaEdit behöver <b>ffmpeg</b> och <b>ffprobe</b> för att "
-            "extrahera undertexter från videofiler.</p>"
+            "<h3>FFmpeg could not be found</h3>"
+            "<p>LinguaEdit needs <b>ffmpeg</b> and <b>ffprobe</b> to "
+            "extract subtitles from video files.</p>"
         ))
         header.setWordWrap(True)
         layout.addWidget(header)
 
         # Installation instructions
-        info_group = QGroupBox(self.tr("Installationsanvisningar"))
+        info_group = QGroupBox(self.tr("Installation Instructions"))
         info_layout = QVBoxLayout(info_group)
 
         if sys.platform == "darwin":
@@ -77,7 +77,7 @@ class FFmpegMissingDialog(QDialog):
                 "<code>winget install FFmpeg</code><br><br>"
                 "<b>Windows (Chocolatey):</b><br>"
                 "<code>choco install ffmpeg</code><br><br>"
-                "<b>Manuell hämtning:</b><br>"
+                "<b>Manual download:</b><br>"
                 '<a href="https://ffmpeg.org/download.html">ffmpeg.org/download.html</a>'
             )
         else:
@@ -100,15 +100,15 @@ class FFmpegMissingDialog(QDialog):
         # Action buttons
         btn_layout = QHBoxLayout()
 
-        browse_btn = QPushButton(self.tr("Bläddra efter ffmpeg…"))
+        browse_btn = QPushButton(self.tr("Browse for ffmpeg…"))
         browse_btn.clicked.connect(self._on_browse)
         btn_layout.addWidget(browse_btn)
 
-        retry_btn = QPushButton(self.tr("Försök igen"))
+        retry_btn = QPushButton(self.tr("Retry"))
         retry_btn.clicked.connect(self._on_retry)
         btn_layout.addWidget(retry_btn)
 
-        download_btn = QPushButton(self.tr("Öppna hämtningssida"))
+        download_btn = QPushButton(self.tr("Open Download Page"))
         download_btn.clicked.connect(
             lambda: QDesktopServices.openUrl(QUrl("https://ffmpeg.org/download.html"))
         )
@@ -116,7 +116,7 @@ class FFmpegMissingDialog(QDialog):
 
         btn_layout.addStretch()
 
-        cancel_btn = QPushButton(self.tr("Avbryt"))
+        cancel_btn = QPushButton(self.tr("Cancel"))
         cancel_btn.clicked.connect(self.reject)
         btn_layout.addWidget(cancel_btn)
 
@@ -124,8 +124,8 @@ class FFmpegMissingDialog(QDialog):
 
     def _on_browse(self):
         path, _ = QFileDialog.getOpenFileName(
-            self, self.tr("Välj ffmpeg-binär"), "",
-            self.tr("Körbara filer (*)"),
+            self, self.tr("Select ffmpeg binary"), "",
+            self.tr("Executable files (*)"),
         )
         if path:
             # Validate it's actually ffmpeg
@@ -139,13 +139,13 @@ class FFmpegMissingDialog(QDialog):
                     self.accept()
                 else:
                     QMessageBox.warning(
-                        self, self.tr("Ogiltig fil"),
-                        self.tr("Den valda filen verkar inte vara ffmpeg."),
+                        self, self.tr("Invalid File"),
+                        self.tr("The selected file does not appear to be ffmpeg."),
                     )
             except Exception:
                 QMessageBox.warning(
-                    self, self.tr("Fel"),
-                    self.tr("Kunde inte köra den valda filen."),
+                    self, self.tr("Error"),
+                    self.tr("Could not run the selected file."),
                 )
 
     def _on_retry(self):
@@ -154,8 +154,8 @@ class FFmpegMissingDialog(QDialog):
             self.accept()
         else:
             QMessageBox.information(
-                self, self.tr("Ej hittad"),
-                self.tr("FFmpeg kunde fortfarande inte hittas i systemets sökväg."),
+                self, self.tr("Not Found"),
+                self.tr("FFmpeg could still not be found in the system path."),
             )
 
 
@@ -166,7 +166,7 @@ class VideoSubtitleDialog(QDialog):
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
-        self.setWindowTitle(self.tr("Extrahera undertexter från video"))
+        self.setWindowTitle(self.tr("Extract Subtitles from Video"))
         self.setMinimumSize(600, 500)
 
         self._video_path: Optional[Path] = None
@@ -176,21 +176,21 @@ class VideoSubtitleDialog(QDialog):
         layout = QVBoxLayout(self)
 
         # ── Video file selection ──
-        file_group = QGroupBox(self.tr("Videofil"))
+        file_group = QGroupBox(self.tr("Video File"))
         file_layout = QHBoxLayout(file_group)
 
-        self._file_label = QLabel(self.tr("Ingen fil vald"))
+        self._file_label = QLabel(self.tr("No file selected"))
         self._file_label.setStyleSheet("color: gray;")
         file_layout.addWidget(self._file_label, 1)
 
-        browse_btn = QPushButton(self.tr("Bläddra…"))
+        browse_btn = QPushButton(self.tr("Browse…"))
         browse_btn.clicked.connect(self._on_browse_video)
         file_layout.addWidget(browse_btn)
 
         layout.addWidget(file_group)
 
         # ── Subtitle track selection ──
-        track_group = QGroupBox(self.tr("Undertextspår"))
+        track_group = QGroupBox(self.tr("Subtitle Tracks"))
         track_layout = QVBoxLayout(track_group)
 
         self._track_combo = QComboBox()
@@ -205,7 +205,7 @@ class VideoSubtitleDialog(QDialog):
         layout.addWidget(track_group)
 
         # ── Output format ──
-        format_group = QGroupBox(self.tr("Utdataformat"))
+        format_group = QGroupBox(self.tr("Output Format"))
         format_layout = QHBoxLayout(format_group)
 
         format_layout.addWidget(QLabel(self.tr("Format:")))
@@ -219,11 +219,11 @@ class VideoSubtitleDialog(QDialog):
         layout.addWidget(format_group)
 
         # ── Preview area ──
-        preview_group = QGroupBox(self.tr("Förhandsgranskning"))
+        preview_group = QGroupBox(self.tr("Preview"))
         preview_layout = QVBoxLayout(preview_group)
 
         # Preview text area
-        self._preview_label = QLabel(self.tr("Välj en videofil för att förhandsgranska undertexter"))
+        self._preview_label = QLabel(self.tr("Select a video file to preview subtitles"))
         self._preview_label.setWordWrap(True)
         self._preview_label.setAlignment(Qt.AlignTop)
         self._preview_label.setMinimumHeight(120)
@@ -239,14 +239,14 @@ class VideoSubtitleDialog(QDialog):
         style = self.style()
         self._play_btn = QPushButton()
         self._play_btn.setIcon(style.standardIcon(QStyle.StandardPixmap.SP_MediaPlay))
-        self._play_btn.setToolTip(self.tr("Spela upp / pausa"))
+        self._play_btn.setToolTip(self.tr("Play / Pause"))
         self._play_btn.setEnabled(False)
         self._play_btn.clicked.connect(self._on_play_pause)
         controls.addWidget(self._play_btn)
 
         self._stop_btn = QPushButton()
         self._stop_btn.setIcon(style.standardIcon(QStyle.StandardPixmap.SP_MediaStop))
-        self._stop_btn.setToolTip(self.tr("Stoppa"))
+        self._stop_btn.setToolTip(self.tr("Stop"))
         self._stop_btn.setEnabled(False)
         self._stop_btn.clicked.connect(self._on_stop)
         controls.addWidget(self._stop_btn)
@@ -271,19 +271,19 @@ class VideoSubtitleDialog(QDialog):
         # ── Buttons ──
         btn_layout = QHBoxLayout()
 
-        self._extract_btn = QPushButton(self.tr("Extrahera och öppna"))
+        self._extract_btn = QPushButton(self.tr("Extract and Open"))
         self._extract_btn.setEnabled(False)
         self._extract_btn.clicked.connect(self._on_extract)
         btn_layout.addWidget(self._extract_btn)
 
-        self._save_btn = QPushButton(self.tr("Extrahera och spara som…"))
+        self._save_btn = QPushButton(self.tr("Extract and Save As…"))
         self._save_btn.setEnabled(False)
         self._save_btn.clicked.connect(self._on_save_as)
         btn_layout.addWidget(self._save_btn)
 
         btn_layout.addStretch()
 
-        cancel_btn = QPushButton(self.tr("Stäng"))
+        cancel_btn = QPushButton(self.tr("Close"))
         cancel_btn.clicked.connect(self.close)
         btn_layout.addWidget(cancel_btn)
 
@@ -316,8 +316,8 @@ class VideoSubtitleDialog(QDialog):
 
         exts = " ".join(f"*{ext}" for ext in sorted(SUPPORTED_VIDEO_EXTENSIONS))
         path, _ = QFileDialog.getOpenFileName(
-            self, self.tr("Välj videofil"), "",
-            self.tr("Videofiler (%s);;Alla filer (*)") % exts,
+            self, self.tr("Select Video File"), "",
+            self.tr("Video files (%s);;All files (*)") % exts,
         )
         if not path:
             return
@@ -334,19 +334,19 @@ class VideoSubtitleDialog(QDialog):
             self._duration = get_video_duration(self._video_path)
         except Exception as e:
             QMessageBox.critical(
-                self, self.tr("Fel"),
-                self.tr("Kunde inte läsa videofilen:\n%s") % str(e),
+                self, self.tr("Error"),
+                self.tr("Could not read the video file:\n%s") % str(e),
             )
             return
 
         self._track_combo.clear()
         if not self._tracks:
-            self._track_combo.addItem(self.tr("Inga undertextspår hittades"))
+            self._track_combo.addItem(self.tr("No subtitle tracks found"))
             self._track_combo.setEnabled(False)
             self._extract_btn.setEnabled(False)
             self._save_btn.setEnabled(False)
             self._track_info.setText(self.tr(
-                "Denna videofil innehåller inga inbäddade undertextspår."
+                "This video file contains no embedded subtitle tracks."
             ))
             return
 
@@ -357,7 +357,7 @@ class VideoSubtitleDialog(QDialog):
         self._extract_btn.setEnabled(True)
         self._save_btn.setEnabled(True)
         self._track_info.setText(
-            self.tr("%d undertextspår hittades. Längd: %s") % (
+            self.tr("%d subtitle tracks found. Duration: %s") % (
                 len(self._tracks),
                 self._format_time(self._duration),
             )
@@ -374,12 +374,12 @@ class VideoSubtitleDialog(QDialog):
         track = self._tracks[track_index]
 
         progress_dlg = QProgressDialog(
-            self.tr("Extraherar förhandsgranskning…"),
-            self.tr("Avbryt"),
+            self.tr("Extracting preview…"),
+            self.tr("Cancel"),
             0, 100,
             self,
         )
-        progress_dlg.setWindowTitle(self.tr("Extraherar"))
+        progress_dlg.setWindowTitle(self.tr("Extracting"))
         progress_dlg.setWindowModality(Qt.WindowModal)
         progress_dlg.setMinimumDuration(0)
         progress_dlg.setValue(0)
@@ -415,7 +415,7 @@ class VideoSubtitleDialog(QDialog):
             preview_lines = lines[:30]
             preview = "\n".join(preview_lines)
             if len(lines) > 30:
-                preview += f"\n\n… ({len(lines)} rader totalt)"
+                preview += f"\n\n… ({len(lines)} lines total)"
             self._preview_label.setText(preview)
 
             # Parse entries for playback simulation
@@ -427,13 +427,13 @@ class VideoSubtitleDialog(QDialog):
         except RuntimeError as e:
             progress_dlg.close()
             QMessageBox.warning(
-                self, self.tr("Fel vid extrahering"),
-                self.tr("Kunde inte extrahera undertexten:\n%s") % str(e),
+                self, self.tr("Extraction Error"),
+                self.tr("Could not extract the subtitle:\n%s") % str(e),
             )
-            self._preview_label.setText(self.tr("Förhandsgranskning misslyckades: %s") % str(e))
+            self._preview_label.setText(self.tr("Preview failed: %s") % str(e))
         except Exception as e:
             progress_dlg.close()
-            self._preview_label.setText(self.tr("Förhandsgranskning misslyckades: %s") % str(e))
+            self._preview_label.setText(self.tr("Preview failed: %s") % str(e))
 
     def _parse_srt_for_preview(self, content: str) -> list:
         """Parse SRT content for timeline preview."""
@@ -541,14 +541,14 @@ class VideoSubtitleDialog(QDialog):
         }.get(fmt, "Subtitle files (*.*)")
 
         save_path, _ = QFileDialog.getSaveFileName(
-            self, self.tr("Spara undertext som"), "", ext_filter,
+            self, self.tr("Save Subtitle As"), "", ext_filter,
         )
         if save_path:
             result = self._do_extract(Path(save_path))
             if result:
                 QMessageBox.information(
-                    self, self.tr("Klart"),
-                    self.tr("Undertexten har sparats till:\n%s") % str(result),
+                    self, self.tr("Done"),
+                    self.tr("The subtitle has been saved to:\n%s") % str(result),
                 )
 
     def _do_extract(self, output_path: Optional[Path] = None) -> Optional[Path]:
@@ -567,12 +567,12 @@ class VideoSubtitleDialog(QDialog):
             output_path = self._video_path.with_suffix(fmt)
 
         progress_dlg = QProgressDialog(
-            self.tr("Extraherar undertexter…"),
-            self.tr("Avbryt"),
+            self.tr("Extracting subtitles…"),
+            self.tr("Cancel"),
             0, 100,
             self,
         )
-        progress_dlg.setWindowTitle(self.tr("Extraherar"))
+        progress_dlg.setWindowTitle(self.tr("Extracting"))
         progress_dlg.setWindowModality(Qt.WindowModal)
         progress_dlg.setMinimumDuration(0)
         progress_dlg.setValue(0)
@@ -601,8 +601,8 @@ class VideoSubtitleDialog(QDialog):
         except Exception as e:
             progress_dlg.close()
             QMessageBox.critical(
-                self, self.tr("Fel vid extrahering"),
-                self.tr("Kunde inte extrahera undertexten:\n%s") % str(e),
+                self, self.tr("Extraction Error"),
+                self.tr("Could not extract the subtitle:\n%s") % str(e),
             )
             return None
 

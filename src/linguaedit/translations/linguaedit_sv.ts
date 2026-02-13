@@ -4,59 +4,59 @@
     <context>
         <name>AIReviewDialog</name>
         <message>
-            <source>AI Översättningsgranskning</source>
+            <source>AI Translation Review</source>
             <translation>AI Översättningsgranskning</translation>
         </message>
         <message>
-            <source>Analys</source>
+            <source>Analysis</source>
             <translation>Analys</translation>
         </message>
         <message>
-            <source>Analyserar översättning...</source>
+            <source>Analyzing translation...</source>
             <translation>Analyserar översättning...</translation>
         </message>
         <message>
-            <source>Applicera förslag</source>
+            <source>Apply Suggestion</source>
             <translation>Applicera förslag</translation>
         </message>
         <message>
-            <source>Betyg:</source>
+            <source>Score:</source>
             <translation>Betyg:</translation>
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation>Fel</translation>
         </message>
         <message>
-            <source>Fel vid analys: </source>
+            <source>Analysis error: </source>
             <translation>Fel vid analys: </translation>
         </message>
         <message>
-            <source>Förbättringsförslag:</source>
+            <source>Improvement suggestions:</source>
             <translation>Förbättringsförslag:</translation>
         </message>
         <message>
-            <source>Förklaring:</source>
+            <source>Explanation:</source>
             <translation>Förklaring:</translation>
         </message>
         <message>
-            <source>Inga specifika förslag.</source>
+            <source>No specific suggestions.</source>
             <translation>Inga specifika förslag.</translation>
         </message>
         <message>
-            <source>Kunde inte analysera översättning: </source>
+            <source>Could not analyze translation: </source>
             <translation>Kunde inte analysera översättning: </translation>
         </message>
         <message>
-            <source>Källtext:</source>
+            <source>Source text:</source>
             <translation>Källtext:</translation>
         </message>
         <message>
-            <source>Text att granska</source>
+            <source>Text to Review</source>
             <translation>Text att granska</translation>
         </message>
         <message>
-            <source>Översättning:</source>
+            <source>Translation:</source>
             <translation>Översättning:</translation>
         </message>
     </context>
@@ -793,59 +793,59 @@
     <context>
         <name>FFmpegMissingDialog</name>
         <message>
-            <source>Avbryt</source>
+            <source>Cancel</source>
             <translation>Avbryt</translation>
         </message>
         <message>
-            <source>Bläddra efter ffmpeg…</source>
+            <source>Browse for ffmpeg…</source>
             <translation>Bläddra efter ffmpeg…</translation>
         </message>
         <message>
-            <source>Den valda filen verkar inte vara ffmpeg.</source>
+            <source>The selected file does not appear to be ffmpeg.</source>
             <translation>Den valda filen verkar inte vara ffmpeg.</translation>
         </message>
         <message>
-            <source>Ej hittad</source>
+            <source>Not Found</source>
             <translation>Ej hittad</translation>
         </message>
         <message>
-            <source>FFmpeg krävs</source>
+            <source>FFmpeg Required</source>
             <translation>FFmpeg krävs</translation>
         </message>
         <message>
-            <source>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</source>
+            <source>FFmpeg could still not be found in the system path.</source>
             <translation>FFmpeg kunde fortfarande inte hittas i systemets sökväg.</translation>
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation>Fel</translation>
         </message>
         <message>
-            <source>Försök igen</source>
+            <source>Retry</source>
             <translation>Försök igen</translation>
         </message>
         <message>
-            <source>Installationsanvisningar</source>
+            <source>Installation Instructions</source>
             <translation>Installationsanvisningar</translation>
         </message>
         <message>
-            <source>Kunde inte köra den valda filen.</source>
+            <source>Could not run the selected file.</source>
             <translation>Kunde inte köra den valda filen.</translation>
         </message>
         <message>
-            <source>Körbara filer (*)</source>
+            <source>Executable files (*)</source>
             <translation>Körbara filer (*)</translation>
         </message>
         <message>
-            <source>Ogiltig fil</source>
+            <source>Invalid File</source>
             <translation>Ogiltig fil</translation>
         </message>
         <message>
-            <source>Välj ffmpeg-binär</source>
+            <source>Select ffmpeg binary</source>
             <translation>Välj ffmpeg-binär</translation>
         </message>
         <message>
-            <source>Öppna hämtningssida</source>
+            <source>Open Download Page</source>
             <translation>Öppna hämtningssida</translation>
         </message>
             <message>
@@ -857,7 +857,7 @@
             <translation>&lt;b&gt;macOS (Homebrew):&lt;/b&gt;&lt;br&gt;&lt;code&gt;brew install ffmpeg&lt;/code&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;macOS (MacPorts):&lt;/b&gt;&lt;br&gt;&lt;code&gt;sudo port install ffmpeg&lt;/code&gt;</translation>
         </message>
         <message>
-            <source>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</source>
+            <source>&lt;h3&gt;FFmpeg could not be found&lt;/h3&gt;&lt;p&gt;LinguaEdit needs &lt;b&gt;ffmpeg&lt;/b&gt; and &lt;b&gt;ffprobe&lt;/b&gt; to extract subtitles from video files.&lt;/p&gt;</source>
             <translation>&lt;h3&gt;FFmpeg kunde inte hittas&lt;/h3&gt;&lt;p&gt;LinguaEdit behöver &lt;b&gt;ffmpeg&lt;/b&gt; och &lt;b&gt;ffprobe&lt;/b&gt; för att extrahera undertexter från videofiler.&lt;/p&gt;</translation>
         </message>
 </context>
@@ -4463,11 +4463,11 @@
             <translation>Pluralregler</translation>
         </message>
         <message>
-            <source>Rensa alla</source>
+            <source>Clear all</source>
             <translation>Rensa alla</translation>
         </message>
         <message>
-            <source>Synkronisera från singular</source>
+            <source>Sync from singular</source>
             <translation>Synkronisera från singular</translation>
         </message>
     </context>
@@ -5431,47 +5431,47 @@
     <context>
         <name>VideoSubtitleDialog</name>
         <message>
-            <source>%d undertextspår hittades. Längd: %s</source>
+            <source>%d subtitle tracks found. Duration: %s</source>
             <translation>%d undertextspår hittades. Längd: %s</translation>
         </message>
         <message>
-            <source>Avbryt</source>
+            <source>Cancel</source>
             <translation>Avbryt</translation>
         </message>
         <message>
-            <source>Bläddra…</source>
+            <source>Browse…</source>
             <translation>Bläddra…</translation>
         </message>
         <message>
-            <source>Extrahera och spara som…</source>
+            <source>Extract and Save As…</source>
             <translation>Extrahera och spara som…</translation>
         </message>
         <message>
-            <source>Extrahera och öppna</source>
+            <source>Extract and Open</source>
             <translation>Extrahera och öppna</translation>
         </message>
         <message>
-            <source>Extrahera undertexter från video</source>
+            <source>Extract Subtitles from Video</source>
             <translation>Extrahera undertexter från video</translation>
         </message>
         <message>
-            <source>Extraherar</source>
+            <source>Extracting</source>
             <translation>Extraherar</translation>
         </message>
         <message>
-            <source>Extraherar förhandsgranskning…</source>
+            <source>Extracting preview…</source>
             <translation>Extraherar förhandsgranskning…</translation>
         </message>
         <message>
-            <source>Extraherar undertexter…</source>
+            <source>Extracting subtitles…</source>
             <translation>Extraherar undertexter…</translation>
         </message>
         <message>
-            <source>Fel</source>
+            <source>Error</source>
             <translation>Fel</translation>
         </message>
         <message>
-            <source>Fel vid extrahering</source>
+            <source>Extraction Error</source>
             <translation>Fel vid extrahering</translation>
         </message>
         <message>
@@ -5479,79 +5479,79 @@
             <translation>Format:</translation>
         </message>
         <message>
-            <source>Förhandsgranskning</source>
+            <source>Preview</source>
             <translation>Förhandsgranskning</translation>
         </message>
         <message>
-            <source>Förhandsgranskning misslyckades: %s</source>
+            <source>Preview failed: %s</source>
             <translation>Förhandsgranskning misslyckades: %s</translation>
         </message>
         <message>
-            <source>Inga undertextspår hittades</source>
+            <source>No subtitle tracks found</source>
             <translation>Inga undertextspår hittades</translation>
         </message>
         <message>
-            <source>Ingen fil vald</source>
+            <source>No file selected</source>
             <translation>Ingen fil vald</translation>
         </message>
         <message>
-            <source>Klart</source>
+            <source>Done</source>
             <translation>Klart</translation>
         </message>
         <message>
-            <source>Kunde inte extrahera undertexten:\n%s</source>
+            <source>Could not extract the subtitle:\n%s</source>
             <translation>Kunde inte extrahera undertexten:\n%s</translation>
         </message>
         <message>
-            <source>Kunde inte läsa videofilen:\n%s</source>
+            <source>Could not read the video file:\n%s</source>
             <translation>Kunde inte läsa videofilen:\n%s</translation>
         </message>
         <message>
-            <source>Spara undertext som</source>
+            <source>Save Subtitle As</source>
             <translation>Spara undertext som</translation>
         </message>
         <message>
-            <source>Spela upp / pausa</source>
+            <source>Play / Pause</source>
             <translation>Spela upp / pausa</translation>
         </message>
         <message>
-            <source>Stoppa</source>
+            <source>Stop</source>
             <translation>Stoppa</translation>
         </message>
         <message>
-            <source>Stäng</source>
+            <source>Close</source>
             <translation>Stäng</translation>
         </message>
         <message>
-            <source>Undertexten har sparats till:\n%s</source>
+            <source>The subtitle has been saved to:\n%s</source>
             <translation>Undertexten har sparats till:\n%s</translation>
         </message>
         <message>
-            <source>Undertextspår</source>
+            <source>Subtitle Tracks</source>
             <translation>Undertextspår</translation>
         </message>
         <message>
-            <source>Utdataformat</source>
+            <source>Output Format</source>
             <translation>Utdataformat</translation>
         </message>
         <message>
-            <source>Videofil</source>
+            <source>Video File</source>
             <translation>Videofil</translation>
         </message>
         <message>
-            <source>Videofiler (%s);;Alla filer (*)</source>
+            <source>Video files (%s);;All files (*)</source>
             <translation>Videofiler (%s);;Alla filer (*)</translation>
         </message>
         <message>
-            <source>Välj en videofil för att förhandsgranska undertexter</source>
+            <source>Select a video file to preview subtitles</source>
             <translation>Välj en videofil för att förhandsgranska undertexter</translation>
         </message>
         <message>
-            <source>Välj videofil</source>
+            <source>Select Video File</source>
             <translation>Välj videofil</translation>
         </message>
             <message>
-            <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+            <source>This video file contains no embedded subtitle tracks.</source>
             <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
         </message>
 </context>
@@ -5852,7 +5852,7 @@
             <translation>Radera term '%s' → '%s'?</translation>
         </message>
         <message>
-            <source>Denna videofil innehåller inga inbäddade undertextspår.</source>
+            <source>This video file contains no embedded subtitle tracks.</source>
             <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
         </message>
         <message>

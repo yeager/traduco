@@ -191,7 +191,7 @@ class AIReviewDialog(QDialog):
         self.source = source
         self.translation = translation
         self.suggestion = ""
-        self.setWindowTitle(self.tr("AI Översättningsgranskning"))
+        self.setWindowTitle(self.tr("AI Translation Review"))
         self.setModal(True)
         self.resize(600, 500)
         
@@ -202,10 +202,10 @@ class AIReviewDialog(QDialog):
         layout = QVBoxLayout(self)
         
         # Käll- och översättningstext
-        text_group = QGroupBox(self.tr("Text att granska"))
+        text_group = QGroupBox(self.tr("Text to Review"))
         text_layout = QVBoxLayout(text_group)
         
-        source_label = QLabel(self.tr("Källtext:"))
+        source_label = QLabel(self.tr("Source text:"))
         source_edit = QTextEdit()
         source_edit.setPlainText(self.source)
         source_edit.setReadOnly(True)
@@ -213,7 +213,7 @@ class AIReviewDialog(QDialog):
         text_layout.addWidget(source_label)
         text_layout.addWidget(source_edit)
         
-        trans_label = QLabel(self.tr("Översättning:"))
+        trans_label = QLabel(self.tr("Translation:"))
         self.trans_edit = QTextEdit()
         self.trans_edit.setPlainText(self.translation)
         self.trans_edit.setMaximumHeight(80)
@@ -223,19 +223,19 @@ class AIReviewDialog(QDialog):
         layout.addWidget(text_group)
         
         # Analys-grupp
-        analysis_group = QGroupBox(self.tr("Analys"))
+        analysis_group = QGroupBox(self.tr("Analysis"))
         analysis_layout = QVBoxLayout(analysis_group)
         
         # Progress bar under analys
         self.progress_bar = QProgressBar()
         self.progress_bar.setRange(0, 0)  # Indeterminate
-        self.progress_label = QLabel(self.tr("Analyserar översättning..."))
+        self.progress_label = QLabel(self.tr("Analyzing translation..."))
         analysis_layout.addWidget(self.progress_label)
         analysis_layout.addWidget(self.progress_bar)
         
         # Betyg (stjärnor)
         score_layout = QHBoxLayout()
-        score_layout.addWidget(QLabel(self.tr("Betyg:")))
+        score_layout.addWidget(QLabel(self.tr("Score:")))
         self.score_label = QLabel("")
         font = QFont()
         font.setPointSize(16)
@@ -248,13 +248,13 @@ class AIReviewDialog(QDialog):
         self.explanation_edit = QTextEdit()
         self.explanation_edit.setReadOnly(True)
         self.explanation_edit.setMaximumHeight(100)
-        analysis_layout.addWidget(QLabel(self.tr("Förklaring:")))
+        analysis_layout.addWidget(QLabel(self.tr("Explanation:")))
         analysis_layout.addWidget(self.explanation_edit)
         
         # Förslag
         self.suggestion_edit = QTextEdit()
         self.suggestion_edit.setMaximumHeight(80)
-        analysis_layout.addWidget(QLabel(self.tr("Förbättringsförslag:")))
+        analysis_layout.addWidget(QLabel(self.tr("Improvement suggestions:")))
         analysis_layout.addWidget(self.suggestion_edit)
         
         layout.addWidget(analysis_group)
@@ -262,7 +262,7 @@ class AIReviewDialog(QDialog):
         # Knappar
         button_layout = QHBoxLayout()
         
-        self.apply_btn = QPushButton(self.tr("Applicera förslag"))
+        self.apply_btn = QPushButton(self.tr("Apply Suggestion"))
         self.apply_btn.clicked.connect(self._apply_suggestion)
         self.apply_btn.setEnabled(False)
         button_layout.addWidget(self.apply_btn)
@@ -303,15 +303,15 @@ class AIReviewDialog(QDialog):
             self.suggestion = suggestion
             self.apply_btn.setEnabled(True)
         else:
-            self.suggestion_edit.setPlainText(self.tr("Inga specifika förslag."))
+            self.suggestion_edit.setPlainText(self.tr("No specific suggestions."))
     
     def _on_review_error(self, error_msg: str):
         """Hanterar fel under granskning."""
         self.progress_bar.setVisible(False)
-        self.progress_label.setText(self.tr("Fel vid analys: ") + error_msg)
+        self.progress_label.setText(self.tr("Analysis error: ") + error_msg)
         
-        QMessageBox.warning(self, self.tr("Fel"), 
-                          self.tr("Kunde inte analysera översättning: ") + error_msg)
+        QMessageBox.warning(self, self.tr("Error"), 
+                          self.tr("Could not analyze translation: ") + error_msg)
     
     def _apply_suggestion(self):
         """Applicerar förslaget till översättningstexten."""
