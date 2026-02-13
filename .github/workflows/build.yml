@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install pyinstaller PySide6 polib requests PyYAML
       - name: Compile translations
-        run: pyside6-lrelease src/linguaedit/translations/linguaedit_sv.ts
+        run: for ts in src/linguaedit/translations/linguaedit_*.ts; do [ -f "$ts" ] && pyside6-lrelease "$ts"; done
       - name: Build .app
         run: |
           pyinstaller --windowed --name LinguaEdit \
@@ -49,7 +49,7 @@ jobs:
         run: |
           pip install pyinstaller PySide6 polib requests PyYAML Pillow
       - name: Compile translations
-        run: pyside6-lrelease src/linguaedit/translations/linguaedit_sv.ts
+        run: for ts in src/linguaedit/translations/linguaedit_*.ts; do [ -f "$ts" ] && pyside6-lrelease "$ts"; done
       - name: Create .ico
         run: |
           python -c "from PIL import Image; img=Image.open('resources/icon.png'); img.save('resources/icon.ico', sizes=[(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)])"
@@ -81,7 +81,7 @@ jobs:
       - name: Install PySide6 for lrelease
         run: pip install PySide6
       - name: Compile translations
-        run: pyside6-lrelease src/linguaedit/translations/linguaedit_sv.ts
+        run: for ts in src/linguaedit/translations/linguaedit_*.ts; do [ -f "$ts" ] && pyside6-lrelease "$ts"; done
       - name: Build .deb
         run: python3 .github/scripts/build_deb.py ${GITHUB_REF_NAME#v}
       - uses: actions/upload-artifact@v4

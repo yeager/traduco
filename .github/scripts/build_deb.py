@@ -14,11 +14,12 @@ os.makedirs(f"{PKG}/usr/share/linguaedit/translations", exist_ok=True)
 # Copy source
 shutil.copytree("src/linguaedit", f"{PKG}/usr/lib/python3/dist-packages/linguaedit", dirs_exist_ok=True)
 
-# Copy translations
-if os.path.isdir("translations"):
-    for f in os.listdir("translations"):
-        if f.endswith(".qm"):
-            shutil.copy2(f"translations/{f}", f"{PKG}/usr/share/linguaedit/translations/")
+# Copy translations (check both locations)
+for tdir in ["src/linguaedit/translations", "translations"]:
+    if os.path.isdir(tdir):
+        for f in os.listdir(tdir):
+            if f.endswith(".qm") or f.endswith(".ts"):
+                shutil.copy2(f"{tdir}/{f}", f"{PKG}/usr/share/linguaedit/translations/")
 
 # Launcher script
 with open(f"{PKG}/usr/bin/linguaedit", "w") as f:

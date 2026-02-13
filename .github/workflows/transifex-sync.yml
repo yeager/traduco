@@ -1,0 +1,50 @@
+name: Sync Transifex Translations
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Transifex CLI
+        run: |
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+          sudo mv tx /usr/local/bin/
+
+      - name: Pull translations
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: tx pull --all --force
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PySide6
+        run: pip install PySide6
+
+      - name: Compile .qm files
+        run: |
+          for ts in src/linguaedit/translations/linguaedit_*.ts; do
+            [ -f "$ts" ] && pyside6-lrelease "$ts"
+          done
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/linguaedit/translations/
+          if git diff --cached --quiet; then
+            echo "No translation changes"
+          else
+            git commit -m "i18n: sync translations from Transifex"
+            git push
+          fi
