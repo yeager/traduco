@@ -458,6 +458,10 @@
             <translation>%d av %d strängar · %.1f strängar/s · %s</translation>
         </message>
         <message>
+            <source>%d of %d strings · %.1f strings/s · %s remaining</source>
+            <translation>%d av %d strängar · %.1f strängar/s · %s kvar</translation>
+        </message>
+        <message>
             <source>%d s remaining</source>
             <translation>%d s kvar</translation>
         </message>
@@ -3526,6 +3530,10 @@
         <message>
             <source>%d of %d strings · %.1f strings/s · %s</source>
             <translation>%d av %d strängar · %.1f strängar/s · %s</translation>
+        </message>
+        <message>
+            <source>%d of %d strings · %.1f strings/s · %s remaining</source>
+            <translation>%d av %d strängar · %.1f strängar/s · %s kvar</translation>
         </message>
         <message>
             <source>%d s remaining</source>

@@ -274,6 +274,90 @@ class _SubtitleExtractWorker(QThread):
                 self.error.emit(str(e))
 
 
+class _PreTranslateWorker(QThread):
+    """Run batch pre-translation in a background thread."""
+    progress = Signal(int, int, float, str)        # step, count, speed, eta_str
+    error = Signal(int, int, str)                   # step, total, error_msg
+    translation_ready = Signal(int, str)            # entry index, translated text
+    finished = Signal(int, int, str, bool)           # count, errors, last_error, stopped
+
+    def __init__(self, to_translate, engine, source, target, extra, parent=None):
+        super().__init__(parent)
+        self._to_translate = to_translate   # list of (entry_index, msgid)
+        self._engine = engine
+        self._source = source
+        self._target = target
+        self._extra = extra
+        self._cancelled = False
+        self._skip_errors = False
+        self._pause_for_error = False
+        self._error_response = None         # "skip_all", "continue", "stop"
+
+    def cancel(self):
+        self._cancelled = True
+
+    def set_skip_errors(self):
+        self._skip_errors = True
+
+    def set_error_response(self, response: str):
+        self._error_response = response
+        self._pause_for_error = False
+
+    def run(self):
+        from linguaedit.services.translator import translate, TranslationError
+        import time
+
+        total = len(self._to_translate)
+        count = 0
+        errors = 0
+        last_error = ""
+        stopped = False
+        start_time = time.monotonic()
+
+        for step, (i, msgid) in enumerate(self._to_translate):
+            if self._cancelled:
+                stopped = True
+                break
+
+            # Emit progress with ETA
+            if step > 0:
+                elapsed = time.monotonic() - start_time
+                speed = step / elapsed if elapsed > 0 else 0
+                remaining = (total - step) / speed if speed > 0 else 0
+                if remaining >= 60:
+                    eta_str = "%d min %d s" % (int(remaining) // 60, int(remaining) % 60)
+                else:
+                    eta_str = "%d s" % int(remaining)
+            else:
+                speed = 0.0
+                eta_str = ""
+            self.progress.emit(step, total, speed, eta_str)
+
+            try:
+                result = translate(msgid, engine=self._engine,
+                                   source=self._source, target=self._target,
+                                   **self._extra)
+                if result:
+                    self.translation_ready.emit(i, result)
+                    count += 1
+            except TranslationError as e:
+                errors += 1
+                last_error = str(e)
+                if not self._skip_errors:
+                    self._pause_for_error = True
+                    self.error.emit(step, total, str(e))
+                    # Wait for main thread to respond
+                    while self._pause_for_error and not self._cancelled:
+                        self.msleep(50)
+                    if self._error_response == "stop" or self._cancelled:
+                        stopped = True
+                        break
+                    elif self._error_response == "skip_all":
+                        self._skip_errors = True
+
+        self.finished.emit(count, errors, last_error, stopped)
+
+
 # ── Tab data holder ──────────────────────────────────────────────────
 
 class TabData:
@@ -4363,93 +4447,83 @@ class LinguaEditWindow(QMainWindow):
             self._show_toast(self.tr("No untranslated entries"))
             return
 
-        # Create progress dialog
-        from PySide6.QtWidgets import QProgressDialog
-        from PySide6.QtCore import QElapsedTimer
+        total = len(to_translate)
+        engine = self._trans_engine
 
+        # Progress dialog in main thread
         progress = QProgressDialog(
-            self.tr("Pre-translating…"), self.tr("Cancel"), 0, len(to_translate), self
+            self.tr("Pre-translating…"), self.tr("Cancel"), 0, total, self
         )
         progress.setWindowTitle(self.tr("Pre-translate"))
         progress.setWindowModality(Qt.WindowModal)
         progress.setMinimumDuration(0)
         progress.setValue(0)
 
-        elapsed = QElapsedTimer()
-        elapsed.start()
+        # Worker in background thread
+        worker = _PreTranslateWorker(
+            to_translate, engine, self._trans_source, self._trans_target, extra
+        )
+        self._pretranslate_worker = worker  # prevent GC
+        self._pretranslate_count = 0
 
-        count = 0
-        errors = 0
-        last_error = ""
-        skip_errors = False
-        stopped = False
-        for step, (i, msgid) in enumerate(to_translate):
-            if progress.wasCanceled():
-                stopped = True
-                break
-
-            # Update label with ETA
-            if step > 0:
-                elapsed_ms = elapsed.elapsed()
-                ms_per = elapsed_ms / step
-                remaining = (len(to_translate) - step) * ms_per / 1000
-                speed = step / (elapsed_ms / 1000) if elapsed_ms > 0 else 0
-                if remaining >= 60:
-                    eta_str = self.tr("%d min %d s remaining") % (int(remaining) // 60, int(remaining) % 60)
-                else:
-                    eta_str = self.tr("%d s remaining") % int(remaining)
+        def on_progress(step, count, speed, eta_str):
+            progress.setValue(step)
+            if step > 0 and eta_str:
                 progress.setLabelText(
-                    self.tr("%d of %d strings · %.1f strings/s · %s") % (
-                        step, len(to_translate), speed, eta_str
+                    self.tr("%d of %d strings · %.1f strings/s · %s remaining") % (
+                        step, count, speed, eta_str
                     )
                 )
 
-            try:
-                result = translate(msgid, engine=self._trans_engine,
-                                   source=self._trans_source, target=self._trans_target, **extra)
-                if result:
-                    self._set_entry_translation(i, result)
-                    count += 1
-            except TranslationError as e:
-                errors += 1
-                last_error = str(e)
-                if not skip_errors:
-                    from PySide6.QtWidgets import QMessageBox
-                    msg = QMessageBox(self)
-                    msg.setIcon(QMessageBox.Warning)
-                    msg.setWindowTitle(self.tr("Translation Error"))
-                    msg.setText(self.tr("Error translating string %d of %d:") % (step + 1, len(to_translate)))
-                    msg.setInformativeText(str(e))
-                    msg.addButton(self.tr("Skip All Errors"), QMessageBox.AcceptRole)
-                    msg.addButton(self.tr("Continue"), QMessageBox.RejectRole)
-                    abort_btn = msg.addButton(self.tr("Stop"), QMessageBox.DestructiveRole)
-                    msg.exec()
-                    if msg.clickedButton() == abort_btn:
-                        stopped = True
-                        break
-                    elif msg.buttonRole(msg.clickedButton()) == QMessageBox.AcceptRole:
-                        skip_errors = True
+        def on_translation_ready(index, text):
+            self._set_entry_translation(index, text)
+            self._pretranslate_count += 1
 
-            progress.setValue(step + 1)
-            QApplication.processEvents()
+        def on_error(step, total_count, error_msg):
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Warning)
+            msg.setWindowTitle(self.tr("Translation Error"))
+            msg.setText(self.tr("Error translating string %d of %d:") % (step + 1, total_count))
+            msg.setInformativeText(error_msg)
+            skip_btn = msg.addButton(self.tr("Skip All Errors"), QMessageBox.AcceptRole)
+            msg.addButton(self.tr("Continue"), QMessageBox.RejectRole)
+            abort_btn = msg.addButton(self.tr("Stop"), QMessageBox.DestructiveRole)
+            msg.exec()
+            if msg.clickedButton() == abort_btn:
+                worker.set_error_response("stop")
+            elif msg.clickedButton() == skip_btn:
+                worker.set_error_response("skip_all")
+            else:
+                worker.set_error_response("continue")
 
-        progress.close()
+        def on_finished(count, errors, last_error, stopped):
+            progress.close()
+            self._pretranslate_worker = None
 
-        if count > 0:
-            self._modified = True
-            self._populate_list()
-            self._update_stats()
+            if self._pretranslate_count > 0:
+                self._modified = True
+                self._populate_list()
+                self._update_stats()
 
-        if count == 0 and stopped:
-            self._show_toast(self.tr("Pre-translate cancelled — no translations made"))
-        elif stopped and errors:
-            self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)") % (count, len(to_translate), self._trans_engine, errors, last_error))
-        elif stopped:
-            self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled)") % (count, len(to_translate), self._trans_engine))
-        elif errors:
-            self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors — last: %s)") % (count, self._trans_engine, errors, last_error))
-        else:
-            self._show_toast(self.tr("Pre-translated %d entries via %s") % (count, self._trans_engine))
+            c = self._pretranslate_count
+            if c == 0 and stopped:
+                self._show_toast(self.tr("Pre-translate cancelled — no translations made"))
+            elif stopped and errors:
+                self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)") % (c, total, engine, errors, last_error))
+            elif stopped:
+                self._show_toast(self.tr("Pre-translated %d of %d entries via %s (cancelled)") % (c, total, engine))
+            elif errors:
+                self._show_toast(self.tr("Pre-translated %d entries via %s (%d errors — last: %s)") % (c, engine, errors, last_error))
+            else:
+                self._show_toast(self.tr("Pre-translated %d entries via %s") % (c, engine))
+
+        worker.progress.connect(on_progress)
+        worker.translation_ready.connect(on_translation_ready)
+        worker.error.connect(on_error)
+        worker.finished.connect(on_finished)
+        progress.canceled.connect(worker.cancel)
+
+        worker.start()
 
     def _show_api_keys_dialog(self):
         from linguaedit.services.keystore import store_secret, get_secret as ks_get, backend_name
