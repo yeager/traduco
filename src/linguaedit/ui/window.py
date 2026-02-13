@@ -4618,7 +4618,7 @@ class LinguaEditWindow(QMainWindow):
             ("google_cloud", "Google Cloud Translation"), ("microsoft_translator", "Microsoft Translator"),
             ("aws", "Amazon Translate"), ("huggingface", "HuggingFace (NLLB)"),
             ("libretranslate", "LibreTranslate"), ("transifex", "Transifex"),
-            ("weblate", "Weblate"),
+            ("weblate", "Weblate"), ("crowdin", "Crowdin"),
         ]
         form = QFormLayout()
         rows = {}
@@ -7445,14 +7445,116 @@ class LinguaEditWindow(QMainWindow):
         lay.addWidget(buttons)
         dlg.exec()
 
-    def _crowdin_pull_latest(self):
-        """Pull latest translations from Crowdin OTA."""
-        QMessageBox.information(
-            self, 
-            self.tr("Crowdin OTA"),
-            self.tr("Crowdin Over-The-Air functionality not yet implemented.\n"
-                   "This would pull latest translations using distribution hash.")
+    def _show_crowdin_stats(self):
+        """Fetch Crowdin projects and show translation statistics."""
+        from linguaedit.services.keystore import get_secret as ks_get
+        from linguaedit.services.crowdin import (
+            fetch_projects, fetch_project_progress, CrowdinError,
         )
+
+        api_key = ks_get("crowdin", "api_key")
+        if not api_key:
+            QMessageBox.warning(
+                self,
+                self.tr("No API Key"),
+                self.tr("No Crowdin API key configured.\nPlease add one in Translation → API Keys…"),
+            )
+            return
+
+        # Fetch projects
+        try:
+            QApplication.setOverrideCursor(Qt.WaitCursor)
+            projects = fetch_projects(api_key)
+        except CrowdinError as e:
+            QApplication.restoreOverrideCursor()
+            QMessageBox.critical(self, self.tr("Crowdin Error"), str(e))
+            return
+        finally:
+            QApplication.restoreOverrideCursor()
+
+        if not projects:
+            QMessageBox.information(self, self.tr("Crowdin"), self.tr("No projects found."))
+            return
+
+        names = [p["name"] for p in projects]
+        name, ok = QInputDialog.getItem(
+            self, self.tr("Select Project"), self.tr("Project:"), names, 0, False,
+        )
+        if not ok:
+            return
+        proj = projects[names.index(name)]
+
+        # Fetch progress
+        try:
+            QApplication.setOverrideCursor(Qt.WaitCursor)
+            stats = fetch_project_progress(api_key, proj["id"])
+        except CrowdinError as e:
+            QApplication.restoreOverrideCursor()
+            QMessageBox.critical(self, self.tr("Crowdin Error"), str(e))
+            return
+        finally:
+            QApplication.restoreOverrideCursor()
+
+        if not stats:
+            QMessageBox.information(self, self.tr("Crowdin"), self.tr("No language statistics found."))
+            return
+
+        # Show stats dialog
+        dlg = QDialog(self)
+        dlg.setWindowTitle(self.tr("Crowdin — %s") % proj["name"])
+        dlg.resize(560, 500)
+        lay = QVBoxLayout(dlg)
+        lay.addWidget(QLabel(self.tr("Translation statistics for <b>%s</b>:") % proj["name"]))
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        container = QWidget()
+        clayout = QVBoxLayout(container)
+
+        for s in stats:
+            row = QHBoxLayout()
+            lbl = QLabel(f"<b>{s['language']}</b>")
+            lbl.setFixedWidth(80)
+            row.addWidget(lbl)
+
+            # Translated bar
+            bar_t = QProgressBar()
+            bar_t.setRange(0, 100)
+            bar_t.setValue(s["pct_translated"])
+            bar_t.setFormat(self.tr("Translated: %d%% (%d/%d)") % (
+                s["pct_translated"], s["translated"], s["phrases"]))
+            row.addWidget(bar_t)
+
+            # Approved bar
+            bar_a = QProgressBar()
+            bar_a.setRange(0, 100)
+            bar_a.setValue(s["pct_approved"])
+            bar_a.setFormat(self.tr("Approved: %d%% (%d/%d)") % (
+                s["pct_approved"], s["approved"], s["phrases"]))
+            bar_a.setStyleSheet("QProgressBar::chunk { background-color: #4CAF50; }")
+            row.addWidget(bar_a)
+
+            clayout.addLayout(row)
+
+        clayout.addStretch()
+        scroll.setWidget(container)
+        lay.addWidget(scroll)
+
+        # Action buttons
+        btn_layout = QHBoxLayout()
+        pull_btn = QPushButton(self.tr("Pull Translations"))
+        pull_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("crowdin", "pull")))
+        btn_layout.addWidget(pull_btn)
+        push_btn = QPushButton(self.tr("Push Source"))
+        push_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("crowdin", "push")))
+        btn_layout.addWidget(push_btn)
+        btn_layout.addStretch()
+        lay.addLayout(btn_layout)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Close)
+        buttons.rejected.connect(dlg.reject)
+        lay.addWidget(buttons)
+        dlg.exec()
 
     def _msgmerge_with_pot(self):
         """Merge current PO file with POT file using msgmerge."""

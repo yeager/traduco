@@ -3660,6 +3660,34 @@
             <source>Found %d inconsistencies:\n\n</source>
             <translation>Hittade %d inkonsekvenser:\n\n</translation>
         </message>
+        <message>
+            <source>Weblate Statistics…</source>
+            <translation>Weblate-statistik…</translation>
+        </message>
+        <message>
+            <source>No Weblate API key or server URL configured.\nPlease add them in Translation → API Keys…</source>
+            <translation>Ingen Weblate API-nyckel eller server-URL konfigurerad.\nLägg till dem under Översättning → API-nycklar…</translation>
+        </message>
+        <message>
+            <source>Weblate Error</source>
+            <translation>Weblate-fel</translation>
+        </message>
+        <message>
+            <source>Weblate</source>
+            <translation>Weblate</translation>
+        </message>
+        <message>
+            <source>Weblate — %s</source>
+            <translation>Weblate — %s</translation>
+        </message>
+        <message>
+            <source>  (fuzzy: %d)</source>
+            <translation>  (fuzzy: %d)</translation>
+        </message>
+        <message>
+            <source>Weblate Server URL:</source>
+            <translation>Weblate server-URL:</translation>
+        </message>
     </context>
     <context>
         <name>Linter</name>
