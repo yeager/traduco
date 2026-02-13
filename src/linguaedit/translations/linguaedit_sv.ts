@@ -2005,12 +2005,36 @@
             <translation>Crowdin</translation>
         </message>
         <message>
-            <source>Crowdin OTA</source>
-            <translation>Crowdin OTA</translation>
+            <source>Crowdin Statistics…</source>
+            <translation>Crowdin-statistik…</translation>
         </message>
         <message>
-            <source>Crowdin Over-The-Air functionality not yet implemented.\n</source>
-            <translation>Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.\n</translation>
+            <source>Crowdin Error</source>
+            <translation>Crowdin-fel</translation>
+        </message>
+        <message>
+            <source>No Crowdin API key configured.\nPlease add one in Translation → API Keys…</source>
+            <translation>Ingen Crowdin API-nyckel konfigurerad.\nLägg till en under Översättning → API-nycklar…</translation>
+        </message>
+        <message>
+            <source>Crowdin — %s</source>
+            <translation>Crowdin — %s</translation>
+        </message>
+        <message>
+            <source>Translated: %d%% (%d/%d)</source>
+            <translation>Översatt: %d%% (%d/%d)</translation>
+        </message>
+        <message>
+            <source>Approved: %d%% (%d/%d)</source>
+            <translation>Godkänd: %d%% (%d/%d)</translation>
+        </message>
+        <message>
+            <source>Pull Translations</source>
+            <translation>Hämta översättningar</translation>
+        </message>
+        <message>
+            <source>Push Source</source>
+            <translation>Skicka källfil</translation>
         </message>
         <message>
             <source>Current string has no translation to propagate.</source>

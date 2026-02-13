@@ -7349,6 +7349,17 @@ class LinguaEditWindow(QMainWindow):
         scroll.setWidget(container)
         lay.addWidget(scroll)
 
+        # Action buttons
+        btn_layout = QHBoxLayout()
+        pull_btn = QPushButton(self.tr("Pull Translations"))
+        pull_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("transifex", "pull")))
+        btn_layout.addWidget(pull_btn)
+        push_btn = QPushButton(self.tr("Push Source"))
+        push_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("transifex", "push")))
+        btn_layout.addWidget(push_btn)
+        btn_layout.addStretch()
+        lay.addLayout(btn_layout)
+
         buttons = QDialogButtonBox(QDialogButtonBox.Close)
         buttons.rejected.connect(dlg.reject)
         lay.addWidget(buttons)
@@ -7439,6 +7450,17 @@ class LinguaEditWindow(QMainWindow):
         clayout.addStretch()
         scroll.setWidget(container)
         lay.addWidget(scroll)
+
+        # Action buttons
+        btn_layout = QHBoxLayout()
+        pull_btn = QPushButton(self.tr("Pull Translations"))
+        pull_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("weblate", "pull")))
+        btn_layout.addWidget(pull_btn)
+        push_btn = QPushButton(self.tr("Push Source"))
+        push_btn.clicked.connect(lambda: (dlg.accept(), self._on_sync("weblate", "push")))
+        btn_layout.addWidget(push_btn)
+        btn_layout.addStretch()
+        lay.addLayout(btn_layout)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Close)
         buttons.rejected.connect(dlg.reject)
