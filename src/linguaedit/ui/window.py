@@ -3582,6 +3582,26 @@ class LinguaEditWindow(QMainWindow):
                 entry.msgstr = text
                 self._modified = True
 
+        self._update_stats()
+        self._update_current_row_color()
+
+    def _update_current_row_color(self):
+        """Update the color of the current row in the tree after editing."""
+        if self._current_index < 0:
+            return
+        for i in range(self._tree.topLevelItemCount()):
+            item = self._tree.topLevelItem(i)
+            if item.data(0, Qt.UserRole) == self._current_index:
+                entries = self._get_entries()
+                if self._current_index < len(entries):
+                    _, msgstr, _ = entries[self._current_index]
+                    colors = _DARK_COLORS if _is_dark_theme() else _LIGHT_COLORS
+                    if msgstr:
+                        self._color_row(item, colors.get('translated', QColor(240, 248, 240)))
+                    else:
+                        self._color_row(item, colors.get('untranslated', QColor(248, 240, 240)))
+                break
+
     def _on_timestamp_edited(self):
         """Handle timestamp editing for subtitle entries."""
         if self._current_index < 0 or not self._file_data or self._file_type != "subtitles":
