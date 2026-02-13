@@ -1633,6 +1633,22 @@ class LinguaEditWindow(QMainWindow):
                 self.tr("Translation"),
                 "",
             ])
+            # Subtitle column proportions: Time=20%, Source=40%, Translation=40%
+            header = self._tree.header()
+            header.setStretchLastSection(False)
+            header.setSectionResizeMode(0, QHeaderView.Interactive)   # #
+            header.setSectionResizeMode(1, QHeaderView.Interactive)   # ⭐
+            header.setSectionResizeMode(2, QHeaderView.Interactive)   # Time interval
+            header.setSectionResizeMode(3, QHeaderView.Interactive)   # Source text
+            header.setSectionResizeMode(4, QHeaderView.Stretch)       # Translation
+            header.setSectionResizeMode(5, QHeaderView.Interactive)   # Status
+            avail = self._tree.viewport().width() or 900
+            content_w = avail - 45 - 30 - 35  # minus #, ⭐, status
+            header.resizeSection(0, 45)
+            header.resizeSection(1, 30)
+            header.resizeSection(2, int(content_w * 0.20))
+            header.resizeSection(3, int(content_w * 0.40))
+            header.resizeSection(5, 35)
         else:
             self._tree.setHeaderLabels([
                 "#", "⭐",
