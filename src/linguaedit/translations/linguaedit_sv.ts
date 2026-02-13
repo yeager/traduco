@@ -3548,8 +3548,44 @@
             <translation>Föröversatte %d poster via %s (%d fel)</translation>
         </message>
         <message>
+            <source>Pre-translated %d entries via %s (%d errors — last: %s)</source>
+            <translation>Föröversatte %d poster via %s (%d fel — senaste: %s)</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d of %d entries via %s (cancelled)</source>
+            <translation>Föröversatte %d av %d poster via %s (avbruten)</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)</source>
+            <translation>Föröversatte %d av %d poster via %s (avbruten, %d fel — senaste: %s)</translation>
+        </message>
+        <message>
+            <source>Pre-translate cancelled — no translations made</source>
+            <translation>Föröversättning avbruten — inga översättningar gjorda</translation>
+        </message>
+        <message>
             <source>Pre-translating…</source>
             <translation>Föröversätter…</translation>
+        </message>
+        <message>
+            <source>Translation Error</source>
+            <translation>Översättningsfel</translation>
+        </message>
+        <message>
+            <source>Error translating string %d of %d:</source>
+            <translation>Fel vid översättning av sträng %d av %d:</translation>
+        </message>
+        <message>
+            <source>Skip All Errors</source>
+            <translation>Hoppa över alla fel</translation>
+        </message>
+        <message>
+            <source>Continue</source>
+            <translation>Fortsätt</translation>
+        </message>
+        <message>
+            <source>Stop</source>
+            <translation>Stoppa</translation>
         </message>
         <message>
             <source>Recording macro '{}'...</source>
@@ -5861,70 +5897,6 @@
         <message>
             <source>Crowdin Over-The-Air functionality not yet implemented.\nThis would pull latest translations from Crowdin.</source>
             <translation>Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.\nDetta skulle hämta senaste översättningarna från Crowdin.</translation>
-        </message>
-        <message>
-            <source>No untranslated entries</source>
-            <translation>Inga oöversatta poster</translation>
-        </message>
-        <message>
-            <source>Pre-translating…</source>
-            <translation>Föröversätter…</translation>
-        </message>
-        <message>
-            <source>Pre-translated %d entries via %s (%d errors)</source>
-            <translation>Föröversatte %d poster via %s (%d fel)</translation>
-        </message>
-        <message>
-            <source>%d of %d strings · %.1f strings/s · %s</source>
-            <translation>%d av %d strängar · %.1f strängar/s · %s</translation>
-        </message>
-        <message>
-            <source>%d min %d s remaining</source>
-            <translation>%d min %d s kvar</translation>
-        </message>
-        <message>
-            <source>%d s remaining</source>
-            <translation>%d s kvar</translation>
-        </message>
-        <message>
-            <source>Completed %d strings in %d s</source>
-            <translation>Slutförde %d strängar på %d s</translation>
-        </message>
-        <message>
-            <source>Continue</source>
-            <translation>Fortsätt</translation>
-        </message>
-        <message>
-            <source>Error translating string %d of %d:</source>
-            <translation>Fel vid översättning av sträng %d av %d:</translation>
-        </message>
-        <message>
-            <source>Pre-translated %d entries via %s (%d errors — last: %s)</source>
-            <translation>Föröversatte %d poster via %s (%d fel — senaste: %s)</translation>
-        </message>
-        <message>
-            <source>Skip All Errors</source>
-            <translation>Hoppa över alla fel</translation>
-        </message>
-        <message>
-            <source>Stop</source>
-            <translation>Stoppa</translation>
-        </message>
-        <message>
-            <source>Translation Error</source>
-            <translation>Översättningsfel</translation>
-        </message>
-        <message>
-            <source>Pre-translate cancelled — no translations made</source>
-            <translation>Föröversättning avbruten — inga översättningar gjorda</translation>
-        </message>
-        <message>
-            <source>Pre-translated %d of %d entries via %s (cancelled)</source>
-            <translation>Föröversatte %d av %d poster via %s (avbruten)</translation>
-        </message>
-        <message>
-            <source>Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)</source>
-            <translation>Föröversatte %d av %d poster via %s (avbruten, %d fel — senaste: %s)</translation>
         </message>
     </context>
 </TS>
