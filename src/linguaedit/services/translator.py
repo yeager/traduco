@@ -50,7 +50,8 @@ def _get_api_key(service: str, key: str = "api_key") -> str:
 
 def translate_lingva(text: str, source: str = "en", target: str = "sv", **kw) -> str:
     """Free translation via Lingva Translate (Google Translate proxy)."""
-    url = f"https://lingva.ml/api/v1/{source}/{target}/{requests.utils.quote(text)}"
+    base = kw.get("lingva_url", "https://translate.plausibility.cloud")
+    url = f"{base}/api/v1/{source}/{target}/{requests.utils.quote(text)}"
     try:
         r = _retry_request("GET", url)
         return r.json().get("translation", "")
