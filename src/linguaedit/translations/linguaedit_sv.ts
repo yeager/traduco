@@ -578,10 +578,8 @@
             <translation>Översättningsminne</translation>
         </message>
         <message>
-            <source>Source: %s
-Target: %s</source>
-            <translation>Källa: %s
-Mål: %s</translation>
+            <source>Source: %s\nTarget: %s</source>
+            <translation>Källa: %s\nMål: %s</translation>
         </message>
     </context>
     <context>
@@ -635,8 +633,8 @@ Mål: %s</translation>
             <translation>Oöversatt</translation>
         </message>
         <message>
-            <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</source>
-            <translation>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style='color:green'&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:orange'&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style='color:red'&gt;Untranslated: %d&lt;/span&gt;</translation>
+            <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style=&apos;color:green&apos;&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:orange&apos;&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:red&apos;&gt;Untranslated: %d&lt;/span&gt;</source>
+            <translation>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style=&apos;color:green&apos;&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:orange&apos;&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:red&apos;&gt;Untranslated: %d&lt;/span&gt;</translation>
         </message>
     </context>
     <context>
@@ -1118,14 +1116,8 @@ Mål: %s</translation>
             <translation>Redigera term</translation>
         </message>
         <message>
-            <source>Expected CSV format:
-source,target,notes,domain
-
-</source>
-            <translation>Förväntat CSV-format:
-källa,mål,anteckningar,domän
-
-</translation>
+            <source>Expected CSV format:\nsource,target,notes,domain\n\n</source>
+            <translation>Förväntat CSV-format:\nkälla,mål,anteckningar,domän\n\n</translation>
         </message>
         <message>
             <source>Export CSV...</source>
@@ -1148,10 +1140,8 @@ källa,mål,anteckningar,domän
             <translation>Exporterade %d termer till %s</translation>
         </message>
         <message>
-            <source>Failed to export glossary:
-%s</source>
-            <translation>Det gick inte att exportera ordlistan:
-%s</translation>
+            <source>Failed to export glossary:\n%s</source>
+            <translation>Det gick inte att exportera ordlistan:\n%s</translation>
         </message>
         <message>
             <source>Glossary Management</source>
@@ -1170,14 +1160,8 @@ källa,mål,anteckningar,domän
             <translation>Importera ordlista från CSV</translation>
         </message>
         <message>
-            <source>Imported %d terms with %d errors.
-
-First errors:
-%s</source>
-            <translation>Importerade %d termer med %d fel.
-
-Första felen:
-%s</translation>
+            <source>Imported %d terms with %d errors.\n\nFirst errors:\n%s</source>
+            <translation>Importerade %d termer med %d fel.\n\nFörsta felen:\n%s</translation>
         </message>
         <message>
             <source>No terms to export.</source>
@@ -1248,8 +1232,8 @@ Första felen:
             <translation>Varning</translation>
         </message>
         <message>
-            <source>Delete term '%s' → '%s'?</source>
-            <translation>Ta bort term '%s' → '%s'?</translation>
+            <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
+            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
         </message>
     </context>
     <context>
@@ -1518,23 +1502,15 @@ Första felen:
             <translation>Användare</translation>
         </message>
         <message>
-            <source>Are you sure you want to rollback to this version?
-
-This will replace the current text with:
-{}</source>
-            <translation>Är du säker på att du vill återställa till denna version?
-
-Detta ersätter den nuvarande texten med:
-{}</translation>
+            <source>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</source>
+            <translation>Är du säker på att du vill återställa till denna version?\n\nDetta ersätter den nuvarande texten med:\n{}</translation>
         </message>
     </context>
     <context>
         <name>ImagePreviewLabel</name>
         <message>
-            <source>Click to select image
-(PNG, JPG, GIF)</source>
-            <translation>Klicka för att välja bild
-(PNG, JPG, GIF)</translation>
+            <source>Click to select image\n(PNG, JPG, GIF)</source>
+            <translation>Klicka för att välja bild\n(PNG, JPG, GIF)</translation>
         </message>
     </context>
     <context>
@@ -1731,10 +1707,8 @@ Detta ersätter den nuvarande texten med:
             <translation>En översättningsfilredigerare för PO, TS, JSON, XLIFF, </translation>
         </message>
         <message>
-            <source>A translation file is currently open with unsaved changes.
-</source>
-            <translation>En översättningsfil är öppen med osparade ändringar.
-</translation>
+            <source>A translation file is currently open with unsaved changes.\n</source>
+            <translation>En översättningsfil är öppen med osparade ändringar.\n</translation>
         </message>
         <message>
             <source>AI Review</source>
@@ -1974,7 +1948,7 @@ Detta ersätter den nuvarande texten med:
         </message>
         <message>
             <source>Compiled: %s</source>
-            <translation>Sammanställt: %s</translation>
+            <translation>Kompilerat: %s</translation>
         </message>
         <message>
             <source>Concordance</source>
@@ -2017,10 +1991,8 @@ Detta ersätter den nuvarande texten med:
             <translation>Kopiera källan till översättningen</translation>
         </message>
         <message>
-            <source>Could not read video file:
-%s</source>
-            <translation>Kunde inte läsa videofilen:
-%s</translation>
+            <source>Could not read video file:\n%s</source>
+            <translation>Kunde inte läsa videofilen:\n%s</translation>
         </message>
         <message>
             <source>Count</source>
@@ -2039,8 +2011,7 @@ Detta ersätter den nuvarande texten med:
             <translation>Crowdin-fel</translation>
         </message>
         <message>
-            <source>No Crowdin API key configured.
-Please add one in Translation → API Keys…</source>
+            <source>No Crowdin API key configured.\nPlease add one in Translation → API Keys…</source>
             <translation>Ingen Crowdin API-nyckel konfigurerad. Lägg till en i Översättning → API-nycklar...</translation>
         </message>
         <message>
@@ -2224,10 +2195,8 @@ Please add one in Translation → API Keys…</source>
             <translation>Kunde inte spela upp makro</translation>
         </message>
         <message>
-            <source>Failed to run msgmerge:
-{}</source>
-            <translation>Det gick inte att köra msgmerge:
-{}</translation>
+            <source>Failed to run msgmerge:\n{}</source>
+            <translation>Det gick inte att köra msgmerge:\n{}</translation>
         </message>
         <message>
             <source>Feed file to TM</source>
@@ -2746,10 +2715,8 @@ Please add one in Translation → API Keys…</source>
             <translation>Alternativ</translation>
         </message>
         <message>
-            <source>PO file merged successfully with POT file.
-Please reload the file to see changes.</source>
-            <translation>PO-filen har sammanfogats med POT-filen.
-Ladda om filen för att se ändringarna.</translation>
+            <source>PO file merged successfully with POT file.\nPlease reload the file to see changes.</source>
+            <translation>PO-filen har sammanfogats med POT-filen.\nLadda om filen för att se ändringarna.</translation>
         </message>
         <message>
             <source>PO files (*.po);;All files (*)</source>
@@ -3128,10 +3095,8 @@ Ladda om filen för att se ändringarna.</translation>
             <translation>Stavningskontroll aktuell</translation>
         </message>
         <message>
-            <source>Spelling issues:
-%s</source>
-            <translation>Stavningsproblem:
-%s</translation>
+            <source>Spelling issues:\n%s</source>
+            <translation>Stavningsproblem:\n%s</translation>
         </message>
         <message>
             <source>Split Entry…</source>
@@ -3230,10 +3195,8 @@ Ladda om filen för att se ändringarna.</translation>
             <translation>Text-till-tal misslyckades: {}</translation>
         </message>
         <message>
-            <source>The current file has unsaved changes.
-Do you want to save before continuing?</source>
-            <translation>Den aktuella filen har osparade ändringar.
-Vill du spara innan du fortsätter?</translation>
+            <source>The current file has unsaved changes.\nDo you want to save before continuing?</source>
+            <translation>Den aktuella filen har osparade ändringar.\nVill du spara innan du fortsätter?</translation>
         </message>
         <message>
             <source>The file </source>
@@ -3269,7 +3232,7 @@ Vill du spara innan du fortsätter?</translation>
         </message>
         <message>
             <source>Toggle fuzzy/needs work flag</source>
-            <translation>Växla mellan flaggan "luddig" och "behöver bearbetas"</translation>
+            <translation>Växla mellan flaggan &quot;luddig&quot; och &quot;behöver bearbetas&quot;</translation>
         </message>
         <message>
             <source>Total</source>
@@ -3496,14 +3459,8 @@ Vill du spara innan du fortsätter?</translation>
             <translation>Zen-läge</translation>
         </message>
         <message>
-            <source>
-
-Errors:
-{}</source>
-            <translation>
-
-Fel:
-{}</translation>
+            <source>\n\nErrors:\n{}</source>
+            <translation>\n\nFel:\n{}</translation>
         </message>
         <message>
             <source>lrelease error: %s</source>
@@ -3518,10 +3475,8 @@ Fel:
             <translation>msgmerge-kommandot hittades inte. Installera gettext-verktygen.</translation>
         </message>
         <message>
-            <source>msgmerge failed:
-{}</source>
-            <translation>msgmerge misslyckades:
-{}</translation>
+            <source>msgmerge failed:\n{}</source>
+            <translation>msgmerge misslyckades:\n{}</translation>
         </message>
         <message>
             <source>translated</source>
@@ -3620,16 +3575,8 @@ Fel:
             <translation>%d min %d s kvar</translation>
         </message>
         <message>
-            <source>%d of %d entries (%d%%) have no translation.
-
-Untranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.
-
-Save anyway?</source>
-            <translation>%d av %d poster (%d%%) har ingen översättning.
-
-Oöversatta poster markeras och sparas med källtexten som reserv, så att de fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas de korrekt som oöversatta.
-
-Spara ändå?</translation>
+            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.\n\nSave anyway?</source>
+            <translation>%d av %d poster (%d%%) har ingen översättning.\n\nOöversatta poster markeras och sparas med källtexten som reserv, så att de fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas de korrekt som oöversatta.\n\nSpara ändå?</translation>
         </message>
         <message>
             <source>%d of %d strings · %.1f strings/s · %s</source>
@@ -3644,12 +3591,12 @@ Spara ändå?</translation>
             <translation>%d s kvar</translation>
         </message>
         <message>
-            <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
-            <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att ge ditt stöd till utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href='https://github.com/sponsors/yeager'&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href='swish://payment?payee=0702526206&amp;message=LinguaEdit'&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
+            <source>&lt;p&gt;LinguaEdit is free software.&lt;/p&gt;&lt;p&gt;If you find it useful, consider supporting development:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</source>
+            <translation>&lt;p&gt;LinguaEdit är fri programvara.&lt;/p&gt;&lt;p&gt;Om du tycker den är användbar, överväg att ge ditt stöd till utvecklingen:&lt;/p&gt;&lt;p&gt;❤️ &lt;b&gt;GitHub Sponsors:&lt;/b&gt; &lt;a href=&apos;https://github.com/sponsors/yeager&apos;&gt;github.com/sponsors/yeager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;🇸🇪 &lt;b&gt;Swish:&lt;/b&gt; +46702526206 — &lt;a href=&apos;swish://payment?payee=0702526206&amp;message=LinguaEdit&apos;&gt;Öppna Swish&lt;/a&gt;&lt;/p&gt;</translation>
         </message>
         <message>
-            <source>Cannot compile: install 'polib' or 'gettext' (msgfmt)</source>
-            <translation>Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)</translation>
+            <source>Cannot compile: install &apos;polib&apos; or &apos;gettext&apos; (msgfmt)</source>
+            <translation>Kan inte kompilera: installera &apos;polib&apos; eller &apos;gettext&apos; (msgfmt)</translation>
         </message>
         <message>
             <source>No untranslated entries</source>
@@ -3700,14 +3647,12 @@ Spara ändå?</translation>
             <translation>Stoppa</translation>
         </message>
         <message>
-            <source>Recording macro '{}'...</source>
-            <translation>Spelar in makro '{}'...</translation>
+            <source>Recording macro &apos;{}&apos;...</source>
+            <translation>Spelar in makro &apos;{}&apos;...</translation>
         </message>
         <message>
-            <source>The file '%s' has unsaved changes.
-Do you want to save before closing?</source>
-            <translation>Filen '%s' har osparade ändringar.
-Vill du spara innan du stänger?</translation>
+            <source>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</source>
+            <translation>Filen &apos;%s&apos; har osparade ändringar.\nVill du spara innan du stänger?</translation>
         </message>
         <message>
             <source>LinguaEdit — %s</source>
@@ -3718,55 +3663,40 @@ Vill du spara innan du stänger?</translation>
             <translation>Backend: %s</translation>
         </message>
         <message>
-            <source>Source: \"%s\"
-  Entries: %s
-  Translations: %s
-</source>
-            <translation>Källa: \"%s\"
-  Poster: %s
-  Översättningar: %s
-</translation>
+            <source>Source: \&quot;%s\&quot;\n  Entries: %s\n  Translations: %s\n</source>
+            <translation>Källa: \&quot;%s\&quot;\n  Poster: %s\n  Översättningar: %s\n</translation>
+        </message>
+    <message>
+            <source>Source: %s\nTarget: %s</source>
+            <translation>Källa: %s\nMål: %s</translation>
         </message>
         <message>
-            <source>Source: %s
-Target: %s</source>
-            <translation>Källa: %s
-Mål: %s</translation>
+            <source>%s\n\nAdd a new term or check file?</source>
+            <translation>%s\n\nLägga till en ny term eller kontrollera fil?</translation>
         </message>
         <message>
-            <source>%s
-
-Add a new term or check file?</source>
-            <translation>%s
-
-Lägga till en ny term eller kontrollera fil?</translation>
+            <source>File: %s\nEntries: %d</source>
+            <translation>Fil: %s\nPoster: %d</translation>
         </message>
         <message>
-            <source>File: %s
-Entries: %d</source>
-            <translation>Fil: %s
-Poster: %d</translation>
-        </message>
-        <message>
-            <source>Found %d inconsistencies:
-
-</source>
-            <translation>Hittade %d inkonsekvenser:
-
-</translation>
+            <source>Found %d inconsistencies:\n\n</source>
+            <translation>Hittade %d inkonsekvenser:\n\n</translation>
         </message>
         <message>
             <source>Weblate Statistics…</source>
             <translation>Weblate-statistik…</translation>
         </message>
         <message>
-            <source>No Weblate API key or server URL configured.
-Please add them in Translation → API Keys…</source>
+            <source>No Weblate API key or server URL configured.\nPlease add them in Translation → API Keys…</source>
             <translation>Ingen Weblate API-nyckel eller server-URL har konfigurerats. Lägg till dem under Översättning → API-nycklar...</translation>
         </message>
         <message>
             <source>Weblate Error</source>
             <translation>Weblate-fel</translation>
+        </message>
+        <message>
+            <source>Weblate</source>
+            <translation>Weblate</translation>
         </message>
         <message>
             <source>Weblate — %s</source>
@@ -3780,65 +3710,9 @@ Please add them in Translation → API Keys…</source>
             <source>Weblate Server URL:</source>
             <translation>Server-URL för Weblate:</translation>
         </message>
-        <message>
-            <source>No API Key</source>
-            <translation>Ingen API-nyckel</translation>
-        </message>
-        <message>
-            <source>No Transifex API key configured.
-Please add one in Translation → API Keys…</source>
-            <translation>Ingen Transifex API-nyckel konfigurerad.
-Lägg till en i Översättning → API-nycklar…</translation>
-        </message>
-        <message>
-            <source>No language statistics found.</source>
-            <translation>Ingen språkstatistik hittades.</translation>
-        </message>
-        <message>
-            <source>No organizations found.</source>
-            <translation>Inga organisationer hittades.</translation>
-        </message>
-        <message>
-            <source>No projects found.</source>
-            <translation>Inga projekt hittades.</translation>
-        </message>
-        <message>
-            <source>Organization:</source>
-            <translation>Organisation:</translation>
-        </message>
-        <message>
-            <source>Project:</source>
-            <translation>Projekt:</translation>
-        </message>
-        <message>
-            <source>Select Organization</source>
-            <translation>Välj organisation</translation>
-        </message>
-        <message>
-            <source>Select Project</source>
-            <translation>Välj projekt</translation>
-        </message>
-        <message>
-            <source>Transifex Error</source>
-            <translation>Transifex-fel</translation>
-        </message>
-        <message>
-            <source>Transifex Statistics…</source>
-            <translation>Transifex-statistik…</translation>
-        </message>
-        <message>
-            <source>Transifex — %s</source>
-            <translation>Transifex — %s</translation>
-        </message>
-        <message>
-            <source>Translation statistics for &lt;b&gt;%s&lt;/b&gt;:</source>
-            <translation>Översättningsstatistik för &lt;b&gt;%s&lt;/b&gt;:</translation>
-        </message>
-        <message>
-            <source>By context</source>
-            <translation>Efter kontext</translation>
-        </message>
-    </context>
+    <message><source>No API Key</source><translation>Ingen API-nyckel</translation></message><message><source>No Transifex API key configured.
+Please add one in Translation → API Keys…</source><translation>Ingen Transifex API-nyckel konfigurerad.
+Lägg till en i Översättning → API-nycklar…</translation></message><message><source>No language statistics found.</source><translation>Ingen språkstatistik hittades.</translation></message><message><source>No organizations found.</source><translation>Inga organisationer hittades.</translation></message><message><source>No projects found.</source><translation>Inga projekt hittades.</translation></message><message><source>Organization:</source><translation>Organisation:</translation></message><message><source>Project:</source><translation>Projekt:</translation></message><message><source>Select Organization</source><translation>Välj organisation</translation></message><message><source>Select Project</source><translation>Välj projekt</translation></message><message><source>Transifex Error</source><translation>Transifex-fel</translation></message><message><source>Transifex Statistics…</source><translation>Transifex-statistik…</translation></message><message><source>Transifex — %s</source><translation>Transifex — %s</translation></message><message><source>Translation statistics for &lt;b&gt;%s&lt;/b&gt;:</source><translation>Översättningsstatistik för &lt;b&gt;%s&lt;/b&gt;:</translation></message></context>
     <context>
         <name>Linter</name>
         <message>
@@ -4228,16 +4102,16 @@ Lägg till en i Översättning → API-nycklar…</translation>
             <translation>🔴 Inspelning... ({} åtgärder)</translation>
         </message>
         <message>
-            <source>Are you sure you want to delete the macro '{}'?</source>
-            <translation>Är du säker på att du vill radera makrot '{}'?</translation>
+            <source>Are you sure you want to delete the macro &apos;{}&apos;?</source>
+            <translation>Är du säker på att du vill radera makrot &apos;{}&apos;?</translation>
         </message>
         <message>
-            <source>Failed to play macro '{}'.</source>
-            <translation>Kunde inte spela upp makro '{}'.</translation>
+            <source>Failed to play macro &apos;{}&apos;.</source>
+            <translation>Kunde inte spela upp makro &apos;{}&apos;.</translation>
         </message>
         <message>
-            <source>Macro '{}' has been saved successfully.</source>
-            <translation>Makro '{}' har sparats.</translation>
+            <source>Macro &apos;{}&apos; has been saved successfully.</source>
+            <translation>Makro &apos;{}&apos; har sparats.</translation>
         </message>
     </context>
     <context>
@@ -4329,10 +4203,8 @@ Lägg till en i Översättning → API-nycklar…</translation>
             <translation>Extraherad text</translation>
         </message>
         <message>
-            <source>Failed to create PO file:
-{}</source>
-            <translation>Det gick inte att skapa PO-filen:
-{}</translation>
+            <source>Failed to create PO file:\n{}</source>
+            <translation>Det gick inte att skapa PO-filen:\n{}</translation>
         </message>
         <message>
             <source>Filter extracted strings...</source>
@@ -4387,10 +4259,8 @@ Lägg till en i Översättning → API-nycklar…</translation>
             <translation>PO-filer (*.po)</translation>
         </message>
         <message>
-            <source>PO file created successfully:
-{}</source>
-            <translation>PO-fil skapad:
-{}</translation>
+            <source>PO file created successfully:\n{}</source>
+            <translation>PO-fil skapad:\n{}</translation>
         </message>
         <message>
             <source>Page Segmentation:</source>
@@ -4473,20 +4343,8 @@ Lägg till en i Översättning → API-nycklar…</translation>
             <translation>✗ OCR misslyckades: %1</translation>
         </message>
         <message>
-            <source>OCR functionality requires tesseract-ocr to be installed.
-
-Installation instructions:
-• macOS: brew install tesseract
-• Ubuntu/Debian: sudo apt install tesseract-ocr
-• Windows: Download from GitHub releases
-• Arch Linux: sudo pacman -S tesseract</source>
-            <translation>OCR functionality requires tesseract-ocr to be installed.
-
-Installation instructions:
-• macOS: brew install tesseract
-• Ubuntu/Debian: sudo apt install tesseract-ocr
-• Windows: Download from GitHub releases
-• Arch Linux: sudo pacman -S tesseract</translation>
+            <source>OCR functionality requires tesseract-ocr to be installed.\n\nInstallation instructions:\n• macOS: brew install tesseract\n• Ubuntu/Debian: sudo apt install tesseract-ocr\n• Windows: Download from GitHub releases\n• Arch Linux: sudo pacman -S tesseract</source>
+            <translation>OCR functionality requires tesseract-ocr to be installed.\n\nInstallation instructions:\n• macOS: brew install tesseract\n• Ubuntu/Debian: sudo apt install tesseract-ocr\n• Windows: Download from GitHub releases\n• Arch Linux: sudo pacman -S tesseract</translation>
         </message>
         <message>
             <source>⚠ No text found in image.</source>
@@ -4824,18 +4682,8 @@ Installation instructions:
             <translation>Översättning</translation>
         </message>
         <message>
-            <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.
-
-For better security, install:
-• macOS: Built-in (Keychain)
-• Windows: pip install keyring
-• Linux: pip install secretstorage</source>
-            <translation>No system keychain detected. Credentials are stored in an encrypted file with a master password.
-
-For better security, install:
-• macOS: Built-in (Keychain)
-• Windows: pip install keyring
-• Linux: pip install secretstorage</translation>
+            <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</source>
+            <translation>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</translation>
         </message>
         <message>
             <source>Your credentials are securely stored in the system keychain.</source>
@@ -5264,7 +5112,7 @@ For better security, install:
         </message>
         <message>
             <source>Characters:</source>
-            <translation>Karaktärer:</translation>
+            <translation>Tecken:</translation>
         </message>
         <message>
             <source>Entry #</source>
@@ -5489,10 +5337,8 @@ For better security, install:
             <translation>t.ex. sv, de, fr</translation>
         </message>
         <message>
-            <source>✓ Downloaded at %1
-Saved to: %2</source>
-            <translation>✓ Nedladdad vid %1
-Sparad till: %2</translation>
+            <source>✓ Downloaded at %1\nSaved to: %2</source>
+            <translation>✓ Nedladdad vid %1\nSparad till: %2</translation>
         </message>
         <message>
             <source>✓ Uploaded at %1</source>
@@ -5793,16 +5639,12 @@ Sparad till: %2</translation>
             <translation>Klart</translation>
         </message>
         <message>
-            <source>Could not extract the subtitle:
-%s</source>
-            <translation>Kunde inte extrahera undertexten:
-%s</translation>
+            <source>Could not extract the subtitle:\n%s</source>
+            <translation>Kunde inte extrahera undertexten:\n%s</translation>
         </message>
         <message>
-            <source>Could not read the video file:
-%s</source>
-            <translation>Kunde inte läsa videofilen:
-%s</translation>
+            <source>Could not read the video file:\n%s</source>
+            <translation>Kunde inte läsa videofilen:\n%s</translation>
         </message>
         <message>
             <source>Save Subtitle As</source>
@@ -5821,10 +5663,8 @@ Sparad till: %2</translation>
             <translation>Stäng</translation>
         </message>
         <message>
-            <source>The subtitle has been saved to:
-%s</source>
-            <translation>Undertexten har sparats till:
-%s</translation>
+            <source>The subtitle has been saved to:\n%s</source>
+            <translation>Undertexten har sparats till:\n%s</translation>
         </message>
         <message>
             <source>Subtitle Tracks</source>
@@ -5982,15 +5822,11 @@ Sparad till: %2</translation>
             <translation>Du</translation>
         </message>
         <message>
-            <source>LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,
-Android XML, ARB, PHP, and YAML files.
-
-Features include AI-powered pre-translation, translation memory,
-quality assurance, spell checking, and platform integration.</source>
+            <source>LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,\nAndroid XML, ARB, PHP, and YAML files.\n\nFeatures include AI-powered pre-translation, translation memory,\nquality assurance, spell checking, and platform integration.</source>
             <translation>LinguaEdit är en modern översättningsredigerare för PO-, TS-, JSON-, XLIFF-, Android XML-, ARB-, PHP- och YAML-filer. Funktionerna inkluderar AI-driven föröversättning, översättningsminne, kvalitetssäkring, stavningskontroll och plattformsintegration.</translation>
         </message>
         <message>
-            <source>You're all set!</source>
+            <source>You&apos;re all set!</source>
             <translation>Du är redo!</translation>
         </message>
         <message>
@@ -6124,12 +5960,20 @@ quality assurance, spell checking, and platform integration.</source>
             <translation>&lt;b&gt;Källtext:&lt;/b&gt;</translation>
         </message>
         <message>
+            <source>&lt;b&gt;Source text&lt;/b&gt;</source>
+            <translation>&lt;b&gt;Källtext&lt;/b&gt;</translation>
+        </message>
+        <message>
             <source>&lt;b&gt;Suggestions&lt;/b&gt;</source>
             <translation>&lt;b&gt;Förslag&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translation:&lt;/b&gt;</source>
             <translation>&lt;b&gt;Översättning:&lt;/b&gt;</translation>
+        </message>
+        <message>
+            <source>&lt;b&gt;Translation&lt;/b&gt;</source>
+            <translation>&lt;b&gt;Översättning&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translator comment:&lt;/b&gt;</source>
@@ -6164,28 +6008,28 @@ quality assurance, spell checking, and platform integration.</source>
             <translation>&lt;i&gt;Inga förslag&lt;/i&gt;</translation>
         </message>
         <message>
-            <source>Are you sure you want to delete the macro '{}'?</source>
-            <translation>Är du säker på att du vill radera makrot '{}'?</translation>
+            <source>Are you sure you want to delete the macro &apos;{}&apos;?</source>
+            <translation>Är du säker på att du vill radera makrot &apos;{}&apos;?</translation>
         </message>
         <message>
-            <source>Cannot compile: install 'polib' or 'gettext' (msgfmt)</source>
-            <translation>Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)</translation>
+            <source>Cannot compile: install &apos;polib&apos; or &apos;gettext&apos; (msgfmt)</source>
+            <translation>Kan inte kompilera: installera &apos;polib&apos; eller &apos;gettext&apos; (msgfmt)</translation>
         </message>
         <message>
             <source>Click in the source text where you want to split, then press OK.</source>
             <translation>Klicka i källtexten där du vill dela, tryck sedan OK.</translation>
         </message>
         <message>
-            <source>Delete term '%s' → '%s'?</source>
-            <translation>Ta bort term '%s' → '%s'?</translation>
+            <source>Delete term &apos;%s&apos; → &apos;%s&apos;?</source>
+            <translation>Ta bort term &apos;%s&apos; → &apos;%s&apos;?</translation>
         </message>
         <message>
             <source>This video file contains no embedded subtitle tracks.</source>
             <translation>Denna videofil innehåller inga inbäddade undertextspår.</translation>
         </message>
         <message>
-            <source>Failed to play macro '{}'.</source>
-            <translation>Kunde inte spela upp makro '{}'.</translation>
+            <source>Failed to play macro &apos;{}&apos;.</source>
+            <translation>Kunde inte spela upp makro &apos;{}&apos;.</translation>
         </message>
         <message>
             <source>Find &amp; Replace</source>
@@ -6196,12 +6040,12 @@ quality assurance, spell checking, and platform integration.</source>
             <translation>Sök och ersätt…</translation>
         </message>
         <message>
-            <source>Macro '{}' has been saved successfully.</source>
-            <translation>Makro '{}' har sparats.</translation>
+            <source>Macro &apos;{}&apos; has been saved successfully.</source>
+            <translation>Makro &apos;{}&apos; har sparats.</translation>
         </message>
         <message>
-            <source>Recording macro '{}'...</source>
-            <translation>Spelar in makro '{}'...</translation>
+            <source>Recording macro &apos;{}&apos;...</source>
+            <translation>Spelar in makro &apos;{}&apos;...</translation>
         </message>
         <message>
             <source>Save &amp;As…</source>
@@ -6216,17 +6060,15 @@ quality assurance, spell checking, and platform integration.</source>
             <translation>Sök och ersätt</translation>
         </message>
         <message>
-            <source>The file '%s' has unsaved changes.
-Do you want to save before closing?</source>
-            <translation>Filen '%s' har osparade ändringar.
-Vill du spara innan du stänger?</translation>
+            <source>The file &apos;%s&apos; has unsaved changes.\nDo you want to save before closing?</source>
+            <translation>Filen &apos;%s&apos; har osparade ändringar.\nVill du spara innan du stänger?</translation>
         </message>
         <message>
             <source>Total: {0} characters | Invisible: {1} | Suspicious: {2}</source>
             <translation>Totalt: {0} tecken | Osynliga: {1} | Misstänkta: {2}</translation>
         </message>
         <message>
-            <source>You're all set!</source>
+            <source>You&apos;re all set!</source>
             <translation>Du är redo!</translation>
         </message>
         <message>
@@ -6234,52 +6076,24 @@ Vill du spara innan du stänger?</translation>
             <translation>Dina inloggningsuppgifter lagras säkert i systemets nyckelring.</translation>
         </message>
         <message>
-            <source>Are you sure you want to rollback to this version?
-
-This will replace the current text with:
-{}</source>
-            <translation>Är du säker på att du vill återställa till denna version?
-
-Detta ersätter den nuvarande texten med:
-{}</translation>
+            <source>Are you sure you want to rollback to this version?\n\nThis will replace the current text with:\n{}</source>
+            <translation>Är du säker på att du vill återställa till denna version?\n\nDetta ersätter den nuvarande texten med:\n{}</translation>
         </message>
         <message>
-            <source>OCR functionality requires tesseract-ocr to be installed.
-
-Install with:
-• macOS: brew install tesseract
-• Ubuntu: sudo apt install tesseract-ocr
-• Windows: download from GitHub</source>
-            <translation>OCR-funktionalitet kräver att tesseract-ocr är installerat.
-
-Installera med:
-• macOS: brew install tesseract
-• Ubuntu: sudo apt install tesseract-ocr
-• Windows: ladda ner från GitHub</translation>
+            <source>OCR functionality requires tesseract-ocr to be installed.\n\nInstall with:\n• macOS: brew install tesseract\n• Ubuntu: sudo apt install tesseract-ocr\n• Windows: download from GitHub</source>
+            <translation>OCR-funktionalitet kräver att tesseract-ocr är installerat.\n\nInstallera med:\n• macOS: brew install tesseract\n• Ubuntu: sudo apt install tesseract-ocr\n• Windows: ladda ner från GitHub</translation>
         </message>
         <message>
-            <source>%d of %d entries (%d%%) have no translation.
-
-Untranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.
-
-Save anyway?</source>
-            <translation>%d av %d poster (%d%%) har ingen översättning.
-
-Oöversatta poster markeras och sparas med källtexten som reserv, så att de fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas de korrekt som oöversatta.
-
-Spara ändå?</translation>
+            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.\n\nSave anyway?</source>
+            <translation>%d av %d poster (%d%%) har ingen översättning.\n\nOöversatta poster markeras och sparas med källtexten som reserv, så att de fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas de korrekt som oöversatta.\n\nSpara ändå?</translation>
         </message>
         <message>
-            <source>A translation file is currently open with unsaved changes.
-Save before loading new subtitles?</source>
-            <translation>En översättningsfil är öppen med osparade ändringar.
-Spara innan nya undertexter laddas?</translation>
+            <source>A translation file is currently open with unsaved changes.\nSave before loading new subtitles?</source>
+            <translation>En översättningsfil är öppen med osparade ändringar.\nSpara innan nya undertexter laddas?</translation>
         </message>
         <message>
-            <source>Crowdin Over-The-Air functionality not yet implemented.
-This would pull latest translations from Crowdin.</source>
-            <translation>Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.
-Detta skulle hämta senaste översättningarna från Crowdin.</translation>
+            <source>Crowdin Over-The-Air functionality not yet implemented.\nThis would pull latest translations from Crowdin.</source>
+            <translation>Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.\nDetta skulle hämta senaste översättningarna från Crowdin.</translation>
         </message>
     </context>
     <context>
