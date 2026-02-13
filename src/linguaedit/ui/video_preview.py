@@ -103,6 +103,7 @@ class _VideoWithSubtitles(QGraphicsView):
 
         self._source_text = ""
         self._translation_text = ""
+        self._has_any_translations = False
         self._font_size = 18
 
         self._video_item.nativeSizeChanged.connect(self._on_native_size_changed)
@@ -117,9 +118,11 @@ class _VideoWithSubtitles(QGraphicsView):
     def video_widget(self):
         return self._video_item
 
-    def set_texts(self, source: str, translation: str):
+    def set_texts(self, source: str, translation: str,
+                  has_any_translations: bool = False):
         self._source_text = source
         self._translation_text = translation
+        self._has_any_translations = has_any_translations
         self._update_subtitle_display()
 
     def set_font_size(self, size: int):
@@ -128,13 +131,18 @@ class _VideoWithSubtitles(QGraphicsView):
 
     def _update_subtitle_display(self):
         text = ""
-        color = QColor(255, 255, 60)  # yellow for translation
+        color = QColor(255, 255, 60)  # yellow = default/translated
         if self._translation_text:
             text = self._translation_text
-            color = QColor(255, 255, 60)
+            color = QColor(255, 255, 60)  # yellow — translated
         elif self._source_text:
             text = self._source_text
-            color = QColor(255, 80, 80)  # red for untranslated
+            if self._has_any_translations:
+                # File has some translations → red means this one is missing
+                color = QColor(255, 80, 80)
+            else:
+                # No translations at all (e.g. just extracted) → show normal yellow
+                color = QColor(255, 255, 60)
 
         if not text:
             self._sub_bg.setVisible(False)
@@ -287,6 +295,7 @@ class VideoPreviewWidget(QWidget):
         self._loop_enabled = False
         self._auto_pause = False
         self._subtitle_entries = []
+        self._has_any_translations = False
         self._sub_font_size = 18
 
         # ── Layout ──
@@ -544,6 +553,8 @@ class VideoPreviewWidget(QWidget):
     def set_subtitle_entries(self, entries: list):
         """entries: list of (start_ms, end_ms, source_text, translation_text)"""
         self._subtitle_entries = entries
+        # Track whether the file has any translations at all
+        self._has_any_translations = any(t for _, _, _, t in entries)
 
     def seek_to_time(self, time_str: str):
         ms = _parse_time_to_ms(time_str)
@@ -561,7 +572,7 @@ class VideoPreviewWidget(QWidget):
         self._seg_start_ms = _parse_time_to_ms(start_time)
         self._seg_end_ms = _parse_time_to_ms(end_time)
         self._slider.set_segment_range(self._seg_start_ms, self._seg_end_ms)
-        self._video_widget.set_texts(source, translation)
+        self._video_widget.set_texts(source, translation, self._has_any_translations)
         duration_ms = self._seg_end_ms - self._seg_start_ms
         self._segment_label.setText(
             f"▶ {_ms_to_timestamp_precise(self._seg_start_ms)} → "
@@ -624,9 +635,10 @@ class VideoPreviewWidget(QWidget):
         pos = self._player.position()
         for start_ms, end_ms, source, translation in self._subtitle_entries:
             if start_ms <= pos <= end_ms:
-                self._video_widget.set_texts(source, translation)
+                self._video_widget.set_texts(
+                    source, translation, self._has_any_translations)
                 return
-        self._video_widget.set_texts("", "")
+        self._video_widget.set_texts("", "", self._has_any_translations)
 
     def _on_duration_changed(self, duration: int):
         self._slider.setRange(0, duration)
