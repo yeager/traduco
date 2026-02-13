@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [1.8.11] — 2026-02-13
+
+### Fixed
+- **Flag icons on Windows** — Windows doesn't render flag emoji; now uses painted stripe flags instead (works everywhere)
+
 ## [1.8.10] — 2026-02-13
 
 ### Fixed
