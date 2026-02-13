@@ -1363,7 +1363,7 @@ class LinguaEditWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(self.tr("Open Project…"), self._show_project_dock, QKeySequence("Ctrl+Shift+O"))
         file_menu.addSeparator()
-        file_menu.addAction(self.tr("Quit"), QApplication.quit, QKeySequence.Quit)
+        file_menu.addAction(self.tr("Quit"), self.close, QKeySequence.Quit)
 
         # Edit
         edit_menu = mb.addMenu(self.tr("&Edit"))
