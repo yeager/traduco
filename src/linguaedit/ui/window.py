@@ -569,7 +569,7 @@ class LinguaEditWindow(QMainWindow):
 
         # Filter & sort
         self._filter_mode = "all"
-        self._sort_mode = "status"
+        self._sort_mode = "file"
         self._sort_order: list[int] = []
         self._search_replace_visible = False
         self._search_match_count = 0
