@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [1.8.13] — 2026-02-13
+
+### Added
+- **Browse buttons** for Transifex, Weblate, and Crowdin — list projects/orgs without manual input
+- **Context column** for file types with context (TS/PO/XLIFF)
+- **svlang integration** — svengelska detection + consistency checks for Swedish translations
+- **Windows keyring verification** for credential storage
+
+### Changed
+- Default sort order changed to file order (ascending)
+- Number localization lint changed to info severity
+
+### Fixed
+- Clean error messages from platform APIs (no more raw HTML dumps)
+- 33 missing Swedish translations fixed (newline strings)
+- Duplicate .ts messages cleaned up
+- update_translations.py false positive fix
+
 ## [1.8.12] — 2026-02-13
 
 ### Changed
