@@ -35,9 +35,11 @@ def _detect_backend() -> str:
         return "macos"
     if system == "Windows":
         try:
-            import keyring  # noqa: F401
+            import keyring
+            # Verify the backend actually works (e.g. WinVaultKeyring)
+            keyring.get_password(_SERVICE_PREFIX, "__test__")
             return "windows"
-        except ImportError:
+        except Exception:
             pass
     if system == "Linux":
         try:

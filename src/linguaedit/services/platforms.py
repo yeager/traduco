@@ -80,6 +80,39 @@ class PlatformAuthError(PlatformError):
     pass
 
 
+# ── Error helper ──────────────────────────────────────────────────────
+
+def _clean_error(response) -> str:
+    """Extract a clean error message from an HTTP response.
+
+    - HTML responses: return just "HTTP {status}"
+    - JSON responses: try to extract an error/detail message
+    - Otherwise: return truncated text
+    """
+    ct = response.headers.get("Content-Type", "")
+    if "html" in ct:
+        return f"HTTP {response.status_code}"
+    if "json" in ct:
+        try:
+            data = response.json()
+            # Common error message keys
+            for key in ("error", "detail", "message", "error_message"):
+                if key in data:
+                    val = data[key]
+                    if isinstance(val, str):
+                        return val[:200]
+                    if isinstance(val, dict) and "message" in val:
+                        return val["message"][:200]
+            # Nested: {"errors": [{"detail": "..."}]}
+            if "errors" in data and isinstance(data["errors"], list) and data["errors"]:
+                err = data["errors"][0]
+                if isinstance(err, dict):
+                    return (err.get("detail") or err.get("message") or str(err))[:200]
+        except Exception:
+            pass
+    return response.text[:200]
+
+
 # ── Retry helper ──────────────────────────────────────────────────────
 
 def _request_with_retry(method: str, url: str, max_retries: int = 3,
@@ -144,7 +177,7 @@ def transifex_list_projects(config: TransifexConfig) -> list[dict]:
     while url:
         r = _request_with_retry("GET", url, headers=config.headers, params=params)
         if r.status_code != 200:
-            raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+            raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
         data = r.json()
         for item in data.get("data", []):
             attrs = item.get("attributes", {})
@@ -165,7 +198,7 @@ def transifex_list_organizations(config: TransifexConfig) -> list[dict]:
     url = f"{config.base_url}/organizations"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     results = []
     for item in r.json().get("data", []):
         attrs = item.get("attributes", {})
@@ -182,7 +215,7 @@ def transifex_test_connection(config: TransifexConfig) -> str:
     url = f"{config.base_url}/organizations/o:{config.organization}"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     data = r.json().get("data", {})
     return data.get("attributes", {}).get("name", config.organization)
 
@@ -193,7 +226,7 @@ def transifex_list_resources(config: TransifexConfig) -> list[dict]:
     params = {"filter[project]": f"o:{config.organization}:p:{config.project}"}
     r = _request_with_retry("GET", url, headers=config.headers, params=params)
     if r.status_code != 200:
-        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("data", [])
 
 
@@ -202,7 +235,7 @@ def transifex_list_languages(config: TransifexConfig) -> list[dict]:
     url = f"{config.base_url}/projects/o:{config.organization}:p:{config.project}/languages"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Transifex: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("data", [])
 
 
@@ -285,7 +318,7 @@ def transifex_upload(config: TransifexConfig, resource_id: str, content: bytes,
     r = _request_with_retry("POST", url, headers=config.headers, json=payload)
     if r.status_code not in (200, 201, 202):
         raise PlatformError(_("Transifex upload failed: {code} {text}").format(
-            code=r.status_code, text=r.text[:200]))
+            code=r.status_code, text=_clean_error(r)))
     return r.json()
 
 
@@ -333,7 +366,7 @@ def weblate_list_projects(config: WeblateConfig) -> list[dict]:
     while url:
         r = _request_with_retry("GET", url, headers=config.headers)
         if r.status_code != 200:
-            raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+            raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
         data = r.json()
         for item in data.get("results", []):
             results.append({
@@ -352,7 +385,7 @@ def weblate_test_connection(config: WeblateConfig) -> str:
     url = f"{config.api_url}projects/{config.project}/"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("name", config.project)
 
 
@@ -361,7 +394,7 @@ def weblate_list_components(config: WeblateConfig) -> list[dict]:
     url = f"{config.api_url}projects/{config.project}/components/"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("results", [])
 
 
@@ -370,7 +403,7 @@ def weblate_list_translations(config: WeblateConfig) -> list[dict]:
     url = f"{config.api_url}components/{config.project}/{config.component}/translations/"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Weblate: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("results", [])
 
 
@@ -395,7 +428,7 @@ def weblate_upload(config: WeblateConfig, language: str, file_content: bytes,
     r = _request_with_retry("POST", url, headers=config.headers, files=files, data=data, timeout=60)
     if r.status_code not in (200, 201):
         raise PlatformError(_("Weblate upload failed: {code} {text}").format(
-            code=r.status_code, text=r.text[:200]))
+            code=r.status_code, text=_clean_error(r)))
     return r.json()
 
 
@@ -422,7 +455,7 @@ def crowdin_list_projects(config: CrowdinConfig) -> list[dict]:
         params["offset"] = offset
         r = _request_with_retry("GET", url, headers=config.headers, params=params)
         if r.status_code != 200:
-            raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+            raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
         data = r.json().get("data", [])
         if not data:
             break
@@ -447,7 +480,7 @@ def crowdin_test_connection(config: CrowdinConfig) -> str:
     url = f"{config.base_url}/projects/{config.project_id}"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("data", {}).get("name", str(config.project_id))
 
 
@@ -456,7 +489,7 @@ def crowdin_list_files(config: CrowdinConfig) -> list[dict]:
     url = f"{config.base_url}/projects/{config.project_id}/files"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("data", [])
 
 
@@ -465,7 +498,7 @@ def crowdin_list_languages(config: CrowdinConfig) -> list[dict]:
     url = f"{config.base_url}/projects/{config.project_id}"
     r = _request_with_retry("GET", url, headers=config.headers)
     if r.status_code != 200:
-        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=r.text[:200]))
+        raise PlatformError(_("Crowdin: {code} {text}").format(code=r.status_code, text=_clean_error(r)))
     return r.json().get("data", {}).get("targetLanguages", [])
 
 

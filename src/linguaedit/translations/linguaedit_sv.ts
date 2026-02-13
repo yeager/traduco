@@ -1839,6 +1839,10 @@
             <translation>Bokmärke borttaget</translation>
         </message>
         <message>
+            <source>By context</source>
+            <translation>Sorterat efter kontext</translation>
+        </message>
+        <message>
             <source>By length</source>
             <translation>Efter längd</translation>
         </message>
@@ -4445,8 +4449,28 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
             <translation>Weblate API</translation>
         </message>
         <message>
-            <source>⚠️ No system keychain — tokens stored with basic obfuscation. </source>
-            <translation>⚠️ Inget systemnyckelring — tokens lagras med grundläggande förvrängning. </translation>
+            <source>Browse…</source>
+            <translation>Bläddra…</translation>
+        </message>
+        <message>
+            <source>Loading…</source>
+            <translation>Laddar…</translation>
+        </message>
+        <message>
+            <source>Select Organization</source>
+            <translation>Välj organisation</translation>
+        </message>
+        <message>
+            <source>Select Project</source>
+            <translation>Välj projekt</translation>
+        </message>
+        <message>
+            <source>Select Component</source>
+            <translation>Välj komponent</translation>
+        </message>
+        <message>
+            <source>⚠️ No system keychain — tokens stored with basic obfuscation. Install 'secretstorage' for proper security.</source>
+            <translation>⚠️ Ingen systemnyckelring — tokens lagras med grundläggande förvrängning. Installera 'secretstorage' för ordentlig säkerhet.</translation>
         </message>
         <message>
             <source>✓ Connected: %1</source>
@@ -4682,8 +4706,18 @@ Lägg till en i Översättning → API-nycklar…</translation></message><messag
             <translation>Översättning</translation>
         </message>
         <message>
-            <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</source>
-            <translation>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</translation>
+            <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.
+
+For better security, install:
+• macOS: Built-in (Keychain)
+• Windows: pip install keyring
+• Linux: pip install secretstorage</source>
+            <translation>Ingen systemnyckelring hittades. Inloggningsuppgifter lagras i en krypterad fil med ett huvudlösenord.
+
+För bättre säkerhet, installera:
+• macOS: Inbyggt (Keychain)
+• Windows: pip install keyring
+• Linux: pip install secretstorage</translation>
         </message>
         <message>
             <source>Your credentials are securely stored in the system keychain.</source>
