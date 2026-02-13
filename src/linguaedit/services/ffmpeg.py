@@ -73,14 +73,35 @@ SUPPORTED_VIDEO_EXTENSIONS = {
 }
 
 
+def _find_on_path_or_common(name: str) -> Optional[str]:
+    """Find executable on PATH, falling back to common install locations on Windows."""
+    found = shutil.which(name)
+    if found:
+        return found
+    if sys.platform == "win32":
+        # Common Windows install locations for ffmpeg
+        for base in [
+            os.path.expandvars(r"%LOCALAPPDATA%\Programs\ffmpeg\bin"),
+            os.path.expandvars(r"%ProgramFiles%\ffmpeg\bin"),
+            os.path.expandvars(r"%ProgramFiles(x86)%\ffmpeg\bin"),
+            r"C:\ffmpeg\bin",
+            os.path.expandvars(r"%USERPROFILE%\scoop\shims"),
+            os.path.expandvars(r"%ChocolateyInstall%\bin"),
+        ]:
+            candidate = os.path.join(base, f"{name}.exe")
+            if os.path.isfile(candidate):
+                return candidate
+    return None
+
+
 def find_ffmpeg() -> Optional[str]:
     """Return the absolute path to ffmpeg, or *None* if not found."""
-    return shutil.which("ffmpeg")
+    return _find_on_path_or_common("ffmpeg")
 
 
 def find_ffprobe() -> Optional[str]:
     """Return the absolute path to ffprobe, or *None* if not found."""
-    return shutil.which("ffprobe")
+    return _find_on_path_or_common("ffprobe")
 
 
 def is_ffmpeg_available() -> bool:
@@ -161,10 +182,26 @@ def extract_subtitle(
 
     if progress_callback and duration > 0:
         import re as _re
+        import threading
+
         proc = subprocess.Popen(
             cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
             **_get_subprocess_kwargs(),
         )
+
+        # Read stderr in background thread to prevent pipe deadlock on Windows
+        stderr_lines: list[str] = []
+
+        def _drain_stderr():
+            try:
+                for line in proc.stderr:
+                    stderr_lines.append(line)
+            except Exception:
+                pass
+
+        t = threading.Thread(target=_drain_stderr, daemon=True)
+        t.start()
+
         for line in proc.stdout:
             m = _re.match(r'out_time_ms=(\d+)', line.strip())
             if m:
@@ -176,8 +213,9 @@ def extract_subtitle(
         except subprocess.TimeoutExpired:
             proc.kill()
             raise RuntimeError("ffmpeg extraction timed out after 300 seconds")
+        t.join(timeout=5)
         if proc.returncode != 0:
-            stderr = proc.stderr.read() if proc.stderr else ""
+            stderr = "".join(stderr_lines)
             raise RuntimeError(f"ffmpeg extraction failed: {stderr.strip()}")
     else:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300, **_get_subprocess_kwargs())
