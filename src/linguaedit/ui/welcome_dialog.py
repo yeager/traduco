@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QStackedWidget, QComboBox, QLineEdit, QSpinBox, QWidget,
     QFormLayout, QGroupBox,
 )
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QSize
 
 from linguaedit import __version__
 from linguaedit.services.settings import Settings, SUPPORTED_LANGUAGES, DEFAULTS
 from linguaedit.services.translator import ENGINES
+from linguaedit.app import _find_translations_dir
+from linguaedit.ui.preferences_dialog import _flag_icon, _FLAG_MAP
 
 
 class WelcomeDialog(QDialog):
@@ -105,13 +107,24 @@ class WelcomeDialog(QDialog):
         form.addRow(self.tr("Email:"), self._email_edit)
 
         self._lang_combo = QComboBox()
-        for code, label in SUPPORTED_LANGUAGES:
-            self._lang_combo.addItem(label, code)
+        self._lang_combo.setIconSize(QSize(20, 20))
+
+        translations_dir = _find_translations_dir()
+        available_codes = {"en"}
+        for qm in translations_dir.glob("linguaedit_*.qm"):
+            available_codes.add(qm.stem.replace("linguaedit_", ""))
+
+        lang_lookup = {code: label for code, label in SUPPORTED_LANGUAGES}
+        self._available_langs = []
+        for code in available_codes:
+            self._available_langs.append((code, lang_lookup.get(code, code)))
+        self._available_langs.sort(key=lambda x: (x[0] != "en", x[1]))
+
         current_lang = self._settings["language"]
-        for i, (code, _) in enumerate(SUPPORTED_LANGUAGES):
+        for i, (code, label) in enumerate(self._available_langs):
+            self._lang_combo.addItem(_flag_icon(code), label, code)
             if code == current_lang:
                 self._lang_combo.setCurrentIndex(i)
-                break
         form.addRow(self.tr("Language / Locale:"), self._lang_combo)
 
         self._team_edit = QLineEdit(self._settings["team"])
@@ -228,8 +241,7 @@ class WelcomeDialog(QDialog):
         engine_key = self._engine_combo.currentData()
         engine_name = ENGINES.get(engine_key, {}).get("name", "Lingva")
 
-        lang_idx = self._lang_combo.currentIndex()
-        lang_name = SUPPORTED_LANGUAGES[lang_idx][1] if lang_idx < len(SUPPORTED_LANGUAGES) else "English"
+        lang_name = self._lang_combo.currentText() or "English"
 
         themes = [self.tr("System default"), self.tr("Light"), self.tr("Dark")]
         theme = themes[self._theme_combo.currentIndex()]
@@ -251,9 +263,9 @@ class WelcomeDialog(QDialog):
         s["translator_name"] = self._name_edit.text().strip()
         s["translator_email"] = self._email_edit.text().strip()
 
-        lang_idx = self._lang_combo.currentIndex()
-        if lang_idx < len(SUPPORTED_LANGUAGES):
-            s["language"] = SUPPORTED_LANGUAGES[lang_idx][0]
+        lang_data = self._lang_combo.currentData()
+        if lang_data:
+            s["language"] = lang_data
 
         s["team"] = self._team_edit.text().strip()
 

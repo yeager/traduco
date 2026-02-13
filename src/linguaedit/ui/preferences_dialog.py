@@ -2,16 +2,43 @@
 
 from __future__ import annotations
 
+import re
+from pathlib import Path
+
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QTabWidget, QWidget, QFormLayout,
     QLineEdit, QComboBox, QSpinBox, QGroupBox, QDialogButtonBox,
     QCheckBox, QLabel,
 )
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QLocale
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QFont
 
 from linguaedit.services.settings import Settings, SUPPORTED_LANGUAGES
 from linguaedit.services.translator import ENGINES
 from linguaedit.services import keystore
+from linguaedit.app import _find_translations_dir
+
+
+# Country-flag emoji → QIcon via QPainter text rendering
+_FLAG_MAP: dict[str, str] = {
+    "ar": "🇸🇦", "ca": "🇪🇸", "cs": "🇨🇿", "da": "🇩🇰", "de": "🇩🇪",
+    "el": "🇬🇷", "en": "🇬🇧", "es": "🇪🇸", "fi": "🇫🇮", "fr": "🇫🇷",
+    "hu": "🇭🇺", "it": "🇮🇹", "ja": "🇯🇵", "ko": "🇰🇷", "nb": "🇳🇴",
+    "nl": "🇳🇱", "pl": "🇵🇱", "pt": "🇵🇹", "pt_BR": "🇧🇷", "ro": "🇷🇴",
+    "ru": "🇷🇺", "sv": "🇸🇪", "tr": "🇹🇷", "uk": "🇺🇦",
+    "zh_CN": "🇨🇳",
+}
+
+def _flag_icon(code: str) -> QIcon:
+    """Render a flag emoji to a QIcon."""
+    flag = _FLAG_MAP.get(code, "🏳️")
+    pix = QPixmap(24, 24)
+    pix.fill(Qt.transparent)
+    p = QPainter(pix)
+    p.setFont(QFont("Apple Color Emoji", 16))
+    p.drawText(pix.rect(), Qt.AlignCenter, flag)
+    p.end()
+    return QIcon(pix)
 
 
 class PreferencesDialog(QDialog):
@@ -53,13 +80,32 @@ class PreferencesDialog(QDialog):
         form.addRow(self.tr("Email:"), self._email_edit)
 
         self._lang_combo = QComboBox()
-        for code, label in SUPPORTED_LANGUAGES:
-            self._lang_combo.addItem(label, code)
+        self._lang_combo.setIconSize(self._lang_combo.sizeHint())  # decent flag size
+        from PySide6.QtCore import QSize
+        self._lang_combo.setIconSize(QSize(20, 20))
+
+        # Build available languages from .qm files + English (always available)
+        translations_dir = _find_translations_dir()
+        available_codes = {"en"}  # English always present
+        for qm in translations_dir.glob("linguaedit_*.qm"):
+            code = qm.stem.replace("linguaedit_", "")
+            available_codes.add(code)
+
+        # Build lookup from SUPPORTED_LANGUAGES
+        lang_lookup = {code: label for code, label in SUPPORTED_LANGUAGES}
+
+        # Sort: English first, then alphabetically by label
+        lang_items = []
+        for code in available_codes:
+            label = lang_lookup.get(code, code)
+            lang_items.append((code, label))
+        lang_items.sort(key=lambda x: (x[0] != "en", x[1]))
+
         current_lang = self._settings["language"]
-        for i, (code, _) in enumerate(SUPPORTED_LANGUAGES):
+        for i, (code, label) in enumerate(lang_items):
+            self._lang_combo.addItem(_flag_icon(code), label, code)
             if code == current_lang:
                 self._lang_combo.setCurrentIndex(i)
-                break
         form.addRow(self.tr("Language / Locale:"), self._lang_combo)
 
         self._team_edit = QLineEdit(self._settings["team"])
