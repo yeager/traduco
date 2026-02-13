@@ -66,7 +66,7 @@ DEFAULTS: dict[str, Any] = {
 def _detect_system_language() -> str:
     """Try to detect the system language and return a matching code."""
     try:
-        loc = locale.getdefaultlocale()[0] or ""
+        loc = locale.getlocale()[0] or ""
     except Exception:
         loc = ""
     # Try exact match first, then prefix

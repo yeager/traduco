@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## [1.8.0] — 2026-02-13
+
+### Added
+- **Live-update translation column** — tree view updates in real-time while typing
+- **Extended selection** — Shift+click range and Ctrl+click multi-select in tree view
+- **Resizable column headers** — all tree view columns can be resized by dragging
+- **Incomplete subtitle warning** — warns when saving subtitle file with untranslated entries
+- **Unity MonoBehaviour parser** — support for Unity localization tables with SharedData/TableData pattern
+
+### Changed
+- **Video preview rewrite** — 16:9 aspect ratio, full transport controls, subtitle overlay painted on video widget, volume control
+- **Side panel auto-hide** — hides string info, TM, reference, context, preview when video dock is visible
+- **Subtitle save fallback** — SRT/VTT save now falls back to source text when no translation exists (fixes roundtrip)
+- Replaced `QThread` with daemon `threading.Thread` for machine translation (fixes SIGABRT crash)
+- Disabled Qt accessibility on macOS to prevent SIGSEGV in `libqcocoa.dylib`
+- Fixed `locale.getdefaultlocale()` deprecation warning for Python 3.13+
+
+### Fixed
+- **QThread crash** — proper cleanup of MT thread before creating new one
+- **Subtitle overlay** — use child widget on QVideoWidget for reliable overlay display
+- **Dark mode contrast** — MT Suggestions and context panel text now visible in dark mode
+- **Save/Save As** — use Path objects consistently for file paths
+- **Video subtitle extraction** — progress dialog no longer disappears; removed auto-copy source
+- **Multi-selection crash** — fixed crash when selecting multiple entries
+- **App icon** — fixed icon display on macOS and Windows
+- **Swedish .qm translation** — now properly included in package
+- **SubtitleEntry attributes** — fixed character counter and stats using wrong attribute names
+- **Unity asset roundtrip** — fixed YAML parsing for Unity-specific tags and document format
+- **SRT roundtrip** — fixed empty entries being dropped on save/reload cycle
+- **Settings test** — target_language auto-detection from system locale
+
 ## [1.7.0] — 2026-02-11
 
 ### Added

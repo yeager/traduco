@@ -272,8 +272,8 @@ def _save_srt(file_data: SubtitleFileData) -> None:
     lines = []
     
     for entry in file_data.entries:
-        # Only write translation — never fall back to source text
-        text = entry.translation or ""
+        # Write translation if available, otherwise source text
+        text = entry.translation or entry.text or ""
         
         # Index
         lines.append(str(entry.index))
@@ -317,8 +317,8 @@ def _save_vtt(file_data: SubtitleFileData) -> None:
             timing_line += f" {entry.cue_settings}"
         lines.append(timing_line)
         
-        # Only write translation — never fall back to source text
-        text = entry.translation or ""
+        # Write translation if available, otherwise source text
+        text = entry.translation or entry.text or ""
         lines.append(text)
         lines.append("")  # Tom rad mellan cues
     

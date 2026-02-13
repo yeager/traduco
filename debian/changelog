@@ -1,3 +1,17 @@
+linguaedit (1.8.0) stable; urgency=medium
+
+  * Rewritten video preview: 16:9 aspect, full transport controls, subtitle overlay
+  * Live-update translation column in tree view while typing
+  * Extended selection (Shift+click, Ctrl+click) in tree view
+  * Resizable column headers
+  * Unity MonoBehaviour localization table parser
+  * Fixed QThread SIGABRT crash (replaced with daemon threading.Thread)
+  * Fixed macOS SIGSEGV crash (disabled Qt accessibility)
+  * Fixed SRT/VTT subtitle roundtrip, dark mode contrast, multi-selection crash
+  * Fixed locale deprecation warning for Python 3.13+
+
+ -- Daniel Nylander <daniel@danielnylander.se>  Fri, 13 Feb 2026 03:00:00 +0100
+
 linguaedit (1.3.0) stable; urgency=medium
 
   * Cross-platform credential storage (Keychain/Credential Locker/Secret Service)

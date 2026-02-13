@@ -1,5 +1,5 @@
 Name:           linguaedit
-Version:        1.4.0
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        Professional translation editor
 License:        GPL-3.0-or-later
@@ -63,6 +63,11 @@ update-mime-database /usr/share/mime 2>/dev/null || true
 %license LICENSE
 
 %changelog
+* Thu Feb 13 2026 Daniel Nylander <daniel@danielnylander.se> - 1.8.0-1
+- Video preview rewrite, live-update tree view, extended selection
+- Unity MonoBehaviour parser, SRT roundtrip fix, QThread crash fix
+- macOS SIGSEGV fix, dark mode contrast, Python 3.13+ compat
+
 * Mon Feb 09 2026 Daniel Nylander <daniel@danielnylander.se> - 1.3.2-1
 - Bug fixes, QSettings, 90 unit tests (see CHANGELOG.md)
 

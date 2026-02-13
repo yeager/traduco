@@ -31,21 +31,27 @@ def parse_unity_asset(file_path: Union[str, Path]) -> UnityAssetData:
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
     
+    # Strip Unity-specific YAML directives that confuse the standard parser
+    cleaned_lines = []
+    for line in content.split('\n'):
+        if line.startswith('%TAG !u!'):
+            continue
+        # Strip Unity type tags from document separators: --- !u!114 &id -> ---
+        if line.startswith('--- !u!'):
+            cleaned_lines.append('---')
+        else:
+            cleaned_lines.append(line)
+    cleaned_content = '\n'.join(cleaned_lines)
+    
     # Unity asset files often have YAML documents separated by ---
     # Split the content into documents
-    documents = content.split('--- !u!')
+    documents = list(yaml.safe_load_all(cleaned_content))
     
-    for doc in documents:
-        if not doc.strip():
+    for data in documents:
+        if not isinstance(data, dict):
             continue
-            
-        # Add back the document separator if needed
-        if not doc.startswith('!u!'):
-            doc = '!u!' + doc
         
         try:
-            # Parse YAML document
-            data = yaml.safe_load(doc)
             if not isinstance(data, dict):
                 continue
             
@@ -56,6 +62,8 @@ def parse_unity_asset(file_path: Union[str, Path]) -> UnityAssetData:
                 _parse_asset_table(data['AssetTable'], entries, str(path))
             elif 'LocalizationTable' in data:
                 _parse_localization_table(data['LocalizationTable'], entries, str(path))
+            elif 'MonoBehaviour' in data:
+                _parse_mono_behaviour(data['MonoBehaviour'], entries, str(path))
             
             # Extract metadata
             if 'm_Name' in data:
@@ -215,7 +223,7 @@ def save_unity_asset(data: UnityAssetData, file_path: Union[str, Path]) -> None:
     # If no StringTable was found, create a new one
     if not string_table_updated:
         new_document = _create_string_table_document(data.entries, data.metadata)
-        updated_documents.append('--- !u!' + new_document)
+        updated_documents.append('---\n' + new_document)
     
     # Write back to file
     content = ''.join(updated_documents)
@@ -303,6 +311,32 @@ def is_unity_asset_file(file_path: Union[str, Path]) -> bool:
                 'AssetTable' in first_lines)
     except Exception:
         return False
+
+
+def _parse_mono_behaviour(mono: Dict[str, Any], entries: List[TranslationEntry], file_path: str):
+    """Parse Unity MonoBehaviour localization table (SharedData + TableData pattern)."""
+    shared = mono.get('m_SharedData', {})
+    shared_entries = shared.get('m_Entries', []) if isinstance(shared, dict) else []
+    table_data = mono.get('m_TableData', []) or []
+
+    # Build id->key map from shared entries
+    key_map = {}
+    for se in shared_entries:
+        if isinstance(se, dict):
+            key_map[se.get('m_Id')] = se.get('m_Key', '')
+
+    # Build id->localized map from table data
+    loc_map = {}
+    for td in table_data:
+        if isinstance(td, dict):
+            loc_map[td.get('m_Id')] = td.get('m_Localized', '')
+
+    for eid, key in key_map.items():
+        entries.append(TranslationEntry(
+            msgid=key,
+            msgstr=loc_map.get(eid, ''),
+            msgctxt=f"m_Id={eid}",
+        ))
 
 
 # Register parser functions

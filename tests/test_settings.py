@@ -30,7 +30,7 @@ class TestSettings:
         for key, default_val in DEFAULTS.items():
             val = s.get_value(key)
             # Language may be auto-detected, skip
-            if key == "language":
+            if key in ("language", "target_language"):
                 continue
             assert val == default_val, f"Default mismatch for {key}: {val} != {default_val}"
 
