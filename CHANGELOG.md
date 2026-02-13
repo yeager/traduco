@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.8.4] — 2026-02-13
+
+### Fixed
+- **i18n** — translate 51 missing strings (menu accelerators, preferences, dialogs)
+- **i18n** — fix 50 DeepL mistranslations (Error→"Gilla", Bold→"Boll", TMX→"Toronto-börsen", etc.)
+- **i18n** — fix accelerator translations mangled by DeepL (`&` translated as "Och")
+- **i18n** — wrap 2 OCR dialog strings in `self.tr()`
+
 ## [1.8.3] — 2026-02-13
 
 ### Changed

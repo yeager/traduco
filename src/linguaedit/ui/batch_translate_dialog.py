@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QHeaderView, QAbstractItemView, QFormLayout, QLineEdit,
     QMessageBox, QApplication,
 )
-from PySide6.QtCore import Qt, QThread, Signal
+from PySide6.QtCore import Qt, QThread, Signal, QElapsedTimer
 from PySide6.QtGui import QColor, QBrush
 
 from linguaedit.services.translator import translate, ENGINES, TranslationError
@@ -140,8 +140,13 @@ class BatchTranslateDialog(QDialog):
         self._progress_bar.setVisible(False)
         layout.addWidget(self._progress_bar)
 
+        self._eta_label = QLabel("")
+        layout.addWidget(self._eta_label)
+
         self._status_label = QLabel("")
         layout.addWidget(self._status_label)
+
+        self._elapsed_timer = QElapsedTimer()
 
         # Preview table
         self._table = QTableWidget()
@@ -215,6 +220,8 @@ class BatchTranslateDialog(QDialog):
         self._cancel_btn.setEnabled(True)
         self._apply_btn.setEnabled(False)
         self._status_label.setText(self.tr("Translating…"))
+        self._eta_label.setText("")
+        self._elapsed_timer.start()
 
         self._worker = _BatchTranslateWorker(
             self._untranslated, engine_key, source, target, self._extra_kwargs,
