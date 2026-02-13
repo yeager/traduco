@@ -570,6 +570,7 @@ class LinguaEditWindow(QMainWindow):
         # Filter & sort
         self._filter_mode = "all"
         self._sort_mode = "file"
+        self._show_context_col = False
         self._sort_order: list[int] = []
         self._search_replace_visible = False
         self._search_match_count = 0
@@ -782,6 +783,7 @@ class LinguaEditWindow(QMainWindow):
             self.tr("File order"), self.tr("Source A → Z"), self.tr("Source Z → A"),
             self.tr("Translation A → Z"), self.tr("Translation Z → A"),
             self.tr("Untranslated/errors first"), self.tr("By length"), self.tr("By reference"),
+            self.tr("By context"),
         ])
         self._sort_combo.setMinimumWidth(120)
         self._sort_combo.setCurrentIndex(self._SORT_MODES.index(self._sort_mode))
@@ -1737,13 +1739,33 @@ class LinguaEditWindow(QMainWindow):
             header.resizeSection(3, int(content_w * 0.40))
             header.resizeSection(5, 35)
         else:
-            self._tree.setHeaderLabels([
-                "#", "⭐",
-                self.tr("Source text"),
-                self.tr("Translation"),
-                self.tr("Tags"),
-                "",
-            ])
+            self._show_context_col = self._has_contexts()
+            if self._show_context_col:
+                self._tree.setHeaderLabels([
+                    "#", self.tr("Context"), "⭐",
+                    self.tr("Source text"),
+                    self.tr("Translation"),
+                    self.tr("Tags"),
+                    "",
+                ])
+                header = self._tree.header()
+                header.setStretchLastSection(False)
+                header.setSectionResizeMode(0, QHeaderView.ResizeToContents)     # #
+                header.setSectionResizeMode(1, QHeaderView.Interactive)          # Context
+                header.setSectionResizeMode(2, QHeaderView.ResizeToContents)     # ⭐
+                header.setSectionResizeMode(3, QHeaderView.Stretch)              # Source
+                header.setSectionResizeMode(4, QHeaderView.Stretch)              # Translation
+                header.setSectionResizeMode(5, QHeaderView.ResizeToContents)     # Tags
+                header.setSectionResizeMode(6, QHeaderView.ResizeToContents)     # Status
+                header.resizeSection(1, 120)
+            else:
+                self._tree.setHeaderLabels([
+                    "#", "⭐",
+                    self.tr("Source text"),
+                    self.tr("Translation"),
+                    self.tr("Tags"),
+                    "",
+                ])
 
         entries = self._get_entries()
         self._compute_sort_order()
@@ -1778,6 +1800,10 @@ class LinguaEditWindow(QMainWindow):
                 entry = self._file_data.entries[orig_idx]
                 timestamp = entry.timestamp
                 item = _SortableItem([str(orig_idx + 1), bookmark_icon, timestamp, src_preview, trans_preview, status])
+            elif self._show_context_col:
+                ctx = self._get_context(orig_idx)
+                tags_text = ", ".join(self._tags.get(orig_idx, []))
+                item = _SortableItem([str(orig_idx + 1), ctx, bookmark_icon, src_preview, trans_preview, tags_text, status])
             else:
                 tags_text = ", ".join(self._tags.get(orig_idx, []))
                 item = _SortableItem([str(orig_idx + 1), bookmark_icon, src_preview, trans_preview, tags_text, status])
@@ -1792,7 +1818,8 @@ class LinguaEditWindow(QMainWindow):
                 delegate_status = EntryItemDelegate.STATUS_UNTRANSLATED
             else:
                 delegate_status = EntryItemDelegate.STATUS_TRANSLATED
-            for col in range(6):
+            num_cols = 7 if (hasattr(self, '_show_context_col') and self._show_context_col) else 6
+            for col in range(num_cols):
                 item.setData(col, Qt.UserRole + 1, delegate_status)
 
             # Row colors (theme-aware)
@@ -2595,7 +2622,7 @@ class LinguaEditWindow(QMainWindow):
         self._apply_filter()
 
     _SORT_MODES = ["file", "src_az", "src_za", "trans_az", "trans_za",
-                   "status", "length", "reference"]
+                   "status", "length", "reference", "context"]
 
     def _on_sort_changed(self, index):
         if index < len(self._SORT_MODES):
@@ -2684,6 +2711,28 @@ class LinguaEditWindow(QMainWindow):
         elif self._file_type in ("apple_strings", "unity_asset", "resx"):
             return [(e.msgid, e.msgstr, e.fuzzy) for e in self._file_data.entries]
         return []
+
+    def _get_context(self, idx: int) -> str:
+        """Get context/msgctxt for entry at index."""
+        if not self._file_data or idx >= len(self._file_data.entries):
+            return ""
+        e = self._file_data.entries[idx]
+        if self._file_type == "po":
+            return getattr(e, 'msgctxt', '') or ''
+        elif self._file_type == "ts":
+            return getattr(e, 'context_name', '') or ''
+        elif self._file_type == "xliff":
+            return getattr(e, 'context', '') or ''
+        return ""
+
+    def _has_contexts(self) -> bool:
+        """Check if any entry in the file has a context value."""
+        if not self._file_data:
+            return False
+        for i in range(len(self._file_data.entries)):
+            if self._get_context(i):
+                return True
+        return False
 
     def _get_reference(self, idx: int) -> str:
         if self._file_type == "po":
@@ -2777,6 +2826,9 @@ class LinguaEditWindow(QMainWindow):
             self._sort_order = indices
         elif mode == "reference":
             indices.sort(key=lambda i: self._get_reference(i))
+            self._sort_order = indices
+        elif mode == "context":
+            indices.sort(key=lambda i: self._get_context(i).lower())
             self._sort_order = indices
         else:
             self._sort_order = indices
