@@ -3553,8 +3553,8 @@
             <translation>%d min %d s kvar</translation>
         </message>
         <message>
-            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be saved with empty text, which means those lines will be silent/blank during playback.\n\nSave anyway?</source>
-            <translation>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be saved with empty text, which means those lines will be silent/blank during playback.\n\nSave anyway?</translation>
+            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.\n\nSave anyway?</source>
+            <translation>%d av %d poster (%d%%) saknar översättning.\n\nOöversatta poster markeras och sparas med källtexten som reservtext, så de visas fortfarande vid uppspelning. När filen öppnas igen i LinguaEdit visas de korrekt som oöversatta.\n\nSpara ändå?</translation>
         </message>
         <message>
             <source>%d of %d strings · %.1f strings/s · %s</source>
@@ -6032,8 +6032,8 @@
             <translation>OCR-funktionalitet kräver att tesseract-ocr är installerat.\n\nInstallera med:\n• macOS: brew install tesseract\n• Ubuntu: sudo apt install tesseract-ocr\n• Windows: ladda ner från GitHub</translation>
         </message>
         <message>
-            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be saved with empty text, which means those lines will be silent/blank during playback.\n\nSave anyway?</source>
-            <translation>%d av %d poster (%d%%) saknar översättning.\n\nOöversatta poster sparas med tom text, vilket innebär att dessa rader blir tysta/tomma vid uppspelning.\n\nSpara ändå?</translation>
+            <source>%d of %d entries (%d%%) have no translation.\n\nUntranslated entries will be marked and saved with the source text as fallback, so they will still display during playback. When reopened in LinguaEdit, they will be correctly shown as untranslated.\n\nSave anyway?</source>
+            <translation>%d av %d poster (%d%%) saknar översättning.\n\nOöversatta poster markeras och sparas med källtexten som reservtext, så de visas fortfarande vid uppspelning. När filen öppnas igen i LinguaEdit visas de korrekt som oöversatta.\n\nSpara ändå?</translation>
         </message>
         <message>
             <source>A translation file is currently open with unsaved changes.\nSave before loading new subtitles?</source>
