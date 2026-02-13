@@ -5890,5 +5890,29 @@
             <source>Completed %d strings in %d s</source>
             <translation>Slutförde %d strängar på %d s</translation>
         </message>
+        <message>
+            <source>Continue</source>
+            <translation>Fortsätt</translation>
+        </message>
+        <message>
+            <source>Error translating string %d of %d:</source>
+            <translation>Fel vid översättning av sträng %d av %d:</translation>
+        </message>
+        <message>
+            <source>Pre-translated %d entries via %s (%d errors — last: %s)</source>
+            <translation>Föröversatte %d poster via %s (%d fel — senaste: %s)</translation>
+        </message>
+        <message>
+            <source>Skip All Errors</source>
+            <translation>Hoppa över alla fel</translation>
+        </message>
+        <message>
+            <source>Stop</source>
+            <translation>Stoppa</translation>
+        </message>
+        <message>
+            <source>Translation Error</source>
+            <translation>Översättningsfel</translation>
+        </message>
     </context>
 </TS>
