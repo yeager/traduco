@@ -31,6 +31,7 @@ jobs:
         run: |
           pyinstaller --windowed --name LinguaEdit \
             --add-data "src/linguaedit/translations:linguaedit/translations" \
+            --add-data "resources/flags:resources/flags" \
             --hidden-import=linguaedit \
             --exclude-module=enchant \
             --paths=src src/linguaedit/app.py
@@ -83,6 +84,7 @@ jobs:
           pyinstaller --windowed --name LinguaEdit `
             --icon resources/icon.ico `
             --add-data "src/linguaedit/translations;linguaedit/translations" `
+            --add-data "resources/flags;resources/flags" `
             --hidden-import=linguaedit `
             --exclude-module=enchant `
             --paths=src src/linguaedit/app.py

@@ -20,8 +20,10 @@ from linguaedit.services import keystore
 from linguaedit.app import _find_translations_dir
 
 
-# Country-flag emoji for macOS/Linux, painted flags for Windows
-_FLAG_MAP: dict[str, str] = {
+# Flag icons from FlagKit (MIT license, https://github.com/madebybowtie/FlagKit)
+# PNG files in resources/flags/<lang_code>.png
+# Fallback: emoji on macOS, text label on others
+_FLAG_EMOJI: dict[str, str] = {
     "ar": "🇸🇦", "ca": "🇪🇸", "cs": "🇨🇿", "da": "🇩🇰", "de": "🇩🇪",
     "el": "🇬🇷", "en": "🇬🇧", "es": "🇪🇸", "fi": "🇫🇮", "fr": "🇫🇷",
     "hu": "🇭🇺", "it": "🇮🇹", "ja": "🇯🇵", "ko": "🇰🇷", "nb": "🇳🇴",
@@ -30,44 +32,35 @@ _FLAG_MAP: dict[str, str] = {
     "zh_CN": "🇨🇳",
 }
 
-# Simple painted flag stripes (horizontal bands) for Windows fallback
-# Format: list of (color_hex,) for equal horizontal stripes
-from PySide6.QtGui import QColor
 
-_FLAG_STRIPES: dict[str, list[str]] = {
-    "ar": ["#006C35", "#FFFFFF", "#000000"],  # Saudi — simplified
-    "ca": ["#FCE300", "#DA121A", "#FCE300"],  # Catalonia/Spain — simplified
-    "cs": ["#FFFFFF", "#D7141A", "#11457E"],  # Czech — simplified
-    "da": ["#C8102E", "#FFFFFF", "#C8102E"],  # Denmark — simplified
-    "de": ["#000000", "#DD0000", "#FFCC00"],
-    "el": ["#0D5EAF", "#FFFFFF", "#0D5EAF"],  # Greece — simplified
-    "en": ["#012169", "#C8102E", "#FFFFFF"],  # UK — simplified
-    "es": ["#AA151B", "#F1BF00", "#AA151B"],
-    "fi": ["#FFFFFF", "#003580", "#FFFFFF"],
-    "fr": ["#002395", "#FFFFFF", "#ED2939"],  # vertical but we do horizontal
-    "hu": ["#CE2939", "#FFFFFF", "#477050"],
-    "it": ["#009246", "#FFFFFF", "#CE2B37"],
-    "ja": ["#FFFFFF", "#BC002D", "#FFFFFF"],
-    "ko": ["#FFFFFF", "#CD2E3A", "#FFFFFF"],  # simplified
-    "nb": ["#EF2B2D", "#FFFFFF", "#002868"],  # Norway — simplified
-    "nl": ["#AE1C28", "#FFFFFF", "#21468B"],
-    "pl": ["#FFFFFF", "#DC143C"],
-    "pt": ["#006600", "#FF0000"],
-    "pt_BR": ["#009739", "#FEDD00", "#009739"],
-    "ro": ["#002B7F", "#FCD116", "#CE1126"],
-    "ru": ["#FFFFFF", "#0039A6", "#D52B1E"],
-    "sv": ["#006AA7", "#FECC02", "#006AA7"],
-    "tr": ["#E30A17", "#FFFFFF", "#E30A17"],
-    "uk": ["#005BBB", "#FFD500"],
-    "zh_CN": ["#DE2910", "#FFDE00", "#DE2910"],
-}
+def _find_flags_dir() -> Path:
+    """Find the flags resource directory."""
+    candidates = [
+        Path(__file__).parent.parent.parent.parent / "resources" / "flags",  # dev
+        Path(__file__).parent.parent / "resources" / "flags",  # might be installed differently
+    ]
+    # PyInstaller frozen bundle
+    if getattr(sys, 'frozen', False):
+        import sys as _sys
+        meipass = Path(_sys._MEIPASS)  # type: ignore[attr-defined]
+        candidates.insert(0, meipass / "resources" / "flags")
+    for d in candidates:
+        if d.is_dir():
+            return d
+    return candidates[0]
 
 
 def _flag_icon(code: str) -> QIcon:
-    """Render a flag icon. Uses emoji on macOS, painted stripes on Windows/Linux."""
-    # On macOS, emoji flags render perfectly
+    """Load flag icon from PNG file, with emoji fallback on macOS."""
+    # Try PNG file first (works on all platforms)
+    flags_dir = _find_flags_dir()
+    png = flags_dir / f"{code}.png"
+    if png.exists():
+        return QIcon(str(png))
+
+    # Fallback: emoji on macOS
     if sys.platform == "darwin":
-        flag = _FLAG_MAP.get(code, "🏳️")
+        flag = _FLAG_EMOJI.get(code, "🏳️")
         pix = QPixmap(24, 24)
         pix.fill(Qt.transparent)
         p = QPainter(pix)
@@ -76,21 +69,8 @@ def _flag_icon(code: str) -> QIcon:
         p.end()
         return QIcon(pix)
 
-    # On Windows/Linux: paint simple stripe flags
-    stripes = _FLAG_STRIPES.get(code, ["#CCCCCC", "#999999"])
-    w, h = 24, 16
-    pix = QPixmap(w, h)
-    pix.fill(Qt.transparent)
-    p = QPainter(pix)
-    p.setRenderHint(QPainter.Antialiasing)
-    stripe_h = h / len(stripes)
-    for i, color in enumerate(stripes):
-        p.fillRect(0, int(i * stripe_h), w, int(stripe_h) + 1, QColor(color))
-    # Draw border
-    p.setPen(QColor("#00000030"))
-    p.drawRect(0, 0, w - 1, h - 1)
-    p.end()
-    return QIcon(pix)
+    # Last resort: empty icon
+    return QIcon()
 
 
 class PreferencesDialog(QDialog):

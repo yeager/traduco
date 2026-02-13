@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linguaedit"
-version = "1.8.11"
+version = "1.8.12"
 description = "A Qt6/PySide6 translation file editor for PO, TS, JSON, XLIFF, Android, ARB, PHP, and YAML files"
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -44,4 +44,4 @@ linguaedit-gui = "linguaedit.app:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-linguaedit = ["translations/*.qm", "translations/*.ts", "resources/*"]
+linguaedit = ["translations/*.qm", "translations/*.ts", "resources/*", "resources/flags/*.png"]

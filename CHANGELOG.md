@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [1.8.12] — 2026-02-13
+
+### Changed
+- **Flag icons** — replaced painted stripes with proper flag images from FlagKit (MIT). Works on all platforms including Windows.
+
 ## [1.8.11] — 2026-02-13
 
 ### Fixed
