@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [1.8.7] — 2026-02-13
+
+### Added
+- **Language picker** — dynamic selector with country flags, based on available .qm files
+- **Transifex source sync** — CI workflow pushes new source strings automatically
+- **Update checker** — startup background check for new GitHub releases
+- **Weblate/Crowdin/Transifex** — platform browser with translation statistics
+
+### Changed
+- **Translations** — consolidated to single `src/linguaedit/translations/` directory
+- **Language picker** — only shows languages with actual translations (skips empty .qm)
+- **CI** — Transifex workflow now pushes source strings before pulling translations
+- **1,522 source strings** (up from 1,282)
+
+### Fixed
+- **Quit** — now prompts to save unsaved changes
+- **Stats** — counter and row color update correctly after editing translations
+
 ## [1.8.6] — 2026-02-13
 
 ### Changed
