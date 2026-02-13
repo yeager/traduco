@@ -133,7 +133,7 @@ def _macos_store(label: str, value: str) -> None:
     subprocess.run(
         ["security", "add-generic-password",
          "-a", _SERVICE_PREFIX, "-s", label, "-w", value,
-         "-T", "", "-U"],
+         "-U"],
         check=True, capture_output=True, text=True,
     )
 
