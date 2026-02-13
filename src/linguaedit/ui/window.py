@@ -4373,10 +4373,19 @@ class LinguaEditWindow(QMainWindow):
             return
         self._show_pretranslate_dialog()
 
+    # Map engine keys to keystore service names for API key lookup
+    _ENGINE_KEYSTORE_MAP = {
+        "openai": "openai", "anthropic": "anthropic", "deepl": "deepl",
+        "google_cloud": "google_cloud", "microsoft": "microsoft_translator",
+        "amazon": "aws", "libretranslate": "libretranslate",
+    }
+
     def _show_pretranslate_dialog(self):
+        from linguaedit.services.keystore import get_secret as ks_get, store_secret
+
         dialog = QDialog(self)
         dialog.setWindowTitle(self.tr("Pre-translate"))
-        dialog.resize(420, 500)
+        dialog.resize(420, 560)
         layout = QVBoxLayout(dialog)
 
         engine_group = QGroupBox(self.tr("Translation Engine"))
@@ -4392,12 +4401,60 @@ class LinguaEditWindow(QMainWindow):
         except ValueError:
             pass
         engine_layout.addWidget(engine_combo)
+
+        # API key field for currently selected engine
+        api_key_label = QLabel(self.tr("API key:"))
+        api_key_edit = QLineEdit()
+        api_key_edit.setEchoMode(QLineEdit.Password)
+        api_key_edit.setPlaceholderText(self.tr("Not required for free engines"))
+        api_key_row = QHBoxLayout()
+        api_key_row.addWidget(api_key_label)
+        api_key_row.addWidget(api_key_edit)
+        engine_layout.addLayout(api_key_row)
+
+        def _update_api_key_field():
+            ek = engine_combo.currentData()
+            svc = self._ENGINE_KEYSTORE_MAP.get(ek)
+            is_free = ENGINES.get(ek, {}).get("free", True)
+            api_key_edit.setEnabled(not is_free)
+            if is_free:
+                api_key_edit.clear()
+                api_key_edit.setPlaceholderText(self.tr("Not required for free engines"))
+            else:
+                existing = ks_get(svc, "api_key") if svc else None
+                api_key_edit.clear()
+                if existing:
+                    api_key_edit.setPlaceholderText("••••••••")
+                else:
+                    api_key_edit.setPlaceholderText(self.tr("Enter API key"))
+
+        engine_combo.currentIndexChanged.connect(lambda: _update_api_key_field())
+        _update_api_key_field()
         layout.addWidget(engine_group)
 
         lang_group = QGroupBox(self.tr("Languages"))
         lang_form = QFormLayout(lang_group)
-        source_edit = QLineEdit(self._trans_source)
-        lang_form.addRow(self.tr("Source language:"), source_edit)
+        source_combo = QComboBox()
+        source_combo.setEditable(True)
+        source_combo.addItem(self.tr("Auto-detect"), "auto")
+        common_langs = [
+            ("en", "English"), ("sv", "Swedish"), ("de", "German"), ("fr", "French"),
+            ("es", "Spanish"), ("it", "Italian"), ("pt", "Portuguese"), ("nl", "Dutch"),
+            ("pl", "Polish"), ("ja", "Japanese"), ("zh", "Chinese"), ("ko", "Korean"),
+            ("ru", "Russian"), ("ar", "Arabic"), ("fi", "Finnish"), ("da", "Danish"),
+            ("nb", "Norwegian"),
+        ]
+        for code, name in common_langs:
+            source_combo.addItem(f"{code} — {name}", code)
+        if self._trans_source and self._trans_source != "auto":
+            idx = source_combo.findData(self._trans_source)
+            if idx >= 0:
+                source_combo.setCurrentIndex(idx)
+            else:
+                source_combo.setEditText(self._trans_source)
+        else:
+            source_combo.setCurrentIndex(0)
+        lang_form.addRow(self.tr("Source language:"), source_combo)
         target_edit = QLineEdit(self._trans_target)
         lang_form.addRow(self.tr("Target language:"), target_edit)
         layout.addWidget(lang_group)
@@ -4426,7 +4483,19 @@ class LinguaEditWindow(QMainWindow):
             engine_key = engine_combo.currentData()
             if engine_key:
                 self._trans_engine = engine_key
-            self._trans_source = source_edit.text().strip() or "en"
+            # Save API key if user entered one
+            api_key_val = api_key_edit.text().strip()
+            if api_key_val and engine_key:
+                svc = self._ENGINE_KEYSTORE_MAP.get(engine_key)
+                if svc:
+                    store_secret(svc, "api_key", api_key_val)
+            # Handle source language
+            src_data = source_combo.currentData()
+            if src_data == "auto" or source_combo.currentIndex() == 0:
+                self._trans_source = "auto"
+            else:
+                src_text = source_combo.currentText().split(" — ")[0].strip() if " — " in source_combo.currentText() else source_combo.currentText().strip()
+                self._trans_source = src_text or "en"
             self._trans_target = target_edit.text().strip() or "sv"
             formality_vals = ["default", "less", "more", "prefer_less", "prefer_more"]
             self._deepl_formality = formality_vals[formality_combo.currentIndex()]

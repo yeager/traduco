@@ -341,4 +341,24 @@ def translate(text: str, engine: str = "lingva", **kwargs) -> str:
     """Translate text using the specified engine."""
     if engine not in ENGINES:
         raise TranslationError(f"Unknown engine: {engine}")
+    # Handle auto-detect source language
+    source = kwargs.get("source", "")
+    if source == "auto" or not source:
+        if engine == "deepl":
+            # DeepL: omit source_lang entirely (None triggers auto-detect)
+            kwargs["source"] = ""
+        elif engine in ("openai", "anthropic"):
+            # LLMs: use "auto-detect" which gets embedded in the prompt
+            kwargs["source"] = "auto-detect"
+        elif engine in ("lingva", "libretranslate"):
+            # These support "auto" natively
+            kwargs["source"] = "auto"
+        elif engine == "google_cloud":
+            # Google Cloud Translation supports empty source for auto-detect
+            kwargs["source"] = ""
+        elif engine == "microsoft":
+            # Microsoft Translator supports empty source for auto-detect
+            kwargs["source"] = ""
+        # For others (mymemory, apertium, argos, nllb, amazon), keep as-is;
+        # they may not support auto-detect and will use their default behavior
     return ENGINES[engine]["fn"](text, **kwargs)

@@ -3244,6 +3244,22 @@
             <translation>Översättningsmotor</translation>
         </message>
         <message>
+            <source>API key:</source>
+            <translation>API-nyckel:</translation>
+        </message>
+        <message>
+            <source>Auto-detect</source>
+            <translation>Identifiera automatiskt</translation>
+        </message>
+        <message>
+            <source>Enter API key</source>
+            <translation>Ange API-nyckel</translation>
+        </message>
+        <message>
+            <source>Not required for free engines</source>
+            <translation>Krävs inte för gratismotorer</translation>
+        </message>
+        <message>
             <source>Translation History…</source>
             <translation>Översättningshistorik…</translation>
         </message>
