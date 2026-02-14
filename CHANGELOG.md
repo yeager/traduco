@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [1.8.14] — 2026-02-14
+
+### Added
+- **Drag & drop** — save dialog when dropping a file with unsaved changes
+- **Drag & drop** — video file handling with subtitle track extraction
+- **Windows DPAPI keystore** — native credential storage via ctypes (no keyring dependency)
+- **.qm translations** compiled for all languages with actual translations
+
+### Fixed
+- **Transifex** — redirect handling fix for API calls
+- **Crowdin** — ZIP extraction + `project_id` type coercion fix
+- **Currency format** — `%1$` variables no longer falsely detected as currency symbols
+- **Windows locale detection** — proper system language detection for UI language selection
+
+### Changed
+- **Small .qm exclusion** — translation files under 20 KB excluded from builds (empty/near-empty)
+- Removed 11 empty translation files (.ts/.qm) with zero translated strings
+
 ## [1.8.13] — 2026-02-13
 
 ### Added

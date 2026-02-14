@@ -25,7 +25,7 @@ jobs:
             case "$ts" in *template*) continue;; esac
             pyside6-lrelease "$ts"
             qm="${ts%.ts}.qm"
-            if [ -f "$qm" ] && [ "$(stat -f%z "$qm")" -lt 100 ]; then rm "$qm"; fi
+            if [ -f "$qm" ] && [ "$(stat -f%z "$qm")" -lt 20480 ]; then rm "$qm"; fi
           done
       - name: Build .app
         run: |
@@ -66,10 +66,10 @@ jobs:
             case "$ts" in *template*) continue;; esac
             pyside6-lrelease "$ts"
             qm="${ts%.ts}.qm"
-            # Remove empty .qm files (< 100 bytes = no real translations)
+            # Remove small .qm files (< 20 KB = no real translations)
             if [ -f "$qm" ]; then
               size=$(wc -c < "$qm")
-              if [ "$size" -lt 100 ]; then
+              if [ "$size" -lt 20480 ]; then
                 rm "$qm"
               fi
             fi
@@ -114,7 +114,7 @@ jobs:
             case "$ts" in *template*) continue;; esac
             pyside6-lrelease "$ts"
             qm="${ts%.ts}.qm"
-            if [ -f "$qm" ] && [ "$(stat --format=%s "$qm" 2>/dev/null || stat -f%z "$qm")" -lt 100 ]; then rm "$qm"; fi
+            if [ -f "$qm" ] && [ "$(stat --format=%s "$qm" 2>/dev/null || stat -f%z "$qm")" -lt 20480 ]; then rm "$qm"; fi
           done
       - name: Build .deb
         run: python3 .github/scripts/build_deb.py ${GITHUB_REF_NAME#v}
