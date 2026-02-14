@@ -1,7 +1,7 @@
 [main]
 host = https://app.transifex.com
 
-[o:linguaedit:p:linguaedit:r:linguaedit]
+[o:danielnylander:p:linguaedit:r:linguaedit]
 file_filter  = src/linguaedit/translations/linguaedit_<lang>.ts
 source_file  = src/linguaedit/translations/linguaedit.ts
 source_lang  = en

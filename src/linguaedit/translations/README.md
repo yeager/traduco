@@ -1,6 +1,6 @@
 # Translations
 
-LinguaEdit uses Qt's translation system (`.ts` files) and [Transifex](https://app.transifex.com/linguaedit/linguaedit/) for community translations.
+LinguaEdit uses Qt's translation system (`.ts` files) and [Transifex](https://app.transifex.com/danielnylander/linguaedit/) for community translations.
 
 ## Current Status
 
@@ -17,7 +17,7 @@ More languages are available on Transifex — contributions welcome!
 
 The easiest way to contribute translations:
 
-1. Go to [app.transifex.com/linguaedit/linguaedit](https://app.transifex.com/linguaedit/linguaedit/)
+1. Go to [app.transifex.com/danielnylander/linguaedit](https://app.transifex.com/danielnylander/linguaedit/)
 2. Sign up / log in and request to join your language
 3. Translate strings in the web editor — no tools needed
 4. Translations are synced to this repo daily via GitHub Actions

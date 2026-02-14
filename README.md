@@ -7,7 +7,7 @@
 ![Qt6](https://img.shields.io/badge/Qt-6-green)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 ![Swedish](https://img.shields.io/badge/svenska-100%25-yellow)
-[![Translate on Transifex](https://img.shields.io/badge/translate-Transifex-blue)](https://app.transifex.com/linguaedit/linguaedit/)
+[![Translate on Transifex](https://img.shields.io/badge/translate-Transifex-blue)](https://app.transifex.com/danielnylander/linguaedit/)
 
 **Professional translation editor built with PySide6/Qt6 — by a translator, for translators.**
 
@@ -283,12 +283,12 @@ Distraction-free translation workflow (Ctrl+Shift+Z):
 
 ## 🌍 Translations
 
-LinguaEdit is translated via [Transifex](https://app.transifex.com/linguaedit/linguaedit/) with **1,487 source strings** and 18 languages configured. Translations sync daily via GitHub Actions.
+LinguaEdit is translated via [Transifex](https://app.transifex.com/danielnylander/linguaedit/) with **1,487 source strings** and 18 languages configured. Translations sync daily via GitHub Actions.
 
 Currently translated:
 - **Swedish** — 100%
 
-**Help translate LinguaEdit into your language!** Join us on [Transifex](https://app.transifex.com/linguaedit/linguaedit/) — no coding required.
+**Help translate LinguaEdit into your language!** Join us on [Transifex](https://app.transifex.com/danielnylander/linguaedit/) — no coding required.
 
 ---
 
