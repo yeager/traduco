@@ -2,7 +2,7 @@
 
 Supports:
   - macOS: Keychain via ``security`` CLI
-  - Windows: Windows Credential Locker via ``keyring`` (WinVaultKeyring)
+  - Windows: Windows Data Protection (DPAPI) via ctypes — no extra dependencies
   - Linux: Secret Service API (GNOME Keyring / KWallet) via ``secretstorage``
   - Fallback: AES-encrypted file with user-provided master password (Fernet)
 
@@ -12,6 +12,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import base64
+import ctypes
+import ctypes.util
 import hashlib
 import json
 import os
@@ -20,6 +22,76 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
+
+# ── Windows DPAPI helpers (only usable on Windows) ───────────────────
+
+if platform.system() == "Windows":
+    import ctypes.wintypes
+
+    class _DATA_BLOB(ctypes.Structure):
+        _fields_ = [
+            ("cbData", ctypes.wintypes.DWORD),
+            ("pbData", ctypes.POINTER(ctypes.c_char)),
+        ]
+
+    _crypt32 = ctypes.windll.crypt32
+    _kernel32 = ctypes.windll.kernel32
+
+    _CryptProtectData = _crypt32.CryptProtectData
+    _CryptProtectData.argtypes = [
+        ctypes.POINTER(_DATA_BLOB),  # pDataIn
+        ctypes.c_wchar_p,            # szDataDescr
+        ctypes.POINTER(_DATA_BLOB),  # pOptionalEntropy
+        ctypes.c_void_p,             # pvReserved
+        ctypes.c_void_p,             # pPromptStruct
+        ctypes.wintypes.DWORD,       # dwFlags
+        ctypes.POINTER(_DATA_BLOB),  # pDataOut
+    ]
+    _CryptProtectData.restype = ctypes.wintypes.BOOL
+
+    _CryptUnprotectData = _crypt32.CryptUnprotectData
+    _CryptUnprotectData.argtypes = [
+        ctypes.POINTER(_DATA_BLOB),  # pDataIn
+        ctypes.POINTER(ctypes.c_wchar_p),  # ppszDataDescr
+        ctypes.POINTER(_DATA_BLOB),  # pOptionalEntropy
+        ctypes.c_void_p,             # pvReserved
+        ctypes.c_void_p,             # pPromptStruct
+        ctypes.wintypes.DWORD,       # dwFlags
+        ctypes.POINTER(_DATA_BLOB),  # pDataOut
+    ]
+    _CryptUnprotectData.restype = ctypes.wintypes.BOOL
+
+    _LocalFree = _kernel32.LocalFree
+    _LocalFree.argtypes = [ctypes.c_void_p]
+    _LocalFree.restype = ctypes.c_void_p
+
+    def _dpapi_encrypt(plaintext: bytes) -> bytes:
+        """Encrypt bytes using Windows DPAPI (current user scope)."""
+        blob_in = _DATA_BLOB(len(plaintext), ctypes.create_string_buffer(plaintext, len(plaintext)))
+        blob_out = _DATA_BLOB()
+        if not _CryptProtectData(
+            ctypes.byref(blob_in), "linguaedit", None, None, None, 0, ctypes.byref(blob_out)
+        ):
+            raise OSError("CryptProtectData failed")
+        try:
+            encrypted = ctypes.string_at(blob_out.pbData, blob_out.cbData)
+        finally:
+            _LocalFree(blob_out.pbData)
+        return encrypted
+
+    def _dpapi_decrypt(encrypted: bytes) -> bytes:
+        """Decrypt DPAPI-encrypted bytes."""
+        blob_in = _DATA_BLOB(len(encrypted), ctypes.create_string_buffer(encrypted, len(encrypted)))
+        blob_out = _DATA_BLOB()
+        if not _CryptUnprotectData(
+            ctypes.byref(blob_in), None, None, None, None, 0, ctypes.byref(blob_out)
+        ):
+            raise OSError("CryptUnprotectData failed")
+        try:
+            decrypted = ctypes.string_at(blob_out.pbData, blob_out.cbData)
+        finally:
+            _LocalFree(blob_out.pbData)
+        return decrypted
 
 def _(s): return s  # no-op; UI handles translation
 
@@ -35,8 +107,14 @@ def _detect_backend() -> str:
         return "macos"
     if system == "Windows":
         try:
+            # DPAPI is always available on Windows via ctypes
+            ctypes.windll.crypt32  # noqa: B018 — existence check
+            return "windows_dpapi"
+        except AttributeError:
+            pass
+        # Legacy keyring fallback (should not be needed)
+        try:
             import keyring
-            # Verify the backend actually works (e.g. WinVaultKeyring)
             keyring.get_password(_SERVICE_PREFIX, "__test__")
             return "windows"
         except Exception:
@@ -69,6 +147,8 @@ def store_secret(service: str, key: str, value: str) -> None:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         _macos_store(label, value)
+    elif _backend == "windows_dpapi":
+        _windows_dpapi_store(label, value)
     elif _backend == "windows":
         _windows_store(label, value)
     elif _backend == "linux":
@@ -85,6 +165,8 @@ def get_secret(service: str, key: str) -> Optional[str]:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         return _macos_get(label)
+    elif _backend == "windows_dpapi":
+        return _windows_dpapi_get(label)
     elif _backend == "windows":
         return _windows_get(label)
     elif _backend == "linux":
@@ -98,6 +180,8 @@ def delete_secret(service: str, key: str) -> None:
     label = f"{_SERVICE_PREFIX}/{service}/{key}"
     if _backend == "macos":
         _macos_delete(label)
+    elif _backend == "windows_dpapi":
+        _windows_dpapi_delete(label)
     elif _backend == "windows":
         _windows_delete(label)
     elif _backend == "linux":
@@ -110,6 +194,7 @@ def backend_name() -> str:
     """Return the name of the active backend for display."""
     names = {
         "macos": _("macOS Keychain"),
+        "windows_dpapi": _("Windows Data Protection (DPAPI)"),
         "windows": _("Windows Credential Locker"),
         "linux": _("Secret Service (GNOME Keyring / KWallet)"),
         "fallback": _("Encrypted file (fallback)"),
@@ -124,7 +209,7 @@ def backend_id() -> str:
 
 def is_secure_backend() -> bool:
     """True if using a real system keychain."""
-    return _backend in ("macos", "windows", "linux")
+    return _backend in ("macos", "windows_dpapi", "windows", "linux")
 
 
 # ── macOS Keychain ────────────────────────────────────────────────────
@@ -163,7 +248,83 @@ def _macos_delete(label: str) -> None:
         pass  # not found, fine
 
 
-# ── Windows Credential Locker ────────────────────────────────────────
+# ── Windows DPAPI backend ─────────────────────────────────────────────
+
+def _dpapi_secrets_path() -> Path:
+    """Path to the DPAPI-encrypted secrets JSON file."""
+    appdata = os.environ.get("APPDATA", str(Path.home() / "AppData" / "Roaming"))
+    p = Path(appdata) / "linguaedit"
+    p.mkdir(parents=True, exist_ok=True)
+    return p / ".secrets.dpapi"
+
+
+def _dpapi_load() -> dict[str, str]:
+    """Load DPAPI secrets file (base64-encoded encrypted values)."""
+    path = _dpapi_secrets_path()
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text("utf-8"))
+    except Exception:
+        return {}
+
+
+def _dpapi_save(data: dict[str, str]) -> None:
+    """Save DPAPI secrets file."""
+    path = _dpapi_secrets_path()
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), "utf-8")
+    try:
+        path.chmod(0o600)
+    except OSError:
+        pass  # chmod may not work on Windows, that's fine
+
+
+def _dpapi_migrate_from_keyring(label: str) -> Optional[str]:
+    """Try to read a secret from the old keyring backend and migrate it."""
+    try:
+        import keyring
+        value = keyring.get_password(_SERVICE_PREFIX, label)
+        if value is not None:
+            # Migrate to DPAPI
+            _windows_dpapi_store(label, value)
+            # Try to remove from keyring
+            try:
+                keyring.delete_password(_SERVICE_PREFIX, label)
+            except Exception:
+                pass
+            return value
+    except Exception:
+        pass
+    return None
+
+
+def _windows_dpapi_store(label: str, value: str) -> None:
+    encrypted = _dpapi_encrypt(value.encode("utf-8"))
+    data = _dpapi_load()
+    data[label] = base64.b64encode(encrypted).decode("ascii")
+    _dpapi_save(data)
+
+
+def _windows_dpapi_get(label: str) -> Optional[str]:
+    data = _dpapi_load()
+    encoded = data.get(label)
+    if encoded is None:
+        # Try migrating from old keyring backend
+        return _dpapi_migrate_from_keyring(label)
+    try:
+        decrypted = _dpapi_decrypt(base64.b64decode(encoded))
+        return decrypted.decode("utf-8")
+    except Exception:
+        return None
+
+
+def _windows_dpapi_delete(label: str) -> None:
+    data = _dpapi_load()
+    if data.pop(label, None) is not None:
+        _dpapi_save(data)
+
+
+# ── Windows Credential Locker (legacy keyring fallback) ──────────────
 
 def _windows_store(label: str, value: str) -> None:
     import keyring
