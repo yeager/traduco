@@ -6000,46 +6000,190 @@ class LinguaEditWindow(QMainWindow):
     
     # ── Feature 12: Drag & Drop ─────────────────────────────────
     
+    # Accepted translation file extensions for drag & drop
+    _TRANSLATION_EXTENSIONS = {
+        '.po', '.pot', '.ts', '.json', '.xliff', '.xlf', '.xml',
+        '.arb', '.php', '.yml', '.yaml', '.csv', '.tres',
+        '.properties', '.srt', '.vtt',
+    }
+
     def dragEnterEvent(self, event: QDragEnterEvent):
         """Hantera drag enter event."""
+        from linguaedit.services.ffmpeg import SUPPORTED_VIDEO_EXTENSIONS
         if event.mimeData().hasUrls():
-            # Kolla om det finns translation files
             urls = event.mimeData().urls()
             for url in urls:
                 if url.isLocalFile():
                     path = Path(url.toLocalFile())
-                    if path.suffix.lower() in {'.po', '.pot', '.ts', '.json', '.xliff', '.xlf', '.xml', 
-                                             '.arb', '.php', '.yml', '.yaml', '.csv', '.tres', 
-                                             '.properties', '.srt', '.vtt'}:
+                    ext = path.suffix.lower()
+                    if ext in self._TRANSLATION_EXTENSIONS or ext in SUPPORTED_VIDEO_EXTENSIONS:
                         event.acceptProposedAction()
                         return
         event.ignore()
-    
+
     def dropEvent(self, event: QDropEvent):
-        """Hantera file drop."""
-        if event.mimeData().hasUrls():
-            urls = event.mimeData().urls()
-            for url in urls:
-                if url.isLocalFile():
-                    file_path = url.toLocalFile()
-                    path = Path(file_path)
-                    
-                    # Validera filtyp
-                    if path.suffix.lower() in {'.po', '.pot', '.ts', '.json', '.xliff', '.xlf', '.xml', 
-                                             '.arb', '.php', '.yml', '.yaml', '.csv', '.tres', 
-                                             '.properties', '.srt', '.vtt'}:
-                        try:
-                            self._load_file(file_path)
-                            self._show_toast(self.tr(f"Loaded: {path.name}"))
-                            event.acceptProposedAction()
-                            break
-                        except Exception as e:
-                            self._show_toast(self.tr(f"Error loading {path.name}: {e}"))
-                            event.ignore()
-                    else:
-                        event.ignore()
-        else:
+        """Hantera file drop — translation files and video files."""
+        from linguaedit.services.ffmpeg import SUPPORTED_VIDEO_EXTENSIONS
+        if not event.mimeData().hasUrls():
             event.ignore()
+            return
+
+        urls = event.mimeData().urls()
+        for url in urls:
+            if not url.isLocalFile():
+                continue
+            file_path = url.toLocalFile()
+            path = Path(file_path)
+            ext = path.suffix.lower()
+
+            if ext in SUPPORTED_VIDEO_EXTENSIONS:
+                # Video file — check unsaved changes, then extract subtitles
+                if not self._ask_save_changes():
+                    event.ignore()
+                    return
+                event.acceptProposedAction()
+                self._handle_dropped_video(path)
+                return
+
+            if ext in self._TRANSLATION_EXTENSIONS:
+                # Translation file — check unsaved changes first
+                if not self._ask_save_changes():
+                    event.ignore()
+                    return
+                try:
+                    self._load_file(file_path)
+                    self._show_toast(self.tr(f"Loaded: {path.name}"))
+                    event.acceptProposedAction()
+                    return
+                except Exception as e:
+                    self._show_toast(self.tr(f"Error loading {path.name}: {e}"))
+                    event.ignore()
+                    return
+
+        event.ignore()
+
+    def _handle_dropped_video(self, video_path: Path):
+        """Handle a video file dropped onto the window — extract subtitles."""
+        from linguaedit.services.ffmpeg import (
+            is_ffmpeg_available, get_subtitle_tracks, get_video_duration,
+            extract_subtitle,
+        )
+
+        if not is_ffmpeg_available():
+            from linguaedit.ui.video_subtitle_dialog import FFmpegMissingDialog
+            dlg = FFmpegMissingDialog(self)
+            if dlg.exec() != QDialog.Accepted:
+                return
+
+        # Show progress while probing
+        progress = QProgressDialog(
+            self.tr("Probing video for subtitle tracks…"),
+            self.tr("Cancel"), 0, 0, self,
+        )
+        progress.setWindowTitle(self.tr("Video"))
+        progress.setWindowModality(Qt.WindowModal)
+        progress.setMinimumDuration(0)
+        progress.setValue(0)
+        QApplication.processEvents()
+
+        try:
+            tracks = get_subtitle_tracks(video_path)
+            duration = get_video_duration(video_path)
+        except Exception as e:
+            progress.close()
+            QMessageBox.critical(
+                self, self.tr("Error"),
+                self.tr("Could not read video file:\n%s") % str(e),
+            )
+            return
+        finally:
+            progress.close()
+
+        if not tracks:
+            QMessageBox.information(
+                self, self.tr("No Subtitles"),
+                self.tr("No embedded subtitle tracks found in this video file."),
+            )
+            return
+
+        # Let user pick a track
+        track_labels = [t.display_label for t in tracks]
+        chosen, ok = QInputDialog.getItem(
+            self, self.tr("Select Subtitle Track"),
+            self.tr("Found %d subtitle track(s). Select one:") % len(tracks),
+            track_labels, 0, False,
+        )
+        if not ok:
+            return
+        track = tracks[track_labels.index(chosen)]
+
+        # Extract with progress
+        import tempfile
+        tmp = tempfile.NamedTemporaryFile(suffix=".srt", delete=False)
+        tmp.close()
+        output_path = Path(tmp.name)
+
+        progress2 = QProgressDialog(
+            self.tr("Extracting subtitles…"), self.tr("Cancel"), 0, 100, self,
+        )
+        progress2.setWindowTitle(self.tr("Extracting"))
+        progress2.setWindowModality(Qt.WindowModal)
+        progress2.setMinimumDuration(0)
+        progress2.setValue(0)
+        progress2.show()
+        QApplication.processEvents()
+
+        loop = __import__('PySide6.QtCore', fromlist=['QEventLoop']).QEventLoop(self)
+        extract_ok = [False]
+        extract_err = [None]
+
+        self._extract_worker = _SubtitleExtractWorker(
+            video_path, track, output_path, duration, self,
+        )
+        self._extract_worker.progress.connect(progress2.setValue)
+        self._extract_worker.finished.connect(
+            lambda: (extract_ok.__setitem__(0, True), loop.quit()),
+        )
+        self._extract_worker.error.connect(
+            lambda msg: (extract_err.__setitem__(0, msg), loop.quit()),
+        )
+        progress2.canceled.connect(self._extract_worker.cancel)
+        progress2.canceled.connect(loop.quit)
+
+        self._extract_worker.start()
+        loop.exec()
+        self._extract_worker.wait()
+        self._extract_worker.progress.disconnect()
+        self._extract_worker.finished.disconnect()
+        self._extract_worker.error.disconnect()
+        self._extract_worker.deleteLater()
+        self._extract_worker = None
+        progress2.close()
+
+        if extract_err[0]:
+            QMessageBox.critical(
+                self, self.tr("Extraction Failed"), extract_err[0],
+            )
+            return
+        if not extract_ok[0]:
+            return
+
+        # Build suggested save path
+        lang_tag = track.language if track.language and track.language != "und" else ""
+        stem = video_path.stem
+        if lang_tag:
+            suggested_name = f"{stem}.{lang_tag}.srt"
+        else:
+            suggested_name = f"{stem}.srt"
+        self._video_extract_suggested_path = str(video_path.parent / suggested_name)
+
+        # Load the extracted subtitle file
+        self._load_file(str(output_path))
+
+        # Open video dock for preview
+        self._ensure_video_dock()
+        self._video_dock.open_video(video_path)
+        self._sync_subtitle_entries_to_video()
     
     # ── Feature 13: Quick Actions ───────────────────────────────
     
