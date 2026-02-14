@@ -106,6 +106,37 @@ class LinguaEditApp:
                                 break
                     except Exception:
                         pass
+                elif sys.platform == "win32":
+                    # Windows: try ctypes GetUserDefaultUILanguage
+                    try:
+                        import ctypes
+                        lang_id = ctypes.windll.kernel32.GetUserDefaultUILanguage()
+                        # lang_id is a LANGID; primary language is low 10 bits
+                        # Map common primary language IDs
+                        _WIN_LANG_MAP = {
+                            0x1D: "sv", 0x06: "da", 0x14: "no", 0x0B: "fi",
+                            0x07: "de", 0x0C: "fr", 0x0A: "es", 0x10: "it",
+                            0x13: "nl", 0x15: "pl", 0x05: "cs", 0x19: "ru",
+                            0x22: "uk", 0x11: "ja", 0x12: "ko", 0x04: "zh",
+                            0x16: "pt", 0x01: "ar",
+                        }
+                        primary = lang_id & 0x3FF
+                        if primary in _WIN_LANG_MAP:
+                            sys_lang = _WIN_LANG_MAP[primary]
+                            log.info("Windows UI language: 0x%04x -> %s", lang_id, sys_lang)
+                    except Exception:
+                        pass
+                # Also try locale module as fallback (works on all platforms)
+                if sys_lang in ("C", "en", ""):
+                    try:
+                        loc = locale.getdefaultlocale()[0] or ""
+                        if len(loc) >= 2:
+                            loc_lang = loc[:2]
+                            if loc_lang not in ("C", "en", ""):
+                                sys_lang = loc_lang
+                                log.info("Fallback locale: %s", sys_lang)
+                    except Exception:
+                        pass
             translations_dir = _find_translations_dir()
             sys_qm = translations_dir / f"linguaedit_{sys_lang}.qm"
             if sys_qm.exists():
@@ -129,7 +160,9 @@ class LinguaEditApp:
 
         qm_file = translations_dir / f"linguaedit_{lang}.qm"
         log.info("Looking for: %s (exists: %s)", qm_file, qm_file.exists())
-        if qm_file.exists() and self._translator.load(str(qm_file)):
+        # Use forward slashes for QTranslator.load() — Qt expects them on all platforms
+        qm_path_str = str(qm_file).replace("\\", "/")
+        if qm_file.exists() and self._translator.load(qm_path_str):
             self._qt_app.installTranslator(self._translator)
             log.info("✓ Loaded translations: %s", qm_file.name)
         elif qm_file.exists():

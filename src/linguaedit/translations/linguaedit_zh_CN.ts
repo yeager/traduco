@@ -200,7 +200,7 @@
         </message>
         <message>
             <source>All</source>
-            <translation type="unfinished"/>
+            <translation>全部</translation>
         </message>
         <message>
             <source>Close</source>
@@ -216,7 +216,7 @@
         </message>
         <message>
             <source>Statistics</source>
-            <translation type="unfinished"/>
+            <translation>统计</translation>
         </message>
         <message>
             <source>Translations: {0} | Streak: {1} days | Languages: {2}</source>
@@ -275,7 +275,7 @@
         </message>
         <message>
             <source>Copy Source</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本</translation>
         </message>
         <message>
             <source>Copy source text to empty translation fields.</source>
@@ -315,7 +315,7 @@
         </message>
         <message>
             <source>Options</source>
-            <translation type="unfinished"/>
+            <translation>选项</translation>
         </message>
         <message>
             <source>Please enter text to find.</source>
@@ -422,7 +422,7 @@
         </message>
         <message>
             <source>Source language:</source>
-            <translation type="unfinished"/>
+            <translation>源语言：</translation>
         </message>
         <message>
             <source>Status</source>
@@ -430,7 +430,7 @@
         </message>
         <message>
             <source>Target language:</source>
-            <translation type="unfinished"/>
+            <translation>目标语言：</translation>
         </message>
         <message>
             <source>Translate All</source>
@@ -442,11 +442,11 @@
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>Translation Settings</source>
-            <translation type="unfinished"/>
+            <translation>翻译设置</translation>
         </message>
         <message>
             <source>%d min %d s remaining</source>
@@ -504,7 +504,7 @@
         <name>ConcordanceDialog</name>
         <message>
             <source>Concordance Search</source>
-            <translation type="unfinished"/>
+            <translation>语料搜索</translation>
         </message>
         <message>
             <source>Double-click a row to copy translation to clipboard.</source>
@@ -532,7 +532,7 @@
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>Translation copied to clipboard.</source>
@@ -575,7 +575,7 @@
         </message>
         <message>
             <source>Translation Memory</source>
-            <translation type="unfinished"/>
+            <translation>翻译记忆</translation>
         </message>
         <message>
             <source>Source: %s\nTarget: %s</source>
@@ -610,7 +610,7 @@
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation type="unfinished"/>
+            <translation>模糊</translation>
         </message>
         <message>
             <source>Per-Language Progress</source>
@@ -626,11 +626,11 @@
         </message>
         <message>
             <source>Translated</source>
-            <translation type="unfinished"/>
+            <translation>已翻译</translation>
         </message>
         <message>
             <source>Untranslated</source>
-            <translation type="unfinished"/>
+            <translation>未翻译</translation>
         </message>
         <message>
             <source>&lt;h2&gt;Project Overview&lt;/h2&gt;&lt;b&gt;Total strings:&lt;/b&gt; %d &amp;nbsp; &lt;span style=&apos;color:green&apos;&gt;Translated: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:orange&apos;&gt;Fuzzy: %d&lt;/span&gt; &amp;nbsp; &lt;span style=&apos;color:red&apos;&gt;Untranslated: %d&lt;/span&gt;</source>
@@ -903,7 +903,7 @@
         </message>
         <message>
             <source>Unknown</source>
-            <translation type="unfinished"/>
+            <translation>未知</translation>
         </message>
         <message>
             <source>User</source>
@@ -1022,7 +1022,7 @@
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>Translation (new)</source>
@@ -1073,7 +1073,7 @@
         </message>
         <message>
             <source>Clear</source>
-            <translation type="unfinished"/>
+            <translation>清除</translation>
         </message>
         <message>
             <source>Confirm Delete</source>
@@ -1081,7 +1081,7 @@
         </message>
         <message>
             <source>Copy Source</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本</translation>
         </message>
         <message>
             <source>Copy Target</source>
@@ -1288,7 +1288,7 @@
         </message>
         <message>
             <source>Language:</source>
-            <translation type="unfinished"/>
+            <translation>语言：</translation>
         </message>
         <message>
             <source>Last-Translator:</source>
@@ -1400,7 +1400,7 @@
         </message>
         <message>
             <source>Version:</source>
-            <translation type="unfinished"/>
+            <translation>版本：</translation>
         </message>
         <message>
             <source>XLIFF Attributes</source>
@@ -1495,7 +1495,7 @@
         </message>
         <message>
             <source>Unknown</source>
-            <translation type="unfinished"/>
+            <translation>未知</translation>
         </message>
         <message>
             <source>User</source>
@@ -1600,11 +1600,11 @@
         </message>
         <message>
             <source>%d matches</source>
-            <translation type="unfinished"/>
+            <translation>%d 个匹配</translation>
         </message>
         <message>
             <source>%d strings</source>
-            <translation type="unfinished"/>
+            <translation>%d 个字符串</translation>
         </message>
         <message>
             <source>%d strings — %d translated, %d fuzzy, %d untranslated</source>
@@ -1616,43 +1616,43 @@
         </message>
         <message>
             <source>%p% translated</source>
-            <translation type="unfinished"/>
+            <translation>%p% 已翻译</translation>
         </message>
         <message>
             <source>&amp;Catalog</source>
-            <translation type="unfinished"/>
+            <translation>目录(&amp;C)</translation>
         </message>
         <message>
             <source>&amp;Edit</source>
-            <translation type="unfinished"/>
+            <translation>编辑(&amp;E)</translation>
         </message>
         <message>
             <source>&amp;File</source>
-            <translation type="unfinished"/>
+            <translation>文件(&amp;F)</translation>
         </message>
         <message>
             <source>&amp;Git</source>
-            <translation type="unfinished"/>
+            <translation>&amp;Git</translation>
         </message>
         <message>
             <source>&amp;Go</source>
-            <translation type="unfinished"/>
+            <translation>转到(&amp;G)</translation>
         </message>
         <message>
             <source>&amp;Help</source>
-            <translation type="unfinished"/>
+            <translation>帮助(&amp;H)</translation>
         </message>
         <message>
             <source>&amp;Open…</source>
-            <translation type="unfinished"/>
+            <translation>打开(&amp;O)…</translation>
         </message>
         <message>
             <source>&amp;Platforms</source>
-            <translation type="unfinished"/>
+            <translation>平台(&amp;P)</translation>
         </message>
         <message>
             <source>&amp;Save</source>
-            <translation type="unfinished"/>
+            <translation>保存(&amp;S)</translation>
         </message>
         <message>
             <source>&amp;Tools</source>
@@ -1660,31 +1660,31 @@
         </message>
         <message>
             <source>&amp;View</source>
-            <translation type="unfinished"/>
+            <translation>视图(&amp;V)</translation>
         </message>
         <message>
             <source>&lt;b&gt;Concordance search&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;语料搜索&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Reference source:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;参考源文本：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Reference translation:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;参考翻译：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Source text:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;源文本：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Suggestions&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;建议&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translation:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;翻译：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translator comment:&lt;/b&gt;</source>
@@ -1692,11 +1692,11 @@
         </message>
         <message>
             <source>&lt;i&gt;(no match in reference)&lt;/i&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;i&gt;（参考中无匹配）&lt;/i&gt;</translation>
         </message>
         <message>
             <source>&lt;i&gt;No suggestions&lt;/i&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;i&gt;无建议&lt;/i&gt;</translation>
         </message>
         <message>
             <source>A macro with this name already exists.</source>
@@ -1716,19 +1716,19 @@
         </message>
         <message>
             <source>API Keys</source>
-            <translation type="unfinished"/>
+            <translation>API 密钥</translation>
         </message>
         <message>
             <source>API keys saved</source>
-            <translation type="unfinished"/>
+            <translation>API 密钥已保存</translation>
         </message>
         <message>
             <source>About LinguaEdit</source>
-            <translation type="unfinished"/>
+            <translation>关于 LinguaEdit</translation>
         </message>
         <message>
             <source>About Qt</source>
-            <translation type="unfinished"/>
+            <translation>关于 Qt</translation>
         </message>
         <message>
             <source>Achievements…</source>
@@ -1740,11 +1740,11 @@
         </message>
         <message>
             <source>Add Comment</source>
-            <translation type="unfinished"/>
+            <translation>添加评论</translation>
         </message>
         <message>
             <source>Add Field</source>
-            <translation type="unfinished"/>
+            <translation>添加字段</translation>
         </message>
         <message>
             <source>Add Tag</source>
@@ -1756,7 +1756,7 @@
         </message>
         <message>
             <source>Add Term</source>
-            <translation type="unfinished"/>
+            <translation>添加术语</translation>
         </message>
         <message>
             <source>Add translator notes...</source>
@@ -1764,11 +1764,11 @@
         </message>
         <message>
             <source>Added %d entries to Translation Memory</source>
-            <translation type="unfinished"/>
+            <translation>已向翻译记忆添加 %d 条</translation>
         </message>
         <message>
             <source>Added: %s → %s</source>
-            <translation type="unfinished"/>
+            <translation>已添加：%s → %s</translation>
         </message>
         <message>
             <source>All files (*)</source>
@@ -1776,7 +1776,7 @@
         </message>
         <message>
             <source>All strings</source>
-            <translation type="unfinished"/>
+            <translation>所有字符串</translation>
         </message>
         <message>
             <source>Already recording a macro</source>
@@ -1812,11 +1812,11 @@
         </message>
         <message>
             <source>Auto-propagate</source>
-            <translation type="unfinished"/>
+            <translation>自动传播</translation>
         </message>
         <message>
             <source>Auto-propagated %d entries</source>
-            <translation type="unfinished"/>
+            <translation>已自动传播 %d 条</translation>
         </message>
         <message>
             <source>Batch Edit…</source>
@@ -1840,11 +1840,11 @@
         </message>
         <message>
             <source>By length</source>
-            <translation type="unfinished"/>
+            <translation>按长度</translation>
         </message>
         <message>
             <source>By reference</source>
-            <translation type="unfinished"/>
+            <translation>按参考</translation>
         </message>
         <message>
             <source>Cancel</source>
@@ -1856,7 +1856,7 @@
         </message>
         <message>
             <source>Cannot compile: pyside6-lrelease or lrelease not found</source>
-            <translation type="unfinished"/>
+            <translation>无法编译：未找到 pyside6-lrelease 或 lrelease</translation>
         </message>
         <message>
             <source>Cannot split empty entry</source>
@@ -1876,15 +1876,15 @@
         </message>
         <message>
             <source>Check for updates</source>
-            <translation type="unfinished"/>
+            <translation>检查更新</translation>
         </message>
         <message>
             <source>Clear</source>
-            <translation type="unfinished"/>
+            <translation>清除</translation>
         </message>
         <message>
             <source>Clear translation</source>
-            <translation type="unfinished"/>
+            <translation>清除翻译</translation>
         </message>
         <message>
             <source>Close Current File?</source>
@@ -1892,7 +1892,7 @@
         </message>
         <message>
             <source>Close Tab</source>
-            <translation type="unfinished"/>
+            <translation>关闭标签页</translation>
         </message>
         <message>
             <source>Close the current file and load extracted subtitles?</source>
@@ -1904,11 +1904,11 @@
         </message>
         <message>
             <source>Commit failed: %s</source>
-            <translation type="unfinished"/>
+            <translation>提交失败：%s</translation>
         </message>
         <message>
             <source>Commit message:</source>
-            <translation type="unfinished"/>
+            <translation>提交信息：</translation>
         </message>
         <message>
             <source>Commit successful. Push to remote?</source>
@@ -1916,11 +1916,11 @@
         </message>
         <message>
             <source>Committed!</source>
-            <translation type="unfinished"/>
+            <translation>已提交！</translation>
         </message>
         <message>
             <source>Commit…</source>
-            <translation type="unfinished"/>
+            <translation>提交…</translation>
         </message>
         <message>
             <source>Compare Files…</source>
@@ -1928,27 +1928,27 @@
         </message>
         <message>
             <source>Compare language…</source>
-            <translation type="unfinished"/>
+            <translation>比较语言…</translation>
         </message>
         <message>
             <source>Compile</source>
-            <translation type="unfinished"/>
+            <translation>编译</translation>
         </message>
         <message>
             <source>Compile error: %s</source>
-            <translation type="unfinished"/>
+            <translation>编译错误：%s</translation>
         </message>
         <message>
             <source>Compile not supported for %s files</source>
-            <translation type="unfinished"/>
+            <translation>不支持编译 %s 文件</translation>
         </message>
         <message>
             <source>Compile translation</source>
-            <translation type="unfinished"/>
+            <translation>编译翻译</translation>
         </message>
         <message>
             <source>Compiled: %s</source>
-            <translation type="unfinished"/>
+            <translation>已编译：%s</translation>
         </message>
         <message>
             <source>Concordance</source>
@@ -1960,11 +1960,11 @@
         </message>
         <message>
             <source>Consistency Check</source>
-            <translation type="unfinished"/>
+            <translation>一致性检查</translation>
         </message>
         <message>
             <source>Consistency check</source>
-            <translation type="unfinished"/>
+            <translation>一致性检查</translation>
         </message>
         <message>
             <source>Context</source>
@@ -1972,11 +1972,11 @@
         </message>
         <message>
             <source>Copy Source</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本</translation>
         </message>
         <message>
             <source>Copy source</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本</translation>
         </message>
         <message>
             <source>Copy source text to translation</source>
@@ -1984,11 +1984,11 @@
         </message>
         <message>
             <source>Copy source text to translation (Ctrl+B)</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本到翻译 (Ctrl+B)</translation>
         </message>
         <message>
             <source>Copy source to translation</source>
-            <translation type="unfinished"/>
+            <translation>复制源文本到翻译</translation>
         </message>
         <message>
             <source>Could not read video file:\n%s</source>
@@ -2000,7 +2000,7 @@
         </message>
         <message>
             <source>Crowdin</source>
-            <translation type="unfinished"/>
+            <translation>Crowdin</translation>
         </message>
         <message>
             <source>Crowdin Statistics…</source>
@@ -2068,7 +2068,7 @@
         </message>
         <message>
             <source>Diff…</source>
-            <translation type="unfinished"/>
+            <translation>差异…</translation>
         </message>
         <message>
             <source>Documentation</source>
@@ -2076,11 +2076,11 @@
         </message>
         <message>
             <source>Donate ♥</source>
-            <translation type="unfinished"/>
+            <translation>捐赠 ♥</translation>
         </message>
         <message>
             <source>Done and next (Ctrl+Enter)</source>
-            <translation type="unfinished"/>
+            <translation>完成并下一条 (Ctrl+Enter)</translation>
         </message>
         <message>
             <source>Edit Header…</source>
@@ -2088,7 +2088,7 @@
         </message>
         <message>
             <source>Edit file header metadata. Changes are applied when you click Save.</source>
-            <translation type="unfinished"/>
+            <translation>编辑文件头元数据。更改将在点击保存时应用。</translation>
         </message>
         <message>
             <source>Editor Below</source>
@@ -2116,7 +2116,7 @@
         </message>
         <message>
             <source>Enter translator note:</source>
-            <translation type="unfinished"/>
+            <translation>输入译者备注：</translation>
         </message>
         <message>
             <source>Entry</source>
@@ -2140,11 +2140,11 @@
         </message>
         <message>
             <source>Error loading file: %s</source>
-            <translation type="unfinished"/>
+            <translation>加载文件错误：%s</translation>
         </message>
         <message>
             <source>Error loading reference: %s</source>
-            <translation type="unfinished"/>
+            <translation>加载参考错误：%s</translation>
         </message>
         <message>
             <source>Export Error</source>
@@ -2160,7 +2160,7 @@
         </message>
         <message>
             <source>Export report…</source>
-            <translation type="unfinished"/>
+            <translation>导出报告…</translation>
         </message>
         <message>
             <source>Exported {} translation units to {}</source>
@@ -2200,7 +2200,7 @@
         </message>
         <message>
             <source>Feed file to TM</source>
-            <translation type="unfinished"/>
+            <translation>将文件添加到翻译记忆</translation>
         </message>
         <message>
             <source>File</source>
@@ -2212,23 +2212,23 @@
         </message>
         <message>
             <source>File Header / Metadata</source>
-            <translation type="unfinished"/>
+            <translation>文件头 / 元数据</translation>
         </message>
         <message>
             <source>File metadata…</source>
-            <translation type="unfinished"/>
+            <translation>文件元数据…</translation>
         </message>
         <message>
             <source>File not found: %s</source>
-            <translation type="unfinished"/>
+            <translation>文件未找到：%s</translation>
         </message>
         <message>
             <source>File order</source>
-            <translation type="unfinished"/>
+            <translation>文件顺序</translation>
         </message>
         <message>
             <source>File reloaded (changed externally)</source>
-            <translation type="unfinished"/>
+            <translation>文件已重新加载（外部更改）</translation>
         </message>
         <message>
             <source>File reloaded (external change detected)</source>
@@ -2236,15 +2236,15 @@
         </message>
         <message>
             <source>Find &amp;&amp; Replace…</source>
-            <translation type="unfinished"/>
+            <translation>查找和替换…</translation>
         </message>
         <message>
             <source>Find in translations…</source>
-            <translation type="unfinished"/>
+            <translation>在翻译中查找…</translation>
         </message>
         <message>
             <source>Find…</source>
-            <translation type="unfinished"/>
+            <translation>查找…</translation>
         </message>
         <message>
             <source>Flags</source>
@@ -2280,15 +2280,15 @@
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation type="unfinished"/>
+            <translation>模糊</translation>
         </message>
         <message>
             <source>Fuzzy / Needs work</source>
-            <translation type="unfinished"/>
+            <translation>模糊 / 需要修改</translation>
         </message>
         <message>
             <source>Fuzzy diff (previous → current)</source>
-            <translation type="unfinished"/>
+            <translation>模糊差异（上一版 → 当前）</translation>
         </message>
         <message>
             <source>Fuzzy:</source>
@@ -2296,11 +2296,11 @@
         </message>
         <message>
             <source>Fuzzy: %d</source>
-            <translation type="unfinished"/>
+            <translation>模糊：%d</translation>
         </message>
         <message>
             <source>Fuzzy: 0</source>
-            <translation type="unfinished"/>
+            <translation>模糊：0</translation>
         </message>
         <message>
             <source>Generate Report</source>
@@ -2316,19 +2316,19 @@
         </message>
         <message>
             <source>Git</source>
-            <translation type="unfinished"/>
+            <translation>Git</translation>
         </message>
         <message>
             <source>Git Branches</source>
-            <translation type="unfinished"/>
+            <translation>Git 分支</translation>
         </message>
         <message>
             <source>Git Commit</source>
-            <translation type="unfinished"/>
+            <translation>Git 提交</translation>
         </message>
         <message>
             <source>Git Diff</source>
-            <translation type="unfinished"/>
+            <translation>Git 差异</translation>
         </message>
         <message>
             <source>Git Error</source>
@@ -2336,7 +2336,7 @@
         </message>
         <message>
             <source>Git Status</source>
-            <translation type="unfinished"/>
+            <translation>Git 状态</translation>
         </message>
         <message>
             <source>Git operation error: {}</source>
@@ -2348,15 +2348,15 @@
         </message>
         <message>
             <source>GitHub PR</source>
-            <translation type="unfinished"/>
+            <translation>GitHub PR</translation>
         </message>
         <message>
             <source>GitHub PR…</source>
-            <translation type="unfinished"/>
+            <translation>GitHub PR…</translation>
         </message>
         <message>
             <source>GitHub Repository</source>
-            <translation type="unfinished"/>
+            <translation>GitHub 仓库</translation>
         </message>
         <message>
             <source>Glossary</source>
@@ -2364,15 +2364,15 @@
         </message>
         <message>
             <source>Glossary / Terminology</source>
-            <translation type="unfinished"/>
+            <translation>术语表 / 术语</translation>
         </message>
         <message>
             <source>Glossary Check</source>
-            <translation type="unfinished"/>
+            <translation>术语检查</translation>
         </message>
         <message>
             <source>Glossary…</source>
-            <translation type="unfinished"/>
+            <translation>术语表…</translation>
         </message>
         <message>
             <source>HTML (*.html);;PDF (*.pdf)</source>
@@ -2412,7 +2412,7 @@
         </message>
         <message>
             <source>Invalid regex</source>
-            <translation type="unfinished"/>
+            <translation>无效的正则表达式</translation>
         </message>
         <message>
             <source>Issues</source>
@@ -2424,7 +2424,7 @@
         </message>
         <message>
             <source>Key</source>
-            <translation type="unfinished"/>
+            <translation>键</translation>
         </message>
         <message>
             <source>Language</source>
@@ -2432,11 +2432,11 @@
         </message>
         <message>
             <source>Language:</source>
-            <translation type="unfinished"/>
+            <translation>语言：</translation>
         </message>
         <message>
             <source>Languages</source>
-            <translation type="unfinished"/>
+            <translation>语言</translation>
         </message>
         <message>
             <source>Layout Simulator</source>
@@ -2456,19 +2456,19 @@
         </message>
         <message>
             <source>Ln %d, Col %d</source>
-            <translation type="unfinished"/>
+            <translation>行 %d，列 %d</translation>
         </message>
         <message>
             <source>Ln 1, Col 1</source>
-            <translation type="unfinished"/>
+            <translation>行 1，列 1</translation>
         </message>
         <message>
             <source>Loaded reference: %s</source>
-            <translation type="unfinished"/>
+            <translation>已加载参考：%s</translation>
         </message>
         <message>
             <source>Locale:</source>
-            <translation type="unfinished"/>
+            <translation>区域设置：</translation>
         </message>
         <message>
             <source>MT translation failed</source>
@@ -2488,7 +2488,7 @@
         </message>
         <message>
             <source>Manage API Keys…</source>
-            <translation type="unfinished"/>
+            <translation>管理 API 密钥…</translation>
         </message>
         <message>
             <source>Manage Macros…</source>
@@ -2504,7 +2504,7 @@
         </message>
         <message>
             <source>Mark this string as fuzzy / needs review (Ctrl+U)</source>
-            <translation type="unfinished"/>
+            <translation>标记此字符串为模糊 / 需要审查 (Ctrl+U)</translation>
         </message>
         <message>
             <source>Max width:</source>
@@ -2532,7 +2532,7 @@
         </message>
         <message>
             <source>Metadata updated</source>
-            <translation type="unfinished"/>
+            <translation>元数据已更新</translation>
         </message>
         <message>
             <source>Minimap</source>
@@ -2556,19 +2556,19 @@
         </message>
         <message>
             <source>Needs work</source>
-            <translation type="unfinished"/>
+            <translation>需要修改</translation>
         </message>
         <message>
             <source>Next</source>
-            <translation type="unfinished"/>
+            <translation>下一步</translation>
         </message>
         <message>
             <source>Next entry</source>
-            <translation type="unfinished"/>
+            <translation>下一条</translation>
         </message>
         <message>
             <source>Next untranslated</source>
-            <translation type="unfinished"/>
+            <translation>下一个未翻译</translation>
         </message>
         <message>
             <source>No File</source>
@@ -2596,11 +2596,11 @@
         </message>
         <message>
             <source>No file</source>
-            <translation type="unfinished"/>
+            <translation>无文件</translation>
         </message>
         <message>
             <source>No file loaded</source>
-            <translation type="unfinished"/>
+            <translation>未加载文件</translation>
         </message>
         <message>
             <source>No glossary violations found! ✓</source>
@@ -2628,7 +2628,7 @@
         </message>
         <message>
             <source>No more untranslated strings</source>
-            <translation type="unfinished"/>
+            <translation>没有更多未翻译的字符串</translation>
         </message>
         <message>
             <source>No screenshot available</source>
@@ -2644,7 +2644,7 @@
         </message>
         <message>
             <source>No text to check</source>
-            <translation type="unfinished"/>
+            <translation>没有文本可检查</translation>
         </message>
         <message>
             <source>No text to play</source>
@@ -2672,7 +2672,7 @@
         </message>
         <message>
             <source>Not a git repository</source>
-            <translation type="unfinished"/>
+            <translation>不是 Git 仓库</translation>
         </message>
         <message>
             <source>Notes</source>
@@ -2688,7 +2688,7 @@
         </message>
         <message>
             <source>Open</source>
-            <translation type="unfinished"/>
+            <translation>打开</translation>
         </message>
         <message>
             <source>Open Project…</source>
@@ -2700,7 +2700,7 @@
         </message>
         <message>
             <source>Open Translation File</source>
-            <translation type="unfinished"/>
+            <translation>打开翻译文件</translation>
         </message>
         <message>
             <source>Open Video</source>
@@ -2712,7 +2712,7 @@
         </message>
         <message>
             <source>Options</source>
-            <translation type="unfinished"/>
+            <translation>选项</translation>
         </message>
         <message>
             <source>PO file merged successfully with POT file.\nPlease reload the file to see changes.</source>
@@ -2728,7 +2728,7 @@
         </message>
         <message>
             <source>Platform settings…</source>
-            <translation type="unfinished"/>
+            <translation>平台设置…</translation>
         </message>
         <message>
             <source>Play Macro</source>
@@ -2756,19 +2756,19 @@
         </message>
         <message>
             <source>Pre-translate</source>
-            <translation type="unfinished"/>
+            <translation>预翻译</translation>
         </message>
         <message>
             <source>Pre-translated %d entries via %s</source>
-            <translation type="unfinished"/>
+            <translation>通过 %s 预翻译了 %d 条</translation>
         </message>
         <message>
             <source>Pre-translate…</source>
-            <translation type="unfinished"/>
+            <translation>预翻译…</translation>
         </message>
         <message>
             <source>Preferences…</source>
-            <translation type="unfinished"/>
+            <translation>首选项…</translation>
         </message>
         <message>
             <source>Preview</source>
@@ -2776,15 +2776,15 @@
         </message>
         <message>
             <source>Previous</source>
-            <translation type="unfinished"/>
+            <translation>上一个</translation>
         </message>
         <message>
             <source>Previous entry</source>
-            <translation type="unfinished"/>
+            <translation>上一条</translation>
         </message>
         <message>
             <source>Previous untranslated</source>
-            <translation type="unfinished"/>
+            <translation>上一个未翻译</translation>
         </message>
         <message>
             <source>Probing video for subtitle tracks…</source>
@@ -2804,7 +2804,7 @@
         </message>
         <message>
             <source>Pull from…</source>
-            <translation type="unfinished"/>
+            <translation>从…拉取</translation>
         </message>
         <message>
             <source>Push Changes</source>
@@ -2812,23 +2812,23 @@
         </message>
         <message>
             <source>Push to…</source>
-            <translation type="unfinished"/>
+            <translation>推送到…</translation>
         </message>
         <message>
             <source>QA Profile: %s</source>
-            <translation type="unfinished"/>
+            <translation>QA 配置：%s</translation>
         </message>
         <message>
             <source>QA profile: Formal</source>
-            <translation type="unfinished"/>
+            <translation>QA 配置：正式</translation>
         </message>
         <message>
             <source>QA profile: Informal</source>
-            <translation type="unfinished"/>
+            <translation>QA 配置：非正式</translation>
         </message>
         <message>
             <source>Quality</source>
-            <translation type="unfinished"/>
+            <translation>质量</translation>
         </message>
         <message>
             <source>Quality Score</source>
@@ -2836,11 +2836,11 @@
         </message>
         <message>
             <source>Quit</source>
-            <translation type="unfinished"/>
+            <translation>退出</translation>
         </message>
         <message>
             <source>Recent Files</source>
-            <translation type="unfinished"/>
+            <translation>最近的文件</translation>
         </message>
         <message>
             <source>Record Macro</source>
@@ -2852,11 +2852,11 @@
         </message>
         <message>
             <source>Redo</source>
-            <translation type="unfinished"/>
+            <translation>重做</translation>
         </message>
         <message>
             <source>Reference</source>
-            <translation type="unfinished"/>
+            <translation>参考</translation>
         </message>
         <message>
             <source>References</source>
@@ -2864,7 +2864,7 @@
         </message>
         <message>
             <source>Regex</source>
-            <translation type="unfinished"/>
+            <translation>正则表达式</translation>
         </message>
         <message>
             <source>Regex Tester</source>
@@ -2880,23 +2880,23 @@
         </message>
         <message>
             <source>Remove Selected</source>
-            <translation type="unfinished"/>
+            <translation>删除所选</translation>
         </message>
         <message>
             <source>Replace</source>
-            <translation type="unfinished"/>
+            <translation>替换</translation>
         </message>
         <message>
             <source>Replace All</source>
-            <translation type="unfinished"/>
+            <translation>全部替换</translation>
         </message>
         <message>
             <source>Replace with…</source>
-            <translation type="unfinished"/>
+            <translation>替换为…</translation>
         </message>
         <message>
             <source>Replaced in %d entries</source>
-            <translation type="unfinished"/>
+            <translation>在 %d 条中替换</translation>
         </message>
         <message>
             <source>Report Options</source>
@@ -2904,7 +2904,7 @@
         </message>
         <message>
             <source>Report a Bug</source>
-            <translation type="unfinished"/>
+            <translation>报告错误</translation>
         </message>
         <message>
             <source>Report error: %s</source>
@@ -2916,7 +2916,7 @@
         </message>
         <message>
             <source>Report saved to %s</source>
-            <translation type="unfinished"/>
+            <translation>报告已保存到 %s</translation>
         </message>
         <message>
             <source>Report saved: %s</source>
@@ -2944,7 +2944,7 @@
         </message>
         <message>
             <source>Root key:</source>
-            <translation type="unfinished"/>
+            <translation>根键：</translation>
         </message>
         <message>
             <source>SRT files (*.srt);;VTT files (*.vtt);;All files (*)</source>
@@ -2952,7 +2952,7 @@
         </message>
         <message>
             <source>Save</source>
-            <translation type="unfinished"/>
+            <translation>保存</translation>
         </message>
         <message>
             <source>Save &amp;As…</source>
@@ -2976,7 +2976,7 @@
         </message>
         <message>
             <source>Save error: %s</source>
-            <translation type="unfinished"/>
+            <translation>保存错误：%s</translation>
         </message>
         <message>
             <source>Saved as %s</source>
@@ -2984,7 +2984,7 @@
         </message>
         <message>
             <source>Saved!</source>
-            <translation type="unfinished"/>
+            <translation>已保存！</translation>
         </message>
         <message>
             <source>Search</source>
@@ -2992,11 +2992,11 @@
         </message>
         <message>
             <source>Search TM…</source>
-            <translation type="unfinished"/>
+            <translation>搜索翻译记忆…</translation>
         </message>
         <message>
             <source>Search source and translation text…</source>
-            <translation type="unfinished"/>
+            <translation>搜索源文本和翻译…</translation>
         </message>
         <message>
             <source>Select POT File</source>
@@ -3068,23 +3068,23 @@
         </message>
         <message>
             <source>Source A → Z</source>
-            <translation type="unfinished"/>
+            <translation>源文本 A → Z</translation>
         </message>
         <message>
             <source>Source Z → A</source>
-            <translation type="unfinished"/>
+            <translation>源文本 Z → A</translation>
         </message>
         <message>
             <source>Source language:</source>
-            <translation type="unfinished"/>
+            <translation>源语言：</translation>
         </message>
         <message>
             <source>Source term:</source>
-            <translation type="unfinished"/>
+            <translation>源术语：</translation>
         </message>
         <message>
             <source>Source text</source>
-            <translation type="unfinished"/>
+            <translation>源文本</translation>
         </message>
         <message>
             <source>Source:</source>
@@ -3092,7 +3092,7 @@
         </message>
         <message>
             <source>Spell check current</source>
-            <translation type="unfinished"/>
+            <translation>拼写检查当前</translation>
         </message>
         <message>
             <source>Spelling issues:\n%s</source>
@@ -3108,11 +3108,11 @@
         </message>
         <message>
             <source>Statistics</source>
-            <translation type="unfinished"/>
+            <translation>统计</translation>
         </message>
         <message>
             <source>Statistics…</source>
-            <translation type="unfinished"/>
+            <translation>统计…</translation>
         </message>
         <message>
             <source>Status</source>
@@ -3120,11 +3120,11 @@
         </message>
         <message>
             <source>Status…</source>
-            <translation type="unfinished"/>
+            <translation>状态…</translation>
         </message>
         <message>
             <source>String Info</source>
-            <translation type="unfinished"/>
+            <translation>字符串信息</translation>
         </message>
         <message>
             <source>Subject:</source>
@@ -3140,7 +3140,7 @@
         </message>
         <message>
             <source>Switch branch…</source>
-            <translation type="unfinished"/>
+            <translation>切换分支…</translation>
         </message>
         <message>
             <source>System Default</source>
@@ -3148,7 +3148,7 @@
         </message>
         <message>
             <source>TM / Suggestions</source>
-            <translation type="unfinished"/>
+            <translation>翻译记忆 / 建议</translation>
         </message>
         <message>
             <source>TMX</source>
@@ -3184,11 +3184,11 @@
         </message>
         <message>
             <source>Target language:</source>
-            <translation type="unfinished"/>
+            <translation>目标语言：</translation>
         </message>
         <message>
             <source>Target term:</source>
-            <translation type="unfinished"/>
+            <translation>目标术语：</translation>
         </message>
         <message>
             <source>Text-to-speech failed: {}</source>
@@ -3244,15 +3244,15 @@
         </message>
         <message>
             <source>Transifex</source>
-            <translation type="unfinished"/>
+            <translation>Transifex</translation>
         </message>
         <message>
             <source>Translated</source>
-            <translation type="unfinished"/>
+            <translation>已翻译</translation>
         </message>
         <message>
             <source>Translated via %s</source>
-            <translation type="unfinished"/>
+            <translation>通过 %s 翻译</translation>
         </message>
         <message>
             <source>Translated:</source>
@@ -3260,23 +3260,23 @@
         </message>
         <message>
             <source>Translated: %d</source>
-            <translation type="unfinished"/>
+            <translation>已翻译：%d</translation>
         </message>
         <message>
             <source>Translated: 0</source>
-            <translation type="unfinished"/>
+            <translation>已翻译：0</translation>
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>Translation A → Z</source>
-            <translation type="unfinished"/>
+            <translation>翻译 A → Z</translation>
         </message>
         <message>
             <source>Translation Engine</source>
-            <translation type="unfinished"/>
+            <translation>翻译引擎</translation>
         </message>
         <message>
             <source>API key:</source>
@@ -3308,7 +3308,7 @@
         </message>
         <message>
             <source>Translation Z → A</source>
-            <translation type="unfinished"/>
+            <translation>翻译 Z → A</translation>
         </message>
         <message>
             <source>Translation preview will appear here</source>
@@ -3328,7 +3328,7 @@
         </message>
         <message>
             <source>Undo</source>
-            <translation type="unfinished"/>
+            <translation>撤销</translation>
         </message>
         <message>
             <source>Unicode Inspector</source>
@@ -3336,7 +3336,7 @@
         </message>
         <message>
             <source>Unknown</source>
-            <translation type="unfinished"/>
+            <translation>未知</translation>
         </message>
         <message>
             <source>Unsaved Changes</source>
@@ -3344,7 +3344,7 @@
         </message>
         <message>
             <source>Unsupported file type: %s</source>
-            <translation type="unfinished"/>
+            <translation>不支持的文件类型：%s</translation>
         </message>
         <message>
             <source>Untitled</source>
@@ -3352,7 +3352,7 @@
         </message>
         <message>
             <source>Untranslated</source>
-            <translation type="unfinished"/>
+            <translation>未翻译</translation>
         </message>
         <message>
             <source>Untranslated/errors first</source>
@@ -3364,19 +3364,19 @@
         </message>
         <message>
             <source>Untranslated: %d</source>
-            <translation type="unfinished"/>
+            <translation>未翻译：%d</translation>
         </message>
         <message>
             <source>Untranslated: 0</source>
-            <translation type="unfinished"/>
+            <translation>未翻译：0</translation>
         </message>
         <message>
             <source>Up to date</source>
-            <translation type="unfinished"/>
+            <translation>已是最新</translation>
         </message>
         <message>
             <source>Update Available</source>
-            <translation type="unfinished"/>
+            <translation>有可用更新</translation>
         </message>
         <message>
             <source>Updated {} translation</source>
@@ -3384,19 +3384,19 @@
         </message>
         <message>
             <source>Validate</source>
-            <translation type="unfinished"/>
+            <translation>验证</translation>
         </message>
         <message>
             <source>Validate (Lint)</source>
-            <translation type="unfinished"/>
+            <translation>验证 (Lint)</translation>
         </message>
         <message>
             <source>Value</source>
-            <translation type="unfinished"/>
+            <translation>值</translation>
         </message>
         <message>
             <source>Version:</source>
-            <translation type="unfinished"/>
+            <translation>版本：</translation>
         </message>
         <message>
             <source>Video</source>
@@ -3412,7 +3412,7 @@
         </message>
         <message>
             <source>Warnings</source>
-            <translation type="unfinished"/>
+            <translation>警告</translation>
         </message>
         <message>
             <source>Watch File</source>
@@ -3428,7 +3428,7 @@
         </message>
         <message>
             <source>Weblate</source>
-            <translation type="unfinished"/>
+            <translation>Weblate</translation>
         </message>
         <message>
             <source>Website:</source>
@@ -3436,7 +3436,7 @@
         </message>
         <message>
             <source>With warnings</source>
-            <translation type="unfinished"/>
+            <translation>有警告</translation>
         </message>
         <message>
             <source>Words: %d | Chars: %d | Source: %dw%s</source>
@@ -3464,11 +3464,11 @@
         </message>
         <message>
             <source>lrelease error: %s</source>
-            <translation type="unfinished"/>
+            <translation>lrelease 错误：%s</translation>
         </message>
         <message>
             <source>msgfmt error: %s</source>
-            <translation type="unfinished"/>
+            <translation>msgfmt 错误：%s</translation>
         </message>
         <message>
             <source>msgmerge command not found. Please install gettext tools.</source>
@@ -3484,7 +3484,7 @@
         </message>
         <message>
             <source>words</source>
-            <translation type="unfinished"/>
+            <translation>词</translation>
         </message>
         <message>
             <source>{} chars | {} words | Source: {} chars</source>
@@ -3504,11 +3504,11 @@
         </message>
         <message>
             <source>✓ No spelling issues found</source>
-            <translation type="unfinished"/>
+            <translation>✓ 未发现拼写问题</translation>
         </message>
         <message>
             <source>💬 Comment</source>
-            <translation type="unfinished"/>
+            <translation>💬 评论</translation>
         </message>
         <message>
             <source>💾 Apply TM #1</source>
@@ -3696,7 +3696,7 @@
         </message>
         <message>
             <source>Weblate</source>
-            <translation type="unfinished"/>
+            <translation>Weblate</translation>
         </message>
         <message>
             <source>Weblate — %s</source>
@@ -3711,7 +3711,7 @@
             <translation type="unfinished"/>
         </message>
     <message><source>No API Key</source><translation type="unfinished"/></message><message><source>No Transifex API key configured.
-Please add one in Translation → API Keys…</source><translation type="unfinished"/></message><message><source>No language statistics found.</source><translation type="unfinished"/></message><message><source>No organizations found.</source><translation type="unfinished"/></message><message><source>No projects found.</source><translation type="unfinished"/></message><message><source>Organization:</source><translation type="unfinished"/></message><message><source>Project:</source><translation type="unfinished"/></message><message><source>Select Organization</source><translation type="unfinished"/></message><message><source>Select Project</source><translation type="unfinished"/></message><message><source>Transifex Error</source><translation type="unfinished"/></message><message><source>Transifex Statistics…</source><translation type="unfinished"/></message><message><source>Transifex — %s</source><translation type="unfinished"/></message><message><source>Translation statistics for &lt;b&gt;%s&lt;/b&gt;:</source><translation type="unfinished"/></message></context>
+Please add one in Translation → API Keys…</source><translation type="unfinished"/></message><message><source>No language statistics found.</source><translation type="unfinished"/></message><message><source>No organizations found.</source><translation type="unfinished"/></message><message><source>No projects found.</source><translation type="unfinished"/></message><message><source>Organization:</source><translation>组织：</translation></message><message><source>Project:</source><translation>项目：</translation></message><message><source>Select Organization</source><translation type="unfinished"/></message><message><source>Select Project</source><translation type="unfinished"/></message><message><source>Transifex Error</source><translation type="unfinished"/></message><message><source>Transifex Statistics…</source><translation type="unfinished"/></message><message><source>Transifex — %s</source><translation type="unfinished"/></message><message><source>Translation statistics for &lt;b&gt;%s&lt;/b&gt;:</source><translation type="unfinished"/></message></context>
     <context>
         <name>Linter</name>
         <message>
@@ -3732,11 +3732,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Format specifier mismatch: %s vs %s</source>
-            <translation type="unfinished"/>
+            <translation>格式说明符不匹配：%s 对 %s</translation>
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation type="unfinished"/>
+            <translation>模糊</translation>
         </message>
         <message>
             <source>Glossary inconsistency: %s</source>
@@ -3748,7 +3748,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Leading whitespace mismatch</source>
-            <translation type="unfinished"/>
+            <translation>前导空白不匹配</translation>
         </message>
         <message>
             <source>Missing HTML/XML tags in translation: %s</source>
@@ -3756,23 +3756,23 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Newline count mismatch (%s vs %s)</source>
-            <translation type="unfinished"/>
+            <translation>换行数不匹配（%s 对 %s）</translation>
         </message>
         <message>
             <source>Python format mismatch: %s vs %s</source>
-            <translation type="unfinished"/>
+            <translation>Python 格式不匹配：%s 对 %s</translation>
         </message>
         <message>
             <source>Suspicious length ratio: %sx</source>
-            <translation type="unfinished"/>
+            <translation>可疑的长度比：%sx</translation>
         </message>
         <message>
             <source>Trailing whitespace mismatch</source>
-            <translation type="unfinished"/>
+            <translation>尾随空白不匹配</translation>
         </message>
         <message>
             <source>Untranslated</source>
-            <translation type="unfinished"/>
+            <translation>未翻译</translation>
         </message>
     </context>
     <context>
@@ -3807,7 +3807,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Fuzzy</source>
-            <translation type="unfinished"/>
+            <translation>模糊</translation>
         </message>
         <message>
             <source>Locale Files</source>
@@ -3843,7 +3843,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Project:</source>
-            <translation type="unfinished"/>
+            <translation>项目：</translation>
         </message>
         <message>
             <source>Refresh</source>
@@ -3859,7 +3859,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Translated</source>
-            <translation type="unfinished"/>
+            <translation>已翻译</translation>
         </message>
         <message>
             <source>Translation Map</source>
@@ -4042,7 +4042,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Name:</source>
-            <translation type="unfinished"/>
+            <translation>姓名：</translation>
         </message>
         <message>
             <source>No actions recorded</source>
@@ -4227,7 +4227,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Language:</source>
-            <translation type="unfinished"/>
+            <translation>语言：</translation>
         </message>
         <message>
             <source>No Strings</source>
@@ -4275,7 +4275,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Remove Selected</source>
-            <translation type="unfinished"/>
+            <translation>删除所选</translation>
         </message>
         <message>
             <source>Save PO File</source>
@@ -4373,75 +4373,75 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         <name>PlatformSettingsDialog</name>
         <message>
             <source>API Key:</source>
-            <translation type="unfinished"/>
+            <translation>API 密钥：</translation>
         </message>
         <message>
             <source>API Token:</source>
-            <translation type="unfinished"/>
+            <translation>API 令牌：</translation>
         </message>
         <message>
             <source>API URL:</source>
-            <translation type="unfinished"/>
+            <translation>API URL：</translation>
         </message>
         <message>
             <source>Base URL:</source>
-            <translation type="unfinished"/>
+            <translation>基础 URL：</translation>
         </message>
         <message>
             <source>Component:</source>
-            <translation type="unfinished"/>
+            <translation>组件：</translation>
         </message>
         <message>
             <source>Crowdin</source>
-            <translation type="unfinished"/>
+            <translation>Crowdin</translation>
         </message>
         <message>
             <source>Crowdin API</source>
-            <translation type="unfinished"/>
+            <translation>Crowdin API</translation>
         </message>
         <message>
             <source>Organization:</source>
-            <translation type="unfinished"/>
+            <translation>组织：</translation>
         </message>
         <message>
             <source>Platform Settings</source>
-            <translation type="unfinished"/>
+            <translation>平台设置</translation>
         </message>
         <message>
             <source>Project ID:</source>
-            <translation type="unfinished"/>
+            <translation>项目 ID：</translation>
         </message>
         <message>
             <source>Project:</source>
-            <translation type="unfinished"/>
+            <translation>项目：</translation>
         </message>
         <message>
             <source>Save</source>
-            <translation type="unfinished"/>
+            <translation>保存</translation>
         </message>
         <message>
             <source>Test Connection</source>
-            <translation type="unfinished"/>
+            <translation>测试连接</translation>
         </message>
         <message>
             <source>Testing…</source>
-            <translation type="unfinished"/>
+            <translation>测试中…</translation>
         </message>
         <message>
             <source>Transifex</source>
-            <translation type="unfinished"/>
+            <translation>Transifex</translation>
         </message>
         <message>
             <source>Transifex API</source>
-            <translation type="unfinished"/>
+            <translation>Transifex API</translation>
         </message>
         <message>
             <source>Weblate</source>
-            <translation type="unfinished"/>
+            <translation>Weblate</translation>
         </message>
         <message>
             <source>Weblate API</source>
-            <translation type="unfinished"/>
+            <translation>Weblate API</translation>
         </message>
         <message>
             <source>⚠️ No system keychain — tokens stored with basic obfuscation. </source>
@@ -4449,23 +4449,23 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>✓ Connected: %1</source>
-            <translation type="unfinished"/>
+            <translation>✓ 已连接：%1</translation>
         </message>
         <message>
             <source>✓ Saved</source>
-            <translation type="unfinished"/>
+            <translation>✓ 已保存</translation>
         </message>
         <message>
             <source>✗ %1</source>
-            <translation type="unfinished"/>
+            <translation>✗ %1</translation>
         </message>
         <message>
             <source>✗ Project ID must be a number</source>
-            <translation type="unfinished"/>
+            <translation>✗ 项目 ID 必须是数字</translation>
         </message>
         <message>
             <source>🔒 Tokens stored in %1</source>
-            <translation type="unfinished"/>
+            <translation>🔒 令牌存储在 %1</translation>
         </message>
     </context>
     <context>
@@ -4570,15 +4570,15 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Appearance</source>
-            <translation type="unfinished"/>
+            <translation>外观</translation>
         </message>
         <message>
             <source>Auto-compile on save</source>
-            <translation type="unfinished"/>
+            <translation>保存时自动编译</translation>
         </message>
         <message>
             <source>Automatically compile .mo/.qm after saving</source>
-            <translation type="unfinished"/>
+            <translation>保存后自动编译 .mo/.qm</translation>
         </message>
         <message>
             <source>Character limit:</source>
@@ -4598,7 +4598,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Default engine:</source>
-            <translation type="unfinished"/>
+            <translation>默认引擎：</translation>
         </message>
         <message>
             <source>Double-click to edit translations directly in the list</source>
@@ -4606,11 +4606,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Editor font size:</source>
-            <translation type="unfinished"/>
+            <translation>编辑器字体大小：</translation>
         </message>
         <message>
             <source>Email:</source>
-            <translation type="unfinished"/>
+            <translation>电子邮件：</translation>
         </message>
         <message>
             <source>Enable inline editing</source>
@@ -4622,7 +4622,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Formality level:</source>
-            <translation type="unfinished"/>
+            <translation>正式程度：</translation>
         </message>
         <message>
             <source>Informal</source>
@@ -4630,7 +4630,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Language / Locale:</source>
-            <translation type="unfinished"/>
+            <translation>语言 / 区域设置：</translation>
         </message>
         <message>
             <source>Light</source>
@@ -4638,15 +4638,15 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Name:</source>
-            <translation type="unfinished"/>
+            <translation>姓名：</translation>
         </message>
         <message>
             <source>Personal</source>
-            <translation type="unfinished"/>
+            <translation>个人</translation>
         </message>
         <message>
             <source>Preferences</source>
-            <translation type="unfinished"/>
+            <translation>首选项</translation>
         </message>
         <message>
             <source>Security</source>
@@ -4658,7 +4658,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Source language:</source>
-            <translation type="unfinished"/>
+            <translation>源语言：</translation>
         </message>
         <message>
             <source>System default</source>
@@ -4666,19 +4666,19 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Target language:</source>
-            <translation type="unfinished"/>
+            <translation>目标语言：</translation>
         </message>
         <message>
             <source>Team:</source>
-            <translation type="unfinished"/>
+            <translation>团队：</translation>
         </message>
         <message>
             <source>Theme:</source>
-            <translation type="unfinished"/>
+            <translation>主题：</translation>
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>No system keychain detected. Credentials are stored in an encrypted file with a master password.\n\nFor better security, install:\n• macOS: Built-in (Keychain)\n• Windows: pip install keyring\n• Linux: pip install secretstorage</source>
@@ -4749,7 +4749,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Open</source>
-            <translation type="unfinished"/>
+            <translation>打开</translation>
         </message>
         <message>
             <source>Open a project folder to begin</source>
@@ -4801,7 +4801,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Translated</source>
-            <translation type="unfinished"/>
+            <translation>已翻译</translation>
         </message>
         <message>
             <source>Type</source>
@@ -4841,15 +4841,15 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Translated: %d</source>
-            <translation type="unfinished"/>
+            <translation>已翻译：%d</translation>
         </message>
         <message>
             <source>Fuzzy: %d</source>
-            <translation type="unfinished"/>
+            <translation>模糊：%d</translation>
         </message>
         <message>
             <source>Untranslated: %d</source>
-            <translation type="unfinished"/>
+            <translation>未翻译：%d</translation>
         </message>
         <message>
             <source>Progress: %.1f%%</source>
@@ -4958,7 +4958,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Value</source>
-            <translation type="unfinished"/>
+            <translation>值</translation>
         </message>
         <message>
             <source>Error: %s</source>
@@ -5017,7 +5017,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Options</source>
-            <translation type="unfinished"/>
+            <translation>选项</translation>
         </message>
         <message>
             <source>Regular expression</source>
@@ -5025,11 +5025,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Replace</source>
-            <translation type="unfinished"/>
+            <translation>替换</translation>
         </message>
         <message>
             <source>Replace All</source>
-            <translation type="unfinished"/>
+            <translation>全部替换</translation>
         </message>
         <message>
             <source>Replace:</source>
@@ -5045,11 +5045,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Source text</source>
-            <translation type="unfinished"/>
+            <translation>源文本</translation>
         </message>
         <message>
             <source>Translation</source>
-            <translation type="unfinished"/>
+            <translation>翻译</translation>
         </message>
         <message>
             <source>Whole words</source>
@@ -5257,83 +5257,83 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         <name>SyncDialog</name>
         <message>
             <source>%1 resources found</source>
-            <translation type="unfinished"/>
+            <translation>找到 %1 个资源</translation>
         </message>
         <message>
             <source>Crowdin not configured. Open Platform Settings first.</source>
-            <translation type="unfinished"/>
+            <translation>Crowdin 未配置。请先打开平台设置。</translation>
         </message>
         <message>
             <source>Downloading…</source>
-            <translation type="unfinished"/>
+            <translation>正在下载…</translation>
         </message>
         <message>
             <source>Enter a language code</source>
-            <translation type="unfinished"/>
+            <translation>请输入语言代码</translation>
         </message>
         <message>
             <source>Language:</source>
-            <translation type="unfinished"/>
+            <translation>语言：</translation>
         </message>
         <message>
             <source>Loading resources…</source>
-            <translation type="unfinished"/>
+            <translation>正在加载资源…</translation>
         </message>
         <message>
             <source>No file loaded to push</source>
-            <translation type="unfinished"/>
+            <translation>没有加载要推送的文件</translation>
         </message>
         <message>
             <source>No resources found</source>
-            <translation type="unfinished"/>
+            <translation>未找到资源</translation>
         </message>
         <message>
             <source>Pull</source>
-            <translation type="unfinished"/>
+            <translation>拉取</translation>
         </message>
         <message>
             <source>Pull Translation</source>
-            <translation type="unfinished"/>
+            <translation>拉取翻译</translation>
         </message>
         <message>
             <source>Push</source>
-            <translation type="unfinished"/>
+            <translation>推送</translation>
         </message>
         <message>
             <source>Push Translation</source>
-            <translation type="unfinished"/>
+            <translation>推送翻译</translation>
         </message>
         <message>
             <source>Resources</source>
-            <translation type="unfinished"/>
+            <translation>资源</translation>
         </message>
         <message>
             <source>Select a resource first</source>
-            <translation type="unfinished"/>
+            <translation>请先选择一个资源</translation>
         </message>
         <message>
             <source>Transifex not configured. Open Platform Settings first.</source>
-            <translation type="unfinished"/>
+            <translation>Transifex 未配置。请先打开平台设置。</translation>
         </message>
         <message>
             <source>Unknown</source>
-            <translation type="unfinished"/>
+            <translation>未知</translation>
         </message>
         <message>
             <source>Unknown platform</source>
-            <translation type="unfinished"/>
+            <translation>未知平台</translation>
         </message>
         <message>
             <source>Uploading…</source>
-            <translation type="unfinished"/>
+            <translation>正在上传…</translation>
         </message>
         <message>
             <source>Weblate not configured. Open Platform Settings first.</source>
-            <translation type="unfinished"/>
+            <translation>Weblate 未配置。请先打开平台设置。</translation>
         </message>
         <message>
             <source>e.g. sv, de, fr</source>
-            <translation type="unfinished"/>
+            <translation>例如 sv、de、fr</translation>
         </message>
         <message>
             <source>✓ Downloaded at %1\nSaved to: %2</source>
@@ -5341,19 +5341,19 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>✓ Uploaded at %1</source>
-            <translation type="unfinished"/>
+            <translation>✓ 在 %1 上传</translation>
         </message>
         <message>
             <source>✗ Error: %1</source>
-            <translation type="unfinished"/>
+            <translation>✗ 错误：%1</translation>
         </message>
         <message>
             <source>✗ Pull failed: %1</source>
-            <translation type="unfinished"/>
+            <translation>✗ 拉取失败：%1</translation>
         </message>
         <message>
             <source>✗ Push failed: %1</source>
-            <translation type="unfinished"/>
+            <translation>✗ 推送失败：%1</translation>
         </message>
     </context>
     <context>
@@ -5399,7 +5399,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Clear</source>
-            <translation type="unfinished"/>
+            <translation>清除</translation>
         </message>
         <message>
             <source>Close</source>
@@ -5486,15 +5486,15 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Source text</source>
-            <translation type="unfinished"/>
+            <translation>源文本</translation>
         </message>
         <message>
             <source>Validation Results</source>
-            <translation type="unfinished"/>
+            <translation>验证结果</translation>
         </message>
         <message>
             <source>Warnings</source>
-            <translation type="unfinished"/>
+            <translation>警告</translation>
         </message>
     </context>
     <context>
@@ -5726,11 +5726,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         <name>WelcomeDialog</name>
         <message>
             <source>Appearance</source>
-            <translation type="unfinished"/>
+            <translation>外观</translation>
         </message>
         <message>
             <source>Back</source>
-            <translation type="unfinished"/>
+            <translation>返回</translation>
         </message>
         <message>
             <source>Dark</source>
@@ -5742,15 +5742,15 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Default engine:</source>
-            <translation type="unfinished"/>
+            <translation>默认引擎：</translation>
         </message>
         <message>
             <source>Editor font size:</source>
-            <translation type="unfinished"/>
+            <translation>编辑器字体大小：</translation>
         </message>
         <message>
             <source>Email:</source>
-            <translation type="unfinished"/>
+            <translation>电子邮件：</translation>
         </message>
         <message>
             <source>Formal</source>
@@ -5758,7 +5758,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Formality level:</source>
-            <translation type="unfinished"/>
+            <translation>正式程度：</translation>
         </message>
         <message>
             <source>Informal</source>
@@ -5766,7 +5766,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Language / Locale:</source>
-            <translation type="unfinished"/>
+            <translation>语言 / 区域设置：</translation>
         </message>
         <message>
             <source>Light</source>
@@ -5774,23 +5774,23 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Name:</source>
-            <translation type="unfinished"/>
+            <translation>姓名：</translation>
         </message>
         <message>
             <source>Next</source>
-            <translation type="unfinished"/>
+            <translation>下一步</translation>
         </message>
         <message>
             <source>Personal Information</source>
-            <translation type="unfinished"/>
+            <translation>个人信息</translation>
         </message>
         <message>
             <source>Source language:</source>
-            <translation type="unfinished"/>
+            <translation>源语言：</translation>
         </message>
         <message>
             <source>Start translating!</source>
-            <translation type="unfinished"/>
+            <translation>开始翻译！</translation>
         </message>
         <message>
             <source>System default</source>
@@ -5798,23 +5798,23 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Target language:</source>
-            <translation type="unfinished"/>
+            <translation>目标语言：</translation>
         </message>
         <message>
             <source>Team (optional):</source>
-            <translation type="unfinished"/>
+            <translation>团队（可选）：</translation>
         </message>
         <message>
             <source>Theme:</source>
-            <translation type="unfinished"/>
+            <translation>主题：</translation>
         </message>
         <message>
             <source>Translation Settings</source>
-            <translation type="unfinished"/>
+            <translation>翻译设置</translation>
         </message>
         <message>
             <source>Welcome to LinguaEdit</source>
-            <translation type="unfinished"/>
+            <translation>欢迎使用 LinguaEdit</translation>
         </message>
         <message>
             <source>You</source>
@@ -5856,7 +5856,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Next entry</source>
-            <translation type="unfinished"/>
+            <translation>下一条</translation>
         </message>
         <message>
             <source>Next untranslated ▶▶</source>
@@ -5864,7 +5864,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Previous entry</source>
-            <translation type="unfinished"/>
+            <translation>上一条</translation>
         </message>
         <message>
             <source>Skip to next untranslated (Ctrl+Enter)</source>
@@ -5872,39 +5872,39 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&amp;Catalog</source>
-            <translation type="unfinished"/>
+            <translation>目录(&amp;C)</translation>
         </message>
         <message>
             <source>&amp;Edit</source>
-            <translation type="unfinished"/>
+            <translation>编辑(&amp;E)</translation>
         </message>
         <message>
             <source>&amp;File</source>
-            <translation type="unfinished"/>
+            <translation>文件(&amp;F)</translation>
         </message>
         <message>
             <source>&amp;Git</source>
-            <translation type="unfinished"/>
+            <translation>&amp;Git</translation>
         </message>
         <message>
             <source>&amp;Go</source>
-            <translation type="unfinished"/>
+            <translation>转到(&amp;G)</translation>
         </message>
         <message>
             <source>&amp;Help</source>
-            <translation type="unfinished"/>
+            <translation>帮助(&amp;H)</translation>
         </message>
         <message>
             <source>&amp;Open…</source>
-            <translation type="unfinished"/>
+            <translation>打开(&amp;O)…</translation>
         </message>
         <message>
             <source>&amp;Platforms</source>
-            <translation type="unfinished"/>
+            <translation>平台(&amp;P)</translation>
         </message>
         <message>
             <source>&amp;Save</source>
-            <translation type="unfinished"/>
+            <translation>保存(&amp;S)</translation>
         </message>
         <message>
             <source>&amp;Tools</source>
@@ -5912,7 +5912,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&amp;View</source>
-            <translation type="unfinished"/>
+            <translation>视图(&amp;V)</translation>
         </message>
         <message>
             <source>&lt;b&gt;%d&lt;/b&gt; untranslated strings out of &lt;b&gt;%d&lt;/b&gt; total.</source>
@@ -5932,7 +5932,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;b&gt;Concordance search&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;语料搜索&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Outdated translations&lt;/b&gt; — source changed but translation stayed the same.</source>
@@ -5944,11 +5944,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;b&gt;Reference source:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;参考源文本：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Reference translation:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;参考翻译：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Removed strings:&lt;/b&gt; %d</source>
@@ -5956,7 +5956,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;b&gt;Source text:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;源文本：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Source text&lt;/b&gt;</source>
@@ -5964,11 +5964,11 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;b&gt;Suggestions&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;建议&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translation:&lt;/b&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;b&gt;翻译：&lt;/b&gt;</translation>
         </message>
         <message>
             <source>&lt;b&gt;Translation&lt;/b&gt;</source>
@@ -5984,7 +5984,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;i&gt;(no match in reference)&lt;/i&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;i&gt;（参考中无匹配）&lt;/i&gt;</translation>
         </message>
         <message>
             <source>&lt;i&gt;MT unavailable&lt;/i&gt;</source>
@@ -6004,7 +6004,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>&lt;i&gt;No suggestions&lt;/i&gt;</source>
-            <translation type="unfinished"/>
+            <translation>&lt;i&gt;无建议&lt;/i&gt;</translation>
         </message>
         <message>
             <source>Are you sure you want to delete the macro &apos;{}&apos;?</source>
@@ -6036,7 +6036,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         </message>
         <message>
             <source>Find &amp;&amp; Replace…</source>
-            <translation type="unfinished"/>
+            <translation>查找和替换…</translation>
         </message>
         <message>
             <source>Macro &apos;{}&apos; has been saved successfully.</source>
@@ -6174,7 +6174,7 @@ Please add one in Translation → API Keys…</source><translation type="unfinis
         <name>UpdateDialog</name>
         <message>
             <source>Update Available</source>
-            <translation type="unfinished"/>
+            <translation>有可用更新</translation>
         </message>
         <message>
             <source>A new version of LinguaEdit is available!</source>
