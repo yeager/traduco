@@ -2516,11 +2516,11 @@
         </message>
         <message>
             <source>Merge with POT…</source>
-            <translation>Sammanslagning med POT…</translation>
+            <translation>Sammanfoga med POT…</translation>
         </message>
         <message>
             <source>Merged {} entries</source>
-            <translation>Sammanslagna {} poster</translation>
+            <translation>Slog samman {} poster</translation>
         </message>
         <message>
             <source>Message</source>
@@ -2568,7 +2568,7 @@
         </message>
         <message>
             <source>Next untranslated</source>
-            <translation>Nästa oöversatt</translation>
+            <translation>Nästa oöversatta</translation>
         </message>
         <message>
             <source>No File</source>
