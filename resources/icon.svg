@@ -1,24 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2C5F8A;stop-opacity:1" />
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6699cc"/>
+      <stop offset="100%" stop-color="#3d6fa0"/>
     </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
   </defs>
-  <!-- Rounded square background -->
-  <rect x="8" y="8" width="240" height="240" rx="40" ry="40" fill="url(#bg)" />
+  <!-- Background -->
+  <rect width="128" height="128" rx="22" fill="url(#bg)"/>
   <!-- Speech bubble -->
-  <path d="M 55 60 Q 55 45, 70 45 L 186 45 Q 201 45, 201 60 L 201 140 Q 201 155, 186 155 L 110 155 L 80 185 L 85 155 L 70 155 Q 55 155, 55 140 Z" fill="white" opacity="0.95"/>
-  <!-- "Aa" text symbolizing translation -->
-  <text x="92" y="118" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#2C5F8A" text-anchor="middle">A</text>
-  <text x="155" y="118" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#4A90D9" text-anchor="middle">a</text>
-  <!-- Small pen icon -->
-  <g transform="translate(170,155) rotate(-45)" opacity="0.9">
-    <rect x="-4" y="-30" width="8" height="35" rx="2" fill="#E8A735"/>
-    <polygon points="-4,5 4,5 0,14" fill="#333"/>
-    <rect x="-4" y="-30" width="8" height="6" rx="1" fill="#D4534A"/>
+  <g filter="url(#shadow)">
+    <path d="M20,18 h88 a8,8 0 0,1 8,8 v52 a8,8 0 0,1 -8,8 H72 L64,96 L56,86 H20 a8,8 0 0,1 -8,-8 V26 a8,8 0 0,1 8,-8z" 
+          fill="white" opacity="0.95"/>
   </g>
-  <!-- Globe arcs at bottom -->
-  <ellipse cx="128" cy="220" rx="30" ry="12" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
-  <path d="M 98 220 Q 128 200, 158 220" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+  <!-- Large A -->
+  <text x="36" y="66" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#2c3e50" opacity="0.85">A</text>
+  <!-- Small a -->
+  <text x="76" y="58" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#3584e4">a</text>
+  <!-- Pencil -->
+  <g transform="translate(82,58) rotate(30)">
+    <rect x="0" y="0" width="6" height="24" rx="1" fill="#e5a50a"/>
+    <rect x="0" y="0" width="6" height="6" rx="1" fill="#c64600"/>
+    <polygon points="1,24 5,24 3,30" fill="#2c3e50"/>
+  </g>
+  <!-- Cursor blink line -->
+  <rect x="60" y="105" rx="3" ry="3" width="8" height="3" fill="white" opacity="0.4"/>
 </svg>
