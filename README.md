@@ -345,3 +345,18 @@ GPL-3.0-or-later — see [LICENSE](LICENSE).
 
 - 🌐 [danielnylander.se](https://www.danielnylander.se)
 - 🐙 [github.com/yeager](https://github.com/yeager)
+
+## 🌍 Contributing Translations
+
+This app is translated via Transifex. Help translate it into your language!
+
+**[→ Translate on Transifex](https://app.transifex.com/danielnylander/linguaedit/)**
+
+Currently supported: Swedish (sv). More languages welcome!
+
+### For Translators
+1. Create a free account at [Transifex](https://www.transifex.com)
+2. Join the [danielnylander](https://app.transifex.com/danielnylander/) organization
+3. Start translating!
+
+Translations are automatically synced via GitHub Actions.
