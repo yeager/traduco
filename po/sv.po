@@ -1,0 +1,6680 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-19 19:12+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.19.1\n"
+
+#: AIReviewDialog%231
+msgid "AI Translation Review"
+msgstr "Granskning av AI-översättning"
+
+#: AIReviewDialog%232
+msgid "Analysis"
+msgstr "Analys"
+
+#: AIReviewDialog%233
+msgid "Analyzing translation..."
+msgstr "Analyserar översättning..."
+
+#: AIReviewDialog%234
+msgid "Apply Suggestion"
+msgstr "Tillämpa förslag"
+
+#: AIReviewDialog%235
+msgid "Score:"
+msgstr "Betyg:"
+
+#: AIReviewDialog%236
+msgctxt "AIReviewDialog#6"
+msgid "Error"
+msgstr "Fel"
+
+#: AIReviewDialog%237
+msgid "Analysis error: "
+msgstr "Fel vid analys: "
+
+#: AIReviewDialog%238
+msgid "Improvement suggestions:"
+msgstr "Förbättringsförslag:"
+
+#: AIReviewDialog%239
+msgid "Explanation:"
+msgstr "Förklaring:"
+
+#: AIReviewDialog%2310
+msgid "No specific suggestions."
+msgstr "Inga specifika förslag."
+
+#: AIReviewDialog%2311
+msgid "Could not analyze translation: "
+msgstr "Kunde inte analysera översättning: "
+
+#: AIReviewDialog%2312
+msgctxt "AIReviewDialog#12"
+msgid "Source text:"
+msgstr "Källtext:"
+
+#: AIReviewDialog%2313
+msgid "Text to Review"
+msgstr "Text att granska"
+
+#: AIReviewDialog%2314
+msgctxt "AIReviewDialog#14"
+msgid "Translation:"
+msgstr "Översättning:"
+
+#: AchievementManager%231
+msgid "Complete 10 translations"
+msgstr "Slutför 10 översättningar"
+
+#: AchievementManager%232
+msgid "Complete 100 translations"
+msgstr "Slutför 100 översättningar"
+
+#: AchievementManager%233
+msgid "Complete 1000 translations"
+msgstr "Slutför 1000 översättningar"
+
+#: AchievementManager%234
+msgid "Complete 50 translations without using auto-translate"
+msgstr "Gör 50 översättningar utan att använda automatisk översättning"
+
+#: AchievementManager%235
+msgid "Complete your first translation"
+msgstr "Slutför din första översättning"
+
+#: AchievementManager%236
+msgid "Completionist"
+msgstr "Fullbordare"
+
+#: AchievementManager%237
+msgid "Dedicated Translator"
+msgstr "Dedikerad översättare"
+
+#: AchievementManager%238
+msgid "Early Bird"
+msgstr "Morgonpigg"
+
+#: AchievementManager%239
+msgid "First Steps"
+msgstr "Första stegen"
+
+#: AchievementManager%2310
+msgid "Format Explorer"
+msgstr "Formatutforskare"
+
+#: AchievementManager%2311
+msgid "Fully translate a file (100% complete)"
+msgstr "Översätt en fil helt (100 % komplett)"
+
+#: AchievementManager%2312
+msgid "Getting Into Rhythm"
+msgstr "Komma in i rytmen"
+
+#: AchievementManager%2313
+msgid "Getting Started"
+msgstr "Komma igång"
+
+#: AchievementManager%2314
+msgid "Linguistic Expert"
+msgstr "Språkexpert"
+
+#: AchievementManager%2315
+msgid "Night Owl"
+msgstr "Nattuggla"
+
+#: AchievementManager%2316
+msgid "Perfectionist"
+msgstr "Perfektionist"
+
+#: AchievementManager%2317
+msgid "Polyglot"
+msgstr "Polyglott"
+
+#: AchievementManager%2318
+msgid "Speed Demon"
+msgstr "Hastighetsdemon"
+
+#: AchievementManager%2319
+msgid "Translate 50 strings in one hour"
+msgstr "Översätt 50 strängar på en timme"
+
+#: AchievementManager%2320
+msgid "Translate after 10 PM"
+msgstr "Översätt efter kl. 22.00"
+
+#: AchievementManager%2321
+msgid "Translate before 8 AM"
+msgstr "Översätt före kl. 8"
+
+#: AchievementManager%2322
+msgid "Translate for 3 days in a row"
+msgstr "Översätt i 3 dagar i rad"
+
+#: AchievementManager%2323
+msgid "Translate for 30 days in a row"
+msgstr "Översätt i 30 dagar i rad"
+
+#: AchievementManager%2324
+msgid "Translate for 7 days in a row"
+msgstr "Översätt i 7 dagar i rad"
+
+#: AchievementManager%2325
+msgid "Translation Master"
+msgstr "Översättningsmästare"
+
+#: AchievementManager%2326
+msgid "Unstoppable"
+msgstr "Ohejdbar"
+
+#: AchievementManager%2327
+msgid "Week Warrior"
+msgstr "Veckans krigare"
+
+#: AchievementManager%2328
+msgid "Work with 3 different languages"
+msgstr "Arbeta med 3 olika språk"
+
+#: AchievementManager%2329
+msgid "Work with 5 different file formats"
+msgstr "Arbeta med 5 olika filformat"
+
+#: AchievementManager%2330
+msgid "Work with 5 different languages"
+msgstr "Arbeta med 5 olika språk"
+
+#: AchievementWidget%231
+msgid "Unlocked: {}"
+msgstr "Låst upp: {}"
+
+#: AchievementsDialog%231
+msgid "Achievement Progress"
+msgstr "Prestationsframsteg"
+
+#: AchievementsDialog%232
+msgid "Achievements"
+msgstr "Prestationer"
+
+#: AchievementsDialog%233
+msgid "All"
+msgstr "Alla"
+
+#: AchievementsDialog%234
+msgctxt "AchievementsDialog#4"
+msgid "Close"
+msgstr "Stäng"
+
+#: AchievementsDialog%235
+msgid "Locked"
+msgstr "Låst"
+
+#: AchievementsDialog%236
+msgid "Overall Progress:"
+msgstr "Övergripande framsteg:"
+
+#: AchievementsDialog%237
+msgctxt "AchievementsDialog#7"
+msgid "Statistics"
+msgstr "Statistik"
+
+#: AchievementsDialog%238
+msgid "Translations: {0} | Streak: {1} days | Languages: {2}"
+msgstr "Översättningar: {0} | Streak: {1} dagar | Språk: {2}"
+
+#: AchievementsDialog%239
+msgid "Unlocked"
+msgstr "Olåst"
+
+#: BatchEditDialog%231
+msgid "Accept all fuzzy translations"
+msgstr "Acceptera alla ungefärliga översättningar"
+
+#: BatchEditDialog%232
+msgid "After"
+msgstr "Efter"
+
+#: BatchEditDialog%233
+msgid "Apply Changes"
+msgstr "Tillämpa ändringar"
+
+#: BatchEditDialog%234
+msgid "Apply changes to %d entries?"
+msgstr "Tillämpa ändringar på %d poster?"
+
+#: BatchEditDialog%235
+msgid "Batch Edit"
+msgstr "Batchredigering"
+
+#: BatchEditDialog%236
+msgid "Before"
+msgstr "Före"
+
+#: BatchEditDialog%237
+msgctxt "BatchEditDialog#7"
+msgid "Case sensitive"
+msgstr "Skiftlägeskänslig"
+
+#: BatchEditDialog%238
+msgid "Clear fuzzy flag from all translations"
+msgstr "Rensa fuzzy-flaggan från alla översättningar"
+
+#: BatchEditDialog%239
+msgid "Completed successfully. %d entries modified."
+msgstr "Slutfört med framgång. %d poster modifierade."
+
+#: BatchEditDialog%2310
+msgid "Completed with %d errors. %d entries modified."
+msgstr "Slutfört med %d fel. %d poster modifierade."
+
+#: BatchEditDialog%2311
+msgid "Confirm Changes"
+msgstr "Bekräfta ändringar"
+
+#: BatchEditDialog%2312
+msgctxt "BatchEditDialog#12"
+msgid "Copy Source"
+msgstr "Kopiera källa"
+
+#: BatchEditDialog%2313
+msgid "Copy source text to empty translation fields."
+msgstr "Kopiera källtexten till tomma översättningsfält."
+
+#: BatchEditDialog%2314
+msgid "Copy source to empty translations"
+msgstr "Kopiera källan till tomma översättningar"
+
+#: BatchEditDialog%2315
+msgctxt "BatchEditDialog#15"
+msgid "Entry"
+msgstr "Post"
+
+#: BatchEditDialog%2316
+msgctxt "BatchEditDialog#16"
+msgid "Find:"
+msgstr "Hitta:"
+
+#: BatchEditDialog%2317
+msgid "Fuzzy Operations"
+msgstr "Luddiga operationer"
+
+#: BatchEditDialog%2318
+msgid "Fuzzy: "
+msgstr "Luddig: "
+
+#: BatchEditDialog%2319
+msgid "Mark all translations as fuzzy"
+msgstr "Markera alla översättningar som luddiga"
+
+#: BatchEditDialog%2320
+msgid "No"
+msgstr "Nej"
+
+#: BatchEditDialog%2321
+msgid "Operation"
+msgstr "Åtgärd"
+
+#: BatchEditDialog%2322
+msgctxt "BatchEditDialog#22"
+msgid "Options"
+msgstr "Alternativ"
+
+#: BatchEditDialog%2323
+msgid "Please enter text to find."
+msgstr "Ange text som du vill söka efter."
+
+#: BatchEditDialog%2324
+msgctxt "BatchEditDialog#24"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: BatchEditDialog%2325
+msgid "Processing..."
+msgstr "Bearbetar..."
+
+#: BatchEditDialog%2326
+msgctxt "BatchEditDialog#26"
+msgid "Regular expression"
+msgstr "Reguljära uttryck"
+
+#: BatchEditDialog%2327
+msgctxt "BatchEditDialog#27"
+msgid "Replace:"
+msgstr "Ersätt:"
+
+#: BatchEditDialog%2328
+msgctxt "BatchEditDialog#28"
+msgid "Search & Replace"
+msgstr "Sök och ersätt"
+
+#: BatchEditDialog%2329
+msgid "Source Copy"
+msgstr "Källkopia"
+
+#: BatchEditDialog%2330
+msgid "Text change"
+msgstr "Textändring"
+
+#: BatchEditDialog%2331
+msgctxt "BatchEditDialog#31"
+msgid "Warning"
+msgstr "Varning"
+
+#: BatchEditDialog%2332
+msgid "Yes"
+msgstr "Ja"
+
+#: BatchTranslateDialog%231
+msgid " (API key)"
+msgstr " (API-nyckel)"
+
+#: BatchTranslateDialog%232
+msgid "%v / %m"
+msgstr "%v / %m"
+
+#: BatchTranslateDialog%233
+msgid "All entries are already translated."
+msgstr "Alla poster är redan översatta."
+
+#: BatchTranslateDialog%234
+msgid "Apply Results"
+msgstr "Tillämpa resultat"
+
+#: BatchTranslateDialog%235
+msgid "Batch Machine Translate"
+msgstr "Batchmaskinöversättning"
+
+#: BatchTranslateDialog%236
+msgid "Cancel Translation"
+msgstr "Avbryt översättning"
+
+#: BatchTranslateDialog%237
+msgid "Cancelling…"
+msgstr "Avbryter..."
+
+#: BatchTranslateDialog%238
+msgctxt "BatchTranslateDialog#8"
+msgid "Close"
+msgstr "Stäng"
+
+#: BatchTranslateDialog%239
+msgid "Done. %d translated, %d errors."
+msgstr "Klart. %d översatt, %d fel."
+
+#: BatchTranslateDialog%2310
+msgid "Engine:"
+msgstr "Motor:"
+
+#: BatchTranslateDialog%2311
+msgctxt "BatchTranslateDialog#11"
+msgid "Error"
+msgstr "Fel"
+
+#: BatchTranslateDialog%2312
+msgid "Mark results as fuzzy / needs work"
+msgstr "Markera resultat som otydliga/behöver bearbetas"
+
+#: BatchTranslateDialog%2313
+msgid "Nothing to Translate"
+msgstr "Inget att översätta"
+
+#: BatchTranslateDialog%2314
+msgid "Pending"
+msgstr "Väntande"
+
+#: BatchTranslateDialog%2315
+msgctxt "BatchTranslateDialog#15"
+msgid "Source"
+msgstr "Källa"
+
+#: BatchTranslateDialog%2316
+msgctxt "BatchTranslateDialog#16"
+msgid "Source language:"
+msgstr "Källspråk:"
+
+#: BatchTranslateDialog%2317
+msgctxt "BatchTranslateDialog#17"
+msgid "Status"
+msgstr "Status"
+
+#: BatchTranslateDialog%2318
+msgctxt "BatchTranslateDialog#18"
+msgid "Target language:"
+msgstr "Målspråk:"
+
+#: BatchTranslateDialog%2319
+msgid "Translate All"
+msgstr "Översätt allt"
+
+#: BatchTranslateDialog%2320
+msgid "Translating…"
+msgstr "Översätter..."
+
+#: BatchTranslateDialog%2321
+msgctxt "BatchTranslateDialog#21"
+msgid "Translation"
+msgstr "Översättning"
+
+#: BatchTranslateDialog%2322
+msgctxt "BatchTranslateDialog#22"
+msgid "Translation Settings"
+msgstr "Översättningsinställningar"
+
+#: BatchTranslateDialog%2323
+msgctxt "BatchTranslateDialog#23"
+msgid "%d min %d s remaining"
+msgstr "%d min %d s kvar"
+
+#: BatchTranslateDialog%2324
+msgctxt "BatchTranslateDialog#24"
+msgid "%d of %d strings · %.1f strings/s · %s"
+msgstr "%d av %d strängar · %.1f strängar/s · %s"
+
+#: BatchTranslateDialog%2325
+msgctxt "BatchTranslateDialog#25"
+msgid "%d of %d strings · %.1f strings/s · %s remaining"
+msgstr "%d av %d strängar · %.1f strängar/s · %s kvar"
+
+#: BatchTranslateDialog%2326
+msgctxt "BatchTranslateDialog#26"
+msgid "%d s remaining"
+msgstr "%d s kvar"
+
+#: BatchTranslateDialog%2327
+msgctxt "BatchTranslateDialog#27"
+msgid "<b>%d</b> untranslated strings out of <b>%d</b> total."
+msgstr "<b>%d</b> oöversatta strängar av totalt <b>%d</b>."
+
+#: BatchTranslateDialog%2328
+msgid "Completed %d strings in %d s"
+msgstr "Slutförde %d strängar på %d s"
+
+#: CollapsibleSidePanel%231
+msgid "Ctx"
+msgstr "Ktx"
+
+#: CollapsibleSidePanel%232
+msgctxt "CollapsibleSidePanel#2"
+msgid "Info"
+msgstr "Info"
+
+#: CollapsibleSidePanel%233
+msgid "Pre"
+msgstr "Förh"
+
+#: CollapsibleSidePanel%234
+msgid "Ref"
+msgstr "Ref"
+
+#: CollapsibleSidePanel%235
+msgid "TM"
+msgstr "TM"
+
+#: CollapsibleSidePanel%236
+msgid "Toggle side panel"
+msgstr "Växla sidopanel"
+
+#: ConcordanceDialog%231
+msgid "Concordance Search"
+msgstr "Konkordanssökning"
+
+#: ConcordanceDialog%232
+msgid "Double-click a row to copy translation to clipboard."
+msgstr "Dubbelklicka på en rad för att kopiera översättningen till urklipp."
+
+#: ConcordanceDialog%233
+msgid "Enter word or phrase to search in TM…"
+msgstr "Ange ord eller fras för att söka i TM…"
+
+#: ConcordanceDialog%234
+msgctxt "ConcordanceDialog#4"
+msgid "File"
+msgstr "Fil"
+
+#: ConcordanceDialog%235
+msgid "Score"
+msgstr "Poäng"
+
+#: ConcordanceDialog%236
+msgctxt "ConcordanceDialog#6"
+msgid "Search"
+msgstr "Sök"
+
+#: ConcordanceDialog%237
+msgctxt "ConcordanceDialog#7"
+msgid "Source"
+msgstr "Källa"
+
+#: ConcordanceDialog%238
+msgctxt "ConcordanceDialog#8"
+msgid "Translation"
+msgstr "Översättning"
+
+#: ConcordanceDialog%239
+msgid "Translation copied to clipboard."
+msgstr "Översättningen har kopierats till urklipp."
+
+#: ConcordanceDialog%2310
+msgid "{} results found for "
+msgstr "{} resultat hittades för "
+
+#: ContextPanel%231
+msgctxt "ContextPanel#1"
+msgid "<i>MT unavailable</i>"
+msgstr "<i>MT otillgänglig</i>"
+
+#: ContextPanel%232
+msgctxt "ContextPanel#2"
+msgid "<i>No matches</i>"
+msgstr "<i>Inga träffar</i>"
+
+#: ContextPanel%233
+msgctxt "ContextPanel#3"
+msgid "<i>No matching terms</i>"
+msgstr "<i>Inga matchande termer</i>"
+
+#: ContextPanel%234
+msgctxt "ContextPanel#4"
+msgid "<i>No suggestion</i>"
+msgstr "<i>Inget förslag</i>"
+
+#: ContextPanel%235
+msgctxt "ContextPanel#5"
+msgid "Context"
+msgstr "Sammanhang"
+
+#: ContextPanel%236
+msgctxt "ContextPanel#6"
+msgid "Glossary"
+msgstr "Ordlista"
+
+#: ContextPanel%237
+msgid "Machine Translation"
+msgstr "Maskinöversättning"
+
+#: ContextPanel%238
+msgid "Translation Memory"
+msgstr "Översättningsminne"
+
+#: ContextPanel%239
+msgctxt "ContextPanel#9"
+msgid ""
+"Source: %s\\n"
+"Target: %s"
+msgstr ""
+"Källa: %s\\n"
+"Mål: %s"
+
+#: DashboardDialog%231
+msgid "CSV files (*.csv)"
+msgstr "CSV-filer (*.csv)"
+
+#: DashboardDialog%232
+msgctxt "DashboardDialog#2"
+msgid "Close"
+msgstr "Stäng"
+
+#: DashboardDialog%233
+msgid "Export Complete"
+msgstr "Exporten slutförd"
+
+#: DashboardDialog%234
+msgid "Export Statistics as CSV"
+msgstr "Exportera statistik som CSV"
+
+#: DashboardDialog%235
+msgid "Export as CSV…"
+msgstr "Exportera som CSV…"
+
+#: DashboardDialog%236
+msgid "F:%d U:%d"
+msgstr "F:%d U:%d"
+
+#: DashboardDialog%237
+msgctxt "DashboardDialog#7"
+msgid "Fuzzy"
+msgstr "Luddig"
+
+#: DashboardDialog%238
+msgid "Per-Language Progress"
+msgstr "Framsteg per språk"
+
+#: DashboardDialog%239
+msgctxt "DashboardDialog#9"
+msgid "Project Dashboard"
+msgstr "Projektpanel"
+
+#: DashboardDialog%2310
+msgid "Statistics exported to %s"
+msgstr "Statistik exporterad till %s"
+
+#: DashboardDialog%2311
+msgctxt "DashboardDialog#11"
+msgid "Translated"
+msgstr "Översatt"
+
+#: DashboardDialog%2312
+msgctxt "DashboardDialog#12"
+msgid "Untranslated"
+msgstr "Oöversatt"
+
+#: DashboardDialog%2313
+msgid ""
+"<h2>Project Overview</h2><b>Total strings:</b> %d &nbsp; <span "
+"style='color:green'>Translated: %d</span> &nbsp; <span style='color:orange'>"
+"Fuzzy: %d</span> &nbsp; <span style='color:red'>Untranslated: %d</span>"
+msgstr ""
+"<h2>Project Overview</h2><b>Total strings:</b> %d &nbsp; <span "
+"style='color:green'>Translated: %d</span> &nbsp; <span style='color:orange'>"
+"Fuzzy: %d</span> &nbsp; <span style='color:red'>Untranslated: %d</span>"
+
+#: DiffDialog%231
+msgid "Added Only"
+msgstr "Endast tillagt"
+
+#: DiffDialog%232
+msgid "Added:"
+msgstr "Tillagt:"
+
+#: DiffDialog%233
+msgid "All Changes"
+msgstr "Alla ändringar"
+
+#: DiffDialog%234
+msgctxt "DiffDialog#4"
+msgid "Browse..."
+msgstr "Bläddra..."
+
+#: DiffDialog%235
+msgid "Change"
+msgstr "Förändring"
+
+#: DiffDialog%236
+msgctxt "DiffDialog#6"
+msgid "Changes"
+msgstr "Förändringar"
+
+#: DiffDialog%237
+msgid "Compare Files"
+msgstr "Jämför filer"
+
+#: DiffDialog%238
+msgid "Compare Translation Files"
+msgstr "Jämför översättningsfiler"
+
+#: DiffDialog%239
+msgid "Comparison"
+msgstr "Jämförelse"
+
+#: DiffDialog%2310
+msgid "Comparison File"
+msgstr "Jämförelsefil"
+
+#: DiffDialog%2311
+msgid "Comparison File:"
+msgstr "Jämförelsedokument:"
+
+#: DiffDialog%2312
+msgid "Comparison Options"
+msgstr "Jämförelsealternativ"
+
+#: DiffDialog%2313
+msgid "Comparison Statistics"
+msgstr "Jämförelsestatistik"
+
+#: DiffDialog%2314
+msgid "Comparison complete. %d changes found."
+msgstr "Jämförelse klar. %d ändringar hittades."
+
+#: DiffDialog%2315
+msgid "Comparison failed: %s"
+msgstr "Jämförelsen misslyckades: %s"
+
+#: DiffDialog%2316
+msgctxt "DiffDialog#16"
+msgid "Error"
+msgstr "Fel"
+
+#: DiffDialog%2317
+msgid "Failed to load file: %s"
+msgstr "Det gick inte att ladda filen: %s"
+
+#: DiffDialog%2318
+msgid "Ignore case"
+msgstr "Ignorera versaler"
+
+#: DiffDialog%2319
+msgid "Ignore whitespace"
+msgstr "Ignorera blanksteg"
+
+#: DiffDialog%2320
+msgid "Modified Only"
+msgstr "Endast modifierad"
+
+#: DiffDialog%2321
+msgid "Modified:"
+msgstr "Ändrad:"
+
+#: DiffDialog%2322
+msgctxt "DiffDialog#22"
+msgid "No file selected"
+msgstr "Ingen fil vald"
+
+#: DiffDialog%2323
+msgid "Original"
+msgstr "Original"
+
+#: DiffDialog%2324
+msgid "Original File"
+msgstr "Originalfil"
+
+#: DiffDialog%2325
+msgctxt "DiffDialog#25"
+msgid "Original File:"
+msgstr "Originalfil:"
+
+#: DiffDialog%2326
+msgid "Removed Only"
+msgstr "Borttagen endast"
+
+#: DiffDialog%2327
+msgid "Removed:"
+msgstr "Borttaget:"
+
+#: DiffDialog%2328
+msgid "Select Files to Compare"
+msgstr "Välj filer att jämföra"
+
+#: DiffDialog%2329
+msgid "Select Translation File"
+msgstr "Välj översättningsfil"
+
+#: DiffDialog%2330
+msgid "Show unchanged"
+msgstr "Visa oförändrat"
+
+#: DiffDialog%2331
+msgid "Show:"
+msgstr "Visa:"
+
+#: DiffDialog%2332
+msgid "Side by Side"
+msgstr "Sida vid sida"
+
+#: DiffDialog%2333
+msgid "Source Text"
+msgstr "Källtext"
+
+#: DiffDialog%2334
+msgctxt "DiffDialog#34"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: DiffDialog%2335
+msgctxt "DiffDialog#35"
+msgid "Total entries:"
+msgstr "Totalt antal poster:"
+
+#: DiffDialog%2336
+msgid "Translation files (*.po *.pot *.ts *.json *.xliff *.xlf);;All files (*)"
+msgstr ""
+"Översättningsfiler (*.po *.pot *.ts *.json *.xliff *.xlf);;Alla filer (*)"
+
+#: DiffDialog%2337
+msgid "Unchanged:"
+msgstr "Oförändrat:"
+
+#: DiffDialog%2338
+msgid "Unsupported file format: %s"
+msgstr "Filformat som inte stöds: %s"
+
+#: DiffDialog%2339
+msgid "Source: %s"
+msgstr "Källa: %s"
+
+#: DiffDialog%2340
+msgid "Translation: %s"
+msgstr "Översättning: %s"
+
+#: FFmpegMissingDialog%231
+msgctxt "FFmpegMissingDialog#1"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: FFmpegMissingDialog%232
+msgid "Browse for ffmpeg…"
+msgstr "Bläddra efter ffmpeg…"
+
+#: FFmpegMissingDialog%233
+msgid "The selected file does not appear to be ffmpeg."
+msgstr "Den valda filen verkar inte vara ffmpeg."
+
+#: FFmpegMissingDialog%234
+msgid "Not Found"
+msgstr "Hittades inte"
+
+#: FFmpegMissingDialog%235
+msgid "FFmpeg Required"
+msgstr "FFmpeg krävs"
+
+#: FFmpegMissingDialog%236
+msgid "FFmpeg could still not be found in the system path."
+msgstr "FFmpeg kunde fortfarande inte hittas i systemets sökväg."
+
+#: FFmpegMissingDialog%237
+msgctxt "FFmpegMissingDialog#7"
+msgid "Error"
+msgstr "Fel"
+
+#: FFmpegMissingDialog%238
+msgid "Retry"
+msgstr "Försök igen"
+
+#: FFmpegMissingDialog%239
+msgid "Installation Instructions"
+msgstr "Installationsanvisningar"
+
+#: FFmpegMissingDialog%2310
+msgid "Could not run the selected file."
+msgstr "Kunde inte köra den valda filen."
+
+#: FFmpegMissingDialog%2311
+msgid "Executable files (*)"
+msgstr "Körbara filer (*)"
+
+#: FFmpegMissingDialog%2312
+msgid "Invalid File"
+msgstr "Ogiltig fil"
+
+#: FFmpegMissingDialog%2313
+msgid "Select ffmpeg binary"
+msgstr "Välj ffmpeg-binär"
+
+#: FFmpegMissingDialog%2314
+msgid "Open Download Page"
+msgstr "Öppna hämtningssida"
+
+#: FFmpegMissingDialog%2315
+msgid ""
+"<b>Ubuntu/Debian:</b><br><code>sudo apt install ffmpeg</code><br><br><b>"
+"Fedora:</b><br><code>sudo dnf install ffmpeg</code><br><br><b>Arch Linux:</b>"
+"<br><code>sudo pacman -S ffmpeg</code>"
+msgstr ""
+"<b>Ubuntu/Debian:</b><br><code>sudo apt install ffmpeg</code><br><br><b>"
+"Fedora:</b><br><code>sudo dnf install ffmpeg</code><br><br><b>Arch Linux:</b>"
+"<br><code>sudo pacman -S ffmpeg</code>"
+
+#: FFmpegMissingDialog%2316
+msgid ""
+"<b>macOS (Homebrew):</b><br><code>brew install ffmpeg</code><br><br><b>macOS "
+"(MacPorts):</b><br><code>sudo port install ffmpeg</code>"
+msgstr ""
+"<b>macOS (Homebrew):</b><br><code>brew install ffmpeg</code><br><br><b>macOS "
+"(MacPorts):</b><br><code>sudo port install ffmpeg</code>"
+
+#: FFmpegMissingDialog%2317
+msgid ""
+"<h3>FFmpeg could not be found</h3><p>LinguaEdit needs <b>ffmpeg</b> and <b>"
+"ffprobe</b> to extract subtitles from video files.</p>"
+msgstr ""
+"<h3>FFmpeg kunde inte hittas</h3><p>LinguaEdit behöver <b>ffmpeg</b> och <b>"
+"ffprobe</b> för att extrahera undertexter från videofiler.</p>"
+
+#: FileHistoryDialog%231
+msgctxt "FileHistoryDialog#1"
+msgid "Close"
+msgstr "Stäng"
+
+#: FileHistoryDialog%232
+msgctxt "FileHistoryDialog#2"
+msgid "Date/Time"
+msgstr "Datum/tid"
+
+#: FileHistoryDialog%233
+msgctxt "FileHistoryDialog#3"
+msgid "Entry"
+msgstr "Post"
+
+#: FileHistoryDialog%234
+msgctxt "FileHistoryDialog#4"
+msgid "Field"
+msgstr "Fält"
+
+#: FileHistoryDialog%235
+msgid "File History"
+msgstr "Filhistorik"
+
+#: FileHistoryDialog%236
+msgid "Recent changes in: {}"
+msgstr "Senaste ändringar i: {}"
+
+#: FileHistoryDialog%237
+msgctxt "FileHistoryDialog#7"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: FileHistoryDialog%238
+msgctxt "FileHistoryDialog#8"
+msgid "Unknown"
+msgstr "Okänd"
+
+#: FileHistoryDialog%239
+msgctxt "FileHistoryDialog#9"
+msgid "User"
+msgstr "Användare"
+
+#: FileHistoryDialog%2310
+msgid "View Entry History"
+msgstr "Visa posthistorik"
+
+#: GitDiffDialog%231
+msgctxt "GitDiffDialog#1"
+msgid "<b>Added strings:</b> %d"
+msgstr "<b>Tillagda strängar:</b> %d"
+
+#: GitDiffDialog%232
+msgctxt "GitDiffDialog#2"
+msgid "<b>Changed source text:</b> %d"
+msgstr "<b>Ändrad källtext:</b> %d"
+
+#: GitDiffDialog%233
+msgctxt "GitDiffDialog#3"
+msgid "<b>Changed translations:</b> %d"
+msgstr "<b>Ändrade översättningar:</b> %d"
+
+#: GitDiffDialog%234
+msgctxt "GitDiffDialog#4"
+msgid "<b>Potentially outdated:</b> %d"
+msgstr "<b>Potentiellt föråldrade:</b> %d"
+
+#: GitDiffDialog%235
+msgctxt "GitDiffDialog#5"
+msgid "<b>Removed strings:</b> %d"
+msgstr "<b>Borttagna strängar:</b> %d"
+
+#: GitDiffDialog%236
+msgctxt "GitDiffDialog#6"
+msgid "<h3>Comparison Results</h3>"
+msgstr "<h3>Jämförelseresultat</h3>"
+
+#: GitDiffDialog%237
+msgctxt "GitDiffDialog#7"
+msgid "Added"
+msgstr "Tillagd"
+
+#: GitDiffDialog%238
+msgctxt "GitDiffDialog#8"
+msgid "Changes"
+msgstr "Förändringar"
+
+#: GitDiffDialog%239
+msgid "Compare"
+msgstr "Jämför"
+
+#: GitDiffDialog%2310
+msgid "Compare with commit:"
+msgstr "Jämför med commit:"
+
+#: GitDiffDialog%2311
+msgid "Comparing %d old vs %d current entries…"
+msgstr "Jämför %d gamla med %d aktuella poster…"
+
+#: GitDiffDialog%2312
+msgid "Comparison complete."
+msgstr "Jämförelse klar."
+
+#: GitDiffDialog%2313
+msgid "Could not parse old version"
+msgstr "Kunde inte analysera gammal version"
+
+#: GitDiffDialog%2314
+msgid "Diff with Previous Version"
+msgstr "Skillnad jämfört med tidigare version"
+
+#: GitDiffDialog%2315
+msgid "Failed to get file at commit %s"
+msgstr "Det gick inte att hämta filen vid commit %s"
+
+#: GitDiffDialog%2316
+msgctxt "GitDiffDialog#16"
+msgid "Modified"
+msgstr "Modifierad"
+
+#: GitDiffDialog%2317
+msgid "New Source"
+msgstr "Ny källa"
+
+#: GitDiffDialog%2318
+msgid "No git history found"
+msgstr "Ingen git-historik hittades"
+
+#: GitDiffDialog%2319
+msgid "Old Source"
+msgstr "Gammal källa"
+
+#: GitDiffDialog%2320
+msgid "Outdated"
+msgstr "Föråldrad"
+
+#: GitDiffDialog%2321
+msgid "Removed"
+msgstr "Borttagen"
+
+#: GitDiffDialog%2322
+msgid "Source (new)"
+msgstr "Källa (ny)"
+
+#: GitDiffDialog%2323
+msgid "Source (old)"
+msgstr "Källa (gammal)"
+
+#: GitDiffDialog%2324
+msgid "Source changed"
+msgstr "Källan ändrad"
+
+#: GitDiffDialog%2325
+msgctxt "GitDiffDialog#25"
+msgid "Status"
+msgstr "Status"
+
+#: GitDiffDialog%2326
+msgctxt "GitDiffDialog#26"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: GitDiffDialog%2327
+msgctxt "GitDiffDialog#27"
+msgid "Translation"
+msgstr "Översättning"
+
+#: GitDiffDialog%2328
+msgid "Translation (new)"
+msgstr "Översättning (ny)"
+
+#: GitDiffDialog%2329
+msgid "Translation (old)"
+msgstr "Översättning (gammal)"
+
+#: GitDiffDialog%2330
+msgctxt "GitDiffDialog#30"
+msgid "Type"
+msgstr "Typ"
+
+#: GitDiffDialog%2331
+msgid "⚠ Outdated"
+msgstr "⚠ Föråldrad"
+
+#: GitDiffDialog%2332
+msgctxt "GitDiffDialog#32"
+msgid ""
+"<b>Outdated translations</b> — source changed but translation stayed the "
+"same."
+msgstr ""
+"<b>Föråldrade översättningar</b> — källan ändrades men översättningen "
+"behölls."
+
+#: GlossaryDialog%231
+msgid "%d terms"
+msgstr "%d termer"
+
+#: GlossaryDialog%232
+msgid "A term with this source text already exists. Update it?"
+msgstr "En term med denna källtext finns redan. Vill du uppdatera den?"
+
+#: GlossaryDialog%233
+msgid "Add"
+msgstr "Lägg till"
+
+#: GlossaryDialog%234
+msgid "All domains"
+msgstr "Alla domäner"
+
+#: GlossaryDialog%235
+msgid "CSV Import Format"
+msgstr "CSV-importformat"
+
+#: GlossaryDialog%236
+msgid "CSV files (*.csv);;All files (*)"
+msgstr "CSV-filer (*.csv);;Alla filer (*)"
+
+#: GlossaryDialog%237
+msgctxt "GlossaryDialog#7"
+msgid "Clear"
+msgstr "Rensa"
+
+#: GlossaryDialog%238
+msgid "Confirm Delete"
+msgstr "Bekräfta radering"
+
+#: GlossaryDialog%239
+msgctxt "GlossaryDialog#9"
+msgid "Copy Source"
+msgstr "Kopiera källa"
+
+#: GlossaryDialog%2310
+msgid "Copy Target"
+msgstr "Kopiera mål"
+
+#: GlossaryDialog%2311
+msgctxt "GlossaryDialog#11"
+msgid "Delete"
+msgstr "Ta bort"
+
+#: GlossaryDialog%2312
+msgid "Delete term "
+msgstr "Ta bort term "
+
+#: GlossaryDialog%2313
+msgid "Domain"
+msgstr "Domän"
+
+#: GlossaryDialog%2314
+msgid "Domain:"
+msgstr "Domän:"
+
+#: GlossaryDialog%2315
+msgid "Duplicate Term"
+msgstr "Duplicerad term"
+
+#: GlossaryDialog%2316
+msgid "Edit"
+msgstr "Redigera"
+
+#: GlossaryDialog%2317
+msgid "Edit Term"
+msgstr "Redigera term"
+
+#: GlossaryDialog%2318
+msgid ""
+"Expected CSV format:\\n"
+"source,target,notes,domain\\n\\n"
+msgstr ""
+"Förväntat CSV-format:\\n"
+"källa,mål,anteckningar,domän\\n\\n"
+
+#: GlossaryDialog%2319
+msgid "Export CSV..."
+msgstr "Exportera CSV..."
+
+#: GlossaryDialog%2320
+msgid "Export Completed"
+msgstr "Export slutförd"
+
+#: GlossaryDialog%2321
+msgctxt "GlossaryDialog#21"
+msgid "Export Error"
+msgstr "Exportfel"
+
+#: GlossaryDialog%2322
+msgid "Export Glossary to CSV"
+msgstr "Exportera ordlista till CSV"
+
+#: GlossaryDialog%2323
+msgid "Exported %d terms to %s"
+msgstr "Exporterade %d termer till %s"
+
+#: GlossaryDialog%2324
+msgid "Failed to export glossary:\\n%s"
+msgstr "Det gick inte att exportera ordlistan:\\n%s"
+
+#: GlossaryDialog%2325
+msgid "Glossary Management"
+msgstr "Ordlista Hantering"
+
+#: GlossaryDialog%2326
+msgid "Import CSV..."
+msgstr "Importera CSV..."
+
+#: GlossaryDialog%2327
+msgid "Import Completed"
+msgstr "Importen slutförd"
+
+#: GlossaryDialog%2328
+msgid "Import Glossary from CSV"
+msgstr "Importera ordlista från CSV"
+
+#: GlossaryDialog%2329
+msgid ""
+"Imported %d terms with %d errors.\\n\\n"
+"First errors:\\n%s"
+msgstr ""
+"Importerade %d termer med %d fel.\\n\\n"
+"Första felen:\\n%s"
+
+#: GlossaryDialog%2330
+msgid "No terms to export."
+msgstr "Inga termer att exportera."
+
+#: GlossaryDialog%2331
+msgctxt "GlossaryDialog#31"
+msgid "Notes"
+msgstr "Anteckningar"
+
+#: GlossaryDialog%2332
+msgid "Notes:"
+msgstr "Anmärkningar:"
+
+#: GlossaryDialog%2333
+msgctxt "GlossaryDialog#33"
+msgid "Search & Filter"
+msgstr "Sök och filtrera"
+
+#: GlossaryDialog%2334
+msgid "Search in source or target..."
+msgstr "Sök i källan eller målet..."
+
+#: GlossaryDialog%2335
+msgid "Search:"
+msgstr "Sök:"
+
+#: GlossaryDialog%2336
+msgid "Showing %d of %d terms"
+msgstr "Visar %d av %d termer"
+
+#: GlossaryDialog%2337
+msgctxt "GlossaryDialog#37"
+msgid "Source"
+msgstr "Källa"
+
+#: GlossaryDialog%2338
+msgid "Source text cannot be empty."
+msgstr "Källtexten får inte vara tom."
+
+#: GlossaryDialog%2339
+msgctxt "GlossaryDialog#39"
+msgid "Source:"
+msgstr "Källa:"
+
+#: GlossaryDialog%2340
+msgid "Successfully imported %d terms."
+msgstr "%d termer har importerats."
+
+#: GlossaryDialog%2341
+msgid "Target"
+msgstr "Mål"
+
+#: GlossaryDialog%2342
+msgid "Target text cannot be empty."
+msgstr "Måltexten får inte vara tom."
+
+#: GlossaryDialog%2343
+msgctxt "GlossaryDialog#43"
+msgid "Target:"
+msgstr "Mål:"
+
+#: GlossaryDialog%2344
+msgid "Terms"
+msgstr "Termer"
+
+#: GlossaryDialog%2345
+msgid "Update"
+msgstr "Uppdatera"
+
+#: GlossaryDialog%2346
+msgctxt "GlossaryDialog#46"
+msgid "Warning"
+msgstr "Varning"
+
+#: GlossaryDialog%2347
+msgctxt "GlossaryDialog#47"
+msgid "Delete term '%s' → '%s'?"
+msgstr "Ta bort term '%s' → '%s'?"
+
+#: HeaderDialog%231
+msgid "Additional Metadata"
+msgstr "Ytterligare metadata"
+
+#: HeaderDialog%232
+msgid "Charset:"
+msgstr "Teckenuppsättning:"
+
+#: HeaderDialog%233
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: HeaderDialog%234
+msgid "Content-Transfer-Encoding:"
+msgstr "Innehållsöverföringskodning:"
+
+#: HeaderDialog%235
+msgid "Data Type:"
+msgstr "Datatyp:"
+
+#: HeaderDialog%236
+msgid "Define how plural forms work for this language."
+msgstr "Definiera hur pluralformer fungerar för detta språk."
+
+#: HeaderDialog%237
+msgctxt "HeaderDialog#7"
+msgid "Description:"
+msgstr "Beskrivning:"
+
+#: HeaderDialog%238
+msgid "Edit File Header"
+msgstr "Redigera filhuvud"
+
+#: HeaderDialog%239
+msgid "English (2 forms)"
+msgstr "Engelska (2 former)"
+
+#: HeaderDialog%2310
+msgid "File Metadata"
+msgstr "Filmetadata"
+
+#: HeaderDialog%2311
+msgid "Germanic (2 forms)"
+msgstr "Germanska (2 former)"
+
+#: HeaderDialog%2312
+msgid "Language-Team:"
+msgstr "Språk-team:"
+
+#: HeaderDialog%2313
+msgctxt "HeaderDialog#13"
+msgid "Language:"
+msgstr "Språk:"
+
+#: HeaderDialog%2314
+msgid "Last-Translator:"
+msgstr "Sista översättare:"
+
+#: HeaderDialog%2315
+msgid "Metadata"
+msgstr "Metadata"
+
+#: HeaderDialog%2316
+msgctxt "HeaderDialog#16"
+msgid "Original File:"
+msgstr "Originalfil:"
+
+#: HeaderDialog%2317
+msgid "PO Headers"
+msgstr "PO-rubriker"
+
+#: HeaderDialog%2318
+msgid "PO-Revision-Date:"
+msgstr "PO-Revisionsdatum:"
+
+#: HeaderDialog%2319
+msgid "POT-Creation-Date:"
+msgstr "POT-Skapandedatum:"
+
+#: HeaderDialog%2320
+msgid "Package:"
+msgstr "Paket:"
+
+#: HeaderDialog%2321
+msgid "Plural Forms"
+msgstr "Pluralformer"
+
+#: HeaderDialog%2322
+msgid "Project Information"
+msgstr "Projektinformation"
+
+#: HeaderDialog%2323
+msgid "Project Name:"
+msgstr "Projektnamn:"
+
+#: HeaderDialog%2324
+msgid "Project-Id-Version:"
+msgstr "Projekt-Id-Version:"
+
+#: HeaderDialog%2325
+msgid "Report-Msgid-Bugs-To:"
+msgstr "Rapportera-Msgid-Bugs-Till:"
+
+#: HeaderDialog%2326
+msgid "Restore Defaults"
+msgstr "Återställ standardinställningar"
+
+#: HeaderDialog%2327
+msgid "Restore all fields to default values?"
+msgstr "Återställ alla fält till standardvärden?"
+
+#: HeaderDialog%2328
+msgid "Romance (2 forms)"
+msgstr "Romanska (2 former)"
+
+#: HeaderDialog%2329
+msgid "Source Language:"
+msgstr "Källspråk:"
+
+#: HeaderDialog%2330
+msgid "TS Attributes"
+msgstr "TS-attribut"
+
+#: HeaderDialog%2331
+msgid "TS File Attributes"
+msgstr "TS-filattribut"
+
+#: HeaderDialog%2332
+msgid "TS Version:"
+msgstr "TS-version:"
+
+#: HeaderDialog%2333
+msgid "Target Language:"
+msgstr "Målspråk:"
+
+#: HeaderDialog%2334
+msgid "Technical Information"
+msgstr "Teknisk information"
+
+#: HeaderDialog%2335
+msgid "Tool ID:"
+msgstr "Verktygs-ID:"
+
+#: HeaderDialog%2336
+msgid "Tool Information"
+msgstr "Verktygsinformation"
+
+#: HeaderDialog%2337
+msgid "Tool Name:"
+msgstr "Verktygets namn:"
+
+#: HeaderDialog%2338
+msgid "Tool Version:"
+msgstr "Verktygsversion:"
+
+#: HeaderDialog%2339
+msgid "Translation Information"
+msgstr "Översättningsinformation"
+
+#: HeaderDialog%2340
+msgid "Translator:"
+msgstr "Översättare:"
+
+#: HeaderDialog%2341
+msgctxt "HeaderDialog#41"
+msgid "Version:"
+msgstr "Version:"
+
+#: HeaderDialog%2342
+msgid "XLIFF Attributes"
+msgstr "XLIFF-attribut"
+
+#: HeaderDialog%2343
+msgid "XLIFF File Attributes"
+msgstr "XLIFF-filattribut"
+
+#: HeaderDialog%2344
+msgid "XLIFF Version:"
+msgstr "XLIFF-version:"
+
+#: HistoryDialog%231
+msgctxt "HistoryDialog#1"
+msgid "Added"
+msgstr "Tillagd"
+
+#: HistoryDialog%232
+msgid "After:"
+msgstr "Efter:"
+
+#: HistoryDialog%233
+msgid "Before:"
+msgstr "Före:"
+
+#: HistoryDialog%234
+msgid "Change History"
+msgstr "Ändringshistorik"
+
+#: HistoryDialog%235
+msgid "Change Type"
+msgstr "Ändringstyp"
+
+#: HistoryDialog%236
+msgctxt "HistoryDialog#6"
+msgid "Changes"
+msgstr "Förändringar"
+
+#: HistoryDialog%237
+msgctxt "HistoryDialog#7"
+msgid "Close"
+msgstr "Stäng"
+
+#: HistoryDialog%238
+msgid "Confirm Rollback"
+msgstr "Bekräfta återställning"
+
+#: HistoryDialog%239
+msgctxt "HistoryDialog#9"
+msgid "Date/Time"
+msgstr "Datum/tid"
+
+#: HistoryDialog%2310
+msgid "Deleted"
+msgstr "Raderad"
+
+#: HistoryDialog%2311
+msgid "Diff:"
+msgstr "Diff:"
+
+#: HistoryDialog%2312
+msgctxt "HistoryDialog#12"
+msgid "Field"
+msgstr "Fält"
+
+#: HistoryDialog%2313
+msgid "History for entry {0} in {1}"
+msgstr "Historik för post {0} i {1}"
+
+#: HistoryDialog%2314
+msgctxt "HistoryDialog#14"
+msgid "Modified"
+msgstr "Modifierad"
+
+#: HistoryDialog%2315
+msgctxt "HistoryDialog#15"
+msgid "No changes"
+msgstr "Inga ändringar"
+
+#: HistoryDialog%2316
+msgid "No history available"
+msgstr "Ingen historik tillgänglig"
+
+#: HistoryDialog%2317
+msgid "Rollback to This Version"
+msgstr "Återställ till denna version"
+
+#: HistoryDialog%2318
+msgid "Select a history entry to see changes"
+msgstr "Välj en historikpost för att se ändringar"
+
+#: HistoryDialog%2319
+msgid "Translation History"
+msgstr "Översättningshistorik"
+
+#: HistoryDialog%2320
+msgctxt "HistoryDialog#20"
+msgid "Unknown"
+msgstr "Okänd"
+
+#: HistoryDialog%2321
+msgctxt "HistoryDialog#21"
+msgid "User"
+msgstr "Användare"
+
+#: HistoryDialog%2322
+msgctxt "HistoryDialog#22"
+msgid ""
+"Are you sure you want to rollback to this version?\\n\\n"
+"This will replace the current text with:\\n{}"
+msgstr ""
+"Är du säker på att du vill återställa till denna version?\\n\\n"
+"Detta ersätter den nuvarande texten med:\\n{}"
+
+#: ImagePreviewLabel%231
+msgid "Click to select image\\n(PNG, JPG, GIF)"
+msgstr "Klicka för att välja bild\\n(PNG, JPG, GIF)"
+
+#: LayoutSimulatorDialog%231
+msgid "Bold"
+msgstr "Fet"
+
+#: LayoutSimulatorDialog%232
+msgctxt "LayoutSimulatorDialog#2"
+msgid "Close"
+msgstr "Stäng"
+
+#: LayoutSimulatorDialog%233
+msgid "Dialog Button"
+msgstr "Dialogknapp"
+
+#: LayoutSimulatorDialog%234
+msgid "Font Family:"
+msgstr "Teckensnittsfamilj:"
+
+#: LayoutSimulatorDialog%235
+msgid "Font Settings"
+msgstr "Teckensnittsinställningar"
+
+#: LayoutSimulatorDialog%236
+msgid "Highlight Overflow"
+msgstr "Markera överflöde"
+
+#: LayoutSimulatorDialog%237
+msgctxt "LayoutSimulatorDialog#7"
+msgid "Layout Simulator"
+msgstr "Layoutsimulator"
+
+#: LayoutSimulatorDialog%238
+msgid "Max Width:"
+msgstr "Maximal bredd:"
+
+#: LayoutSimulatorDialog%239
+msgid "Menu Item"
+msgstr "Menyalternativ"
+
+#: LayoutSimulatorDialog%2310
+msgid "Mobile Button"
+msgstr "Mobilknapp"
+
+#: LayoutSimulatorDialog%2311
+msgid "Presets:"
+msgstr "Förinställningar:"
+
+#: LayoutSimulatorDialog%2312
+msgid "Size (pt):"
+msgstr "Storlek (pt):"
+
+#: LayoutSimulatorDialog%2313
+msgid "Source Text:"
+msgstr "Källtext:"
+
+#: LayoutSimulatorDialog%2314
+msgid "Source: {0}px | Translation: {1}px | Difference: {2}px ({3:.1f}%)"
+msgstr "Källa: {0}px | Översättning: {1}px | Skillnad: {2}px ({3:.1f}%)"
+
+#: LayoutSimulatorDialog%2315
+msgid "Tablet"
+msgstr "Tablet"
+
+#: LayoutSimulatorDialog%2316
+msgid "Text Comparison"
+msgstr "Textjämförelse"
+
+#: LayoutSimulatorDialog%2317
+msgid "Translation Text:"
+msgstr "Översättningstext:"
+
+#: LayoutSimulatorDialog%2318
+msgid "Width Constraints"
+msgstr "Breddbegränsningar"
+
+#: LinguaEditWindow%231
+msgid " ⚠ long"
+msgstr " ⚠ lång"
+
+#: LinguaEditWindow%232
+msgid " ⚠ short"
+msgstr " ⚠ kort"
+
+#: LinguaEditWindow%233
+msgid "%d matches"
+msgstr "%d träffar"
+
+#: LinguaEditWindow%234
+msgid "%d strings"
+msgstr "%d strängar"
+
+#: LinguaEditWindow%235
+msgid "%d strings — %d translated, %d fuzzy, %d untranslated"
+msgstr "%d strängar — %d översatta, %d fuzzy, %d oöversatta"
+
+#: LinguaEditWindow%236
+msgid "%d translations applied"
+msgstr "%d översättningar tillämpade"
+
+#: LinguaEditWindow%237
+msgid "%p% translated"
+msgstr "%p% översatt"
+
+#: LinguaEditWindow%238
+msgctxt "LinguaEditWindow#8"
+msgid "&Catalog"
+msgstr "&Katalog"
+
+#: LinguaEditWindow%239
+msgctxt "LinguaEditWindow#9"
+msgid "&Edit"
+msgstr "R&edigera"
+
+#: LinguaEditWindow%2310
+msgctxt "LinguaEditWindow#10"
+msgid "&File"
+msgstr "&Arkiv"
+
+#: LinguaEditWindow%2311
+msgctxt "LinguaEditWindow#11"
+msgid "&Git"
+msgstr "Gi&t"
+
+#: LinguaEditWindow%2312
+msgctxt "LinguaEditWindow#12"
+msgid "&Go"
+msgstr "&Gå"
+
+#: LinguaEditWindow%2313
+msgctxt "LinguaEditWindow#13"
+msgid "&Help"
+msgstr "&Hjälp"
+
+#: LinguaEditWindow%2314
+msgctxt "LinguaEditWindow#14"
+msgid "&Open…"
+msgstr "Ö&ppna…"
+
+#: LinguaEditWindow%2315
+msgctxt "LinguaEditWindow#15"
+msgid "&Platforms"
+msgstr "&Plattformar"
+
+#: LinguaEditWindow%2316
+msgctxt "LinguaEditWindow#16"
+msgid "&Save"
+msgstr "&Spara"
+
+#: LinguaEditWindow%2317
+msgctxt "LinguaEditWindow#17"
+msgid "&Tools"
+msgstr "Ver&ktyg"
+
+#: LinguaEditWindow%2318
+msgctxt "LinguaEditWindow#18"
+msgid "&View"
+msgstr "&Visa"
+
+#: LinguaEditWindow%2319
+msgctxt "LinguaEditWindow#19"
+msgid "<b>Concordance search</b>"
+msgstr "<b>Konkordanssökning</b>"
+
+#: LinguaEditWindow%2320
+msgctxt "LinguaEditWindow#20"
+msgid "<b>Reference source:</b>"
+msgstr "<b>Referenskälla:</b>"
+
+#: LinguaEditWindow%2321
+msgctxt "LinguaEditWindow#21"
+msgid "<b>Reference translation:</b>"
+msgstr "<b>Referensöversättning:</b>"
+
+#: LinguaEditWindow%2322
+msgctxt "LinguaEditWindow#22"
+msgid "<b>Source text:</b>"
+msgstr "<b>Källtext:</b>"
+
+#: LinguaEditWindow%2323
+msgctxt "LinguaEditWindow#23"
+msgid "<b>Suggestions</b>"
+msgstr "<b>Förslag</b>"
+
+#: LinguaEditWindow%2324
+msgctxt "LinguaEditWindow#24"
+msgid "<b>Translation:</b>"
+msgstr "<b>Översättning:</b>"
+
+#: LinguaEditWindow%2325
+msgctxt "LinguaEditWindow#25"
+msgid "<b>Translator comment:</b>"
+msgstr "<b>Översättarens kommentar:</b>"
+
+#: LinguaEditWindow%2326
+msgctxt "LinguaEditWindow#26"
+msgid "<i>(no match in reference)</i>"
+msgstr "<i>(ingen matchning i referensen)</i>"
+
+#: LinguaEditWindow%2327
+msgctxt "LinguaEditWindow#27"
+msgid "<i>No suggestions</i>"
+msgstr "<i>Inga förslag</i>"
+
+#: LinguaEditWindow%2328
+msgid "A macro with this name already exists."
+msgstr "Ett makro med detta namn finns redan."
+
+#: LinguaEditWindow%2329
+msgid "A translation file editor for PO, TS, JSON, XLIFF, "
+msgstr "En översättningsfilredigerare för PO, TS, JSON, XLIFF, "
+
+#: LinguaEditWindow%2330
+msgid "A translation file is currently open with unsaved changes.\\n"
+msgstr "En översättningsfil är öppen med osparade ändringar.\\n"
+
+#: LinguaEditWindow%2331
+msgid "AI Review"
+msgstr "AI-granskning"
+
+#: LinguaEditWindow%2332
+msgid "API Keys"
+msgstr "API-nycklar"
+
+#: LinguaEditWindow%2333
+msgid "API keys saved"
+msgstr "API-nycklar sparade"
+
+#: LinguaEditWindow%2334
+msgid "About LinguaEdit"
+msgstr "Om LinguaEdit"
+
+#: LinguaEditWindow%2335
+msgid "About Qt"
+msgstr "Om Qt"
+
+#: LinguaEditWindow%2336
+msgid "Achievements…"
+msgstr "Prestationer…"
+
+#: LinguaEditWindow%2337
+msgid "Add Bookmark"
+msgstr "Lägg till bokmärke"
+
+#: LinguaEditWindow%2338
+msgid "Add Comment"
+msgstr "Lägg till kommentar"
+
+#: LinguaEditWindow%2339
+msgid "Add Field"
+msgstr "Lägg till fält"
+
+#: LinguaEditWindow%2340
+msgid "Add Tag"
+msgstr "Lägg till tagg"
+
+#: LinguaEditWindow%2341
+msgid "Add Tag..."
+msgstr "Lägg till tagg..."
+
+#: LinguaEditWindow%2342
+msgid "Add Term"
+msgstr "Lägg till term"
+
+#: LinguaEditWindow%2343
+msgid "Add translator notes..."
+msgstr "Lägg till översättarens anteckningar..."
+
+#: LinguaEditWindow%2344
+msgid "Added %d entries to Translation Memory"
+msgstr "Lade till %d poster till översättningsminnet"
+
+#: LinguaEditWindow%2345
+msgid "Added: %s → %s"
+msgstr "Tillagt: %s → %s"
+
+#: LinguaEditWindow%2346
+msgid "All files (*)"
+msgstr "Alla filer (*)"
+
+#: LinguaEditWindow%2347
+msgid "All strings"
+msgstr "Alla strängar"
+
+#: LinguaEditWindow%2348
+msgid "Already recording a macro"
+msgstr "Redan spelar in ett makro"
+
+#: LinguaEditWindow%2349
+msgid "Applied changes to %d entries"
+msgstr "Tillämpade ändringar på %d poster"
+
+#: LinguaEditWindow%2350
+msgid "Apply Machine Translation suggestion"
+msgstr "Tillämpa förslag från maskinöversättning"
+
+#: LinguaEditWindow%2351
+msgid "Apply best Translation Memory match"
+msgstr "Använd bästa matchning från översättningsminnet"
+
+#: LinguaEditWindow%2352
+msgid "Approve"
+msgstr "Godkänn"
+
+#: LinguaEditWindow%2353
+msgid "Attach current file"
+msgstr "Bifoga aktuell fil"
+
+#: LinguaEditWindow%2354
+msgid "Auto-compile enabled"
+msgstr "Automatisk kompilering aktiverad"
+
+#: LinguaEditWindow%2355
+msgid "Auto-compiled after save"
+msgstr "Automatisk kompilering efter sparande"
+
+#: LinguaEditWindow%2356
+msgid "Auto-propagate"
+msgstr "Automatisk propagering"
+
+#: LinguaEditWindow%2357
+msgid "Auto-propagated %d entries"
+msgstr "Propagerade %d poster automatiskt"
+
+#: LinguaEditWindow%2358
+msgid "Batch Edit…"
+msgstr "Massredigering…"
+
+#: LinguaEditWindow%2359
+msgid "Batch Translate…"
+msgstr "Massöversättning…"
+
+#: LinguaEditWindow%2360
+msgid "Bilingual export (source + translation)"
+msgstr "Tvåspråkig export (källa + översättning)"
+
+#: LinguaEditWindow%2361
+msgid "Bookmark added"
+msgstr "Bokmärke tillagt"
+
+#: LinguaEditWindow%2362
+msgid "Bookmark removed"
+msgstr "Bokmärke borttaget"
+
+#: LinguaEditWindow%2363
+msgid "By length"
+msgstr "Efter längd"
+
+#: LinguaEditWindow%2364
+msgid "By reference"
+msgstr "Efter referens"
+
+#: LinguaEditWindow%2365
+msgctxt "LinguaEditWindow#65"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: LinguaEditWindow%2366
+msgid "Cannot compile: install "
+msgstr "Kan inte kompilera: installera "
+
+#: LinguaEditWindow%2367
+msgid "Cannot compile: pyside6-lrelease or lrelease not found"
+msgstr "Kan inte kompilera: pyside6-lrelease eller lrelease hittades inte"
+
+#: LinguaEditWindow%2368
+msgid "Cannot split empty entry"
+msgstr "Kan inte dela upp tom post"
+
+#: LinguaEditWindow%2369
+msgctxt "LinguaEditWindow#69"
+msgid "Category"
+msgstr "Kategori"
+
+#: LinguaEditWindow%2370
+msgid "Changes committed locally"
+msgstr "Lokalt bekräftade ändringar"
+
+#: LinguaEditWindow%2371
+msgid "Changes pushed successfully"
+msgstr "Ändringarna har skickats"
+
+#: LinguaEditWindow%2372
+msgid "Check for updates"
+msgstr "Sök efter uppdateringar"
+
+#: LinguaEditWindow%2373
+msgctxt "LinguaEditWindow#73"
+msgid "Clear"
+msgstr "Rensa"
+
+#: LinguaEditWindow%2374
+msgid "Clear translation"
+msgstr "Rensa översättning"
+
+#: LinguaEditWindow%2375
+msgid "Close Current File?"
+msgstr "Stäng aktuell fil?"
+
+#: LinguaEditWindow%2376
+msgid "Close Tab"
+msgstr "Stäng flik"
+
+#: LinguaEditWindow%2377
+msgid "Close the current file and load extracted subtitles?"
+msgstr "Stäng den aktuella filen och ladda extraherade undertexter?"
+
+#: LinguaEditWindow%2378
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: LinguaEditWindow%2379
+msgid "Commit failed: %s"
+msgstr "Commit misslyckades: %s"
+
+#: LinguaEditWindow%2380
+msgid "Commit message:"
+msgstr "Commit-meddelande:"
+
+#: LinguaEditWindow%2381
+msgid "Commit successful. Push to remote?"
+msgstr "Commit lyckades. Skicka till fjärrserver?"
+
+#: LinguaEditWindow%2382
+msgid "Committed!"
+msgstr "Committat!"
+
+#: LinguaEditWindow%2383
+msgid "Commit…"
+msgstr "Committa…"
+
+#: LinguaEditWindow%2384
+msgid "Compare Files…"
+msgstr "Jämför filer…"
+
+#: LinguaEditWindow%2385
+msgid "Compare language…"
+msgstr "Jämför språk…"
+
+#: LinguaEditWindow%2386
+msgid "Compile"
+msgstr "Kompilera"
+
+#: LinguaEditWindow%2387
+msgid "Compile error: %s"
+msgstr "Kompileringsfel: %s"
+
+#: LinguaEditWindow%2388
+msgid "Compile not supported for %s files"
+msgstr "Kompilering stöds inte för %s-filer"
+
+#: LinguaEditWindow%2389
+msgid "Compile translation"
+msgstr "Kompilera översättning"
+
+#: LinguaEditWindow%2390
+msgid "Compiled: %s"
+msgstr "Kompilerat: %s"
+
+#: LinguaEditWindow%2391
+msgid "Concordance"
+msgstr "Konkordans"
+
+#: LinguaEditWindow%2392
+msgid "Concordance Search…"
+msgstr "Konkordanssökning…"
+
+#: LinguaEditWindow%2393
+msgid "Consistency Check"
+msgstr "Konsistenskontroll"
+
+#: LinguaEditWindow%2394
+msgid "Consistency check"
+msgstr "Konsistenskontroll"
+
+#: LinguaEditWindow%2395
+msgctxt "LinguaEditWindow#95"
+msgid "Context"
+msgstr "Sammanhang"
+
+#: LinguaEditWindow%2396
+msgctxt "LinguaEditWindow#96"
+msgid "Copy Source"
+msgstr "Kopiera källa"
+
+#: LinguaEditWindow%2397
+msgid "Copy source"
+msgstr "Kopiera källa"
+
+#: LinguaEditWindow%2398
+msgid "Copy source text to translation"
+msgstr "Kopiera källtexten till översättningen"
+
+#: LinguaEditWindow%2399
+msgid "Copy source text to translation (Ctrl+B)"
+msgstr "Kopiera källtexten till översättningen (Ctrl+B)"
+
+#: LinguaEditWindow%23100
+msgid "Copy source to translation"
+msgstr "Kopiera källan till översättningen"
+
+#: LinguaEditWindow%23101
+msgid "Could not read video file:\\n%s"
+msgstr "Kunde inte läsa videofilen:\\n%s"
+
+#: LinguaEditWindow%23102
+msgid "Count"
+msgstr "Räkna"
+
+#: LinguaEditWindow%23103
+msgctxt "LinguaEditWindow#103"
+msgid "Crowdin"
+msgstr "Crowdin"
+
+#: LinguaEditWindow%23104
+msgid "Crowdin Statistics…"
+msgstr "Crowdin-statistik…"
+
+#: LinguaEditWindow%23105
+msgid "Crowdin Error"
+msgstr "Crowdin-fel"
+
+#: LinguaEditWindow%23106
+msgid ""
+"No Crowdin API key configured.\\n"
+"Please add one in Translation → API Keys…"
+msgstr ""
+"Ingen Crowdin API-nyckel konfigurerad. Lägg till en i Översättning → API-"
+"nycklar..."
+
+#: LinguaEditWindow%23107
+msgid "Crowdin — %s"
+msgstr "Crowdin — %s"
+
+#: LinguaEditWindow%23108
+msgid "Translated: %d%% (%d/%d)"
+msgstr "Översatt: %d%% (%d/%d)"
+
+#: LinguaEditWindow%23109
+msgid "Approved: %d%% (%d/%d)"
+msgstr "Godkänd: %d%% (%d/%d)"
+
+#: LinguaEditWindow%23110
+msgid "Pull Translations"
+msgstr "Hämta översättningar"
+
+#: LinguaEditWindow%23111
+msgid "Push Source"
+msgstr "Skicka källa"
+
+#: LinguaEditWindow%23112
+msgid "Current string has no translation to propagate."
+msgstr "Den aktuella strängen har ingen översättning att sprida."
+
+#: LinguaEditWindow%23113
+msgid "Customize Toolbar…"
+msgstr "Anpassa verktygsfältet…"
+
+#: LinguaEditWindow%23114
+msgctxt "LinguaEditWindow#114"
+msgid "Dark"
+msgstr "Mörk"
+
+#: LinguaEditWindow%23115
+msgid "Date"
+msgstr "Datum"
+
+#: LinguaEditWindow%23116
+msgid "Developer"
+msgstr "Utvecklare"
+
+#: LinguaEditWindow%23117
+msgid "Developer:"
+msgstr "Utvecklare:"
+
+#: LinguaEditWindow%23118
+msgid "Diff"
+msgstr "Diff"
+
+#: LinguaEditWindow%23119
+msgid "Diff with Previous Version…"
+msgstr "Skillnad jämfört med tidigare version…"
+
+#: LinguaEditWindow%23120
+msgid "Diff…"
+msgstr "Diff…"
+
+#: LinguaEditWindow%23121
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: LinguaEditWindow%23122
+msgid "Donate ♥"
+msgstr "Donera ♥"
+
+#: LinguaEditWindow%23123
+msgid "Done and next (Ctrl+Enter)"
+msgstr "Klar och nästa (Ctrl+Enter)"
+
+#: LinguaEditWindow%23124
+msgid "Edit Header…"
+msgstr "Redigera rubrik…"
+
+#: LinguaEditWindow%23125
+msgid "Edit file header metadata. Changes are applied when you click Save."
+msgstr ""
+"Redigera filhuvudets metadata. Ändringarna tillämpas när du klickar på Spara."
+
+#: LinguaEditWindow%23126
+msgid "Editor Below"
+msgstr "Redigerare nedanför"
+
+#: LinguaEditWindow%23127
+msgid "Editor on Right"
+msgstr "Redigerare till höger"
+
+#: LinguaEditWindow%23128
+msgid "Email Translation"
+msgstr "E-postöversättning"
+
+#: LinguaEditWindow%23129
+msgid "Email Translation…"
+msgstr "E-postöversättning…"
+
+#: LinguaEditWindow%23130
+msgid "Email client opened"
+msgstr "E-postklienten öppnad"
+
+#: LinguaEditWindow%23131
+msgctxt "LinguaEditWindow#131"
+msgid "Enter macro name:"
+msgstr "Ange makronamn:"
+
+#: LinguaEditWindow%23132
+msgid "Enter translator note:"
+msgstr "Inför översättarens anmärkning:"
+
+#: LinguaEditWindow%23133
+msgctxt "LinguaEditWindow#133"
+msgid "Entry"
+msgstr "Post"
+
+#: LinguaEditWindow%23134
+msgid "Entry pinned"
+msgstr "Post nålad"
+
+#: LinguaEditWindow%23135
+msgid "Entry split into 2 segments"
+msgstr "Posten är uppdelad i två delar"
+
+#: LinguaEditWindow%23136
+msgid "Entry unpinned"
+msgstr "Posten avnålad"
+
+#: LinguaEditWindow%23137
+msgctxt "LinguaEditWindow#137"
+msgid "Error"
+msgstr "Fel"
+
+#: LinguaEditWindow%23138
+msgid "Error loading file: %s"
+msgstr "Fel vid inläsning av fil: %s"
+
+#: LinguaEditWindow%23139
+msgid "Error loading reference: %s"
+msgstr "Fel vid inläsning av referens: %s"
+
+#: LinguaEditWindow%23140
+msgctxt "LinguaEditWindow#140"
+msgid "Export Error"
+msgstr "Exportfel"
+
+#: LinguaEditWindow%23141
+msgid "Export TMX"
+msgstr "Exportera TMX"
+
+#: LinguaEditWindow%23142
+msgid "Export TMX…"
+msgstr "Exportera TMX…"
+
+#: LinguaEditWindow%23143
+msgid "Export report…"
+msgstr "Exportera rapport…"
+
+#: LinguaEditWindow%23144
+msgid "Exported {} translation units to {}"
+msgstr "Exporterade {} översättningsenheter till {}"
+
+#: LinguaEditWindow%23145
+msgid "Extract Subtitles from Video…"
+msgstr "Extrahera undertexter från video…"
+
+#: LinguaEditWindow%23146
+msgctxt "LinguaEditWindow#146"
+msgid "Extracting"
+msgstr "Extraherar"
+
+#: LinguaEditWindow%23147
+msgctxt "LinguaEditWindow#147"
+msgid "Extracting subtitles…"
+msgstr "Extraherar undertexter…"
+
+#: LinguaEditWindow%23148
+msgid "Extraction Failed"
+msgstr "Extraktion misslyckades"
+
+#: LinguaEditWindow%23149
+msgid "Failed to export TMX file: {}"
+msgstr "Det gick inte att exportera TMX-filen: {}"
+
+#: LinguaEditWindow%23150
+msgid "Failed to import TMX file: {}"
+msgstr "Det gick inte att importera TMX-filen: {}"
+
+#: LinguaEditWindow%23151
+msgid "Failed to play macro"
+msgstr "Kunde inte spela upp makro"
+
+#: LinguaEditWindow%23152
+msgid "Failed to run msgmerge:\\n{}"
+msgstr "Det gick inte att köra msgmerge:\\n{}"
+
+#: LinguaEditWindow%23153
+msgid "Feed file to TM"
+msgstr "Matningsfil till TM"
+
+#: LinguaEditWindow%23154
+msgctxt "LinguaEditWindow#154"
+msgid "File"
+msgstr "Fil"
+
+#: LinguaEditWindow%23155
+msgid "File Changed"
+msgstr "Filen har ändrats"
+
+#: LinguaEditWindow%23156
+msgid "File Header / Metadata"
+msgstr "Filhuvud / Metadata"
+
+#: LinguaEditWindow%23157
+msgid "File metadata…"
+msgstr "Filmetadata…"
+
+#: LinguaEditWindow%23158
+msgid "File not found: %s"
+msgstr "Filen hittades inte: %s"
+
+#: LinguaEditWindow%23159
+msgid "File order"
+msgstr "Filordning"
+
+#: LinguaEditWindow%23160
+msgid "File reloaded (changed externally)"
+msgstr "Fil laddad om (ändrad externt)"
+
+#: LinguaEditWindow%23161
+msgid "File reloaded (external change detected)"
+msgstr "Fil laddad om (extern förändring upptäckt)"
+
+#: LinguaEditWindow%23162
+msgctxt "LinguaEditWindow#162"
+msgid "Find && Replace…"
+msgstr "Sök och ersätt…"
+
+#: LinguaEditWindow%23163
+msgid "Find in translations…"
+msgstr "Hitta i översättningar…"
+
+#: LinguaEditWindow%23164
+msgid "Find…"
+msgstr "Hitta…"
+
+#: LinguaEditWindow%23165
+msgid "Flags"
+msgstr "Flaggor"
+
+#: LinguaEditWindow%23166
+msgid "Focus Mode"
+msgstr "Fokusläge"
+
+#: LinguaEditWindow%23167
+msgid "Focus mode disabled"
+msgstr "Fokusläge inaktiverat"
+
+#: LinguaEditWindow%23168
+msgid "Focus mode enabled - hiding completed translations"
+msgstr "Fokusläge aktiverat – döljer färdiga översättningar"
+
+#: LinguaEditWindow%23169
+msgctxt "LinguaEditWindow#169"
+msgid "Format:"
+msgstr "Format:"
+
+#: LinguaEditWindow%23170
+msgid "Found %d subtitle track(s). Select one:"
+msgstr "Hittade %d undertextspår. Välj ett:"
+
+#: LinguaEditWindow%23171
+msgid "Fullscreen"
+msgstr "Helskärm"
+
+#: LinguaEditWindow%23172
+msgid "Fullscreen mode - Press Escape to exit"
+msgstr "Helskärmsläge – Tryck på Escape för att avsluta"
+
+#: LinguaEditWindow%23173
+msgctxt "LinguaEditWindow#173"
+msgid "Fuzzy"
+msgstr "Luddig"
+
+#: LinguaEditWindow%23174
+msgid "Fuzzy / Needs work"
+msgstr "Luddiga / Behöver bearbetas"
+
+#: LinguaEditWindow%23175
+msgid "Fuzzy diff (previous → current)"
+msgstr "Luddig diff (tidigare → nuvarande)"
+
+#: LinguaEditWindow%23176
+msgid "Fuzzy:"
+msgstr "Luddiga:"
+
+#: LinguaEditWindow%23177
+msgctxt "LinguaEditWindow#177"
+msgid "Fuzzy: %d"
+msgstr "Luddiga: %d"
+
+#: LinguaEditWindow%23178
+msgid "Fuzzy: 0"
+msgstr "Luddiga: 0"
+
+#: LinguaEditWindow%23179
+msgid "Generate Report"
+msgstr "Generera rapport"
+
+#: LinguaEditWindow%23180
+msgid "Generate Report…"
+msgstr "Generera rapport…"
+
+#: LinguaEditWindow%23181
+msgid "Generated by LinguaEdit"
+msgstr "Genererat av LinguaEdit"
+
+#: LinguaEditWindow%23182
+msgid "Git"
+msgstr "Git"
+
+#: LinguaEditWindow%23183
+msgid "Git Branches"
+msgstr "Git-grenar"
+
+#: LinguaEditWindow%23184
+msgid "Git Commit"
+msgstr "Git-commit"
+
+#: LinguaEditWindow%23185
+msgid "Git Diff"
+msgstr "Git-diff"
+
+#: LinguaEditWindow%23186
+msgid "Git Error"
+msgstr "Git-fel"
+
+#: LinguaEditWindow%23187
+msgid "Git Status"
+msgstr "Git-status"
+
+#: LinguaEditWindow%23188
+msgid "Git operation error: {}"
+msgstr "Git-operationsfel: {}"
+
+#: LinguaEditWindow%23189
+msgid "Git operation failed: {}"
+msgstr "Git-åtgärden misslyckades: {}"
+
+#: LinguaEditWindow%23190
+msgid "GitHub PR"
+msgstr "GitHub PR"
+
+#: LinguaEditWindow%23191
+msgid "GitHub PR…"
+msgstr "GitHub PR…"
+
+#: LinguaEditWindow%23192
+msgid "GitHub Repository"
+msgstr "GitHub-arkiv"
+
+#: LinguaEditWindow%23193
+msgctxt "LinguaEditWindow#193"
+msgid "Glossary"
+msgstr "Ordlista"
+
+#: LinguaEditWindow%23194
+msgid "Glossary / Terminology"
+msgstr "Ordlista / Terminologi"
+
+#: LinguaEditWindow%23195
+msgid "Glossary Check"
+msgstr "Ordlista Kontrollera"
+
+#: LinguaEditWindow%23196
+msgid "Glossary…"
+msgstr "Ordlista…"
+
+#: LinguaEditWindow%23197
+msgid "HTML (*.html);;PDF (*.pdf)"
+msgstr "HTML (*.html);;PDF (*.pdf)"
+
+#: LinguaEditWindow%23198
+msgid "HTML files (*.html);;PDF files (*.pdf)"
+msgstr "HTML-filer (*.html); PDF-filer (*.pdf)"
+
+#: LinguaEditWindow%23199
+msgid "Header updated"
+msgstr "Rubrik uppdaterad"
+
+#: LinguaEditWindow%23200
+msgctxt "LinguaEditWindow#200"
+msgid "Import Error"
+msgstr "Importfel"
+
+#: LinguaEditWindow%23201
+msgid "Import TMX"
+msgstr "Importera TMX"
+
+#: LinguaEditWindow%23202
+msgid "Import TMX…"
+msgstr "Importera TMX…"
+
+#: LinguaEditWindow%23203
+msgid "Imported {} translation units"
+msgstr "Importerade {} översättningsenheter"
+
+#: LinguaEditWindow%23204
+msgid "Include fuzzy entries"
+msgstr "Inkludera otydliga poster"
+
+#: LinguaEditWindow%23205
+msgid "Incomplete Subtitles"
+msgstr "Ofullständiga undertexter"
+
+#: LinguaEditWindow%23206
+msgid "Invalid regex"
+msgstr "Ogiltig reguljär uttryck"
+
+#: LinguaEditWindow%23207
+msgid "Issues"
+msgstr "Problem"
+
+#: LinguaEditWindow%23208
+msgid "JSON files (*.json);;All files (*)"
+msgstr "JSON-filer (*.json);;Alla filer (*)"
+
+#: LinguaEditWindow%23209
+msgid "Key"
+msgstr "Nyckel"
+
+#: LinguaEditWindow%23210
+msgid "Language"
+msgstr "Språk"
+
+#: LinguaEditWindow%23211
+msgctxt "LinguaEditWindow#211"
+msgid "Language:"
+msgstr "Språk:"
+
+#: LinguaEditWindow%23212
+msgid "Languages"
+msgstr "Språk"
+
+#: LinguaEditWindow%23213
+msgctxt "LinguaEditWindow#213"
+msgid "Layout Simulator"
+msgstr "Layoutsimulator"
+
+#: LinguaEditWindow%23214
+msgid "License:"
+msgstr "Licens:"
+
+#: LinguaEditWindow%23215
+msgctxt "LinguaEditWindow#215"
+msgid "Light"
+msgstr "Ljus"
+
+#: LinguaEditWindow%23216
+msgid "LinguaEdit"
+msgstr "LinguaEdit"
+
+#: LinguaEditWindow%23217
+msgid "Ln %d, Col %d"
+msgstr "Rad %d, kol %d"
+
+#: LinguaEditWindow%23218
+msgid "Ln 1, Col 1"
+msgstr "Rad 1, kol 1"
+
+#: LinguaEditWindow%23219
+msgid "Loaded reference: %s"
+msgstr "Läste in referens: %s"
+
+#: LinguaEditWindow%23220
+msgid "Locale:"
+msgstr "Locale:"
+
+#: LinguaEditWindow%23221
+msgid "MT translation failed"
+msgstr "MT-översättningen misslyckades"
+
+#: LinguaEditWindow%23222
+msgctxt "LinguaEditWindow#222"
+msgid "Macro Exists"
+msgstr "Makro finns"
+
+#: LinguaEditWindow%23223
+msgctxt "LinguaEditWindow#223"
+msgid "Macros"
+msgstr "Makron"
+
+#: LinguaEditWindow%23224
+msgid "Main"
+msgstr "Huvud"
+
+#: LinguaEditWindow%23225
+msgid "Manage API Keys…"
+msgstr "Hantera API-nycklar…"
+
+#: LinguaEditWindow%23226
+msgid "Manage Macros…"
+msgstr "Hantera makron…"
+
+#: LinguaEditWindow%23227
+msgid "Manage Plugins…"
+msgstr "Hantera plugins…"
+
+#: LinguaEditWindow%23228
+msgid "Mark current entry as reviewed"
+msgstr "Markera aktuell post som granskad"
+
+#: LinguaEditWindow%23229
+msgid "Mark this string as fuzzy / needs review (Ctrl+U)"
+msgstr "Markera denna sträng som oklar/behöver granskas (Ctrl+U)"
+
+#: LinguaEditWindow%23230
+msgid "Max width:"
+msgstr "Maximal bredd:"
+
+#: LinguaEditWindow%23231
+msgid "Merge Entries…"
+msgstr "Sammanfoga poster…"
+
+#: LinguaEditWindow%23232
+msgid "Merge with POT…"
+msgstr "Sammanfoga med POT…"
+
+#: LinguaEditWindow%23233
+msgid "Merged {} entries"
+msgstr "Slog samman {} poster"
+
+#: LinguaEditWindow%23234
+msgctxt "LinguaEditWindow#234"
+msgid "Message"
+msgstr "Meddelande"
+
+#: LinguaEditWindow%23235
+msgid "Message:"
+msgstr "Meddelande:"
+
+#: LinguaEditWindow%23236
+msgid "Metadata updated"
+msgstr "Metadata uppdaterad"
+
+#: LinguaEditWindow%23237
+msgid "Minimap"
+msgstr "Minikarta"
+
+#: LinguaEditWindow%23238
+msgid "Monokai"
+msgstr "Monokai"
+
+#: LinguaEditWindow%23239
+msgid "Msgmerge Error"
+msgstr "Msgmerge-fel"
+
+#: LinguaEditWindow%23240
+msgid "Msgmerge Not Found"
+msgstr "Msgmerge hittades inte"
+
+#: LinguaEditWindow%23241
+msgid "Needs Review"
+msgstr "Behöver granskas"
+
+#: LinguaEditWindow%23242
+msgid "Needs work"
+msgstr "Behöver förbättras"
+
+#: LinguaEditWindow%23243
+msgctxt "LinguaEditWindow#243"
+msgid "Next"
+msgstr "Nästa"
+
+#: LinguaEditWindow%23244
+msgctxt "LinguaEditWindow#244"
+msgid "Next entry"
+msgstr "Nästa post"
+
+#: LinguaEditWindow%23245
+msgid "Next untranslated"
+msgstr "Nästa oöversatta"
+
+#: LinguaEditWindow%23246
+msgid "No File"
+msgstr "Ingen fil"
+
+#: LinguaEditWindow%23247
+msgid "No Subtitles"
+msgstr "Inga undertexter"
+
+#: LinguaEditWindow%23248
+msgid "No bookmarks set"
+msgstr "Inga bokmärken har lagts till"
+
+#: LinguaEditWindow%23249
+msgctxt "LinguaEditWindow#249"
+msgid "No changes"
+msgstr "Inga ändringar"
+
+#: LinguaEditWindow%23250
+msgid "No embedded subtitle tracks found in this video file."
+msgstr "Inga inbäddade undertextspår hittades i denna videofil."
+
+#: LinguaEditWindow%23251
+msgid "No enabled macros"
+msgstr "Inga aktiverade makron"
+
+#: LinguaEditWindow%23252
+msgid "No file"
+msgstr "Ingen fil"
+
+#: LinguaEditWindow%23253
+msgid "No file loaded"
+msgstr "Ingen fil laddad"
+
+#: LinguaEditWindow%23254
+msgid "No glossary violations found! ✓"
+msgstr "Inga ordlistebrott hittades! ✓"
+
+#: LinguaEditWindow%23255
+msgid "No identical source strings found."
+msgstr "Inga identiska källsträngar hittades."
+
+#: LinguaEditWindow%23256
+msgid "No inconsistencies found! ✓"
+msgstr "Inga inkonsekvenser hittades! ✓"
+
+#: LinguaEditWindow%23257
+msgid "No issues found"
+msgstr "Inga problem hittades"
+
+#: LinguaEditWindow%23258
+msgid "No macros available"
+msgstr "Inga makron tillgängliga"
+
+#: LinguaEditWindow%23259
+msgid "No more fuzzy strings"
+msgstr "Inga fler suddiga strängar"
+
+#: LinguaEditWindow%23260
+msgid "No more untranslated strings"
+msgstr "Inga fler oöversatta strängar"
+
+#: LinguaEditWindow%23261
+msgid "No screenshot available"
+msgstr "Ingen skärmdump tillgänglig"
+
+#: LinguaEditWindow%23262
+msgid "No source text to review"
+msgstr "Ingen källtext att granska"
+
+#: LinguaEditWindow%23263
+msgid "No terms defined"
+msgstr "Inga termer definierade"
+
+#: LinguaEditWindow%23264
+msgid "No text to check"
+msgstr "Ingen text att kontrollera"
+
+#: LinguaEditWindow%23265
+msgid "No text to play"
+msgstr "Ingen text att spela upp"
+
+#: LinguaEditWindow%23266
+msgid "No translation selected"
+msgstr "Ingen översättning vald"
+
+#: LinguaEditWindow%23267
+msgid "No translation to preview"
+msgstr "Ingen översättning att förhandsgranska"
+
+#: LinguaEditWindow%23268
+msgid "Nord"
+msgstr "Nord"
+
+#: LinguaEditWindow%23269
+msgid "Normal Mode"
+msgstr "Normalt läge"
+
+#: LinguaEditWindow%23270
+msgid "Normal sorting order"
+msgstr "Normal sorteringsordning"
+
+#: LinguaEditWindow%23271
+msgid "Not a git repository"
+msgstr "Inte ett git-arkiv"
+
+#: LinguaEditWindow%23272
+msgctxt "LinguaEditWindow#272"
+msgid "Notes"
+msgstr "Anteckningar"
+
+#: LinguaEditWindow%23273
+msgid "OCR Screenshot…"
+msgstr "OCR-skärmdump…"
+
+#: LinguaEditWindow%23274
+msgid "OCR extraction completed. {} strings extracted."
+msgstr "OCR-extrahering slutförd. {} strängar extraherade."
+
+#: LinguaEditWindow%23275
+msgctxt "LinguaEditWindow#275"
+msgid "Open"
+msgstr "Öppna"
+
+#: LinguaEditWindow%23276
+msgid "Open Project…"
+msgstr "Öppna projekt…"
+
+#: LinguaEditWindow%23277
+msgid "Open Reference File"
+msgstr "Öppna referensfil"
+
+#: LinguaEditWindow%23278
+msgid "Open Translation File"
+msgstr "Öppna översättningsfil"
+
+#: LinguaEditWindow%23279
+msgid "Open Video"
+msgstr "Öppna video"
+
+#: LinguaEditWindow%23280
+msgid "Open Video…"
+msgstr "Öppna video…"
+
+#: LinguaEditWindow%23281
+msgctxt "LinguaEditWindow#281"
+msgid "Options"
+msgstr "Alternativ"
+
+#: LinguaEditWindow%23282
+msgid ""
+"PO file merged successfully with POT file.\\n"
+"Please reload the file to see changes."
+msgstr ""
+"PO-filen har sammanfogats med POT-filen.\\n"
+"Ladda om filen för att se ändringarna."
+
+#: LinguaEditWindow%23283
+msgid "PO files (*.po);;All files (*)"
+msgstr "PO-filer (*.po);;Alla filer (*)"
+
+#: LinguaEditWindow%23284
+msgid "POT Files (*.pot)"
+msgstr "POT-filer (*.pot)"
+
+#: LinguaEditWindow%23285
+msgid "Platform settings…"
+msgstr "Plattformsinställningar…"
+
+#: LinguaEditWindow%23286
+msgid "Play Macro"
+msgstr "Spela upp makro"
+
+#: LinguaEditWindow%23287
+msgid "Play Translation"
+msgstr "Spela upp översättning"
+
+#: LinguaEditWindow%23288
+msgid "Playing translation..."
+msgstr "Spelar upp översättning..."
+
+#: LinguaEditWindow%23289
+msgid "Please enter recipient email"
+msgstr "Ange mottagarens e-postadress"
+
+#: LinguaEditWindow%23290
+msgid "Please open a PO file first."
+msgstr "Öppna först en PO-fil."
+
+#: LinguaEditWindow%23291
+msgid "Plural: %s"
+msgstr "Plural: %s"
+
+#: LinguaEditWindow%23292
+msgid "Pre-translate"
+msgstr "Föröversätt"
+
+#: LinguaEditWindow%23293
+msgid "Pre-translated %d entries via %s"
+msgstr "Föröversatta %d poster via %s"
+
+#: LinguaEditWindow%23294
+msgid "Pre-translate…"
+msgstr "Föröversätt…"
+
+#: LinguaEditWindow%23295
+msgid "Preferences…"
+msgstr "Inställningar…"
+
+#: LinguaEditWindow%23296
+msgctxt "LinguaEditWindow#296"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: LinguaEditWindow%23297
+msgid "Previous"
+msgstr "Föregående"
+
+#: LinguaEditWindow%23298
+msgctxt "LinguaEditWindow#298"
+msgid "Previous entry"
+msgstr "Föregående post"
+
+#: LinguaEditWindow%23299
+msgid "Previous untranslated"
+msgstr "Tidigare oöversatt"
+
+#: LinguaEditWindow%23300
+msgid "Probing video for subtitle tracks…"
+msgstr "Söker efter videor för undertextspår..."
+
+#: LinguaEditWindow%23301
+msgctxt "LinguaEditWindow#301"
+msgid "Project Dashboard"
+msgstr "Projektpanel"
+
+#: LinguaEditWindow%23302
+msgid "Propagate Translation"
+msgstr "Propagera översättning"
+
+#: LinguaEditWindow%23303
+msgid "Pull Latest"
+msgstr "Hämta senaste"
+
+#: LinguaEditWindow%23304
+msgid "Pull from…"
+msgstr "Hämta från…"
+
+#: LinguaEditWindow%23305
+msgid "Push Changes"
+msgstr "Skicka ändringar"
+
+#: LinguaEditWindow%23306
+msgid "Push to…"
+msgstr "Pusha till…"
+
+#: LinguaEditWindow%23307
+msgid "QA Profile: %s"
+msgstr "QA-profil: %s"
+
+#: LinguaEditWindow%23308
+msgid "QA profile: Formal"
+msgstr "QA-profil: Formell"
+
+#: LinguaEditWindow%23309
+msgid "QA profile: Informal"
+msgstr "QA-profil: Informell"
+
+#: LinguaEditWindow%23310
+msgid "Quality"
+msgstr "Kvalitet"
+
+#: LinguaEditWindow%23311
+msgid "Quality Score"
+msgstr "Kvalitetsresultat"
+
+#: LinguaEditWindow%23312
+msgid "Quit"
+msgstr "Avsluta"
+
+#: LinguaEditWindow%23313
+msgid "Recent Files"
+msgstr "Senaste filer"
+
+#: LinguaEditWindow%23314
+msgctxt "LinguaEditWindow#314"
+msgid "Record Macro"
+msgstr "Spela in makro"
+
+#: LinguaEditWindow%23315
+msgid "Recording macro "
+msgstr "Inspelning av makro "
+
+#: LinguaEditWindow%23316
+msgid "Redo"
+msgstr "Redo"
+
+#: LinguaEditWindow%23317
+msgid "Reference"
+msgstr "Referens"
+
+#: LinguaEditWindow%23318
+msgid "References"
+msgstr "Referenser"
+
+#: LinguaEditWindow%23319
+msgid "Regex"
+msgstr "Reguljära uttryck"
+
+#: LinguaEditWindow%23320
+msgctxt "LinguaEditWindow#320"
+msgid "Regex Tester"
+msgstr "Regex-testare"
+
+#: LinguaEditWindow%23321
+msgid "Reject"
+msgstr "Avvisa"
+
+#: LinguaEditWindow%23322
+msgid "Remove Bookmark"
+msgstr "Ta bort bokmärke"
+
+#: LinguaEditWindow%23323
+msgctxt "LinguaEditWindow#323"
+msgid "Remove Selected"
+msgstr "Ta bort markerade"
+
+#: LinguaEditWindow%23324
+msgctxt "LinguaEditWindow#324"
+msgid "Replace"
+msgstr "Ersätt"
+
+#: LinguaEditWindow%23325
+msgctxt "LinguaEditWindow#325"
+msgid "Replace All"
+msgstr "Ersätt alla"
+
+#: LinguaEditWindow%23326
+msgid "Replace with…"
+msgstr "Ersätt med…"
+
+#: LinguaEditWindow%23327
+msgid "Replaced in %d entries"
+msgstr "Ersatt i %d poster"
+
+#: LinguaEditWindow%23328
+msgid "Report Options"
+msgstr "Rapportalternativ"
+
+#: LinguaEditWindow%23329
+msgid "Report a Bug"
+msgstr "Rapportera ett fel"
+
+#: LinguaEditWindow%23330
+msgid "Report error: %s"
+msgstr "Rapportera fel: %s"
+
+#: LinguaEditWindow%23331
+msgid "Report saved"
+msgstr "Rapport sparad"
+
+#: LinguaEditWindow%23332
+msgid "Report saved to %s"
+msgstr "Rapport sparad till %s"
+
+#: LinguaEditWindow%23333
+msgid "Report saved: %s"
+msgstr "Rapport sparad: %s"
+
+#: LinguaEditWindow%23334
+msgid "Review"
+msgstr "Granska"
+
+#: LinguaEditWindow%23335
+msgid "Review Mode"
+msgstr "Granskningsläge"
+
+#: LinguaEditWindow%23336
+msgid "Review mode disabled"
+msgstr "Granskningsläge inaktiverat"
+
+#: LinguaEditWindow%23337
+msgid "Review mode enabled"
+msgstr "Granskningsläge aktiverat"
+
+#: LinguaEditWindow%23338
+msgid "Reviewed"
+msgstr "Granskad"
+
+#: LinguaEditWindow%23339
+msgid "Root key:"
+msgstr "Rotnyckel:"
+
+#: LinguaEditWindow%23340
+msgid "SRT files (*.srt);;VTT files (*.vtt);;All files (*)"
+msgstr "SRT-filer (*.srt);;VTT-filer (*.vtt);;Alla filer (*)"
+
+#: LinguaEditWindow%23341
+msgctxt "LinguaEditWindow#341"
+msgid "Save"
+msgstr "Spara"
+
+#: LinguaEditWindow%23342
+msgctxt "LinguaEditWindow#342"
+msgid "Save &As…"
+msgstr "Spara s&om…"
+
+#: LinguaEditWindow%23343
+msgid "Save As…"
+msgstr "Spara som…"
+
+#: LinguaEditWindow%23344
+msgid "Save Current File?"
+msgstr "Spara aktuell fil?"
+
+#: LinguaEditWindow%23345
+msgid "Save Extracted Subtitles"
+msgstr "Spara extraherade undertexter"
+
+#: LinguaEditWindow%23346
+msgid "Save Report"
+msgstr "Spara rapport"
+
+#: LinguaEditWindow%23347
+msgid "Save error: %s"
+msgstr "Fel vid sparning: %s"
+
+#: LinguaEditWindow%23348
+msgid "Saved as %s"
+msgstr "Sparad som %s"
+
+#: LinguaEditWindow%23349
+msgid "Saved!"
+msgstr "Sparad!"
+
+#: LinguaEditWindow%23350
+msgctxt "LinguaEditWindow#350"
+msgid "Search"
+msgstr "Sök"
+
+#: LinguaEditWindow%23351
+msgid "Search TM…"
+msgstr "Sök i TM…"
+
+#: LinguaEditWindow%23352
+msgid "Search source and translation text…"
+msgstr "Sök källtext och översättningstext..."
+
+#: LinguaEditWindow%23353
+msgid "Select POT File"
+msgstr "Välj POT-fil"
+
+#: LinguaEditWindow%23354
+msgid "Select Subtitle Track"
+msgstr "Välj undertextspår"
+
+#: LinguaEditWindow%23355
+msgid "Select at least 2 entries to merge"
+msgstr "Välj minst två poster som ska slås samman"
+
+#: LinguaEditWindow%23356
+msgid "Select macro to play:"
+msgstr "Välj makro att spela upp:"
+
+#: LinguaEditWindow%23357
+msgid "Select or enter tag:"
+msgstr "Välj eller ange tagg:"
+
+#: LinguaEditWindow%23358
+msgid "Settings"
+msgstr "Inställningar"
+
+#: LinguaEditWindow%23359
+msgctxt "LinguaEditWindow#359"
+msgid "Severity"
+msgstr "Allvarlighetsgrad"
+
+#: LinguaEditWindow%23360
+msgid "Show Bookmarked Only"
+msgstr "Visa endast bokmärkta"
+
+#: LinguaEditWindow%23361
+msgid "Show Pinned First"
+msgstr "Visa fastnade först"
+
+#: LinguaEditWindow%23362
+msgid "Showing all entries"
+msgstr "Visa alla poster"
+
+#: LinguaEditWindow%23363
+msgid "Showing only bookmarked entries"
+msgstr "Visar endast bokmärkta poster"
+
+#: LinguaEditWindow%23364
+msgid "Showing pinned entries first"
+msgstr "Visa fästa poster först"
+
+#: LinguaEditWindow%23365
+msgid "Side-by-Side View"
+msgstr "Sida-vid-sida"
+
+#: LinguaEditWindow%23366
+msgid "Sidebar"
+msgstr "Sidomeny"
+
+#: LinguaEditWindow%23367
+msgid "Simple Mode"
+msgstr "Enkelt läge"
+
+#: LinguaEditWindow%23368
+msgid "Solarized Dark"
+msgstr "Solariserad mörk"
+
+#: LinguaEditWindow%23369
+msgctxt "LinguaEditWindow#369"
+msgid "Source"
+msgstr "Källa"
+
+#: LinguaEditWindow%23370
+msgid "Source A → Z"
+msgstr "Källa A → Z"
+
+#: LinguaEditWindow%23371
+msgid "Source Z → A"
+msgstr "Källa Z → A"
+
+#: LinguaEditWindow%23372
+msgctxt "LinguaEditWindow#372"
+msgid "Source language:"
+msgstr "Källspråk:"
+
+#: LinguaEditWindow%23373
+msgid "Source term:"
+msgstr "Källterm:"
+
+#: LinguaEditWindow%23374
+msgctxt "LinguaEditWindow#374"
+msgid "Source text"
+msgstr "Källtext"
+
+#: LinguaEditWindow%23375
+msgctxt "LinguaEditWindow#375"
+msgid "Source:"
+msgstr "Källa:"
+
+#: LinguaEditWindow%23376
+msgid "Spell check current"
+msgstr "Stavningskontroll aktuell"
+
+#: LinguaEditWindow%23377
+msgid "Spelling issues:\\n%s"
+msgstr "Stavningsproblem:\\n%s"
+
+#: LinguaEditWindow%23378
+msgid "Split Entry…"
+msgstr "Uppdelad post…"
+
+#: LinguaEditWindow%23379
+msgid "Stacked View"
+msgstr "Staplad vy"
+
+#: LinguaEditWindow%23380
+msgctxt "LinguaEditWindow#380"
+msgid "Statistics"
+msgstr "Statistik"
+
+#: LinguaEditWindow%23381
+msgid "Statistics…"
+msgstr "Statistik…"
+
+#: LinguaEditWindow%23382
+msgctxt "LinguaEditWindow#382"
+msgid "Status"
+msgstr "Status"
+
+#: LinguaEditWindow%23383
+msgid "Status…"
+msgstr "Status..."
+
+#: LinguaEditWindow%23384
+msgid "String Info"
+msgstr "Stränginfo"
+
+#: LinguaEditWindow%23385
+msgid "Subject:"
+msgstr "Ämne:"
+
+#: LinguaEditWindow%23386
+msgctxt "LinguaEditWindow#386"
+msgid "Success"
+msgstr "Lyckades"
+
+#: LinguaEditWindow%23387
+msgid "Summary by Category"
+msgstr "Sammanfattning per kategori"
+
+#: LinguaEditWindow%23388
+msgid "Switch branch…"
+msgstr "Byt gren…"
+
+#: LinguaEditWindow%23389
+msgid "System Default"
+msgstr "Systemets standard"
+
+#: LinguaEditWindow%23390
+msgid "TM / Suggestions"
+msgstr "TM / Förslag"
+
+#: LinguaEditWindow%23391
+msgid "TMX"
+msgstr "TMX"
+
+#: LinguaEditWindow%23392
+msgid "TMX Export"
+msgstr "TMX-export"
+
+#: LinguaEditWindow%23393
+msgid "TMX Files (*.tmx)"
+msgstr "TMX-filer (*.tmx)"
+
+#: LinguaEditWindow%23394
+msgid "TMX Import"
+msgstr "TMX-import"
+
+#: LinguaEditWindow%23395
+msgid "TS files (*.ts);;All files (*)"
+msgstr "TS-filer (*.ts);;Alla filer (*)"
+
+#: LinguaEditWindow%23396
+msgid "TTS Error"
+msgstr "TTS-fel"
+
+#: LinguaEditWindow%23397
+msgid "Tag filter removed"
+msgstr "Taggfilter borttaget"
+
+#: LinguaEditWindow%23398
+msgid "Tags"
+msgstr "Taggar"
+
+#: LinguaEditWindow%23399
+msgctxt "LinguaEditWindow#399"
+msgid "Target language:"
+msgstr "Målspråk:"
+
+#: LinguaEditWindow%23400
+msgid "Target term:"
+msgstr "Målterm:"
+
+#: LinguaEditWindow%23401
+msgid "Text-to-speech failed: {}"
+msgstr "Text-till-tal misslyckades: {}"
+
+#: LinguaEditWindow%23402
+msgid ""
+"The current file has unsaved changes.\\n"
+"Do you want to save before continuing?"
+msgstr ""
+"Den aktuella filen har osparade ändringar.\\n"
+"Vill du spara innan du fortsätter?"
+
+#: LinguaEditWindow%23403
+msgid "The file "
+msgstr "Filen "
+
+#: LinguaEditWindow%23404
+msgid "The file has been changed externally. Reload?"
+msgstr "Filen har ändrats externt. Vill du ladda om?"
+
+#: LinguaEditWindow%23405
+msgid "Theme"
+msgstr "Tema"
+
+#: LinguaEditWindow%23406
+msgid "Theme changed to %s"
+msgstr "Temat ändrat till %s"
+
+#: LinguaEditWindow%23407
+msgid "This feature only works with PO files."
+msgstr "Denna funktion fungerar endast med PO-filer."
+
+#: LinguaEditWindow%23408
+msgid "Time interval"
+msgstr "Tidsintervall"
+
+#: LinguaEditWindow%23409
+msgid "Time:"
+msgstr "Tid:"
+
+#: LinguaEditWindow%23410
+msgid "To:"
+msgstr "Till:"
+
+#: LinguaEditWindow%23411
+msgid "Toggle fuzzy/needs work flag"
+msgstr "Växla mellan flaggan \"luddig\" och \"behöver bearbetas\""
+
+#: LinguaEditWindow%23412
+msgid "Total"
+msgstr "Totalt"
+
+#: LinguaEditWindow%23413
+msgctxt "LinguaEditWindow#413"
+msgid "Total entries:"
+msgstr "Totalt antal poster:"
+
+#: LinguaEditWindow%23414
+msgctxt "LinguaEditWindow#414"
+msgid "Transifex"
+msgstr "Transifex"
+
+#: LinguaEditWindow%23415
+msgctxt "LinguaEditWindow#415"
+msgid "Translated"
+msgstr "Översatt"
+
+#: LinguaEditWindow%23416
+msgid "Translated via %s"
+msgstr "Översatt via %s"
+
+#: LinguaEditWindow%23417
+msgctxt "LinguaEditWindow#417"
+msgid "Translated:"
+msgstr "Översatta:"
+
+#: LinguaEditWindow%23418
+msgctxt "LinguaEditWindow#418"
+msgid "Translated: %d"
+msgstr "Översatta: %d"
+
+#: LinguaEditWindow%23419
+msgid "Translated: 0"
+msgstr "Översatta: 0"
+
+#: LinguaEditWindow%23420
+msgctxt "LinguaEditWindow#420"
+msgid "Translation"
+msgstr "Översättning"
+
+#: LinguaEditWindow%23421
+msgid "Translation A → Z"
+msgstr "Översättning A → Z"
+
+#: LinguaEditWindow%23422
+msgid "Translation Engine"
+msgstr "Översättningsmotor"
+
+#: LinguaEditWindow%23423
+msgid "API key:"
+msgstr "API-nyckel:"
+
+#: LinguaEditWindow%23424
+msgid "Auto-detect"
+msgstr "Identifiera automatiskt"
+
+#: LinguaEditWindow%23425
+msgid "Enter API key"
+msgstr "Ange API-nyckel"
+
+#: LinguaEditWindow%23426
+msgid "Not required for free engines"
+msgstr "Krävs inte för gratismotorer"
+
+#: LinguaEditWindow%23427
+msgid "Translation History…"
+msgstr "Översättningshistorik…"
+
+#: LinguaEditWindow%23428
+msgid "Translation Map…"
+msgstr "Översättningskarta…"
+
+#: LinguaEditWindow%23429
+msgid "Translation Report"
+msgstr "Översättningsrapport"
+
+#: LinguaEditWindow%23430
+msgid "Translation Z → A"
+msgstr "Översättning Z → A"
+
+#: LinguaEditWindow%23431
+msgid "Translation preview will appear here"
+msgstr "Översättningsförhandsgranskning visas här"
+
+#: LinguaEditWindow%23432
+msgid "Translation rolled back"
+msgstr "Översättningen återställd"
+
+#: LinguaEditWindow%23433
+msgid "Translation updated from AI review"
+msgstr "Översättning uppdaterad från AI-granskning"
+
+#: LinguaEditWindow%23434
+msgctxt "LinguaEditWindow#434"
+msgid "Translation:"
+msgstr "Översättning:"
+
+#: LinguaEditWindow%23435
+msgid "Undo"
+msgstr "Ångra"
+
+#: LinguaEditWindow%23436
+msgctxt "LinguaEditWindow#436"
+msgid "Unicode Inspector"
+msgstr "Unicode-inspektör"
+
+#: LinguaEditWindow%23437
+msgctxt "LinguaEditWindow#437"
+msgid "Unknown"
+msgstr "Okänd"
+
+#: LinguaEditWindow%23438
+msgid "Unsaved Changes"
+msgstr "Osparade ändringar"
+
+#: LinguaEditWindow%23439
+msgid "Unsupported file type: %s"
+msgstr "Filformat som inte stöds: %s"
+
+#: LinguaEditWindow%23440
+msgid "Untitled"
+msgstr "Namnlös"
+
+#: LinguaEditWindow%23441
+msgctxt "LinguaEditWindow#441"
+msgid "Untranslated"
+msgstr "Oöversatt"
+
+#: LinguaEditWindow%23442
+msgid "Untranslated/errors first"
+msgstr "Oöversatt/fel först"
+
+#: LinguaEditWindow%23443
+msgctxt "LinguaEditWindow#443"
+msgid "Untranslated:"
+msgstr "Oöversatta:"
+
+#: LinguaEditWindow%23444
+msgctxt "LinguaEditWindow#444"
+msgid "Untranslated: %d"
+msgstr "Oöversatta: %d"
+
+#: LinguaEditWindow%23445
+msgid "Untranslated: 0"
+msgstr "Oöversatta: 0"
+
+#: LinguaEditWindow%23446
+msgid "Up to date"
+msgstr "Uppdaterad"
+
+#: LinguaEditWindow%23447
+msgctxt "LinguaEditWindow#447"
+msgid "Update Available"
+msgstr "Uppdatering tillgänglig"
+
+#: LinguaEditWindow%23448
+msgid "Updated {} translation"
+msgstr "Uppdaterad {} översättning"
+
+#: LinguaEditWindow%23449
+msgid "Validate"
+msgstr "Validera"
+
+#: LinguaEditWindow%23450
+msgid "Validate (Lint)"
+msgstr "Validera (Lint)"
+
+#: LinguaEditWindow%23451
+msgctxt "LinguaEditWindow#451"
+msgid "Value"
+msgstr "Värde"
+
+#: LinguaEditWindow%23452
+msgctxt "LinguaEditWindow#452"
+msgid "Version:"
+msgstr "Version:"
+
+#: LinguaEditWindow%23453
+msgid "Video"
+msgstr "Video"
+
+#: LinguaEditWindow%23454
+msgid "Video file"
+msgstr "Videofil"
+
+#: LinguaEditWindow%23455
+msgid ""
+"Video files (*.mkv *.mp4 *.avi *.mov *.webm *.flv *.wmv *.ogv);;All files (*)"
+msgstr ""
+"Videofiler (*.mkv *.mp4 *.avi *.mov *.webm *.flv *.wmv *.ogv);;Alla filer (*)"
+
+#: LinguaEditWindow%23456
+msgctxt "LinguaEditWindow#456"
+msgid "Warnings"
+msgstr "Varningar"
+
+#: LinguaEditWindow%23457
+msgid "Watch File"
+msgstr "Titta på fil"
+
+#: LinguaEditWindow%23458
+msgid "Watch mode disabled"
+msgstr "Visningsläge inaktiverat"
+
+#: LinguaEditWindow%23459
+msgid "Watch mode enabled - file changes will be detected"
+msgstr "Övervakningsläge aktiverat – filändringar kommer att upptäckas"
+
+#: LinguaEditWindow%23460
+msgctxt "LinguaEditWindow#460"
+msgid "Weblate"
+msgstr "Weblate"
+
+#: LinguaEditWindow%23461
+msgid "Website:"
+msgstr "Webbplats:"
+
+#: LinguaEditWindow%23462
+msgid "With warnings"
+msgstr "Med varningar"
+
+#: LinguaEditWindow%23463
+msgid "Words: %d | Chars: %d | Source: %dw%s"
+msgstr "Ord: %d | Tecken: %d | Källa: %dw%s"
+
+#: LinguaEditWindow%23464
+msgid "Would you like to extract subtitles from this video?"
+msgstr "Vill du extrahera undertexter från den här videon?"
+
+#: LinguaEditWindow%23465
+msgid "Wrong File Type"
+msgstr "Fel filtyp"
+
+#: LinguaEditWindow%23466
+msgid "XLIFF files (*.xlf *.xliff);;All files (*)"
+msgstr "XLIFF-filer (*.xlf *.xliff);;Alla filer (*)"
+
+#: LinguaEditWindow%23467
+msgid "Zen Mode"
+msgstr "Zen-läge"
+
+#: LinguaEditWindow%23468
+msgid ""
+"\\n\\n"
+"Errors:\\n{}"
+msgstr ""
+"\\n\\n"
+"Fel:\\n{}"
+
+#: LinguaEditWindow%23469
+msgid "lrelease error: %s"
+msgstr "lrelease-fel: %s"
+
+#: LinguaEditWindow%23470
+msgid "msgfmt error: %s"
+msgstr "msgfmt-fel: %s"
+
+#: LinguaEditWindow%23471
+msgid "msgmerge command not found. Please install gettext tools."
+msgstr "msgmerge-kommandot hittades inte. Installera gettext-verktygen."
+
+#: LinguaEditWindow%23472
+msgid "msgmerge failed:\\n{}"
+msgstr "msgmerge misslyckades:\\n{}"
+
+#: LinguaEditWindow%23473
+msgctxt "LinguaEditWindow#473"
+msgid "translated"
+msgstr "översatt"
+
+#: LinguaEditWindow%23474
+msgid "words"
+msgstr "ord"
+
+#: LinguaEditWindow%23475
+msgid "{} chars | {} words | Source: {} chars"
+msgstr "{} tecken | {} ord | Källa: {} tecken"
+
+#: LinguaEditWindow%23476
+msgid "… and %d more"
+msgstr "… och %d till"
+
+#: LinguaEditWindow%23477
+msgid "⚠️ Toggle Fuzzy"
+msgstr "⚠️ Växla luddig"
+
+#: LinguaEditWindow%23478
+msgid "✅ Mark Reviewed"
+msgstr "✅ Markera granskad"
+
+#: LinguaEditWindow%23479
+msgid "✓ No spelling issues found"
+msgstr "✓ Inga stavfel hittades"
+
+#: LinguaEditWindow%23480
+msgid "💬 Comment"
+msgstr "💬 Kommentar"
+
+#: LinguaEditWindow%23481
+msgid "💾 Apply TM #1"
+msgstr "💾 Tillämpa TM #1"
+
+#: LinguaEditWindow%23482
+msgid "📋 Copy Source"
+msgstr "📋 Kopiera källa"
+
+#: LinguaEditWindow%23483
+msgid "📌 Pin Entry"
+msgstr "📌 Nåla post"
+
+#: LinguaEditWindow%23484
+msgid "📌 Unpin Entry"
+msgstr "📌 Avnåla post"
+
+#: LinguaEditWindow%23485
+msgid "🔊 Play Translation"
+msgstr "🔊 Spela upp översättning"
+
+#: LinguaEditWindow%23486
+msgid "🤖 Apply MT"
+msgstr "🤖 Använd MT"
+
+#: LinguaEditWindow%23487
+msgid "DeepL formality:"
+msgstr "DeepL-formalitet:"
+
+#: LinguaEditWindow%23488
+msgid "OpenAI model:"
+msgstr "OpenAI-modell:"
+
+#: LinguaEditWindow%23489
+msgid "Anthropic model:"
+msgstr "Antropisk modell:"
+
+#: LinguaEditWindow%23490
+msgid "MS Azure region:"
+msgstr "MS Azure-region:"
+
+#: LinguaEditWindow%23491
+msgid "AWS Secret Key:"
+msgstr "AWS-hemlig nyckel:"
+
+#: LinguaEditWindow%23492
+msgid "AWS Region:"
+msgstr "AWS-region:"
+
+#: LinguaEditWindow%23493
+msgid "ID: %1"
+msgstr "Identifierare: %1"
+
+#: LinguaEditWindow%23494
+msgid "State: %1"
+msgstr "Status: %1"
+
+#: LinguaEditWindow%23495
+msgid "Translation: %1"
+msgstr "Översättning: %1"
+
+#: LinguaEditWindow%23496
+msgctxt "LinguaEditWindow#496"
+msgid "%d min %d s remaining"
+msgstr "%d min %d s kvar"
+
+#: LinguaEditWindow%23497
+msgctxt "LinguaEditWindow#497"
+msgid ""
+"%d of %d entries (%d%%) have no translation.\\n\\n"
+"Untranslated entries will be marked and saved with the source text as "
+"fallback, so they will still display during playback. When reopened in "
+"LinguaEdit, they will be correctly shown as untranslated.\\n\\n"
+"Save anyway?"
+msgstr ""
+"%d av %d poster (%d%%) har ingen översättning.\\n\\n"
+"Oöversatta poster markeras och sparas med källtexten som reserv, så att de "
+"fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas "
+"de korrekt som oöversatta.\\n\\n"
+"Spara ändå?"
+
+#: LinguaEditWindow%23498
+msgctxt "LinguaEditWindow#498"
+msgid "%d of %d strings · %.1f strings/s · %s"
+msgstr "%d av %d strängar · %.1f strängar/s · %s"
+
+#: LinguaEditWindow%23499
+msgctxt "LinguaEditWindow#499"
+msgid "%d of %d strings · %.1f strings/s · %s remaining"
+msgstr "%d av %d strängar · %.1f strängar/s · %s kvar"
+
+#: LinguaEditWindow%23500
+msgctxt "LinguaEditWindow#500"
+msgid "%d s remaining"
+msgstr "%d s kvar"
+
+#: LinguaEditWindow%23501
+msgid ""
+"<p>LinguaEdit is free software.</p><p>If you find it useful, consider "
+"supporting development:</p><p>❤️ <b>GitHub Sponsors:</b> <a href='https://"
+"github.com/sponsors/yeager'>github.com/sponsors/yeager</a></p><p>🇸🇪 <b>"
+"Swish:</b> +46702526206 — <a href='swish://"
+"payment?payee=0702526206&message=LinguaEdit'>Öppna Swish</a></p>"
+msgstr ""
+"<p>LinguaEdit är fri programvara.</p><p>Om du tycker den är användbar, "
+"överväg att ge ditt stöd till utvecklingen:</p><p>❤️ <b>GitHub Sponsors:</b> "
+"<a href='https://github.com/sponsors/yeager'>github.com/sponsors/yeager</a></"
+"p><p>🇸🇪 <b>Swish:</b> +46702526206 — <a href='swish://"
+"payment?payee=0702526206&message=LinguaEdit'>Öppna Swish</a></p>"
+
+#: LinguaEditWindow%23502
+msgctxt "LinguaEditWindow#502"
+msgid "Cannot compile: install 'polib' or 'gettext' (msgfmt)"
+msgstr "Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)"
+
+#: LinguaEditWindow%23503
+msgid "No untranslated entries"
+msgstr "Inga oöversatta poster"
+
+#: LinguaEditWindow%23504
+msgid "Pre-translated %d entries via %s (%d errors)"
+msgstr "Föröversatte %d poster via %s (%d fel)"
+
+#: LinguaEditWindow%23505
+msgid "Pre-translated %d entries via %s (%d errors — last: %s)"
+msgstr "Föröversatte %d poster via %s (%d fel — senaste: %s)"
+
+#: LinguaEditWindow%23506
+msgid "Pre-translated %d of %d entries via %s (cancelled)"
+msgstr "Föröversatte %d av %d poster via %s (avbruten)"
+
+#: LinguaEditWindow%23507
+msgid ""
+"Pre-translated %d of %d entries via %s (cancelled, %d errors — last: %s)"
+msgstr "Föröversatte %d av %d poster via %s (avbruten, %d fel — senaste: %s)"
+
+#: LinguaEditWindow%23508
+msgid "Pre-translate cancelled — no translations made"
+msgstr "Föröversättning avbruten — inga översättningar gjorda"
+
+#: LinguaEditWindow%23509
+msgid "Pre-translating…"
+msgstr "Föröversätter…"
+
+#: LinguaEditWindow%23510
+msgid "Translation Error"
+msgstr "Översättningsfel"
+
+#: LinguaEditWindow%23511
+msgid "Error translating string %d of %d:"
+msgstr "Fel vid översättning av sträng %d av %d:"
+
+#: LinguaEditWindow%23512
+msgid "Skip All Errors"
+msgstr "Hoppa över alla fel"
+
+#: LinguaEditWindow%23513
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: LinguaEditWindow%23514
+msgctxt "LinguaEditWindow#514"
+msgid "Stop"
+msgstr "Stoppa"
+
+#: LinguaEditWindow%23515
+msgctxt "LinguaEditWindow#515"
+msgid "Recording macro '{}'..."
+msgstr "Spelar in makro '{}'..."
+
+#: LinguaEditWindow%23516
+msgctxt "LinguaEditWindow#516"
+msgid ""
+"The file '%s' has unsaved changes.\\n"
+"Do you want to save before closing?"
+msgstr ""
+"Filen '%s' har osparade ändringar.\\n"
+"Vill du spara innan du stänger?"
+
+#: LinguaEditWindow%23517
+msgid "LinguaEdit — %s"
+msgstr "LinguaEdit — %s"
+
+#: LinguaEditWindow%23518
+msgid "Backend: %s"
+msgstr "Backend: %s"
+
+#: LinguaEditWindow%23519
+msgid "Source: \\\"%s\\\"\\n  Entries: %s\\n  Translations: %s\\n"
+msgstr "Källa: \\\"%s\\\"\\n  Poster: %s\\n  Översättningar: %s\\n"
+
+#: LinguaEditWindow%23520
+msgctxt "LinguaEditWindow#520"
+msgid ""
+"Source: %s\\n"
+"Target: %s"
+msgstr ""
+"Källa: %s\\n"
+"Mål: %s"
+
+#: LinguaEditWindow%23521
+msgid ""
+"%s\\n\\n"
+"Add a new term or check file?"
+msgstr ""
+"%s\\n\\n"
+"Lägga till en ny term eller kontrollera fil?"
+
+#: LinguaEditWindow%23522
+msgid ""
+"File: %s\\n"
+"Entries: %d"
+msgstr ""
+"Fil: %s\\n"
+"Poster: %d"
+
+#: LinguaEditWindow%23523
+msgid "Found %d inconsistencies:\\n\\n"
+msgstr "Hittade %d inkonsekvenser:\\n\\n"
+
+#: LinguaEditWindow%23524
+msgid "Weblate Statistics…"
+msgstr "Weblate-statistik…"
+
+#: LinguaEditWindow%23525
+msgid ""
+"No Weblate API key or server URL configured.\\n"
+"Please add them in Translation → API Keys…"
+msgstr ""
+"Ingen Weblate API-nyckel eller server-URL har konfigurerats. Lägg till dem "
+"under Översättning → API-nycklar..."
+
+#: LinguaEditWindow%23526
+msgid "Weblate Error"
+msgstr "Weblate-fel"
+
+#: LinguaEditWindow%23527
+msgctxt "LinguaEditWindow#527"
+msgid "Weblate"
+msgstr "Weblate"
+
+#: LinguaEditWindow%23528
+msgid "Weblate — %s"
+msgstr "Weblate — %s"
+
+#: LinguaEditWindow%23529
+msgid "  (fuzzy: %d)"
+msgstr "  (luddig: %d)"
+
+#: LinguaEditWindow%23530
+msgid "Weblate Server URL:"
+msgstr "Server-URL för Weblate:"
+
+#: LinguaEditWindow%23531
+msgid "No API Key"
+msgstr "Ingen API-nyckel"
+
+#: LinguaEditWindow%23532
+msgid ""
+"No Transifex API key configured.\n"
+"Please add one in Translation → API Keys…"
+msgstr ""
+"Ingen Transifex API-nyckel konfigurerad.\n"
+"Lägg till en i Översättning → API-nycklar…"
+
+#: LinguaEditWindow%23533
+msgid "No language statistics found."
+msgstr "Ingen språkstatistik hittades."
+
+#: LinguaEditWindow%23534
+msgid "No organizations found."
+msgstr "Inga organisationer hittades."
+
+#: LinguaEditWindow%23535
+msgid "No projects found."
+msgstr "Inga projekt hittades."
+
+#: LinguaEditWindow%23536
+msgctxt "LinguaEditWindow#536"
+msgid "Organization:"
+msgstr "Organisation:"
+
+#: LinguaEditWindow%23537
+msgctxt "LinguaEditWindow#537"
+msgid "Project:"
+msgstr "Projekt:"
+
+#: LinguaEditWindow%23538
+msgid "Select Organization"
+msgstr "Välj organisation"
+
+#: LinguaEditWindow%23539
+msgid "Select Project"
+msgstr "Välj projekt"
+
+#: LinguaEditWindow%23540
+msgid "Transifex Error"
+msgstr "Transifex-fel"
+
+#: LinguaEditWindow%23541
+msgid "Transifex Statistics…"
+msgstr "Transifex-statistik…"
+
+#: LinguaEditWindow%23542
+msgid "Transifex — %s"
+msgstr "Transifex — %s"
+
+#: LinguaEditWindow%23543
+msgid "Translation statistics for <b>%s</b>:"
+msgstr "Översättningsstatistik för <b>%s</b>:"
+
+#: Linter%231
+msgid "Accelerator key mismatch: source has %d, translation has %d"
+msgstr "Acceleratornyckelkonflikt: källan har %d, översättningen har %d"
+
+#: Linter%232
+msgid "Case mismatch: source starts with "
+msgstr "Fall som inte stämmer överens: källan börjar med "
+
+#: Linter%233
+msgid "Ending "
+msgstr "Slut "
+
+#: Linter%234
+msgid "Extra HTML/XML tags in translation: %s"
+msgstr "Extra HTML/XML-taggar i översättningen: %s"
+
+#: Linter%235
+msgid "Format specifier mismatch: %s vs %s"
+msgstr "Formatangivelse stämmer inte överens: %s vs %s"
+
+#: Linter%236
+msgctxt "Linter#6"
+msgid "Fuzzy"
+msgstr "Luddig"
+
+#: Linter%237
+msgid "Glossary inconsistency: %s"
+msgstr "Ordlista inkonsekvens: %s"
+
+#: Linter%238
+msgid "Inconsistent translation for "
+msgstr "Inkonsekvent översättning för "
+
+#: Linter%239
+msgid "Leading whitespace mismatch"
+msgstr "Ledande blankstegsmismatch"
+
+#: Linter%2310
+msgid "Missing HTML/XML tags in translation: %s"
+msgstr "Saknade HTML/XML-taggar i översättningen: %s"
+
+#: Linter%2311
+msgid "Newline count mismatch (%s vs %s)"
+msgstr "Antalet radbrytningar stämmer inte överens (%s vs %s)"
+
+#: Linter%2312
+msgid "Python format mismatch: %s vs %s"
+msgstr "Python-formatkonflikt: %s vs %s"
+
+#: Linter%2313
+msgid "Suspicious length ratio: %sx"
+msgstr "Misstänkt längdförhållande: %sx"
+
+#: Linter%2314
+msgid "Trailing whitespace mismatch"
+msgstr "Avvikande efterföljande blanksteg"
+
+#: Linter%2315
+msgctxt "Linter#15"
+msgid "Untranslated"
+msgstr "Oöversatt"
+
+#: LocaleMapDialog%231
+msgid "Average progress"
+msgstr "Genomsnittlig framsteg"
+
+#: LocaleMapDialog%232
+msgctxt "LocaleMapDialog#2"
+msgid "Browse..."
+msgstr "Bläddra..."
+
+#: LocaleMapDialog%233
+msgid "Click on a country to see details"
+msgstr "Klicka på ett land för att se detaljer"
+
+#: LocaleMapDialog%234
+msgctxt "LocaleMapDialog#4"
+msgid "Close"
+msgstr "Stäng"
+
+#: LocaleMapDialog%235
+msgctxt "LocaleMapDialog#5"
+msgid "Complete"
+msgstr "Komplett"
+
+#: LocaleMapDialog%236
+msgid "Countries with translations"
+msgstr "Länder med översättningar"
+
+#: LocaleMapDialog%237
+msgid "Country Details"
+msgstr "Landets detaljer"
+
+#: LocaleMapDialog%238
+msgctxt "LocaleMapDialog#8"
+msgid "Fuzzy"
+msgstr "Luddig"
+
+#: LocaleMapDialog%239
+msgid "Locale Files"
+msgstr "Locale-filer"
+
+#: LocaleMapDialog%2310
+msgid "Minimal"
+msgstr "Minimum"
+
+#: LocaleMapDialog%2311
+msgid "Missing"
+msgstr "Saknad"
+
+#: LocaleMapDialog%2312
+msgid "No translation data"
+msgstr "Inga översättningsdata"
+
+#: LocaleMapDialog%2313
+msgid "No translation files found in project."
+msgstr "Inga översättningsfiler hittades i projektet."
+
+#: LocaleMapDialog%2314
+msgid "Open File"
+msgstr "Öppna fil"
+
+#: LocaleMapDialog%2315
+msgid "Partial"
+msgstr "Partiell"
+
+#: LocaleMapDialog%2316
+msgid "Project Summary"
+msgstr "Projektöversikt"
+
+#: LocaleMapDialog%2317
+msgctxt "LocaleMapDialog#17"
+msgid "Project:"
+msgstr "Projekt:"
+
+#: LocaleMapDialog%2318
+msgctxt "LocaleMapDialog#18"
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: LocaleMapDialog%2319
+msgid "Select Project Directory"
+msgstr "Välj projektkatalog"
+
+#: LocaleMapDialog%2320
+msgid "Total strings"
+msgstr "Totalt antal strängar"
+
+#: LocaleMapDialog%2321
+msgctxt "LocaleMapDialog#21"
+msgid "Translated"
+msgstr "Översatt"
+
+#: LocaleMapDialog%2322
+msgid "Translation Map"
+msgstr "Översättningskarta"
+
+#: LocaleMapDialog%2323
+msgid "Translation Progress by Region"
+msgstr "Översättningsframsteg per region"
+
+#: LocaleMapDialog%2324
+msgctxt "LocaleMapDialog#24"
+msgid "Translation Statistics"
+msgstr "Översättningsstatistik"
+
+#: LocaleMapDialog%2325
+msgid "Would open: {}"
+msgstr "Skulle öppna: {}"
+
+#: MacroDialog%231
+msgid "A macro with this name already exists. Please choose a different name."
+msgstr "Ett makro med detta namn finns redan. Välj ett annat namn."
+
+#: MacroDialog%232
+msgid "Actions:"
+msgstr "Åtgärder:"
+
+#: MacroDialog%233
+msgid "Are you sure you want to delete the macro "
+msgstr "Är du säker på att du vill ta bort makrot? "
+
+#: MacroDialog%234
+msgid "Cannot find main window for macro playback."
+msgstr "Kan inte hitta huvudfönstret för makrouppspelning."
+
+#: MacroDialog%235
+msgctxt "MacroDialog#5"
+msgid "Close"
+msgstr "Stäng"
+
+#: MacroDialog%236
+msgctxt "MacroDialog#6"
+msgid "Delete"
+msgstr "Ta bort"
+
+#: MacroDialog%237
+msgid "Delete Failed"
+msgstr "Borttagning misslyckades"
+
+#: MacroDialog%238
+msgid "Delete Macro"
+msgstr "Ta bort makro"
+
+#: MacroDialog%239
+msgctxt "MacroDialog#9"
+msgid "Description:"
+msgstr "Beskrivning:"
+
+#: MacroDialog%2310
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: MacroDialog%2311
+msgid "Enabled:"
+msgstr "Aktiverad:"
+
+#: MacroDialog%2312
+msgid "Enter macro description (optional):"
+msgstr "Ange makrobeskrivning (valfritt):"
+
+#: MacroDialog%2313
+msgctxt "MacroDialog#13"
+msgid "Enter macro name:"
+msgstr "Ange makronamn:"
+
+#: MacroDialog%2314
+msgid "Enter new name:"
+msgstr "Ange nytt namn:"
+
+#: MacroDialog%2315
+msgid "Export"
+msgstr "Exportera"
+
+#: MacroDialog%2316
+msgctxt "MacroDialog#16"
+msgid "Export Error"
+msgstr "Exportfel"
+
+#: MacroDialog%2317
+msgid "Export Failed"
+msgstr "Export misslyckades"
+
+#: MacroDialog%2318
+msgid "Export Macro"
+msgstr "Exportera makro"
+
+#: MacroDialog%2319
+msgid "Export Successful"
+msgstr "Export lyckades"
+
+#: MacroDialog%2320
+msgid "Failed to delete macro."
+msgstr "Det gick inte att ta bort makrot."
+
+#: MacroDialog%2321
+msgid "Failed to export macro."
+msgstr "Det gick inte att exportera makrot."
+
+#: MacroDialog%2322
+msgid "Failed to export macro: {}"
+msgstr "Export av makro misslyckades: {}"
+
+#: MacroDialog%2323
+msgid "Failed to import macro: {}"
+msgstr "Det gick inte att importera makrot: {}"
+
+#: MacroDialog%2324
+msgid "Failed to play macro "
+msgstr "Kunde inte spela upp makro "
+
+#: MacroDialog%2325
+msgid "Failed to rename macro. The new name may already exist."
+msgstr ""
+"Det gick inte att byta namn på makrot. Det nya namnet kanske redan finns."
+
+#: MacroDialog%2326
+msgid "Failed to save the macro. No actions were recorded."
+msgstr "Det gick inte att spara makrot. Inga åtgärder har spelats in."
+
+#: MacroDialog%2327
+msgid "Import"
+msgstr "Importera"
+
+#: MacroDialog%2328
+msgctxt "MacroDialog#28"
+msgid "Import Error"
+msgstr "Importfel"
+
+#: MacroDialog%2329
+msgid "Import Failed"
+msgstr "Import misslyckades"
+
+#: MacroDialog%2330
+msgid "Import Macro"
+msgstr "Importera makro"
+
+#: MacroDialog%2331
+msgid "Import Successful"
+msgstr "Importen lyckades"
+
+#: MacroDialog%2332
+msgid "JSON Files (*.json)"
+msgstr "JSON-filer (*.json)"
+
+#: MacroDialog%2333
+msgid "Macro "
+msgstr "Makro "
+
+#: MacroDialog%2334
+msgid "Macro Description"
+msgstr "Makrobeskrivning"
+
+#: MacroDialog%2335
+msgid "Macro Details"
+msgstr "Makrodetaljer"
+
+#: MacroDialog%2336
+msgctxt "MacroDialog#36"
+msgid "Macro Exists"
+msgstr "Makro finns"
+
+#: MacroDialog%2337
+msgid "Macro Saved"
+msgstr "Makro sparat"
+
+#: MacroDialog%2338
+msgid "Macro exported to {}"
+msgstr "Makro exporterat till {}"
+
+#: MacroDialog%2339
+msgctxt "MacroDialog#39"
+msgid "Macros"
+msgstr "Makron"
+
+#: MacroDialog%2340
+msgid "Manage Macros"
+msgstr "Hantera makron"
+
+#: MacroDialog%2341
+msgctxt "MacroDialog#41"
+msgid "Name:"
+msgstr "Namn:"
+
+#: MacroDialog%2342
+msgid "No actions recorded"
+msgstr "Inga åtgärder registrerade"
+
+#: MacroDialog%2343
+msgid "Play"
+msgstr "Spela"
+
+#: MacroDialog%2344
+msgid "Playback Error"
+msgstr "Uppspelningsfel"
+
+#: MacroDialog%2345
+msgid "Ready to record"
+msgstr "Redo att spela in"
+
+#: MacroDialog%2346
+msgctxt "MacroDialog#46"
+msgid "Record Macro"
+msgstr "Spela in makro"
+
+#: MacroDialog%2347
+msgid "Record New Macro"
+msgstr "Spela in ny makro"
+
+#: MacroDialog%2348
+msgid "Recording Failed"
+msgstr "Inspelningen misslyckades"
+
+#: MacroDialog%2349
+msgid "Rename"
+msgstr "Byt namn"
+
+#: MacroDialog%2350
+msgid "Rename Failed"
+msgstr "Namnbyte misslyckades"
+
+#: MacroDialog%2351
+msgid "Rename Macro"
+msgstr "Byt namn på makro"
+
+#: MacroDialog%2352
+msgid "Shortcut:"
+msgstr "Genväg:"
+
+#: MacroDialog%2353
+msgctxt "MacroDialog#53"
+msgid "Stop Recording"
+msgstr "Avsluta inspelning"
+
+#: MacroDialog%2354
+msgid "🔴 Recording in progress..."
+msgstr "🔴 Inspelning pågår..."
+
+#: MacroDialog%2355
+msgid "🔴 Recording... ({} actions)"
+msgstr "🔴 Inspelning... ({} åtgärder)"
+
+#: MacroDialog%2356
+msgctxt "MacroDialog#56"
+msgid "Are you sure you want to delete the macro '{}'?"
+msgstr "Är du säker på att du vill radera makrot '{}'?"
+
+#: MacroDialog%2357
+msgctxt "MacroDialog#57"
+msgid "Failed to play macro '{}'."
+msgstr "Kunde inte spela upp makro '{}'."
+
+#: MacroDialog%2358
+msgctxt "MacroDialog#58"
+msgid "Macro '{}' has been saved successfully."
+msgstr "Makro '{}' har sparats."
+
+#: MergePreviewDialog%231
+msgid "Merge Entries"
+msgstr "Sammanfoga poster"
+
+#: MergePreviewDialog%232
+msgid "Original segments:"
+msgstr "Ursprungliga segment:"
+
+#: MergePreviewDialog%233
+msgid "Preview of merged entry ({} segments):"
+msgstr "Förhandsgranskning av sammanslagna poster ({} segment):"
+
+#: MergePreviewDialog%234
+msgctxt "MergePreviewDialog#4"
+msgid "Source:"
+msgstr "Källa:"
+
+#: MergePreviewDialog%235
+msgctxt "MergePreviewDialog#5"
+msgid "Translation:"
+msgstr "Översättning:"
+
+#: MinimapWidget%231
+msgid "Minimap – click to jump"
+msgstr "Minikarta – klicka för att hoppa"
+
+#: OCRDialog%231
+msgid "Apply image preprocessing to improve OCR accuracy"
+msgstr "Använd bildförbehandling för att förbättra OCR-noggrannheten"
+
+#: OCRDialog%232
+msgid "Apply preprocessing"
+msgstr "Tillämpa förbehandling"
+
+#: OCRDialog%233
+msgid "Assume a single column of text of variable sizes"
+msgstr "Anta en enda kolumn med text av varierande storlek"
+
+#: OCRDialog%234
+msgid "Assume a single uniform block of text"
+msgstr "Anta en enda enhetlig textblock"
+
+#: OCRDialog%235
+msgid "Assume a single uniform block of vertically aligned text"
+msgstr "Anta en enda enhetlig block av vertikalt justerad text"
+
+#: OCRDialog%236
+msgid "Automatic page segmentation with OSD"
+msgstr "Automatisk sidesegmentering med OSD"
+
+#: OCRDialog%237
+msgid "Automatic page segmentation, but no OSD, or OCR"
+msgstr "Automatisk sidesegmentering, men ingen OSD eller OCR"
+
+#: OCRDialog%238
+msgid "Browse Image..."
+msgstr "Bläddra bland bilder..."
+
+#: OCRDialog%239
+msgctxt "OCRDialog#9"
+msgid "Close"
+msgstr "Stäng"
+
+#: OCRDialog%2310
+msgid "Could not load image."
+msgstr "Det gick inte att ladda bilden."
+
+#: OCRDialog%2311
+msgid "Create PO from Extracted Strings"
+msgstr "Skapa PO från extraherade strängar"
+
+#: OCRDialog%2312
+msgctxt "OCRDialog#12"
+msgid "Error"
+msgstr "Fel"
+
+#: OCRDialog%2313
+msgid "Extract Text"
+msgstr "Extrahera text"
+
+#: OCRDialog%2314
+msgid "Extracted Text"
+msgstr "Extraherad text"
+
+#: OCRDialog%2315
+msgid "Failed to create PO file:\\n{}"
+msgstr "Det gick inte att skapa PO-filen:\\n{}"
+
+#: OCRDialog%2316
+msgid "Filter extracted strings..."
+msgstr "Filtrera extraherade strängar..."
+
+#: OCRDialog%2317
+msgctxt "OCRDialog#17"
+msgid "Filter:"
+msgstr "Filter:"
+
+#: OCRDialog%2318
+msgid "Fully automatic page segmentation, but no OSD"
+msgstr "Helautomatisk sidsegmentering, men ingen OSD"
+
+#: OCRDialog%2319
+msgid "Image"
+msgstr "Bild"
+
+#: OCRDialog%2320
+msgid "Image Files (*.png *.jpg *.jpeg *.gif *.bmp *.tiff)"
+msgstr "Bildfiler (*.png *.jpg *.jpeg *.gif *.bmp *.tiff)"
+
+#: OCRDialog%2321
+msgctxt "OCRDialog#21"
+msgid "Language:"
+msgstr "Språk:"
+
+#: OCRDialog%2322
+msgid "No Strings"
+msgstr "Inga strängar"
+
+#: OCRDialog%2323
+msgid "No strings selected for PO file creation."
+msgstr "Inga strängar valda för skapande av PO-fil."
+
+#: OCRDialog%2324
+msgid "OCR Error"
+msgstr "OCR-fel"
+
+#: OCRDialog%2325
+msgid "OCR Screenshot"
+msgstr "OCR-skärmdump"
+
+#: OCRDialog%2326
+msgid "OCR Settings"
+msgstr "OCR-inställningar"
+
+#: OCRDialog%2327
+msgid "Orientation and script detection (OSD) only"
+msgstr "Endast orientering och skriptdetektering (OSD)"
+
+#: OCRDialog%2328
+msgid "PO Files (*.po)"
+msgstr "PO-filer (*.po)"
+
+#: OCRDialog%2329
+msgid "PO file created successfully:\\n{}"
+msgstr "PO-fil skapad:\\n{}"
+
+#: OCRDialog%2330
+msgid "Page Segmentation:"
+msgstr "Sidans segmentering:"
+
+#: OCRDialog%2331
+msgid "Raw OCR Output"
+msgstr "Rå OCR-utdata"
+
+#: OCRDialog%2332
+msgid "Raw line. Treat the image as a single text line, bypassing hacks"
+msgstr "Rå rad. Behandla bilden som en enda textrad och kringgå hack."
+
+#: OCRDialog%2333
+msgctxt "OCRDialog#33"
+msgid "Remove Selected"
+msgstr "Ta bort markerade"
+
+#: OCRDialog%2334
+msgid "Save PO File"
+msgstr "Spara PO-fil"
+
+#: OCRDialog%2335
+msgid "Select All"
+msgstr "Markera alla"
+
+#: OCRDialog%2336
+msgid "Select Image"
+msgstr "Välj bild"
+
+#: OCRDialog%2337
+msgid "Select None"
+msgstr "Avmarkera alla"
+
+#: OCRDialog%2338
+msgid "Sparse text with OSD"
+msgstr "Gles text med OSD"
+
+#: OCRDialog%2339
+msgid "Sparse text. Find as much text as possible in no particular order"
+msgstr "Gles text. Hitta så mycket text som möjligt i ingen särskild ordning."
+
+#: OCRDialog%2340
+msgctxt "OCRDialog#40"
+msgid "Success"
+msgstr "Lyckades"
+
+#: OCRDialog%2341
+msgid "Tesseract Required"
+msgstr "Tesseract krävs"
+
+#: OCRDialog%2342
+msgid "Treat the image as a single character"
+msgstr "Behandla bilden som ett enda tecken"
+
+#: OCRDialog%2343
+msgid "Treat the image as a single text line"
+msgstr "Behandla bilden som en enda textrad"
+
+#: OCRDialog%2344
+msgid "Treat the image as a single word"
+msgstr "Behandla bilden som ett enda ord"
+
+#: OCRDialog%2345
+msgid "Treat the image as a single word in a circle"
+msgstr "Behandla bilden som ett enda ord i en cirkel"
+
+#: OCRDialog%2346
+msgid "✓ Tesseract available: %1"
+msgstr "✓ Tesseract tillgänglig: %1"
+
+#: OCRDialog%2347
+msgid "Image loaded: %1"
+msgstr "Bild inläst: %1"
+
+#: OCRDialog%2348
+msgid "✓ OCR completed. Found %1 text strings."
+msgstr "✓ OCR slutfört. Hittade %1 textsträngar."
+
+#: OCRDialog%2349
+msgid "✗ OCR failed: %1"
+msgstr "✗ OCR misslyckades: %1"
+
+#: OCRDialog%2350
+msgid ""
+"OCR functionality requires tesseract-ocr to be installed.\\n\\n"
+"Installation instructions:\\n• macOS: brew install tesseract\\n• Ubuntu/"
+"Debian: sudo apt install tesseract-ocr\\n• Windows: Download from GitHub "
+"releases\\n• Arch Linux: sudo pacman -S tesseract"
+msgstr ""
+"OCR functionality requires tesseract-ocr to be installed.\\n\\n"
+"Installation instructions:\\n• macOS: brew install tesseract\\n• Ubuntu/"
+"Debian: sudo apt install tesseract-ocr\\n• Windows: Download from GitHub "
+"releases\\n• Arch Linux: sudo pacman -S tesseract"
+
+#: OCRDialog%2351
+msgid "⚠ No text found in image."
+msgstr "⚠ Ingen text hittades i bilden."
+
+#: OCRDialog%2352
+msgid "⚠ Tesseract not found. Please install tesseract-ocr."
+msgstr "⚠ Tesseract hittades inte. Installera tesseract-ocr."
+
+#: OCRWorker%231
+msgid "Checking tesseract installation..."
+msgstr "Kontrollerar installation av tesserakt..."
+
+#: OCRWorker%232
+msgid "Processing image..."
+msgstr "Bearbetar bild..."
+
+#: OCRWorker%233
+msgid "Tesseract not installed. Please install tesseract-ocr."
+msgstr "Tesseract är inte installerat. Installera tesseract-ocr."
+
+#: PlatformSettingsDialog%231
+msgid "API Key:"
+msgstr "API-nyckel:"
+
+#: PlatformSettingsDialog%232
+msgid "API Token:"
+msgstr "API-token:"
+
+#: PlatformSettingsDialog%233
+msgid "API URL:"
+msgstr "API-URL:"
+
+#: PlatformSettingsDialog%234
+msgid "Base URL:"
+msgstr "Bas-URL:"
+
+#: PlatformSettingsDialog%235
+msgid "Component:"
+msgstr "Komponent:"
+
+#: PlatformSettingsDialog%236
+msgctxt "PlatformSettingsDialog#6"
+msgid "Crowdin"
+msgstr "Crowdin"
+
+#: PlatformSettingsDialog%237
+msgid "Crowdin API"
+msgstr "Crowdin API"
+
+#: PlatformSettingsDialog%238
+msgctxt "PlatformSettingsDialog#8"
+msgid "Organization:"
+msgstr "Organisation:"
+
+#: PlatformSettingsDialog%239
+msgid "Platform Settings"
+msgstr "Plattformsinställningar"
+
+#: PlatformSettingsDialog%2310
+msgid "Project ID:"
+msgstr "Projekt-ID:"
+
+#: PlatformSettingsDialog%2311
+msgctxt "PlatformSettingsDialog#11"
+msgid "Project:"
+msgstr "Projekt:"
+
+#: PlatformSettingsDialog%2312
+msgctxt "PlatformSettingsDialog#12"
+msgid "Save"
+msgstr "Spara"
+
+#: PlatformSettingsDialog%2313
+msgid "Test Connection"
+msgstr "Testa anslutning"
+
+#: PlatformSettingsDialog%2314
+msgid "Testing…"
+msgstr "Testar..."
+
+#: PlatformSettingsDialog%2315
+msgctxt "PlatformSettingsDialog#15"
+msgid "Transifex"
+msgstr "Transifex"
+
+#: PlatformSettingsDialog%2316
+msgid "Transifex API"
+msgstr "Transifex API"
+
+#: PlatformSettingsDialog%2317
+msgctxt "PlatformSettingsDialog#17"
+msgid "Weblate"
+msgstr "Weblate"
+
+#: PlatformSettingsDialog%2318
+msgid "Weblate API"
+msgstr "Weblate API"
+
+#: PlatformSettingsDialog%2319
+msgid "⚠️ No system keychain — tokens stored with basic obfuscation. "
+msgstr ""
+"⚠️ Inget systemnyckelring — tokens lagras med grundläggande förvrängning. "
+
+#: PlatformSettingsDialog%2320
+msgid "✓ Connected: %1"
+msgstr "✓ Ansluten: %1"
+
+#: PlatformSettingsDialog%2321
+msgid "✓ Saved"
+msgstr "✓ Sparad"
+
+#: PlatformSettingsDialog%2322
+msgid "✗ %1"
+msgstr "✗ %1"
+
+#: PlatformSettingsDialog%2323
+msgid "✗ Project ID must be a number"
+msgstr "✗ Projekt-ID måste vara ett nummer"
+
+#: PlatformSettingsDialog%2324
+msgid "🔒 Tokens stored in %1"
+msgstr "🔒 Tokens lagrade i %1"
+
+#: PluginDialog%231
+msgid "All plugins have been reloaded successfully."
+msgstr "Alla plugins har laddats om utan problem."
+
+#: PluginDialog%232
+msgid "Author"
+msgstr "Upphovsperson"
+
+#: PluginDialog%233
+msgid "Author: {}"
+msgstr "Upphovsperson: {}"
+
+#: PluginDialog%234
+msgctxt "PluginDialog#4"
+msgid "Close"
+msgstr "Stäng"
+
+#: PluginDialog%235
+msgid "Disable"
+msgstr "Inaktivera"
+
+#: PluginDialog%236
+msgid "Enable"
+msgstr "Aktivera"
+
+#: PluginDialog%237
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: PluginDialog%238
+msgid "Failed to reload plugins: {}"
+msgstr "Det gick inte att ladda om plugins: {}"
+
+#: PluginDialog%239
+msgid "Installed Plugins"
+msgstr "Installerade plugins"
+
+#: PluginDialog%2310
+msgid "Manage Plugins"
+msgstr "Hantera plugins"
+
+#: PluginDialog%2311
+msgctxt "PluginDialog#11"
+msgid "Name"
+msgstr "Namn"
+
+#: PluginDialog%2312
+msgid "Open Plugin Folder"
+msgstr "Öppna plugin-mappen"
+
+#: PluginDialog%2313
+msgid "Plugin Details"
+msgstr "Plugin-detaljer"
+
+#: PluginDialog%2314
+msgid "Plugins Reloaded"
+msgstr "Plugins omladdade"
+
+#: PluginDialog%2315
+msgid "Plugins are loaded from: {}"
+msgstr "Plugins laddas från: {}"
+
+#: PluginDialog%2316
+msgid "Reload Failed"
+msgstr "Omladdning misslyckades"
+
+#: PluginDialog%2317
+msgid "Reload Plugins"
+msgstr "Ladda om plugins"
+
+#: PluginDialog%2318
+msgid "Version"
+msgstr "Version"
+
+#: PluginDialog%2319
+msgid "Version: {}"
+msgstr "Version: {}"
+
+#: PluralFormsEditor%231
+msgid "Plural rules"
+msgstr "Pluralregler"
+
+#: PluralFormsEditor%232
+msgid "Clear all"
+msgstr "Rensa alla"
+
+#: PluralFormsEditor%233
+msgid "Sync from singular"
+msgstr "Synkronisera från singular"
+
+#: PreferencesDialog%231
+msgid " characters"
+msgstr " tecken"
+
+#: PreferencesDialog%232
+msgctxt "PreferencesDialog#2"
+msgid "Appearance"
+msgstr "Utseende"
+
+#: PreferencesDialog%233
+msgid "Auto-compile on save"
+msgstr "Automatisk kompilering vid sparande"
+
+#: PreferencesDialog%234
+msgid "Automatically compile .mo/.qm after saving"
+msgstr "Kompilera .mo/.qm automatiskt efter att du har sparat"
+
+#: PreferencesDialog%235
+msgid "Character limit:"
+msgstr "Teckenbegränsning:"
+
+#: PreferencesDialog%236
+msgid "Credential storage:"
+msgstr "Lagring av inloggningsuppgifter:"
+
+#: PreferencesDialog%237
+msgctxt "PreferencesDialog#7"
+msgid "Dark"
+msgstr "Mörk"
+
+#: PreferencesDialog%238
+msgctxt "PreferencesDialog#8"
+msgid "Default"
+msgstr "Standard"
+
+#: PreferencesDialog%239
+msgctxt "PreferencesDialog#9"
+msgid "Default engine:"
+msgstr "Standardmotor:"
+
+#: PreferencesDialog%2310
+msgid "Double-click to edit translations directly in the list"
+msgstr "Dubbelklicka för att redigera översättningar direkt i listan"
+
+#: PreferencesDialog%2311
+msgctxt "PreferencesDialog#11"
+msgid "Editor font size:"
+msgstr "Teckenstorlek i redigeraren:"
+
+#: PreferencesDialog%2312
+msgctxt "PreferencesDialog#12"
+msgid "Email:"
+msgstr "E-post:"
+
+#: PreferencesDialog%2313
+msgid "Enable inline editing"
+msgstr "Aktivera inline-redigering"
+
+#: PreferencesDialog%2314
+msgctxt "PreferencesDialog#14"
+msgid "Formal"
+msgstr "Formell"
+
+#: PreferencesDialog%2315
+msgctxt "PreferencesDialog#15"
+msgid "Formality level:"
+msgstr "Formell nivå:"
+
+#: PreferencesDialog%2316
+msgctxt "PreferencesDialog#16"
+msgid "Informal"
+msgstr "Informell"
+
+#: PreferencesDialog%2317
+msgctxt "PreferencesDialog#17"
+msgid "Language / Locale:"
+msgstr "Språk/lokalisering:"
+
+#: PreferencesDialog%2318
+msgctxt "PreferencesDialog#18"
+msgid "Light"
+msgstr "Ljus"
+
+#: PreferencesDialog%2319
+msgctxt "PreferencesDialog#19"
+msgid "Name:"
+msgstr "Namn:"
+
+#: PreferencesDialog%2320
+msgid "Personal"
+msgstr "Personligt"
+
+#: PreferencesDialog%2321
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: PreferencesDialog%2322
+msgid "Security"
+msgstr "Säkerhet"
+
+#: PreferencesDialog%2323
+msgid "Show character counter"
+msgstr "Visa teckenräknare"
+
+#: PreferencesDialog%2324
+msgctxt "PreferencesDialog#24"
+msgid "Source language:"
+msgstr "Källspråk:"
+
+#: PreferencesDialog%2325
+msgctxt "PreferencesDialog#25"
+msgid "System default"
+msgstr "Systemets standard"
+
+#: PreferencesDialog%2326
+msgctxt "PreferencesDialog#26"
+msgid "Target language:"
+msgstr "Målspråk:"
+
+#: PreferencesDialog%2327
+msgid "Team:"
+msgstr "Team:"
+
+#: PreferencesDialog%2328
+msgctxt "PreferencesDialog#28"
+msgid "Theme:"
+msgstr "Tema:"
+
+#: PreferencesDialog%2329
+msgctxt "PreferencesDialog#29"
+msgid "Translation"
+msgstr "Översättning"
+
+#: PreferencesDialog%2330
+msgid ""
+"No system keychain detected. Credentials are stored in an encrypted file "
+"with a master password.\\n\\n"
+"For better security, install:\\n• macOS: Built-in (Keychain)\\n• Windows: "
+"pip install keyring\\n• Linux: pip install secretstorage"
+msgstr ""
+"No system keychain detected. Credentials are stored in an encrypted file "
+"with a master password.\\n\\n"
+"For better security, install:\\n• macOS: Built-in (Keychain)\\n• Windows: "
+"pip install keyring\\n• Linux: pip install secretstorage"
+
+#: PreferencesDialog%2331
+msgctxt "PreferencesDialog#31"
+msgid "Your credentials are securely stored in the system keychain."
+msgstr "Dina inloggningsuppgifter lagras säkert i systemets nyckelring."
+
+#: ProjectDockWidget%231
+msgid "All files"
+msgstr "Alla filer"
+
+#: ProjectDockWidget%232
+msgid "Analyzing project..."
+msgstr "Analyserar projekt..."
+
+#: ProjectDockWidget%233
+msgid "Avg:"
+msgstr "Genomsnitt:"
+
+#: ProjectDockWidget%234
+msgctxt "ProjectDockWidget#4"
+msgid "Complete"
+msgstr "Komplett"
+
+#: ProjectDockWidget%235
+msgid "Copy Path"
+msgstr "Kopiera sökväg"
+
+#: ProjectDockWidget%236
+msgctxt "ProjectDockWidget#6"
+msgid "File"
+msgstr "Fil"
+
+#: ProjectDockWidget%237
+msgid "File Properties"
+msgstr "Filegenskaper"
+
+#: ProjectDockWidget%238
+msgid "Files:"
+msgstr "Filer:"
+
+#: ProjectDockWidget%239
+msgctxt "ProjectDockWidget#9"
+msgid "Filter:"
+msgstr "Filter:"
+
+#: ProjectDockWidget%2310
+msgid "Found %d translation files"
+msgstr "Hittade %d översättningsfiler"
+
+#: ProjectDockWidget%2311
+msgid "Incomplete"
+msgstr "Ofullständig"
+
+#: ProjectDockWidget%2312
+msgid "JSON files"
+msgstr "JSON-filer"
+
+#: ProjectDockWidget%2313
+msgid "No project"
+msgstr "Inget projekt"
+
+#: ProjectDockWidget%2314
+msgid "No translation files found in this folder"
+msgstr "Inga översättningsfiler hittades i den här mappen."
+
+#: ProjectDockWidget%2315
+msgctxt "ProjectDockWidget#15"
+msgid "Open"
+msgstr "Öppna"
+
+#: ProjectDockWidget%2316
+msgid "Open a project folder to begin"
+msgstr "Öppna en projektmapp för att börja"
+
+#: ProjectDockWidget%2317
+msgid "Open project folder"
+msgstr "Öppna projektmappen"
+
+#: ProjectDockWidget%2318
+msgid "Open..."
+msgstr "Öppna..."
+
+#: ProjectDockWidget%2319
+msgid "PO files"
+msgstr "PO-filer"
+
+#: ProjectDockWidget%2320
+msgid "Progress"
+msgstr "Förlopp"
+
+#: ProjectDockWidget%2321
+msgid "Project"
+msgstr "Projekt"
+
+#: ProjectDockWidget%2322
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: ProjectDockWidget%2323
+msgctxt "ProjectDockWidget#23"
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: ProjectDockWidget%2324
+msgid "Refresh project files"
+msgstr "Uppdatera projektfiler"
+
+#: ProjectDockWidget%2325
+msgid "Select Project Folder"
+msgstr "Välj projektmapp"
+
+#: ProjectDockWidget%2326
+msgid "Show in File Manager"
+msgstr "Visa i filhanteraren"
+
+#: ProjectDockWidget%2327
+msgid "TS files"
+msgstr "TS-filer"
+
+#: ProjectDockWidget%2328
+msgctxt "ProjectDockWidget#28"
+msgid "Translated"
+msgstr "Översatt"
+
+#: ProjectDockWidget%2329
+msgctxt "ProjectDockWidget#29"
+msgid "Type"
+msgstr "Typ"
+
+#: ProjectDockWidget%2330
+msgid "XLIFF files"
+msgstr "XLIFF-filer"
+
+#: ProjectDockWidget%2331
+msgid "%1 files"
+msgstr "%1 filer"
+
+#: ProjectDockWidget%2332
+msgid "0 files"
+msgstr "0 filer"
+
+#: ProjectDockWidget%2333
+msgid "File: %s"
+msgstr "Fil: %s"
+
+#: ProjectDockWidget%2334
+msgid "Path: %s"
+msgstr "Sökväg: %s"
+
+#: ProjectDockWidget%2335
+msgid "Type: %s"
+msgstr "Typ: %s"
+
+#: ProjectDockWidget%2336
+msgid "Size: %s bytes"
+msgstr "Storlek: %s byte"
+
+#: ProjectDockWidget%2337
+msgid "Total entries: %d"
+msgstr "Totalt antal poster: %d"
+
+#: ProjectDockWidget%2338
+msgctxt "ProjectDockWidget#38"
+msgid "Translated: %d"
+msgstr "Översatta: %d"
+
+#: ProjectDockWidget%2339
+msgctxt "ProjectDockWidget#39"
+msgid "Fuzzy: %d"
+msgstr "Luddiga: %d"
+
+#: ProjectDockWidget%2340
+msgctxt "ProjectDockWidget#40"
+msgid "Untranslated: %d"
+msgstr "Oöversatta: %d"
+
+#: ProjectDockWidget%2341
+msgid "Progress: %.1f%%"
+msgstr "Förlopp: %.1f%%"
+
+#: ProjectDockWidget%2342
+msgid "Modified: %s"
+msgstr "Ändrad: %s"
+
+#: QuickActionsMenu%231
+msgid "Quick Actions"
+msgstr "Snabba åtgärder"
+
+#: QuickActionsMenu%232
+msgid "📋 Copy source"
+msgstr "📋 Kopiera källa"
+
+#: QuickActionsMenu%233
+msgid "📚 Apply glossary term"
+msgstr "📚 Tillämpa ordlisteterm"
+
+#: QuickActionsMenu%234
+msgid "🔤 Capitalize first letter"
+msgstr "🔤 Skriv första bokstaven med versal"
+
+#: QuickActionsMenu%235
+msgid "🔤 Lowercase first letter"
+msgstr "🔤 Liten bokstav som första bokstaven"
+
+#: QuickActionsMenu%236
+msgid "🧠 Apply TM suggestion"
+msgstr "🧠 Tillämpa TM-förslag"
+
+#: RecordMacroDialog%231
+msgid "Recording Macro"
+msgstr "Inspelning av makro"
+
+#: RecordMacroDialog%232
+msgctxt "RecordMacroDialog#2"
+msgid "Stop Recording"
+msgstr "Avsluta inspelning"
+
+#: RecordMacroDialog%233
+msgid "🔴 Recording macro..."
+msgstr "🔴 Spelar in makro..."
+
+#: RegexTesterDialog%231
+msgctxt "RegexTesterDialog#1"
+msgid "Close"
+msgstr "Stäng"
+
+#: RegexTesterDialog%232
+msgid "Copied"
+msgstr "Kopierad"
+
+#: RegexTesterDialog%233
+msgid "Copy Result"
+msgstr "Kopiera resultat"
+
+#: RegexTesterDialog%234
+msgid "Could not copy to clipboard."
+msgstr "Kunde inte kopiera till urklipp."
+
+#: RegexTesterDialog%235
+msgctxt "RegexTesterDialog#5"
+msgid "Error"
+msgstr "Fel"
+
+#: RegexTesterDialog%236
+msgid "Format Strings Found"
+msgstr "Formatsträngar hittade"
+
+#: RegexTesterDialog%237
+msgid "Input Text"
+msgstr "Inmatningstext"
+
+#: RegexTesterDialog%238
+msgid "Live Preview"
+msgstr "Liveförhandsvisning"
+
+#: RegexTesterDialog%239
+msgctxt "RegexTesterDialog#9"
+msgid "Regex Tester"
+msgstr "Regex-testare"
+
+#: RegexTesterDialog%2310
+msgid "Result copied to clipboard."
+msgstr "Resultatet har kopierats till urklipp."
+
+#: RegexTesterDialog%2311
+msgid "Sample text"
+msgstr "Exempeltext"
+
+#: RegexTesterDialog%2312
+msgid "Test Values"
+msgstr "Testvärden"
+
+#: RegexTesterDialog%2313
+msgid "Test value"
+msgstr "Testvärde"
+
+#: RegexTesterDialog%2314
+msgctxt "RegexTesterDialog#14"
+msgid "Value"
+msgstr "Värde"
+
+#: RegexTesterDialog%2315
+msgctxt "RegexTesterDialog#15"
+msgid "Error: %s"
+msgstr "Fel: %s"
+
+#: SearchReplaceDialog%231
+msgid "%d of %d matches"
+msgstr "%d av %d träffar"
+
+#: SearchReplaceDialog%232
+msgid "Both"
+msgstr "Båda"
+
+#: SearchReplaceDialog%233
+msgctxt "SearchReplaceDialog#3"
+msgid "Case sensitive"
+msgstr "Skiftlägeskänslig"
+
+#: SearchReplaceDialog%234
+msgctxt "SearchReplaceDialog#4"
+msgid "Close"
+msgstr "Stäng"
+
+#: SearchReplaceDialog%235
+msgid "Enter replacement text..."
+msgstr "Ange ersättningstext..."
+
+#: SearchReplaceDialog%236
+msgid "Enter search text..."
+msgstr "Ange söktext..."
+
+#: SearchReplaceDialog%237
+msgctxt "SearchReplaceDialog#7"
+msgid "Find & Replace"
+msgstr "Sök och ersätt"
+
+#: SearchReplaceDialog%238
+msgid "Find All"
+msgstr "Hitta alla"
+
+#: SearchReplaceDialog%239
+msgid "Find Next"
+msgstr "Hitta nästa"
+
+#: SearchReplaceDialog%2310
+msgid "Find Previous"
+msgstr "Hitta tidigare"
+
+#: SearchReplaceDialog%2311
+msgctxt "SearchReplaceDialog#11"
+msgid "Find:"
+msgstr "Hitta:"
+
+#: SearchReplaceDialog%2312
+msgid "No matches found"
+msgstr "Inga träffar hittades"
+
+#: SearchReplaceDialog%2313
+msgctxt "SearchReplaceDialog#13"
+msgid "Options"
+msgstr "Alternativ"
+
+#: SearchReplaceDialog%2314
+msgctxt "SearchReplaceDialog#14"
+msgid "Regular expression"
+msgstr "Reguljära uttryck"
+
+#: SearchReplaceDialog%2315
+msgctxt "SearchReplaceDialog#15"
+msgid "Replace"
+msgstr "Ersätt"
+
+#: SearchReplaceDialog%2316
+msgctxt "SearchReplaceDialog#16"
+msgid "Replace All"
+msgstr "Ersätt alla"
+
+#: SearchReplaceDialog%2317
+msgctxt "SearchReplaceDialog#17"
+msgid "Replace:"
+msgstr "Ersätt:"
+
+#: SearchReplaceDialog%2318
+msgctxt "SearchReplaceDialog#18"
+msgid "Search"
+msgstr "Sök"
+
+#: SearchReplaceDialog%2319
+msgid "Search in:"
+msgstr "Sök i:"
+
+#: SearchReplaceDialog%2320
+msgctxt "SearchReplaceDialog#20"
+msgid "Source text"
+msgstr "Källtext"
+
+#: SearchReplaceDialog%2321
+msgctxt "SearchReplaceDialog#21"
+msgid "Translation"
+msgstr "Översättning"
+
+#: SearchReplaceDialog%2322
+msgid "Whole words"
+msgstr "Hela ord"
+
+#: SplitDialog%231
+msgid "Place the cursor inside the source text to mark the split point."
+msgstr "Placera markören i källtexten för att markera delningspunkten."
+
+#: SplitDialog%232
+msgid "Segment 1: \\u201c{}\\u201d  |  Segment 2: \\u201c{}\\u201d"
+msgstr "Segment 1: \\u201c{}\\u201d  |  Segment 2: \\u201c{}\\u201d"
+
+#: SplitDialog%233
+msgctxt "SplitDialog#3"
+msgid "Source:"
+msgstr "Källa:"
+
+#: SplitDialog%234
+msgid "Split Entry"
+msgstr "Delad ingång"
+
+#: SplitDialog%235
+msgctxt "SplitDialog#5"
+msgid "Target:"
+msgstr "Mål:"
+
+#: SplitDialog%236
+msgctxt "SplitDialog#6"
+msgid "Click in the source text where you want to split, then press OK."
+msgstr "Klicka i källtexten där du vill dela, tryck sedan OK."
+
+#: StatisticsDialog%231
+msgid "(text contracted)"
+msgstr "(text förkortad)"
+
+#: StatisticsDialog%232
+msgid "(text expanded)"
+msgstr "(text utökad)"
+
+#: StatisticsDialog%233
+msgid "Additional Details"
+msgstr "Ytterligare information"
+
+#: StatisticsDialog%234
+msgid "Average source length"
+msgstr "Genomsnittlig källängd"
+
+#: StatisticsDialog%235
+msgid "Average translation length"
+msgstr "Genomsnittlig översättningslängd"
+
+#: StatisticsDialog%236
+msgid "Average words per entry"
+msgstr "Genomsnittligt antal ord per uppslag"
+
+#: StatisticsDialog%237
+msgid "Characters:"
+msgstr "Tecken:"
+
+#: StatisticsDialog%238
+msgid "Entry #"
+msgstr "Post #"
+
+#: StatisticsDialog%239
+msgid "Expansion ratio:"
+msgstr "Expansionsförhållande:"
+
+#: StatisticsDialog%2310
+msgid "File:"
+msgstr "Fil:"
+
+#: StatisticsDialog%2311
+msgid "Fuzzy/Needs work:"
+msgstr "Luddig/Behöver bearbetas:"
+
+#: StatisticsDialog%2312
+msgid "Length"
+msgstr "Längd"
+
+#: StatisticsDialog%2313
+msgid "Longest Source Strings"
+msgstr "Längsta källsträngar"
+
+#: StatisticsDialog%2314
+msgid "N/A"
+msgstr "Inte tillgänglig"
+
+#: StatisticsDialog%2315
+msgid "No additional details available."
+msgstr "Inga ytterligare detaljer tillgängliga."
+
+#: StatisticsDialog%2316
+msgid "Overview"
+msgstr "Översikt"
+
+#: StatisticsDialog%2317
+msgctxt "StatisticsDialog#17"
+msgid "Source text:"
+msgstr "Källtext:"
+
+#: StatisticsDialog%2318
+msgid "Text Preview"
+msgstr "Textförhandsgranskning"
+
+#: StatisticsDialog%2319
+msgid "Text Statistics"
+msgstr "Textstatistik"
+
+#: StatisticsDialog%2320
+msgctxt "StatisticsDialog#20"
+msgid "Total entries:"
+msgstr "Totalt antal poster:"
+
+#: StatisticsDialog%2321
+msgctxt "StatisticsDialog#21"
+msgid "Translated:"
+msgstr "Översatta:"
+
+#: StatisticsDialog%2322
+msgid "Translation Progress:"
+msgstr "Översättningsförlopp:"
+
+#: StatisticsDialog%2323
+msgctxt "StatisticsDialog#23"
+msgid "Translation Statistics"
+msgstr "Översättningsstatistik"
+
+#: StatisticsDialog%2324
+msgid "Translation completion"
+msgstr "Översättningen är klar"
+
+#: StatisticsDialog%2325
+msgctxt "StatisticsDialog#25"
+msgid "Translation:"
+msgstr "Översättning:"
+
+#: StatisticsDialog%2326
+msgctxt "StatisticsDialog#26"
+msgid "Untranslated:"
+msgstr "Oöversatta:"
+
+#: StatisticsDialog%2327
+msgid "Words:"
+msgstr "Ord:"
+
+#: StatisticsDialog%2328
+msgid "characters"
+msgstr "tecken"
+
+#: StatisticsDialog%2329
+msgctxt "StatisticsDialog#29"
+msgid "translated"
+msgstr "översatt"
+
+#: StatsWidget%231
+msgid "Auto Translations"
+msgstr "Automatiska översättningar"
+
+#: StatsWidget%232
+msgid "Best Streak"
+msgstr "Bästa svit"
+
+#: StatsWidget%233
+msgid "Current Streak"
+msgstr "Nuvarande svit"
+
+#: StatsWidget%234
+msgid "Details"
+msgstr "Detaljer"
+
+#: StatsWidget%235
+msgid "File Formats"
+msgstr "Filformat"
+
+#: StatsWidget%236
+msgid "Files Completed"
+msgstr "Färdiga filer"
+
+#: StatsWidget%237
+msgid "Formats: {}"
+msgstr "Format: {}"
+
+#: StatsWidget%238
+msgid "Languages Used"
+msgstr "Använda språk"
+
+#: StatsWidget%239
+msgid "Languages: {}"
+msgstr "Språk: {}"
+
+#: StatsWidget%2310
+msgid "Manual Translations"
+msgstr "Manuella översättningar"
+
+#: StatsWidget%2311
+msgid "Total Translations"
+msgstr "Totalt antal översättningar"
+
+#: StatsWidget%2312
+msgctxt "StatsWidget#12"
+msgid "Translation Statistics"
+msgstr "Översättningsstatistik"
+
+#: SyncDialog%231
+msgid "%1 resources found"
+msgstr "%1 resurser hittades"
+
+#: SyncDialog%232
+msgid "Crowdin not configured. Open Platform Settings first."
+msgstr "Crowdin är inte konfigurerat. Öppna först plattformsinställningarna."
+
+#: SyncDialog%233
+msgid "Downloading…"
+msgstr "Hämtar..."
+
+#: SyncDialog%234
+msgid "Enter a language code"
+msgstr "Ange en språkkod"
+
+#: SyncDialog%235
+msgctxt "SyncDialog#5"
+msgid "Language:"
+msgstr "Språk:"
+
+#: SyncDialog%236
+msgid "Loading resources…"
+msgstr "Läser in resurser..."
+
+#: SyncDialog%237
+msgid "No file loaded to push"
+msgstr "Ingen fil laddad för att skicka"
+
+#: SyncDialog%238
+msgid "No resources found"
+msgstr "Inga resurser hittades"
+
+#: SyncDialog%239
+msgid "Pull"
+msgstr "Hämta"
+
+#: SyncDialog%2310
+msgid "Pull Translation"
+msgstr "Hämta översättning"
+
+#: SyncDialog%2311
+msgid "Push"
+msgstr "Skicka"
+
+#: SyncDialog%2312
+msgid "Push Translation"
+msgstr "Push-översättning"
+
+#: SyncDialog%2313
+msgid "Resources"
+msgstr "Resurser"
+
+#: SyncDialog%2314
+msgid "Select a resource first"
+msgstr "Välj först en resurs"
+
+#: SyncDialog%2315
+msgid "Transifex not configured. Open Platform Settings first."
+msgstr "Transifex är inte konfigurerat. Öppna först plattformsinställningarna."
+
+#: SyncDialog%2316
+msgctxt "SyncDialog#16"
+msgid "Unknown"
+msgstr "Okänd"
+
+#: SyncDialog%2317
+msgid "Unknown platform"
+msgstr "Okänd plattform"
+
+#: SyncDialog%2318
+msgid "Uploading…"
+msgstr "Skickar upp..."
+
+#: SyncDialog%2319
+msgid "Weblate not configured. Open Platform Settings first."
+msgstr "Weblate är inte konfigurerat. Öppna först Plattforminställningar."
+
+#: SyncDialog%2320
+msgid "e.g. sv, de, fr"
+msgstr "t.ex. sv, de, fr"
+
+#: SyncDialog%2321
+msgid ""
+"✓ Downloaded at %1\\n"
+"Saved to: %2"
+msgstr ""
+"✓ Nedladdad vid %1\\n"
+"Sparad till: %2"
+
+#: SyncDialog%2322
+msgid "✓ Uploaded at %1"
+msgstr "✓ Uppladdad kl. %1"
+
+#: SyncDialog%2323
+msgid "✗ Error: %1"
+msgstr "✗ Fel: %1"
+
+#: SyncDialog%2324
+msgid "✗ Pull failed: %1"
+msgstr "✗ Dragning misslyckades: %1"
+
+#: SyncDialog%2325
+msgid "✗ Push failed: %1"
+msgstr "✗ Push misslyckades: %1"
+
+#: ToolbarCustomizeDialog%231
+msgid "Check actions to show in toolbar:"
+msgstr "Markera åtgärder som ska visas i verktygsfältet:"
+
+#: ToolbarCustomizeDialog%232
+msgid "Customize Toolbar"
+msgstr "Anpassa verktygsfältet"
+
+#: UnicodeDialog%231
+msgid " | ⚠️ Check highlighted characters"
+msgstr " | ⚠️ Kontrollera markerade tecken"
+
+#: UnicodeDialog%232
+msgid "Analyze"
+msgstr "Analysera"
+
+#: UnicodeDialog%233
+msgid "Block"
+msgstr "Blockera"
+
+#: UnicodeDialog%234
+msgctxt "UnicodeDialog#4"
+msgid "Category"
+msgstr "Kategori"
+
+#: UnicodeDialog%235
+msgid "Char"
+msgstr "Teck"
+
+#: UnicodeDialog%236
+msgid "Character Analysis"
+msgstr "Teckenanalys"
+
+#: UnicodeDialog%237
+msgid "Character Details"
+msgstr "Teckendetaljer"
+
+#: UnicodeDialog%238
+msgctxt "UnicodeDialog#8"
+msgid "Clear"
+msgstr "Rensa"
+
+#: UnicodeDialog%239
+msgctxt "UnicodeDialog#9"
+msgid "Close"
+msgstr "Stäng"
+
+#: UnicodeDialog%2310
+msgid "Code Point"
+msgstr "Kodpunkt"
+
+#: UnicodeDialog%2311
+msgid "Copy Analysis"
+msgstr "Kopiera analys"
+
+#: UnicodeDialog%2312
+msgid "Enter or paste text to analyze..."
+msgstr "Skriv in eller klistra in text som ska analyseras..."
+
+#: UnicodeDialog%2313
+msgid "Enter text to analyze Unicode characters"
+msgstr "Ange text för att analysera Unicode-tecken"
+
+#: UnicodeDialog%2314
+msgid "Highlight suspicious characters"
+msgstr "Markera misstänkta tecken"
+
+#: UnicodeDialog%2315
+msgctxt "UnicodeDialog#15"
+msgid "Name"
+msgstr "Namn"
+
+#: UnicodeDialog%2316
+msgid "Pos"
+msgstr "Pos"
+
+#: UnicodeDialog%2317
+msgid "Text to Analyze"
+msgstr "Text att analysera"
+
+#: UnicodeDialog%2318
+msgctxt "UnicodeDialog#18"
+msgid "Unicode Inspector"
+msgstr "Unicode-inspektör"
+
+#: UnicodeDialog%2319
+msgctxt "UnicodeDialog#19"
+msgid "Total: {0} characters | Invisible: {1} | Suspicious: {2}"
+msgstr "Totalt: {0} tecken | Osynliga: {1} | Misstänkta: {2}"
+
+#: ValidationDialog%231
+msgid "#"
+msgstr "#"
+
+#: ValidationDialog%232
+msgctxt "ValidationDialog#2"
+msgid "Close"
+msgstr "Stäng"
+
+#: ValidationDialog%233
+msgid "Errors"
+msgstr "Fel"
+
+#: ValidationDialog%234
+msgid "Errors: %d | Warnings: %d"
+msgstr "Fel: %d | Varningar: %d"
+
+#: ValidationDialog%235
+msgctxt "ValidationDialog#5"
+msgid "Info"
+msgstr "Info"
+
+#: ValidationDialog%236
+msgctxt "ValidationDialog#6"
+msgid "Message"
+msgstr "Meddelande"
+
+#: ValidationDialog%237
+msgid "Quality score: %s%%"
+msgstr "Kvalitetsbetyg: %s%%"
+
+#: ValidationDialog%238
+msgid "Re-validate"
+msgstr "Omvalidera"
+
+#: ValidationDialog%239
+msgctxt "ValidationDialog#9"
+msgid "Severity"
+msgstr "Allvarlighetsgrad"
+
+#: ValidationDialog%2310
+msgctxt "ValidationDialog#10"
+msgid "Source text"
+msgstr "Källtext"
+
+#: ValidationDialog%2311
+msgid "Validation Results"
+msgstr "Valideringsresultat"
+
+#: ValidationDialog%2312
+msgctxt "ValidationDialog#12"
+msgid "Warnings"
+msgstr "Varningar"
+
+#: VideoDockWidget%231
+msgid "Video Preview"
+msgstr "Videoförhandsvisning"
+
+#: VideoPreviewWidget%231
+msgid "Back 1s (Shift+←)"
+msgstr "Bakåt 1s (Skift+←)"
+
+#: VideoPreviewWidget%232
+msgid "Forward 1s (Shift+→)"
+msgstr "Framåt 1s (Skift+→)"
+
+#: VideoPreviewWidget%233
+msgid "Go to current subtitle (G)"
+msgstr "Gå till aktuell undertext (G)"
+
+#: VideoPreviewWidget%234
+msgid "Larger subtitles"
+msgstr "Större undertexter"
+
+#: VideoPreviewWidget%235
+msgid "Loop segment (L)"
+msgstr "Loopa segment (L)"
+
+#: VideoPreviewWidget%236
+msgid "Mute (M)"
+msgstr "Tyst (M)"
+
+#: VideoPreviewWidget%237
+msgid "Next entry (Ctrl+→)"
+msgstr "Nästa post (Ctrl+→)"
+
+#: VideoPreviewWidget%238
+msgid "Pause"
+msgstr "Paus"
+
+#: VideoPreviewWidget%239
+msgid "Pause at segment end"
+msgstr "Paus vid segmentets slut"
+
+#: VideoPreviewWidget%2310
+msgid "Play / Pause (Space)"
+msgstr "Spela upp/Pausa (Mellanslag)"
+
+#: VideoPreviewWidget%2311
+msgid "Playback speed"
+msgstr "Uppspelningshastighet"
+
+#: VideoPreviewWidget%2312
+msgid "Previous entry (Ctrl+←)"
+msgstr "Föregående post (Ctrl+←)"
+
+#: VideoPreviewWidget%2313
+msgid "Smaller subtitles"
+msgstr "Mindre undertexter"
+
+#: VideoPreviewWidget%2314
+msgid "Stop (S)"
+msgstr "Stoppa (S)"
+
+#: VideoPreviewWidget%2315
+msgid "Volume"
+msgstr "Volym"
+
+#: VideoSubtitleDialog%231
+msgid "%d subtitle tracks found. Duration: %s"
+msgstr "%d undertextspår hittades. Längd: %s"
+
+#: VideoSubtitleDialog%232
+msgctxt "VideoSubtitleDialog#2"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: VideoSubtitleDialog%233
+msgid "Browse…"
+msgstr "Bläddra…"
+
+#: VideoSubtitleDialog%234
+msgid "Extract and Save As…"
+msgstr "Extrahera och spara som…"
+
+#: VideoSubtitleDialog%235
+msgid "Extract and Open"
+msgstr "Extrahera och öppna"
+
+#: VideoSubtitleDialog%236
+msgid "Extract Subtitles from Video"
+msgstr "Extrahera undertexter från video"
+
+#: VideoSubtitleDialog%237
+msgctxt "VideoSubtitleDialog#7"
+msgid "Extracting"
+msgstr "Extraherar"
+
+#: VideoSubtitleDialog%238
+msgid "Extracting preview…"
+msgstr "Extraherar förhandsgranskning…"
+
+#: VideoSubtitleDialog%239
+msgctxt "VideoSubtitleDialog#9"
+msgid "Extracting subtitles…"
+msgstr "Extraherar undertexter…"
+
+#: VideoSubtitleDialog%2310
+msgctxt "VideoSubtitleDialog#10"
+msgid "Error"
+msgstr "Fel"
+
+#: VideoSubtitleDialog%2311
+msgid "Extraction Error"
+msgstr "Fel vid extrahering"
+
+#: VideoSubtitleDialog%2312
+msgctxt "VideoSubtitleDialog#12"
+msgid "Format:"
+msgstr "Format:"
+
+#: VideoSubtitleDialog%2313
+msgctxt "VideoSubtitleDialog#13"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: VideoSubtitleDialog%2314
+msgid "Preview failed: %s"
+msgstr "Förhandsgranskning misslyckades: %s"
+
+#: VideoSubtitleDialog%2315
+msgid "No subtitle tracks found"
+msgstr "Inga undertextspår hittades"
+
+#: VideoSubtitleDialog%2316
+msgctxt "VideoSubtitleDialog#16"
+msgid "No file selected"
+msgstr "Ingen fil vald"
+
+#: VideoSubtitleDialog%2317
+msgid "Done"
+msgstr "Klart"
+
+#: VideoSubtitleDialog%2318
+msgid "Could not extract the subtitle:\\n%s"
+msgstr "Kunde inte extrahera undertexten:\\n%s"
+
+#: VideoSubtitleDialog%2319
+msgid "Could not read the video file:\\n%s"
+msgstr "Kunde inte läsa videofilen:\\n%s"
+
+#: VideoSubtitleDialog%2320
+msgid "Save Subtitle As"
+msgstr "Spara undertext som"
+
+#: VideoSubtitleDialog%2321
+msgid "Play / Pause"
+msgstr "Spela upp / pausa"
+
+#: VideoSubtitleDialog%2322
+msgctxt "VideoSubtitleDialog#22"
+msgid "Stop"
+msgstr "Stoppa"
+
+#: VideoSubtitleDialog%2323
+msgctxt "VideoSubtitleDialog#23"
+msgid "Close"
+msgstr "Stäng"
+
+#: VideoSubtitleDialog%2324
+msgid "The subtitle has been saved to:\\n%s"
+msgstr "Undertexten har sparats till:\\n%s"
+
+#: VideoSubtitleDialog%2325
+msgid "Subtitle Tracks"
+msgstr "Undertextspår"
+
+#: VideoSubtitleDialog%2326
+msgid "Output Format"
+msgstr "Utdataformat"
+
+#: VideoSubtitleDialog%2327
+msgid "Video File"
+msgstr "Videofil"
+
+#: VideoSubtitleDialog%2328
+msgid "Video files (%s);;All files (*)"
+msgstr "Videofiler (%s);;Alla filer (*)"
+
+#: VideoSubtitleDialog%2329
+msgid "Select a video file to preview subtitles"
+msgstr "Välj en videofil för att förhandsgranska undertexter"
+
+#: VideoSubtitleDialog%2330
+msgid "Select Video File"
+msgstr "Välj videofil"
+
+#: VideoSubtitleDialog%2331
+msgctxt "VideoSubtitleDialog#31"
+msgid "This video file contains no embedded subtitle tracks."
+msgstr "Denna videofil innehåller inga inbäddade undertextspår."
+
+#: VideoSubtitleDialog%2332
+msgid "SRT (.srt)"
+msgstr "SRT (.srt)"
+
+#: VideoSubtitleDialog%2333
+msgid "WebVTT (.vtt)"
+msgstr "WebVTT (.vtt)"
+
+#: VideoSubtitleDialog%2334
+msgid "ASS/SSA (.ass)"
+msgstr "ASS/SSA (.ass)"
+
+#: VideoSubtitleDialog%2335
+msgid "SubRip (*.srt)"
+msgstr "SubRip (*.srt)"
+
+#: VideoSubtitleDialog%2336
+msgid "WebVTT (*.vtt)"
+msgstr "WebVTT (*.vtt)"
+
+#: VideoSubtitleDialog%2337
+msgid "Advanced SubStation Alpha (*.ass)"
+msgstr "Advanced SubStation Alpha (*.ass)"
+
+#: VideoSubtitleDialog%2338
+msgid "Subtitle files (*.*)"
+msgstr "Undertextfiler (*.*)"
+
+#: WelcomeDialog%231
+msgctxt "WelcomeDialog#1"
+msgid "Appearance"
+msgstr "Utseende"
+
+#: WelcomeDialog%232
+msgid "Back"
+msgstr "Tillbaka"
+
+#: WelcomeDialog%233
+msgctxt "WelcomeDialog#3"
+msgid "Dark"
+msgstr "Mörk"
+
+#: WelcomeDialog%234
+msgctxt "WelcomeDialog#4"
+msgid "Default"
+msgstr "Standard"
+
+#: WelcomeDialog%235
+msgctxt "WelcomeDialog#5"
+msgid "Default engine:"
+msgstr "Standardmotor:"
+
+#: WelcomeDialog%236
+msgctxt "WelcomeDialog#6"
+msgid "Editor font size:"
+msgstr "Teckenstorlek i redigeraren:"
+
+#: WelcomeDialog%237
+msgctxt "WelcomeDialog#7"
+msgid "Email:"
+msgstr "E-post:"
+
+#: WelcomeDialog%238
+msgctxt "WelcomeDialog#8"
+msgid "Formal"
+msgstr "Formell"
+
+#: WelcomeDialog%239
+msgctxt "WelcomeDialog#9"
+msgid "Formality level:"
+msgstr "Formell nivå:"
+
+#: WelcomeDialog%2310
+msgctxt "WelcomeDialog#10"
+msgid "Informal"
+msgstr "Informell"
+
+#: WelcomeDialog%2311
+msgctxt "WelcomeDialog#11"
+msgid "Language / Locale:"
+msgstr "Språk/lokalisering:"
+
+#: WelcomeDialog%2312
+msgctxt "WelcomeDialog#12"
+msgid "Light"
+msgstr "Ljus"
+
+#: WelcomeDialog%2313
+msgctxt "WelcomeDialog#13"
+msgid "Name:"
+msgstr "Namn:"
+
+#: WelcomeDialog%2314
+msgctxt "WelcomeDialog#14"
+msgid "Next"
+msgstr "Nästa"
+
+#: WelcomeDialog%2315
+msgid "Personal Information"
+msgstr "Personuppgifter"
+
+#: WelcomeDialog%2316
+msgctxt "WelcomeDialog#16"
+msgid "Source language:"
+msgstr "Källspråk:"
+
+#: WelcomeDialog%2317
+msgid "Start translating!"
+msgstr "Börja översätta!"
+
+#: WelcomeDialog%2318
+msgctxt "WelcomeDialog#18"
+msgid "System default"
+msgstr "Systemets standard"
+
+#: WelcomeDialog%2319
+msgctxt "WelcomeDialog#19"
+msgid "Target language:"
+msgstr "Målspråk:"
+
+#: WelcomeDialog%2320
+msgid "Team (optional):"
+msgstr "Team (valfritt):"
+
+#: WelcomeDialog%2321
+msgctxt "WelcomeDialog#21"
+msgid "Theme:"
+msgstr "Tema:"
+
+#: WelcomeDialog%2322
+msgctxt "WelcomeDialog#22"
+msgid "Translation Settings"
+msgstr "Översättningsinställningar"
+
+#: WelcomeDialog%2323
+msgid "Welcome to LinguaEdit"
+msgstr "Välkommen till LinguaEdit"
+
+#: WelcomeDialog%2324
+msgid "You"
+msgstr "Du"
+
+#: WelcomeDialog%2325
+msgid ""
+"LinguaEdit is a modern translation editor for PO, TS, JSON, XLIFF,\\n"
+"Android XML, ARB, PHP, and YAML files.\\n\\n"
+"Features include AI-powered pre-translation, translation memory,\\n"
+"quality assurance, spell checking, and platform integration."
+msgstr ""
+"LinguaEdit är en modern översättningsredigerare för PO-, TS-, JSON-, XLIFF-, "
+"Android XML-, ARB-, PHP- och YAML-filer. Funktionerna inkluderar AI-driven "
+"föröversättning, översättningsminne, kvalitetssäkring, stavningskontroll och "
+"plattformsintegration."
+
+#: WelcomeDialog%2326
+msgctxt "WelcomeDialog#26"
+msgid "You're all set!"
+msgstr "Du är redo!"
+
+#: WelcomeDialog%2327
+msgid "Version %s"
+msgstr "Version %s"
+
+#: WorldMapWidget%231
+msgid "Translation Progress"
+msgstr "Översättningsförlopp"
+
+#: ZenModeWidget%231
+msgctxt "ZenModeWidget#1"
+msgid "<b>Source text</b>"
+msgstr "<b>Källtext</b>"
+
+#: ZenModeWidget%232
+msgctxt "ZenModeWidget#2"
+msgid "<b>Translation</b>"
+msgstr "<b>Översättning</b>"
+
+#: ZenModeWidget%233
+msgid "Exit Zen"
+msgstr "Lämna Zen"
+
+#: ZenModeWidget%234
+msgctxt "ZenModeWidget#4"
+msgid "Next entry"
+msgstr "Nästa post"
+
+#: ZenModeWidget%235
+msgid "Next untranslated ▶▶"
+msgstr "Nästa oöversatt ▶▶"
+
+#: ZenModeWidget%236
+msgctxt "ZenModeWidget#6"
+msgid "Previous entry"
+msgstr "Föregående post"
+
+#: ZenModeWidget%237
+msgid "Skip to next untranslated (Ctrl+Enter)"
+msgstr "Hoppa till nästa oöversatta (Ctrl+Enter)"
+
+#: ZenModeWidget%238
+msgctxt "ZenModeWidget#8"
+msgid "&Catalog"
+msgstr "&Katalog"
+
+#: ZenModeWidget%239
+msgctxt "ZenModeWidget#9"
+msgid "&Edit"
+msgstr "R&edigera"
+
+#: ZenModeWidget%2310
+msgctxt "ZenModeWidget#10"
+msgid "&File"
+msgstr "&Arkiv"
+
+#: ZenModeWidget%2311
+msgctxt "ZenModeWidget#11"
+msgid "&Git"
+msgstr "Gi&t"
+
+#: ZenModeWidget%2312
+msgctxt "ZenModeWidget#12"
+msgid "&Go"
+msgstr "&Gå"
+
+#: ZenModeWidget%2313
+msgctxt "ZenModeWidget#13"
+msgid "&Help"
+msgstr "&Hjälp"
+
+#: ZenModeWidget%2314
+msgctxt "ZenModeWidget#14"
+msgid "&Open…"
+msgstr "Ö&ppna…"
+
+#: ZenModeWidget%2315
+msgctxt "ZenModeWidget#15"
+msgid "&Platforms"
+msgstr "&Plattformar"
+
+#: ZenModeWidget%2316
+msgctxt "ZenModeWidget#16"
+msgid "&Save"
+msgstr "&Spara"
+
+#: ZenModeWidget%2317
+msgctxt "ZenModeWidget#17"
+msgid "&Tools"
+msgstr "Ver&ktyg"
+
+#: ZenModeWidget%2318
+msgctxt "ZenModeWidget#18"
+msgid "&View"
+msgstr "&Visa"
+
+#: ZenModeWidget%2319
+msgctxt "ZenModeWidget#19"
+msgid "<b>%d</b> untranslated strings out of <b>%d</b> total."
+msgstr "<b>%d</b> oöversatta strängar av totalt <b>%d</b>."
+
+#: ZenModeWidget%2320
+msgctxt "ZenModeWidget#20"
+msgid "<b>Added strings:</b> %d"
+msgstr "<b>Tillagda strängar:</b> %d"
+
+#: ZenModeWidget%2321
+msgctxt "ZenModeWidget#21"
+msgid "<b>Changed source text:</b> %d"
+msgstr "<b>Ändrad källtext:</b> %d"
+
+#: ZenModeWidget%2322
+msgctxt "ZenModeWidget#22"
+msgid "<b>Changed translations:</b> %d"
+msgstr "<b>Ändrade översättningar:</b> %d"
+
+#: ZenModeWidget%2323
+msgctxt "ZenModeWidget#23"
+msgid "<b>Concordance search</b>"
+msgstr "<b>Konkordanssökning</b>"
+
+#: ZenModeWidget%2324
+msgctxt "ZenModeWidget#24"
+msgid ""
+"<b>Outdated translations</b> — source changed but translation stayed the "
+"same."
+msgstr ""
+"<b>Föråldrade översättningar</b> — källan ändrades men översättningen "
+"behölls."
+
+#: ZenModeWidget%2325
+msgctxt "ZenModeWidget#25"
+msgid "<b>Potentially outdated:</b> %d"
+msgstr "<b>Potentiellt föråldrade:</b> %d"
+
+#: ZenModeWidget%2326
+msgctxt "ZenModeWidget#26"
+msgid "<b>Reference source:</b>"
+msgstr "<b>Referenskälla:</b>"
+
+#: ZenModeWidget%2327
+msgctxt "ZenModeWidget#27"
+msgid "<b>Reference translation:</b>"
+msgstr "<b>Referensöversättning:</b>"
+
+#: ZenModeWidget%2328
+msgctxt "ZenModeWidget#28"
+msgid "<b>Removed strings:</b> %d"
+msgstr "<b>Borttagna strängar:</b> %d"
+
+#: ZenModeWidget%2329
+msgctxt "ZenModeWidget#29"
+msgid "<b>Source text:</b>"
+msgstr "<b>Källtext:</b>"
+
+#: ZenModeWidget%2330
+msgctxt "ZenModeWidget#30"
+msgid "<b>Source text</b>"
+msgstr "<b>Källtext</b>"
+
+#: ZenModeWidget%2331
+msgctxt "ZenModeWidget#31"
+msgid "<b>Suggestions</b>"
+msgstr "<b>Förslag</b>"
+
+#: ZenModeWidget%2332
+msgctxt "ZenModeWidget#32"
+msgid "<b>Translation:</b>"
+msgstr "<b>Översättning:</b>"
+
+#: ZenModeWidget%2333
+msgctxt "ZenModeWidget#33"
+msgid "<b>Translation</b>"
+msgstr "<b>Översättning</b>"
+
+#: ZenModeWidget%2334
+msgctxt "ZenModeWidget#34"
+msgid "<b>Translator comment:</b>"
+msgstr "<b>Översättarens kommentar:</b>"
+
+#: ZenModeWidget%2335
+msgctxt "ZenModeWidget#35"
+msgid "<h3>Comparison Results</h3>"
+msgstr "<h3>Jämförelseresultat</h3>"
+
+#: ZenModeWidget%2336
+msgctxt "ZenModeWidget#36"
+msgid "<i>(no match in reference)</i>"
+msgstr "<i>(ingen matchning i referensen)</i>"
+
+#: ZenModeWidget%2337
+msgctxt "ZenModeWidget#37"
+msgid "<i>MT unavailable</i>"
+msgstr "<i>MT otillgänglig</i>"
+
+#: ZenModeWidget%2338
+msgctxt "ZenModeWidget#38"
+msgid "<i>No matches</i>"
+msgstr "<i>Inga träffar</i>"
+
+#: ZenModeWidget%2339
+msgctxt "ZenModeWidget#39"
+msgid "<i>No matching terms</i>"
+msgstr "<i>Inga matchande termer</i>"
+
+#: ZenModeWidget%2340
+msgctxt "ZenModeWidget#40"
+msgid "<i>No suggestion</i>"
+msgstr "<i>Inget förslag</i>"
+
+#: ZenModeWidget%2341
+msgctxt "ZenModeWidget#41"
+msgid "<i>No suggestions</i>"
+msgstr "<i>Inga förslag</i>"
+
+#: ZenModeWidget%2342
+msgctxt "ZenModeWidget#42"
+msgid "Are you sure you want to delete the macro '{}'?"
+msgstr "Är du säker på att du vill radera makrot '{}'?"
+
+#: ZenModeWidget%2343
+msgctxt "ZenModeWidget#43"
+msgid "Cannot compile: install 'polib' or 'gettext' (msgfmt)"
+msgstr "Kan inte kompilera: installera 'polib' eller 'gettext' (msgfmt)"
+
+#: ZenModeWidget%2344
+msgctxt "ZenModeWidget#44"
+msgid "Click in the source text where you want to split, then press OK."
+msgstr "Klicka i källtexten där du vill dela, tryck sedan OK."
+
+#: ZenModeWidget%2345
+msgctxt "ZenModeWidget#45"
+msgid "Delete term '%s' → '%s'?"
+msgstr "Ta bort term '%s' → '%s'?"
+
+#: ZenModeWidget%2346
+msgctxt "ZenModeWidget#46"
+msgid "This video file contains no embedded subtitle tracks."
+msgstr "Denna videofil innehåller inga inbäddade undertextspår."
+
+#: ZenModeWidget%2347
+msgctxt "ZenModeWidget#47"
+msgid "Failed to play macro '{}'."
+msgstr "Kunde inte spela upp makro '{}'."
+
+#: ZenModeWidget%2348
+msgctxt "ZenModeWidget#48"
+msgid "Find & Replace"
+msgstr "Sök och ersätt"
+
+#: ZenModeWidget%2349
+msgctxt "ZenModeWidget#49"
+msgid "Find && Replace…"
+msgstr "Sök och ersätt…"
+
+#: ZenModeWidget%2350
+msgctxt "ZenModeWidget#50"
+msgid "Macro '{}' has been saved successfully."
+msgstr "Makro '{}' har sparats."
+
+#: ZenModeWidget%2351
+msgctxt "ZenModeWidget#51"
+msgid "Recording macro '{}'..."
+msgstr "Spelar in makro '{}'..."
+
+#: ZenModeWidget%2352
+msgctxt "ZenModeWidget#52"
+msgid "Save &As…"
+msgstr "Spara s&om…"
+
+#: ZenModeWidget%2353
+msgctxt "ZenModeWidget#53"
+msgid "Search & Filter"
+msgstr "Sök och filtrera"
+
+#: ZenModeWidget%2354
+msgctxt "ZenModeWidget#54"
+msgid "Search & Replace"
+msgstr "Sök och ersätt"
+
+#: ZenModeWidget%2355
+msgctxt "ZenModeWidget#55"
+msgid ""
+"The file '%s' has unsaved changes.\\n"
+"Do you want to save before closing?"
+msgstr ""
+"Filen '%s' har osparade ändringar.\\n"
+"Vill du spara innan du stänger?"
+
+#: ZenModeWidget%2356
+msgctxt "ZenModeWidget#56"
+msgid "Total: {0} characters | Invisible: {1} | Suspicious: {2}"
+msgstr "Totalt: {0} tecken | Osynliga: {1} | Misstänkta: {2}"
+
+#: ZenModeWidget%2357
+msgctxt "ZenModeWidget#57"
+msgid "You're all set!"
+msgstr "Du är redo!"
+
+#: ZenModeWidget%2358
+msgctxt "ZenModeWidget#58"
+msgid "Your credentials are securely stored in the system keychain."
+msgstr "Dina inloggningsuppgifter lagras säkert i systemets nyckelring."
+
+#: ZenModeWidget%2359
+msgctxt "ZenModeWidget#59"
+msgid ""
+"Are you sure you want to rollback to this version?\\n\\n"
+"This will replace the current text with:\\n{}"
+msgstr ""
+"Är du säker på att du vill återställa till denna version?\\n\\n"
+"Detta ersätter den nuvarande texten med:\\n{}"
+
+#: ZenModeWidget%2360
+msgid ""
+"OCR functionality requires tesseract-ocr to be installed.\\n\\n"
+"Install with:\\n• macOS: brew install tesseract\\n• Ubuntu: sudo apt install "
+"tesseract-ocr\\n• Windows: download from GitHub"
+msgstr ""
+"OCR-funktionalitet kräver att tesseract-ocr är installerat.\\n\\n"
+"Installera med:\\n• macOS: brew install tesseract\\n• Ubuntu: sudo apt "
+"install tesseract-ocr\\n• Windows: ladda ner från GitHub"
+
+#: ZenModeWidget%2361
+msgctxt "ZenModeWidget#61"
+msgid ""
+"%d of %d entries (%d%%) have no translation.\\n\\n"
+"Untranslated entries will be marked and saved with the source text as "
+"fallback, so they will still display during playback. When reopened in "
+"LinguaEdit, they will be correctly shown as untranslated.\\n\\n"
+"Save anyway?"
+msgstr ""
+"%d av %d poster (%d%%) har ingen översättning.\\n\\n"
+"Oöversatta poster markeras och sparas med källtexten som reserv, så att de "
+"fortfarande visas under uppspelning. När de öppnas igen i LinguaEdit visas "
+"de korrekt som oöversatta.\\n\\n"
+"Spara ändå?"
+
+#: ZenModeWidget%2362
+msgid ""
+"A translation file is currently open with unsaved changes.\\n"
+"Save before loading new subtitles?"
+msgstr ""
+"En översättningsfil är öppen med osparade ändringar.\\n"
+"Spara innan nya undertexter laddas?"
+
+#: ZenModeWidget%2363
+msgid ""
+"Crowdin Over-The-Air functionality not yet implemented.\\n"
+"This would pull latest translations from Crowdin."
+msgstr ""
+"Crowdin Over-The-Air-funktionalitet är ännu inte implementerad.\\n"
+"Detta skulle hämta senaste översättningarna från Crowdin."
+
+#: AIReviewWorker%231
+msgid "Translation is missing"
+msgstr "Översättning saknas"
+
+#: AIReviewWorker%232
+msgid "Translation much longer than source"
+msgstr "Översättning mycket längre än källa"
+
+#: AIReviewWorker%233
+msgid "Translation much shorter than source"
+msgstr "Översättning mycket kortare än källa"
+
+#: AIReviewWorker%234
+msgid "Different number of format markers/tags"
+msgstr "Olika antal formatmarkörer/taggar"
+
+#: AIReviewWorker%235
+msgid "Identical to source text"
+msgstr "Identisk med källtext"
+
+#: AIReviewWorker%236
+msgid "All uppercase when source is not"
+msgstr "Alla versaler när källa inte är det"
+
+#: AIReviewWorker%237
+msgid "No obvious problems found with this translation."
+msgstr "Inga uppenbara problem hittade med denna översättning."
+
+#: AIReviewWorker%238
+msgid "Problems identified: "
+msgstr "Problem identifierade: "
+
+#: BatchOperationThread%231
+msgctxt "BatchOperationThread#1"
+msgid "Error: %s"
+msgstr "Fel: %s"
+
+#: FileAnalysisThread%231
+msgid "Analyzing %s..."
+msgstr "Analyserar %s..."
+
+#: GlossaryImportThread%231
+msgid "Importing term %d/%d"
+msgstr "Importerar term %d/%d"
+
+#: GlossaryImportThread%232
+msgid "Row %d: %s"
+msgstr "Rad %d: %s"
+
+#: GlossaryImportThread%233
+msgid "File error: %s"
+msgstr "Filfel: %s"
+
+#: TextRenderWidget%231
+msgid "Width: %dpx"
+msgstr "Bredd: %dpx"
+
+#: TextRenderWidget%232
+msgid "OVERFLOW: +%dpx"
+msgstr "ÖVERFLÖDE: +%dpx"
+
+#: UpdateDialog%231
+msgctxt "UpdateDialog#1"
+msgid "Update Available"
+msgstr "Uppdatering tillgänglig"
+
+#: UpdateDialog%232
+msgid "A new version of LinguaEdit is available!"
+msgstr "En ny version av LinguaEdit finns nu tillgänglig!"
+
+#: UpdateDialog%233
+msgid ""
+"Current version: %s\n"
+"New version: %s"
+msgstr ""
+"Aktuell version: %s\n"
+"Ny version: %s"
+
+#: UpdateDialog%234
+msgid "Release notes:"
+msgstr "Versionsinformation:"
+
+#: UpdateDialog%235
+msgid "Skip this version"
+msgstr "Hoppa över denna version"
+
+#: UpdateDialog%236
+msgid "Download"
+msgstr "Hämta ner"
+
+#: UpdateDialog%237
+msgid "Remind me later"
+msgstr "Påminn mig senare"
