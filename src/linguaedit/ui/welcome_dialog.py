@@ -13,7 +13,7 @@ from linguaedit import __version__
 from linguaedit.services.settings import Settings, SUPPORTED_LANGUAGES, DEFAULTS
 from linguaedit.services.translator import ENGINES
 from linguaedit.app import _find_translations_dir
-from linguaedit.ui.preferences_dialog import _flag_icon, _FLAG_MAP
+from linguaedit.ui.preferences_dialog import _flag_icon
 
 
 class WelcomeDialog(QDialog):
