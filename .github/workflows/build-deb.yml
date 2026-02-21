@@ -36,7 +36,7 @@ jobs:
 
           cat > $DEST/usr/bin/linguaedit << 'LAUNCHER'
           #!/usr/bin/env python3
-          from linguaedit.main import main
+          from linguaedit.app import main
           main()
           LAUNCHER
           chmod +x $DEST/usr/bin/linguaedit
