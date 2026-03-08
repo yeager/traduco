@@ -1,6 +1,6 @@
 # LinguaEdit
 
-![Version](https://img.shields.io/badge/version-1.8.12-blue)
+![Version](https://img.shields.io/badge/version-1.8.14-blue)
 ![GitHub Release](https://img.shields.io/github/v/release/yeager/linguaedit)
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
@@ -57,29 +57,21 @@ pip install linguaedit
 linguaedit-gui
 ```
 
-### Debian / Ubuntu
+### APT (Debian/Ubuntu)
 
 ```bash
-# Add repository
-curl -fsSL https://yeager.github.io/debian-repo/yeager-repo.gpg | sudo gpg --dearmor -o /usr/share/keyrings/yeager-repo.gpg
-echo "deb [signed-by=/usr/share/keyrings/yeager-repo.gpg] https://yeager.github.io/debian-repo stable main" | sudo tee /etc/apt/sources.list.d/yeager.list
+echo "deb https://yeager.github.io/debian-repo stable main" | sudo tee /etc/apt/sources.list.d/yeager-l10n.list
+curl -fsSL https://yeager.github.io/debian-repo/yeager-l10n.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/yeager-l10n.gpg
+sudo apt update && sudo apt install linguaedit
 
-# Install
-sudo apt update
-sudo apt install linguaedit
-
-# Note: PySide6 is not available as a system package on most distros.
-# Install it via pip:
+# Note: PySide6 may need to be installed via pip if not available as system package
 pip install PySide6
 ```
 
-### Fedora / RHEL / openSUSE
+### DNF (Fedora)
 
 ```bash
-# Add repository
-sudo dnf config-manager --add-repo https://yeager.github.io/rpm-repo/yeager.repo
-
-# Install
+sudo dnf config-manager --add-repo https://yeager.github.io/rpm-repo/yeager-l10n.repo
 sudo dnf install linguaedit
 
 # Install PySide6:
