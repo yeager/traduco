@@ -6,7 +6,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[('resources/icon.png', 'resources'), ('src/linguaedit/translations/*.qm', 'linguaedit/translations')],
-    hiddenimports=['PySide6'],
+    hiddenimports=['PySide6', 'linguaedit'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -32,6 +32,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['resources/icon.png'],
 )
 coll = COLLECT(
     exe,
@@ -45,6 +46,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='LinguaEdit.app',
-    icon='data/macos/LinguaEdit.app/Contents/Resources/linguaedit.icns',
-    bundle_identifier='se.danielnylander.LinguaEdit',
+    icon='resources/icon.png',
+    bundle_identifier=None,
 )
