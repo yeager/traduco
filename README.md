@@ -42,12 +42,51 @@ LinguaEdit is a feature-rich, cross-platform translation editor that supports 17
 
 ---
 
-## 📦 Installation
+## 📦 Installation & Downloads
 
-### pip / pipx (recommended)
+### 🚀 Latest Release (v1.8.14)
+
+Download ready-to-use binaries from **[GitHub Releases](https://github.com/yeager/linguaedit/releases/latest)**:
+
+| Platform | Download | Size | Installation |
+|----------|----------|------|-------------|
+| **🍎 macOS** | `LinguaEdit-1.8.14-macOS-arm64.dmg` | 64MB | Drag to Applications |
+| **🪟 Windows** | `LinguaEdit-1.8.14-Windows-Portable.zip` | 1.5MB | Unzip and run `LinguaEdit.bat` |
+| **🐧 Linux** | Package managers (see below) | ~300KB | `apt install linguaedit` |
+
+### 🐧 Linux Package Managers
+
+#### APT (Debian/Ubuntu)
 
 ```bash
-# Install with pipx (isolated environment)
+# Add repository
+echo "deb [trusted=yes] https://yeager.github.io/debian-repo/ stable main" | sudo tee /etc/apt/sources.list.d/yeager.list
+
+# Install
+sudo apt update
+sudo apt install linguaedit
+```
+
+#### DNF (Fedora/RHEL)
+
+```bash
+# Add repository
+sudo tee /etc/yum.repos.d/yeager.repo > /dev/null << 'EOF'
+[yeager]
+name=Yeager Repository
+baseurl=https://yeager.github.io/rpm-repo/packages
+enabled=1
+gpgcheck=0
+EOF
+
+# Install
+sudo dnf install linguaedit
+```
+
+### 🐍 Python pip/pipx (All Platforms)
+
+```bash
+# Install with pipx (isolated environment) - RECOMMENDED
 pipx install linguaedit
 
 # Or with pip
@@ -57,40 +96,18 @@ pip install linguaedit
 linguaedit-gui
 ```
 
-### APT (Debian/Ubuntu)
+### 📋 System Requirements
 
-```bash
-echo "deb https://yeager.github.io/debian-repo stable main" | sudo tee /etc/apt/sources.list.d/yeager-l10n.list
-curl -fsSL https://yeager.github.io/debian-repo/yeager-l10n.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/yeager-l10n.gpg
-sudo apt update && sudo apt install linguaedit
+| Platform | Requirements |
+|----------|-------------|
+| **macOS** | macOS 11+ (Big Sur), Apple Silicon or Intel |
+| **Windows** | Windows 10+, Python 3.10+ (for portable version) |
+| **Linux** | Python 3.10+, Qt6 libraries |
 
-# Note: PySide6 may need to be installed via pip if not available as system package
-pip install PySide6
-```
-
-### DNF (Fedora)
-
-```bash
-sudo dnf config-manager --add-repo https://yeager.github.io/rpm-repo/yeager-l10n.repo
-sudo dnf install linguaedit
-
-# Install PySide6:
-pip install PySide6
-```
-
-### macOS
-
-```bash
-# Via pipx
-pipx install linguaedit
-
-# For proper menu bar name and file associations,
-# download LinguaEdit.app from GitHub Releases
-```
-
-### Windows
-
-Download the self-contained `.exe` from [GitHub Releases](https://github.com/yeager/linguaedit/releases) — no Python installation required.
+**Optional dependencies:**
+- `ffmpeg` — video subtitle extraction
+- `hunspell` — spell checking
+- `git` — version control integration
 
 ---
 
@@ -307,18 +324,46 @@ pyside6-lrelease translations/linguaedit_sv.ts -qm translations/linguaedit_sv.qm
 - PySide6 >= 6.5
 - Optional: `ffmpeg` (video subtitle extraction), `hunspell` (spell checking)
 
+### Cross-Platform Builds
+
+```bash
+# Build for macOS (from macOS)
+pyinstaller LinguaEdit.spec
+
+# Create DMG
+hdiutil create -srcfolder "dist/LinguaEdit.app" -volname "LinguaEdit" "LinguaEdit.dmg"
+
+# Build for Windows (requires Wine or Windows machine)
+pyinstaller LinguaEdit-windows.spec
+
+# Create portable version (any platform)
+zip -r LinguaEdit-portable.zip src/ resources/ requirements.txt
+```
+
 ---
 
 ## 📦 Package Repositories
 
 ### Debian/Ubuntu (apt)
-```
-deb [signed-by=/usr/share/keyrings/yeager-repo.gpg] https://yeager.github.io/debian-repo stable main
+**Repository:** https://yeager.github.io/debian-repo/
+```bash
+# Quick install:
+echo "deb [trusted=yes] https://yeager.github.io/debian-repo/ stable main" | sudo tee /etc/apt/sources.list.d/yeager.list
+sudo apt update && sudo apt install linguaedit
 ```
 
 ### RPM (dnf/yum)
-```
-https://yeager.github.io/rpm-repo/
+**Repository:** https://yeager.github.io/rpm-repo/
+```bash
+# Quick install:
+sudo tee /etc/yum.repos.d/yeager.repo > /dev/null << 'EOF'
+[yeager]
+name=Yeager Repository
+baseurl=https://yeager.github.io/rpm-repo/packages
+enabled=1
+gpgcheck=0
+EOF
+sudo dnf install linguaedit
 ```
 
 See [debian-repo](https://github.com/yeager/debian-repo) and [rpm-repo](https://github.com/yeager/rpm-repo) for setup instructions.

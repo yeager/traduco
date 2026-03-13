@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## [1.8.14-r2] — 2026-03-13
+
+### Added
+- **Cross-platform builds** — Official macOS .app bundle and Windows portable version
+- **macOS DMG installer** — Ready-to-use drag-and-drop installer (64MB)
+- **Windows portable ZIP** — Python-based portable version with batch launcher (1.5MB)
+- **Professional packaging** — DEB/RPM packages with proper dependencies and desktop integration
+- **GitHub repository integration** — DEB (Ubuntu/Debian) and RPM (Fedora/RHEL) repositories
+- **Updated installation documentation** — Complete installation guide for all platforms
+
+### Fixed
+- **Man page generation** — Created during package build for proper documentation
+- **Package metadata** — Corrected descriptions and dependencies across all formats
+- **Repository publishing** — Automated package deployment to GitHub Pages repositories
+
+### Distribution
+- **macOS**: `LinguaEdit-1.8.14-macOS-arm64.dmg` (Apple Silicon native)
+- **Windows**: `LinguaEdit-1.8.14-Windows-Portable.zip` (Python + requirements)
+- **Linux DEB**: Available via `apt install linguaedit` from yeager repository
+- **Linux RPM**: Available via `dnf install linguaedit` from yeager repository
+- **Python PyPI**: Available via `pip install linguaedit` (cross-platform)
+
+### Repository URLs
+- DEB repo: https://yeager.github.io/debian-repo/
+- RPM repo: https://yeager.github.io/rpm-repo/
+- Source: https://github.com/yeager/linguaedit
+
 ## [1.8.14] — 2026-02-14
 
 ### Added
