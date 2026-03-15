@@ -286,6 +286,28 @@ def lint_entries(entries: list[dict]) -> LintResult:
             issues.append(LintIssue("warning", issue_msg, idx, msgid))
             penalty += 0.4
 
+        # Cross-newline duplicate words
+        lines = msgstr.split('\n')
+        for li in range(len(lines) - 1):
+            end_words = lines[li].rstrip().split()
+            start_words = lines[li + 1].lstrip().split()
+            if not end_words or not start_words:
+                continue
+            end_word = re.sub(r'^[.,;:!?"\'()[\]{}]+|[.,;:!?"\'()[\]{}]+$', '', end_words[-1])
+            start_word = re.sub(r'^[.,;:!?"\'()[\]{}]+|[.,;:!?"\'()[\]{}]+$', '', start_words[0])
+            if (len(end_word) >= 3 and len(start_word) >= 3
+                    and end_word.lower() == start_word.lower()
+                    and not end_word.startswith('#')
+                    and not end_word.startswith('-')
+                    and not end_word.startswith('*')
+                    and not end_word.startswith('>')
+                    and not end_word.isdigit()):
+                issues.append(LintIssue("warning",
+                    QCoreApplication.translate("Linter", "Word '%s' duplicated across line break") % end_word,
+                    idx, msgid))
+                penalty += 0.3
+                break  # One per entry
+
     # Check for duplicate msgids with different translations (after individual entry checks)
     msgid_translations = {}
     for e in entries:
